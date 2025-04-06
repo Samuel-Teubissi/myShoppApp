@@ -1,0 +1,16 @@
+# Ignorer les dépendances de React
+/frontend/node_modules/
+
+# Ignorer les dépendances PHP (Composer) de CodeIgniter
+/backend/vendor/
+/backend/node_modules/
+
+# Fichiers d'environnement
+*.env
+
+# Dossier de build React
+/frontend/build/
+
+# Cache et logs
+*.log
+.DS_Store

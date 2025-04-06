@@ -1,0 +1,13 @@
+{
+    "API_href": "http://localhost/MyShopI",
+    "APP_Categories": [
+        "Toutes les catégories",
+        "Alimentation",
+        "Beauté & Cosmétique",
+        "Décoration &amp; Accéssoire",
+        "Électronique",
+        "Enfant & Jouet",
+        "Livre",
+        "Vêtement"
+    ]
+}
