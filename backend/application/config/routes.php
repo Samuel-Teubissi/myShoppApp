@@ -71,7 +71,9 @@ $route['translate_uri_dashes'] = FALSE;
  */
 // $route['monprofil'] = 'About';
 $route['articles/home'] = 'API_controller/API_Home_Articles';
-$route['articles/total'] = 'API_controller/API_count_Home_Pages';
+$route['articles/trader'] = 'API_controller/API_Trader_Articles';
+$route['articles/total_home'] = 'API_controller/API_count_Articles/home';
+$route['articles/total_trader'] = 'API_controller/API_count_Articles/trader';
 $route['login'] = 'API_controller/API_Login';
 $route['register'] = 'API_controller/API_Register';
 $route['logout'] = 'API_controller/API_logout';

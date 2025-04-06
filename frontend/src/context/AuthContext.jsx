@@ -34,8 +34,8 @@ export const AuthProvider = ({ children }) => {
     //     setIsLoading(false)
     // }, [])
     const checkAuth = async () => {
-        try { 
-            const res = await axios.get("/logged", {withCredentials: true})
+        try {
+            const res = await axios.get("/logged", { withCredentials: true })
             if (res.data.status === 'success') {
                 setUserSession(res.data.dataUser)
                 setIsAuthenticated(true)
@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(false);
                 setUserSession(null)
                 // if (redirectCallback) redirectCallback()
-                }, 1000)
+            }, 1000)
             // Suppression du token en local
             // localStorage.removeItem("user_token");
             // if (redirectCallback) redirectCallback()

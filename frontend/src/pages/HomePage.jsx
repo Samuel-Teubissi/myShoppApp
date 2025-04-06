@@ -12,7 +12,9 @@ const HomePage = () => {
     const [reloadPaginate, setReloadPaginate] = useState('')
 
     useEffect(() => {
-        if (actualPage.search('page') > 0) setReloadPaginate(actualPage); console.log('reloadPaginate : ' + reloadPaginate);
+        if (actualPage.search('page') > 0) {
+            setReloadPaginate(actualPage);
+        }
     }, [actualPage]);
 
     return (

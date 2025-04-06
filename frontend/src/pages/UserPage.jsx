@@ -41,7 +41,7 @@ const UserPage = () => {
                 </div>
                 <div className="articlesH">Vos articles</div>
                 <div className="articles mt-4"> <br />
-                    <PaginateComponent link='home' />
+                    <PaginateComponent link='trader' />
                 </div>
             </div>
             <ModalAddComp isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

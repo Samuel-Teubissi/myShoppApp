@@ -18,10 +18,16 @@ class API_Model extends CI_Model
         return $article->result_array();
     }
 
-    public function API_checkUser($number)
+    public function API_get_StockArticles($id, $limit)
     {
-        $checkUser = $this->db->query("SELECT * FROM user WHERE number = ?", array($number));
-        return $checkUser->result_array();
+        $sql = 'SELECT * FROM articles INNER JOIN category ON category = id_categ WHERE id_trader = ? AND art_visible != 0 ORDER BY id_articles DESC';
+        if (isset($limit) && !empty($limit)) {
+            $sql .= ' LIMIT ' . $limit['start'] . ',' . $limit['per_page'];
+        }
+        $article = $this->db->query($sql, array($id));
+
+        // $article = $this->db->query('SELECT * FROM articles INNER JOIN category ON category = id_categ WHERE id_trader = ? AND art_visible != 0 ORDER BY id_articles DESC', array($id));
+        return $article->result_array();
     }
 
     public function API_get_Categories($param)

@@ -550,11 +550,12 @@ input[type="number"].inpt-f {
     border: none;
     box-shadow: 0 1px 1px #6b4559;
     outline: none;
-    transition: 0.7s ease-in-out;
+    transition: 0.2s ease-in-out;
     cursor: pointer;
 }
 
-::-webkit-file-upload-button:hover {
+::-webkit-file-upload-button:hover,
+:hover>::-webkit-file-upload-button {
     background: #438a5e;
     color: #fff;
 }

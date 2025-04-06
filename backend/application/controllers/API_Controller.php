@@ -6,6 +6,7 @@ class API_Controller extends CI_Controller
         parent::__construct();
         // Model responsable des données à traiter
         $this->load->model('API_Model');
+        $this->pagination_limit = 3;
         // $this->load->library('form_validation');
         // $this->load->library('Cors');
         // $this->cors->allow();  // Autoriser CORS
@@ -35,13 +36,13 @@ class API_Controller extends CI_Controller
     {
 
         // Pagination
-        $per_page = 3;
+        $per_page = $this->pagination_limit;
         $currentPage = (int)($this->input->get('page') ?? 1) ?: 1;
         $offset = ($currentPage - 1) * $per_page;
+        
+        // Récupérer les articles paginés 
         $limit["start"] = $offset;
         $limit["per_page"] = $per_page;
-
-        // Récupérer les articles paginés 
         $articles = $this->API_Model->API_get_Articles($limit);
         $total_articles = count($this->API_Model->API_get_Articles(0));
 
@@ -49,15 +50,65 @@ class API_Controller extends CI_Controller
         $total_pages = ceil($total_articles / $per_page);
         echo json_encode([
             'articles' => $articles,
-            'total_pages' => $total_pages
+            'total_pages' => $total_pages,
+            'total_articles' => $total_articles
         ]);
     }
+    public function API_Trader_Articles()
+    {
+        if ($this->session->has_userdata('data_trader')) {
+            // $id_trader = $trader['id_trader'];
+            $id_trader = $this->session->data_trader['id_trader'];
+            // Pagination
+            $per_page = $this->pagination_limit;
+            $currentPage = (int)($this->input->get('page') ?? 1) ?: 1;
+            $offset = ($currentPage - 1) * $per_page;
+            
+            // Récupérer les articles paginés 
+            $limit["start"] = $offset;
+            $limit["per_page"] = $per_page;
+            $articles = $this->API_Model->API_get_StockArticles($id_trader, $limit);
+            $total_articles = count($this->API_Model->API_get_StockArticles($id_trader, []));
 
-    public function API_count_Home_Pages () {
-        $per_page = 3;
-        $total_articles = count($this->API_Model->API_get_Articles(0));
-        $total_pages = ceil($total_articles / $per_page);
-        echo json_encode(['total' => $total_pages]);
+            // Calcal des pages totales 
+            $total_pages = ceil($total_articles / $per_page);
+            echo json_encode([
+                'articles' => $articles,
+                'total_pages' => $total_pages,
+                'total_articles' => $total_articles
+            ]);
+        }
+    }
+
+    public function API_count_Articles ( $dataType ) {
+        switch ($dataType) {
+            case 'home':
+                $per_page = $this->pagination_limit;
+                $total_articles = count($this->API_Model->API_get_Articles(0));
+                $total_pages = ceil($total_articles / $per_page);
+                echo json_encode([
+                    'latest_total_pages' => $total_pages,
+                    'latest_total_articles' => $total_articles
+                ]);
+                break;
+
+            case 'trader':
+                if ($this->session->has_userdata('data_trader')) {
+                    $id_trader = $this->session->data_trader['id_trader'];
+                    $per_page = $this->pagination_limit;
+                    $total_articles = count($this->API_Model->API_get_StockArticles($id_trader, []));
+                    $total_pages = ceil($total_articles / $per_page);
+                    echo json_encode([
+                        'latest_total_pages' => $total_pages,
+                        'latest_total_articles' => $total_articles
+                    ]);
+                }
+                break;
+            
+            default:
+                echo json_encode(['error' => 'Accès Non Autorisé : '.$dataType]);
+                break;
+        }
     }
 
     //fonction LOGIN
@@ -168,8 +219,7 @@ class API_Controller extends CI_Controller
 
     public function API_logged()
     {
-        // var_dump($this->session);
-        // var_dump($this->session);
+        // var_dump('session : ', $this->session);
         if ($this->session->has_userdata('user_id')) {
             $dataUser = $this->session->userdata();
             echo json_encode(

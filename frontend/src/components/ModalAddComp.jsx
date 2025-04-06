@@ -9,6 +9,7 @@ import axios from "axios";
 const ModalAddComp = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
+    axios.defaults.baseURL = API_href;
     const { login } = useAuth()
     const formRef = useRef(null)
     const [addFormError, setAddFormError] = useState({})
@@ -16,7 +17,6 @@ const ModalAddComp = ({ isOpen, onClose }) => {
     const [addFormData, setAddFormData] = useState(
         { article: '', price: '', quantity: '', userfile: null, category: '' }
     )
-    axios.defaults.baseURL = API_href;
 
     const HandleChange = (e) => {
         setAddFormData({ ...addFormData, [e.target.name]: e.target.value })
@@ -39,8 +39,10 @@ const ModalAddComp = ({ isOpen, onClose }) => {
             addData.append('category', addFormData.category)
 
             const response = await axios.post('/user/add', addData,
-                {   withCredentials: true,
-                    headers: { 'Content-Type': 'multipart/form-data' } }
+                {
+                    withCredentials: true,
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                }
             )
             if (response.data.status === 'success') {
                 toast.success('Article Ajouté')
@@ -51,13 +53,13 @@ const ModalAddComp = ({ isOpen, onClose }) => {
                 // console.log('response.data.errors : ' + JSON.stringify(response.data.errors));
                 setAddFormError(response.data.errors || {})
                 if (!addFormData.userfile) {
-                    setAddFormError(prev => ({...response.data.errors, userfile: 'Un fichier visuel est requis'}))
+                    setAddFormError(prev => ({ ...prev, userfile: 'Un fichier visuel est requis' }))
                 }
             }
         } catch (error) {
             toast.error("Erreur avec l'envoi de données")
             console.error("Erreur lors de l'envoi de l'article: ", error)
-        }  finally {
+        } finally {
             setIsAddSubmitting(false);
         }
     }
@@ -102,7 +104,7 @@ const ModalAddComp = ({ isOpen, onClose }) => {
                     <div className="inpt categ">
                         <span className="block text-gray-700 font-semibold mb-1 text-left">Catégorie de l'article :</span>
                         <span>
-                            <select name="category" className={`slct border rounded-full ${addFormError?.category ? "border-red-500" : "border-gray-300"}`} onChange={HandleChange} title="category">
+                            <select name="category" className={`slct border rounded-full hover:bg-gray-300 ${addFormError?.category ? "border-red-500" : "border-gray-300"}`} onChange={HandleChange} title="category">
                                 {categories.map((categ, index) => (
                                     <option value={index} key={index}>{categ}</option>
                                 ))}

@@ -45,7 +45,7 @@ export const InputFieldAdd = ({ label, type = "text", name, value, onChange, err
                 // value={value}
                 onChange={onChange}
                 placeholder={placeholder}
-                className={`w-full ${type !== 'file' ? "px-5 py-3" : "cursor-pointer"} border rounded-full ${error ? "border-red-500" : "border-gray-300"}`}
+                className={`w-full ${type !== 'file' ? "px-5 py-3" : "transition duration-200 cursor-pointer hover:bg-gray-200"} border rounded-full ${error ? "border-red-500" : "border-gray-300"}`}
             />
             <i className='fa fa-lock'></i>
             {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
