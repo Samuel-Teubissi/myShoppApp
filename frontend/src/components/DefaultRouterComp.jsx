@@ -1,57 +1,238 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom"
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
-import { useEffect } from "react"
-import { toast } from "react-toastify"
+import { useEffect, useState } from "react"
+// import { toast } from "react-toastify"
 import LogoLink from '../assets/img/LOGO_MyShop.png'
-// import '../assets/js/index'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquarePlus, faRightToBracket, faRightFromBracket, faMoon, faSun, faUserAlt, faXmark } from '@fortawesome/free-solid-svg-icons'; // Version solid
+import { faSquarePlus as faRegularSquarePlus, faArrowAltCircleUp as faRegularRightBracket, faBell } from '@fortawesome/free-regular-svg-icons'; // Version regular
+import ModalAddComp from "../modals/ModalAddComp"
+import { useRef } from "react"
+import { useModal } from "../context/useModal"
+import ModalCart from "../modals/ModalCart"
+import ModalNotifs from "../modals/ModalNotifs"
+import { clearCartCookie } from "../context/useCookie"
+import { useCart } from "../context/useCart"
+// import { useNotifications } from "../hooks/useNotifications old"
+import { useNotificationsStore } from "../hooks/useNotifications"
+import Footer from "../pages/Footer"
+import { queryClient } from "../main"
+import useLinks from "../hooks/useLinks"
+import { MdLocalGroceryStore, MdLogin, MdLogout, MdPhoneAndroid, MdWbSunny } from 'react-icons/md';
+import { HomeIcon, BookIcon, Bell, ShoppingCartIcon, User, SquarePlus, SquarePlusIcon, HelpCircleIcon, UserPlus, UserMinus, MoonIcon, SunIcon, UserCheck, KeyIcon, XIcon, Sidebar } from 'lucide-react';
+import { setThemeApp } from "./AppComp"
+import useCloseOutsideModal from "../hooks/useCloseOutsideModal"
+import Aos from "aos";
+import 'aos/dist/aos.css';
+import ScrollToTop from "../hooks/useScrollToTop";
 
 export default function DefaultRouterComp() {
-    // const location = 'http://localhost/MyShopI/'
-    // const link = location + "assets/img/LOGO MyShop.png"
-    const { isAuthenticated, logout } = useAuth()
-    const navigate = useNavigate()
+    const { isAuthenticated, logout, userSession } = useAuth()
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const [isHoverLogout, setIsHoverLougout] = useState(false);
+    const [showMenu, setshowMenu] = useState(false);
+    // const menu_nav = useRef(null)
+    // const menu_bar = useRef(null)
+    // const menu_line = useRef([])
+    const { openModal, closeModal } = useModal();
+    const { clearCart, newsItems } = useCart()
+    const { handleAdd, handleLogout, handleCart, handleNotifs } = useLinks()
+    const [openSubmenu, setOpenSubmenu] = useState(false);
+    const [openHeader, setOpenHeader] = useState(false);
+    const SidebarRef = useRef(null)
 
-    const handleLogout = async () => {
-        await logout();
-        console.log('deconnexion Header');
-        navigate('/login')
-        // navigate('/login')
-    };
+    const toggleNav = () => {
+        setshowMenu(!showMenu)
+        if (menu_nav.current) {
+            menu_nav.current.classList.toggle('open')
+            menu_bar.current.classList.toggle('open')
+            menu_line.current.forEach(line => {
+                line.classList.toggle('open')
+            })
+        }
+    }
 
-    // className="fixed w-full bg-white h-auto"
+    // const showNav = (elt) => {
+    //     const parentLi = elt.parentElement
+    //     parentLi.classList.toggle('showNav')
+    // }
+
+    // Fonction pour gérer le hover
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
+    // const handleMouseLogoutEnter = () => setIsHoverLougout(true);
+    // const handleMouseLogoutLeave = () => setIsHoverLougout(false);
+
+    const fetchNotifications = useNotificationsStore((s) => s.fetchNotifications)
+    const unreadNotifs = useNotificationsStore((s) => s.unreadNotifs())
+    useEffect(() => {
+        if (userSession?.user_id) fetchNotifications(userSession.user_id)
+    }, [userSession?.user_id]);
+
+    useEffect(() => {
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    }, []);
+
+    const handleDarkMode = () => {
+        const isDark = document.documentElement.classList.contains('dark')
+        setTimeout(() => {
+            setThemeApp(isDark ? 'light' : 'dark')
+        }, 200);
+    }
+
+    // Fermer la Sidebar si onclique à l'extérieur
+    useCloseOutsideModal(SidebarRef, () => setOpenHeader(false))
+    const handleCloseSidebar = () => {
+        setTimeout(() => {
+            setOpenHeader(false)
+        }, 150);
+    }
+
+    // document.querySelectorAll('.header-modal ul li a').forEach(link => {
+    //     link.addEventListener('click', () => setOpenHeader(false))
+    // })
+
+    useEffect(() => {
+        Aos.init({
+            // duration: 800,
+            // once: true
+        })
+    }, []);
+
     return <>
-        <header >
-            <nav>
-                <div className="logo animT">
-                    <NavLink to='/' className='border-0'><img src={LogoLink} alt="Logo MyShopAPP" /> My ShopAPP</NavLink>
+        <ScrollToTop />
+        <header className="fixed w-full h-auto top-0 left-0 z-50 pointer-events-none shadow-md">
+            <nav className="py-2 md:py-3 pl-3">
+                <div className="animT pointer-events-auto">
+                    <NavLink to='/' className='flex items-center'>
+                        <img src={LogoLink} alt="Logo MyShopAPP" className="" width={50} height={50} />
+                        <h3 className="hidden md:block">MyShop App</h3>
+                    </NavLink>
                 </div>
-                <div className="etc">
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                </div>
-                <ul className="nav-link">
-                    <li>
-                        <NavLink to='/'>Acceuil</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/about'>à Propos</NavLink>
-                    </li>
-                    <li>
-                        {isAuthenticated
-                            ? <>
-                                <NavLink to='/user'>Mon compte</NavLink>
-                                <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded ml-4 hover:bg-red-600" >Déconnexion</button>
-                            </>
-                            : <NavLink to='/login'>Mon compte</NavLink>
+                <ul className="nav-link pointer-events-auto">
+                    <li className="btn-trans nav-trans relative">
+                        <button onClick={handleCart} title="Consulter le panier">
+                            {/* <FontAwesomeIcon icon={faCartPlus} color="rgba(190, 24, 93)" /> */}
+                            <span>Panier</span>
+                            <ShoppingCartIcon className="" />
+                        </button>
+                        {newsItems > 0 &&
+                            <span className="--icon-notif">{newsItems}</span>
                         }
                     </li>
+                    {userSession?.data_trader && <>
+                        <li className="btn-trans nav-trans" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                            <button onClick={handleAdd} title="Ajouter un article">
+                                <span>Ajouter un article</span>
+                                <SquarePlusIcon />
+                                {/* <FontAwesomeIcon icon={isHovered || isModalOpen ? faSquarePlus : faRegularSquarePlus} color="rgba(190, 24, 93)" /> */}
+                            </button>
+                        </li>
+                    </>
+                    }
+                    {userSession?.user_id && <>
+                        <li className="btn-trans nav-trans relative">
+                            <button onClick={handleNotifs} title="Notifications">
+                                <span>Notifications</span>
+                                <Bell />
+                            </button>
+                            {unreadNotifs > 0 &&
+                                <span className="--icon-notif">{unreadNotifs}</span>
+                            }
+                        </li>
+                    </>
+                    }
+                    <li>
+                        <button onClick={() => setOpenHeader(true)} >
+                            <span>Mon Compte</span>
+                            <User />
+                        </button>
+                    </li>
                 </ul>
+                {/* <div ref={menu_bar} onClick={toggleNav} className="menu rounded">
+                    {[...Array(3)].map((_, key) => (
+                        <div ref={menu_line.current[key]} key={key}></div>
+                    ))} */}
+                {/* <div ref={(el) => menu_line.current[0] = el} className="line"></div>
+                    <div ref={(el) => menu_line.current[1] = el} className="line"></div>
+                    <div ref={(el) => menu_line.current[2] = el} className="line"></div> */}
+                {/* </div> */}
             </nav>
-        </header>
-        <div className="text-center">
-            <Outlet />
-            <br /><br />
+        </header >
+        {openHeader && <div className="inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen flex justify-center items-center btn-trans">
+            <div className={`modal-Sidebar`} ref={SidebarRef} data-aos='slide-left' data-aos-duration='200' data-aos-easing='ease-in-out'>
+                <XIcon className="absolute top-7 right-5 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
+                <div className="">
+                    <NavLink to='/' className='flex items-center' onClick={handleCloseSidebar}>
+                        <img src={LogoLink} alt="Logo MyShopAPP" className="" width={70} height={70} />
+                        <h3>MyShop App</h3>
+                    </NavLink>
+                </div>
+                <ul className={`--nav_submenu ${openSubmenu ? 'showNav' : ''}`} onClick={handleCloseSidebar}>
+                    <li>
+                        <NavLink to='/home'>
+                            <HomeIcon />
+                            <span>Acceuil</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/about'>
+                            <HelpCircleIcon />
+                            <span>à Propos</span>
+                        </NavLink>
+                    </li>
+                    {isAuthenticated
+                        ? <>
+                            <li>
+                                <NavLink to={'/' + userSession?.role}>
+                                    <BookIcon />
+                                    <span>Dashboard</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <button onClick={handleLogout} className="" title="Se déconnecter">
+                                    {/* <FontAwesomeIcon icon={isHoverLogout ? faRightToBracket : faRightFromBracket} className="text-white text-lg" /> */}
+                                    <MdLogout className="text-2xl" />
+                                    <span className="--nav-sub_span">Se déconnecter</span>
+                                    {/* <FontAwesomeIcon icon={faRightFromBracket} className="" /> */}
+                                </button>
+                            </li>
+                        </>
+                        : <>
+                            <li>
+                                <NavLink to='/login'>
+                                    <KeyIcon />
+                                    <span>Se Connecter</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/register'>
+                                    <UserPlus />
+                                    <span>S'inscrire</span>
+                                </NavLink>
+                            </li>
+                        </>
+                    }
+                    <li className="btn-trans nav-trans">
+                        <button onClick={handleDarkMode}>
+                            <MoonIcon className="inline dark:hidden" />
+                            <span className="inline dark:hidden">Mode Nuit</span>
+                            <SunIcon className="hidden dark:inline" />
+                            <span className="hidden dark:inline">Mode Jour</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
+        }
+        <div className="ms_Main">
+            <Outlet />
+        </div>
+        <Footer />
     </>
 }

@@ -1,0 +1,82 @@
+import { faCartShopping, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCart } from "../context/useCart";
+import _ from "lodash";
+import ItemCartComp from "../components/ItemCartComp";
+// import { toast } from "react-toastify";
+import { toast } from "sonner";
+import ConnectToCart from "./ConnectToCart";
+import { useAuth } from "../context/AuthContext";
+import { useModal } from "../context/useModal";
+import { clearCartCookie } from "../context/useCookie";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { api } from "../hooks/api";
+import axios from "axios";
+import ModalEmpty from "./ModalEmpty";
+
+const ModalCart = ({ onClose, redirect }) => {
+    const { cartItems, removeFromCart, clearCart, totalCart } = useCart()
+    const { isAuthenticated, userSession } = useAuth()
+    const { openModal, closeModal } = useModal()
+    const queryClient = useQueryClient()
+
+    const { mutate, isLoading: isSaving } = useMutation({
+        mutationFn: (data) => axios.post('/command/add', data),
+        onSuccess: (response) => {
+            // Recharge la liste des articles sur le site après ajout
+            queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
+        }
+    });
+    const handleCommand = () => {
+        if (isAuthenticated) {
+            toast.success('Nouvelle commande générée')
+            mutate({ total: totalCart, cartItems: JSON.stringify(cartItems) })
+            // clearCart()
+            // clearCartCookie(userSession?.user_id)
+        } else {
+            openModal(<ConnectToCart onClose={closeModal} redirect={redirect} />)
+        }
+    }
+
+    // SI rien à afficher
+    if (cartItems.length < 1) return (<ModalEmpty modal='cart' onClose={onClose} />)
+
+    // Si contenu présent
+    return (
+        <div className="w-full pr-2">
+            <div className="cart-header text-gray-700 bg-gray-50 p-2 rounded-tr-xl rounded-tl-xl border-b-2 border-gray-300 shadow-inner dark:bg-dark-div dark:text-white/90">
+                <div className="cart--item btn-trans h-10 border-none px-0">
+                    <div className="w-5"><span className="" >N°</span></div>
+                    <div className="flex justify-between flex-grow">
+                        <span className="text-left">Article</span>
+                        <span className="">Prix</span>
+                    </div>
+                    <div className="w-20">Quantité</div>
+                    <div className="w-10 text-left">Stock</div>
+                    <div className="min-w-28 hidden xl:block">Prix Total</div>
+                    <div className="w-7"></div>
+                </div>
+            </div>
+            <div className="cart-content">
+                {cartItems.map((item, key) => (
+                    <>
+                        <ItemCartComp key={key} item={item} />
+                    </>
+                ))}
+            </div>
+            <div className="cart-footer">
+                <div className="flex justify-end items-center gap-4 my-2">
+                    <span className="text-gray-600 dark:text-white/90">Total à payer :</span>
+                    <span className="bg-green-300 cart--item-box min-w-28 dark:text-black/70">{totalCart.toLocaleString('fr-FR', { style: 'currency', currency: 'XAF' })}</span>
+                    <div className="w-7"></div>
+                </div>
+                <div className="btn-modal-container">
+                    <button className="btn-modal-confirm capitalize" onClick={clearCart}>vider le panier</button>
+                    <button className="btn-modal-cancel capitalize order-3 xl:order-2" onClick={onClose}>Fermer</button>
+                    <button className="btn-modal-submit disabled:opacity-50 order-2 xl:order-3" onClick={handleCommand} disabled={isSaving}>Commander</button>
+                </div>
+            </div>
+        </div>
+    );
+}
+export default ModalCart

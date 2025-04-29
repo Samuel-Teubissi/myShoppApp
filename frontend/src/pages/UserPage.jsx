@@ -1,50 +1,79 @@
 import { useEffect, useState } from "react";
 import { APP_Categories as categories } from "../App.json";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import PaginateComponent from "../components/PaginateComp";
-import ModalAddComp from "../components/ModalAddComp";
+import { Select_categories } from "../components/AppComp";
+import ModalAddComp from "../modals/ModalAddComp";
+import { useModal } from "../context/useModal";
+import SearchBar from "../components/SearchBar";
+import LoaderComp from "../components/LoaderComp";
+import ModalCart from "../modals/ModalCart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faHandHoldingHand, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { ShoppingCartIcon, SquarePlusIcon } from "lucide-react";
 
 const UserPage = () => {
-    const { isAuthenticated, logout, userSession } = useAuth()
-    const navigate = useNavigate()
-    // const user_token = JSON.parse(localStorage.getItem("user_token"));
-    // const user_token = userSession;
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { userSession, Become_Trader, isLogging } = useAuth()
+    const { openModal, closeModal } = useModal();
+    const [canAddArticles, setCanAddArticles] = useState(false);
+
+    const handleAdd = () => {
+        openModal(<ModalAddComp onClose={closeModal} />)
+    }
+    const handleCart = () => {
+        openModal(<ModalCart onClose={closeModal} />)
+    }
+    useEffect(() => {
+        if (userSession?.data_trader) {
+            setCanAddArticles(true)
+        }
+    }, [userSession?.data_trader]);
 
     return (
-        <div className="ms_Main">
+        <div id='scroll-container'>
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
-            <br />
-            <div className="Main"><br /><br />
-                <h1>Bienvenue {userSession?.user_name} !</h1>
-                <h2>Votre numéro est le +237 {userSession?.user_number}</h2>
-                {
-                    userSession?.data_trader?.id_trader && <div className="m-4 bg-gray-200 p-5 rounded w-full">
-                        <h3>Espace Marchand</h3><br />
-                        <button onClick={() => setIsModalOpen(true)} className="p-3 bg-pink-700 text-white rounded m-1 cursor-pointer transition duration-300 ease-in-out hover:bg-pink-500">Ajouter un article</button>
-                        <a href="user/stock" className="p-3 bg-pink-700 text-white rounded m-1">Modifier les stocks</a>
+            <div className="min-h-screen">
+                <div className="pt-32 mb-8 text-white pb-1 bg-red-500 w-full banner_trader text-center">
+                    <h1 className="mb-2">Bienvenue {userSession?.user_name} !</h1>
+                    <div className="text-xl xl:text-3xl font-semibold">Votre numéro est le +237 {userSession?.user_number}</div>
+                    <div className="m-4 p-1 xl:px-5 py-4">
+                        {isLogging
+                            ? <LoaderComp />
+                            : canAddArticles
+                                ? <>
+                                    {/* <h3 className="p-4">Espace Marchand</h3> */}
+                                    <div className="flex gap-x-2 text-white justify-center trader-block">
+                                        <button onClick={handleAdd} className="btn-trade">
+                                            <SquarePlusIcon className="h-5 w-5" />
+                                            <span>Ajouter un article</span>
+                                        </button>
+                                        <button onClick={handleCart} className="btn-trade">
+                                            <ShoppingCartIcon className="h-5 w-5" />
+                                            <span>Votre panier</span>
+                                        </button>
+                                    </div>
+                                </>
+                                : <div className="bg-app-h/50 pt-8 p-3 xl:pt-4 xl:pr-6 w-full xl:w-[60%] rounded-xl mx-auto flex flex-col xl:flex-row justify-center items-center gap-3 xl:gap-6">
+                                    {/* <button onClick={BecomeTrader} className="">Devenir Trader ?</button> */}
+                                    <div className="text-center xl:text-right tracking-wider">
+                                        <h3 className="mb-3">Commencez cette <span className="border-b-2 border-dashed border-app-700 text-xl text-app capitalize">nouvelle aventure</span> avec nous !
+                                            {/* <div className="border-b border-white border-spacing-1 border w-1/3 float-end"></div> */}
+                                        </h3>
+                                        <p>Vous pourrez ajouter des articles sur le site et être contacté par des clients intéressés.</p>
+                                    </div>
+                                    <button onClick={() => Become_Trader()} className="w-[180px] px-2 py-5 rounded-3xl btn-trade">
+                                        <FontAwesomeIcon icon={faHandHoldingHand} className="w-full h-10 mb-2" />
+                                        <div>Devenir Trader ?</div>
+                                    </button>
+                                </div>
+                        }
                     </div>
-                }
-                <br />
-                <div className="search text-center ">
-                    <form method="GET">
-                        <input type="search" name="s" placeholder="Recherchez un article ?" className='inpt-f' />
-                        <select name="categ" className="slct">
-                            {categories.map((categ, index) => (
-                                <option value={index} key={index}>{categ}</option>
-                            ))}
-                        </select>
-                        <button type="submit" className='confirm'>Rechercher</button>
-                    </form>
                 </div>
-                <div className="articlesH">Vos articles</div>
-                <div className="articles mt-4"> <br />
-                    <PaginateComponent link='trader' />
+                <div className="w-full mb-24">
+                    <SearchBar endpoint='/articles/search' defaultEndpoint='trader' placeholder="Rechercher dans vos articles..." />
                 </div>
             </div>
-            <ModalAddComp isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     )
 }

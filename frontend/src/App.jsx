@@ -1,22 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-// import './App.css'
-// import ListArticles from './components/ListArticlesComp'
-// import "tailwindcss/tailwind.css"
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
-// import HeaderComp from './components/DefaultRouterComp'
-import PaginateComponent from './components/PaginateComp'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import AboutPage from './pages/AboutPage'
 import UserPage from './pages/UserPage'
 import { AuthProvider } from './context/AuthContext'
 import ProtectedRouteAuth from './context/ProtectedRouteAuth'
-import { UserLogout } from './pages/UserLogout'
 import HomePage from './pages/HomePage'
 import DefaultRouterComp from './components/DefaultRouterComp'
 import ConnectedRouteAuth from './context/ConnectedRouteAuth'
+import StockPage from './pages/StockPage'
+import { ModalProvider } from './context/useModal'
+import { CartProvider } from './context/useCart'
+import AdminPage from './pages/AdminPage'
+import LandingPage from './pages/LandingPage'
+import Unauthorized from './pages/Unauthorized'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <LandingPage />
+      },
+      {
+        path: 'home',
         element: <HomePage />
       },
       {
@@ -40,12 +44,20 @@ const router = createBrowserRouter([
         element: <ConnectedRouteAuth><RegisterPage /></ConnectedRouteAuth>
       },
       {
-        path: 'user',
-        element: <ProtectedRouteAuth><UserPage /></ProtectedRouteAuth>
+        path: 'admin',
+        element: <ProtectedRouteAuth allowedRoles='admin'><AdminPage /></ProtectedRouteAuth>
       },
       {
-        path: 'logout',
-        element: <UserLogout />
+        path: 'user',
+        element: <ProtectedRouteAuth allowedRoles='user'><UserPage /></ProtectedRouteAuth>
+      },
+      {
+        path: 'user/stock',
+        element: <ProtectedRouteAuth allowedRoles='user'><StockPage /></ProtectedRouteAuth>
+      },
+      {
+        path: 'unauthorized',
+        element: <Unauthorized />
       }
     ]
   }
@@ -55,7 +67,11 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <CartProvider>
+          <ModalProvider>
+            <RouterProvider router={router} />
+          </ModalProvider>
+        </CartProvider>
       </AuthProvider>
     </>
   )

@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* .pagination {
+        @apply bg-white space-x-2 px-2 py-1 border border-gray-200 rounded-xl
+    } */
+
+    /**
+    * Composant Modale
+    */
+    .modal-body {
+        @apply p-2 py-6;
+    }
+
+    .modal-footer {
+        @apply flex gap-1 justify-center;
+    }
+
+    .btn-modal-container {
+        @apply flex gap-x-2 justify-center pb-6 flex-wrap
+    }
+
+    .btn-modal-cancel {
+        @apply text-white px-4 py-3 w-40 bg-gray-600 transition duration-300 ease-in-out mt-4 rounded-[10px];
+        @apply hover:bg-gray-500;
+    }
+
+    .btn-modal-confirm {
+        @apply text-white px-4 py-3 w-40 bg-red-700 transition duration-300 ease-in-out mt-4 rounded-[10px];
+        @apply hover:bg-red-500;
+    }
+
+    .btn-modal-submit {
+        @apply text-white px-4 py-3 w-40 bg-app-h transition duration-300 ease-in-out mt-4 rounded-[10px];
+        @apply hover:bg-app;
+    }
+
+    .btn-header {
+        @apply rounded-bl-2xl rounded-br-2xl m-1 mt-0 cursor-pointer transition duration-300 ease-out bg-app-800 min-w-[60px] border-t-4 border-app-400 shadow-sm;
+        @apply hover:bg-app hover:border-[#e79be1] hover:pt-2;
+    }
+
+    .btn-header button {
+        @apply p-3 block w-full h-full text-white text-2xl text-center;
+    }
+
+    .btn-header button svg {
+        @apply text-white text-2xl w-full;
+    }
+
+    /**
+    * Composant item de Carte
+    */
+    .cart--item {
+        @apply w-full flex gap-x-2 px-2 mt-1 border-b border-gray-200 cursor-default items-center;
+    }
+
+    .cart--item-box {
+        @apply border-l bg-gray-200 border-gray-300 px-4 py-4 rounded-xl text-center shadow-inner text-gray-900 dark:bg-dark-div dark:text-white/90
+    }
+
+    .trader-block button {
+        @apply cursor-pointer ease-in-out flex items-center gap-2 rounded-xl py-4 px-8;
+        /* @apply hover:border-none; */
+        /* @apply hover:bg-app; */
+    }
+
+    .cart--title {
+        @apply text-2xl font-semibold my-4 tracking-wide
+    }
+
+    .cart--btn {
+        @apply w-14 h-14 p-2 shadow rounded-full flex items-center transform text-app-200 border-2 border-app-400;
+        @apply hover:text-white hover:scale-105;
+    }
+
+    /**
+        * Composant item block admin
+        */
+    .admin-header {
+        @apply uppercase tracking-wide py-6 text-left font-semibold cursor-default;
+        @apply hover:text-gray-700;
+    }
+
+    .admin-block-dataBox {
+        @apply bg-white shadow-inner border border-gray-200 w-[280px] px-4 pt-2 rounded-3xl;
+    }
+
+    .admin-block-dataBox_title {
+        @apply text-left underline-offset-4 underline text-sm;
+    }
+
+    .admin-block-dataBox_item {
+        @apply w-[15px] h-[15px] p-2 bg-app-h text-white rounded-full;
+    }
+
+    .admin-block-dataBox_icon {
+        @apply w-[30px] h-[30px] p-2 bg-app-h text-white rounded-full;
+    }
+
+    .about {
+        @apply dark:text-dark-app-100 border dark:border-none
+    }
+
+    .highlight {
+        @apply text-app-500 underline underline-offset-4
+    }
+
+    .about-block {
+        @apply text-justify xl:max-w-[70%] xl:mx-auto
+    }
+
+    .about-balance>div {
+        @apply bg-gray-800 rounded-xl p-5 my-4 sm:my-0
+    }
+
+    .var-text-dark {
+        @apply text-white/90 dark:text-black/70
+    }
+
+    /* .about-balance>div:not(.about-left) ul {
+        @apply float-right h-min w-1/2
+    } */
+
+    .about-detail ul li {
+        @apply ml-12 mt-2 list-disc
+    }
+
+    .about-detail h3 {
+        @apply mt-4
+    }
+
+    .--icon-notif {
+        @apply absolute -top-0.5 right-2 bg-red-600 text-gray-50 font-bold text-xs px-2 py-0.5 rounded-full
+    }
+
+    .modal-Sidebar ul li:hover a svg,
+    .modal-Sidebar ul li:hover button svg,
+    footer ul li a:hover svg,
+    footer ul li button:hover svg {
+        @apply animate-bounce
+    }
+
+    .landing-btn:hover svg {
+        @apply animate-ping
+    }
+
+
+    /* .dark .pagination a {
+        @apply bg-
+    } */
+
+    h1 {
+        @apply text-6xl tracking-tighter font-bold
+    }
+
+    h2 {
+        @apply text-3xl font-semibold
+    }
+
+    h3 {
+        @apply text-xl font-semibold
+    }
+
+    h4 {
+        @apply text-lg md:text-xl font-semibold
+    }
+
+    button {
+        @apply disabled:opacity-50 disabled:hover:bg-none
+    }
+
+    input {
+        @apply outline-1 focus:outline-app-900 dark:focus:outline-app-500 bg-app-600/5 dark:bg-app-300/30 dark:text-white
+    }
+
+    select {
+        @apply bg-app-600/5 outline-1 focus:outline-app dark:bg-app-300/30
+    }
+
+    select option {
+        @apply dark:bg-dark-div
+    }
+
+    button, a {
+        @apply outline-1 focus:outline-app
+    }
+
+    .ms_Main {
+        @apply mt-16 sm:mt-20
+    }
+
+    .main-about {
+        height: calc(100vh - 70px);
+    }
+}
