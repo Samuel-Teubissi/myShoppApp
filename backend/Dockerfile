@@ -16,7 +16,7 @@ RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
 
 # Configure Apache pour CodeIgniter (si besoin)
-COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
+# COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Expose le port 80 (celui utilisé par Apache)
 EXPOSE 80
