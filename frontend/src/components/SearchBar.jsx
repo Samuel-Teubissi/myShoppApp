@@ -98,7 +98,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                     <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-xl border border-app-300/70 xl:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
                 </div>
             </form>
-            <div className="mt-3 flex flex-col items-center" ref={resultsRef}>
+            <div className="mt-3 flex flex-col items-center h-full" ref={resultsRef}>
                 {searchQuery.isLoading
                     ? <LoaderSkeletonArticle />
                     : hasSearchParams ? (<>

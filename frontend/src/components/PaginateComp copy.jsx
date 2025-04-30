@@ -102,7 +102,7 @@ export default function PaginateComponent(link, scrollRef) {
 
     const validPage = Math.min(currentPage - 1, totalPages - 1)
 
-    if (isLoadingPaginate) return <div className="mt-1"><LoaderComp /></div>
+    if (isLoadingPaginate) return <LoaderComp />
     if (paginateErr) return <ErrorComp message={paginateErr} />
 
     if (!articles || articles.length === 0) return <ErrorComp type="nothing" message="Rien à afficher pour le moment !" />

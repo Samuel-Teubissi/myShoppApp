@@ -34,7 +34,7 @@ const UserPage = () => {
     return (
         <div id='scroll-container'>
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
-            <div className="min-h-screen">
+            <div className="">
                 <div className="pt-32 mb-8 text-white pb-1 bg-red-500 w-full banner_trader text-center">
                     <h1 className="mb-2">Bienvenue {userSession?.user_name} !</h1>
                     <div className="text-xl xl:text-3xl font-semibold">Votre numéro est le +237 {userSession?.user_number}</div>
@@ -71,7 +71,7 @@ const UserPage = () => {
                         }
                     </div>
                 </div>
-                <div className="w-full mb-24">
+                <div className="w-full h-full">
                     <SearchBar endpoint='/articles/search' defaultEndpoint='trader' placeholder="Rechercher dans vos articles..." />
                 </div>
             </div>

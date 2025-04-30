@@ -230,7 +230,7 @@ export default function DefaultRouterComp() {
                 </ul>
             </div>
         </div>
-        <div className="ms_Main">
+        <div className="ms_Main main-about">
             <Outlet />
         </div>
         <Footer />

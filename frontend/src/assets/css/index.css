@@ -722,7 +722,7 @@ footer>div {
 
 .footer_body ul li:not(:nth-child(1)) {
     display: flex;
-    justify-content: start;
+    flex: start;
     padding: 10px;
     color: var(--color_text);
 }

@@ -199,7 +199,7 @@
     }
 
     .ms_Main {
-        @apply mt-16 sm:mt-20
+        @apply mt-16 sm:mt-[78px]
     }
 
     .main-about {
