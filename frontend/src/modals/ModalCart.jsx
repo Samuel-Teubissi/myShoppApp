@@ -60,9 +60,16 @@ const ModalCart = ({ onClose, redirect }) => {
     if (cartItems.length < 1) return (<ModalEmpty modal='cart' onClose={onClose} />)
 
     // Si contenu présent
-    return (
+    return <>
         <div className="w-full pr-2">
-            <div className="cart-header text-gray-700 bg-gray-50 p-2 rounded-tr-xl rounded-tl-xl border-b-2 border-gray-300 shadow-inner dark:bg-dark-div dark:text-white/90">
+            <div class="hidden md:grid grid-cols-6 gap-4 bg-gray-50 text-gray-700 text-sm px-4 py-4 border-b rounded-tr-xl rounded-tl-xl">
+                <div>Article</div>
+                <div>Prix</div>
+                <div>Quantité</div>
+                <div>Stock</div>
+                <div>Prix Total</div>
+            </div>
+            {/* <div className="cart-header text-gray-700 bg-gray-50 p-2 rounded-tr-xl rounded-tl-xl border-b-2 border-gray-300 shadow-inner dark:bg-dark-div dark:text-white/90">
                 <div className="cart--item btn-trans h-10 border-none px-0">
                     <div className="w-5"><span className="" >N°</span></div>
                     <div className="flex justify-between flex-grow">
@@ -74,7 +81,7 @@ const ModalCart = ({ onClose, redirect }) => {
                     <div className="min-w-28 hidden xl:block">Prix Total</div>
                     <div className="w-7"></div>
                 </div>
-            </div>
+            </div> */}
             <div className="cart-content">
                 {cartItems.map((item, key) => (
                     <>
@@ -95,6 +102,6 @@ const ModalCart = ({ onClose, redirect }) => {
                 </div>
             </div>
         </div>
-    );
+    </>
 }
 export default ModalCart

@@ -27,7 +27,7 @@ const SearchPaginate = ({ results, currentPage, totalItems, isLoading, totalPage
     };
     // const articles = Object.entries(results)
 
-    // if (isLoading) return <div className="w-1/2 mx-auto"><LoaderSkeletonArticle /></div>
+    if (isLoading) return <LoaderSkeletonArticle />
     if (totalItems < 1) return <ErrorComp type='nothing' message='Aucun résultat pour cette recherche.' />
 
     return (

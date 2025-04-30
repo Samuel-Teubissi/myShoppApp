@@ -17,8 +17,8 @@ class API_Controller extends CI_Controller
         // $_POST = json_decode(file_get_contents("php://input"), true);
         //Gestion inputs
 
-        $this->form->set_rules('number', "Numéro de l'utilisateur", 'required|min_length[3]');
-        $this->form->set_rules('password', "Mot de passe de l'utilisateur", 'required');
+        $this->form->set_rules('number', "", 'required|min_length[3]');//Numéro de l'utilisateur
+        $this->form->set_rules('password', "", 'required');//Mot de passe de l'utilisateur
 
         if ($this->form->run()) {
             $number = $this->input->post('number', true);
@@ -90,10 +90,10 @@ class API_Controller extends CI_Controller
     public function API_Register()
     {
         // Processing Inscription
-        $this->form->set_rules('number', "Numéro de l'utilisateur", 'required|min_length[9]|is_unique[user.number]');
-        $this->form->set_rules('username', "Nom de l'utilisateur", 'required|min_length[3]');
-        $this->form->set_rules('password', "Mot de passe de l'utilisateur", 'required');
-        $this->form->set_rules('confirm_password', "Confirmation de Mot de passe", 'matches[password]');
+        $this->form->set_rules('number', "", 'required|min_length[9]|is_unique[user.number]');//Numéro de l'utilisateur
+        $this->form->set_rules('username', "", 'required|min_length[3]');//Nom de l'utilisateur
+        $this->form->set_rules('password', "", 'required');//Mot de passe de l'utilisateur
+        $this->form->set_rules('confirm_password', "", 'matches[password]');//Confirmation de Mot de passe
 
         if ($this->form->run()) {
             $number = $this->security->xss_clean($this->input->post('number'));

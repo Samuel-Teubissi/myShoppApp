@@ -11,7 +11,7 @@ const RegisterPage = () => {
     const [RegisterForm, setRegisterForm] = useState(
         { number: '', username: '', password: '', confirm_password: '' }
     )
-    const [RegisterErrors, setRegisterErrors] = useState({})
+    // const [RegisterErrors, setRegisterErrors] = useState({})
     const [RegisterLoad, setRegisterLoad] = useState(false)
     const navigate = useNavigate()
     const createNotification = useNotificationsStore((s) => s.createNotification)
@@ -33,7 +33,7 @@ const RegisterPage = () => {
         <div className="ms_Main mb-16">
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
             <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full px-4 mx md:w-8/12 text-gray-600 pt-16 pb-8 rounded-xl bg-white/70 shadow-md border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitRegister}>
+                <form className="w-full px-4 mx md:w-8/12 text-gray-600 pt-16 pb-8 rounded-xl sm:bg-white/70 md:shadow-md md:border border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitRegister}>
                     <div className="insc md:w-9/12 w-full">
                         <InputField
                             label="Numéro de téléphone :"

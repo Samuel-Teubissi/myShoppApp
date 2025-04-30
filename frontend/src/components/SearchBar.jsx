@@ -77,10 +77,10 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
 
     return (
         <>
-            <form id="container-search" onSubmit={handleSubmitSearch} className="pt-12">
-                <div className="h-11 relative flex justify-center gap-2">
+            <form id="container-search" onSubmit={handleSubmitSearch} className="pt-12 bg-app-050 border-b border-app-200 dark:bg-app-600/10 pb-6 sm:max-w-[90%] mx-auto xl:flex items-center justify-center gap-2">
+                <div className="h-11 relative flex justify-center md:justify-end gap-2">
                     <div className="h-full relative w-[40rem] max-w-[80%]">
-                        <input type="search" name="search_article" placeholder={placeholder} className='h-full bg-white dark:bg-app-300/30 rounded-full pl-10 pr-12 outline-app border border-app-300/70 w-full' value={searchValues.search_article} onChange={handleInputChange} />
+                        <input type="search" name="search_article" placeholder={placeholder} className='h-full bg-white dark:bg-app-300/30 rounded-full pl-10 pr-12 outline-app border border-app-300/70 w-full shadow' value={searchValues.search_article} onChange={handleInputChange} />
                         <button type="submit" className='absolute top-1.5 right-3' title="Rechercher">
                             <SearchIcon className="transition duration-300 text-gray-400 hover:text-app-600 w-8 h-8 dark:text-app-400" />
                         </button>
@@ -93,12 +93,12 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                         </button>
                     )}
                 </div>
-                <div className="dark:text-white/90 max-w-[90%] mx-auto flex flex-col xl:flex-row gap-1 items-center justify-center mt-2">
-                    <span className="text-black/70 dark:text-white/90">Trier les résultats par :</span>
+                <div className="dark:text-white/90 max-w-[90%] flex flex-col xl:flex-row gap-1 items-center justify-center mt-2 mx-auto sm:m-0">
+                    <span className="text-black/70 dark:text-white/90 font-semibold hidden">Trier les résultats par :</span>
                     <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-xl border border-app-300/70 xl:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
                 </div>
             </form>
-            <div className="mt-3 w-full flex flex-col items-center main-search" ref={resultsRef}>
+            <div className="mt-3 w-full flex flex-col items-center h-full" ref={resultsRef}>
                 {searchQuery.isLoading
                     ? <LoaderSkeletonArticle />
                     : hasSearchParams ? (<>

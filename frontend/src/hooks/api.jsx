@@ -10,7 +10,7 @@ export const api = axios.create({
     //     // 'Content-Type': 'multipart/form-data'
     //     'Content-Type': 'application/json',
     // },
-    withCredentials: true,
+    withCredentials: true
 })
 
 export const searchArticles = async ({ search_article, search_categ, page = 1, controllerLink = 'home' }) => {

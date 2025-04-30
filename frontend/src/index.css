@@ -179,7 +179,7 @@
     }
 
     button {
-        @apply disabled:opacity-50 disabled:hover:bg-none
+        @apply disabled:opacity-50 disabled:hover:bg-none transform active:scale-95
     }
 
     input {
@@ -208,5 +208,9 @@
 
     .main-search {
         height: calc(100vh - 210px);
+    }
+
+    .input-alert {
+        @apply bg-red-400 text-white border-l-2 border-red-600 py-1 px-3 mx-6 text-sm text-left mt-1;
     }
 }

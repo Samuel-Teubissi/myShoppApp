@@ -6,6 +6,7 @@
   /* --color_text: #fff; */
   --color_bg-nav: #83467e;
   --color_bg-nav2: #e451cf;
+  --color-btn-header: rgba(0, 0, 0, .3);
 
   header nav,
   footer {
@@ -22,6 +23,7 @@
 .dark {
   /* --color_nav: #83467e; */
   --color_text2: #fffffff8;
+  --color-btn-header: rgba(255, 255, 255, 0.3);
 
   header nav,
   footer {
@@ -37,11 +39,12 @@ header nav {
   /* color: #fff; */
   color: var(--color_text);
   justify-content: space-between;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(60px);
   display: flex;
   width: 100%;
   text-transform: capitalize;
   align-items: center;
+  padding: 0 4px;
 }
 
 nav .nav-link {
@@ -51,6 +54,7 @@ nav .nav-link {
 nav .nav-link>li {
   position: relative;
   margin: 0 0.125rem;
+  padding: 0.125rem;
 }
 
 nav .nav-link li>button,
@@ -58,11 +62,12 @@ nav .nav-link li>a {
   display: flex;
   align-items: center;
   height: 100%;
-  padding: 15px;
+  padding: 1rem 1.5rem;
   gap: 0.125rem;
   width: 100%;
   transition: 0.2s ease-in;
   border-radius: 10px;
+  /* box-shadow: inset 0 0 1px var(--color-btn-header); */
 }
 
 nav .nav-link li>button:hover,

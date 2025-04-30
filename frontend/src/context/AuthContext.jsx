@@ -64,11 +64,12 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         // setIsAuthenticated(true);
         // `${API_href}/logged`
+        checkAuth()
+    }, [isAuthenticated]);
+    useEffect(() => {
         setLoginErrors({})
         setRegisterErrors({})
-        checkAuth()
-
-    }, [isAuthenticated]);
+    }, [location.pathname]);
 
     const login = async (dataForm, redirectCallback) => {
         setIsLoggingLoad(true)
@@ -162,7 +163,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            isAuthenticated, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors, setLoginErrors
+            isAuthenticated, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors
         }}>
             {/* <ToastContainer position="bottom-right" autoClose={2000} /> */}
             <Toaster position="bottom-right" />

@@ -2,7 +2,7 @@ import { BoxIcon, ClockIcon, PhoneIcon } from "lucide-react";
 
 const LoaderSkeletonArticle = () => {
     return (
-        <div className="flex flex-wrap justify-center w-full gap-2">
+        <div className="flex flex-wrap justify-center w-full gap-2 pt-7 pb-16">
             {[...Array(3)].map((_, key) => (
                 <div key={key} className="border border-app-200 shadow-md w-80 bg-app-050 rounded-xl overflow-hidden dark:bg-dark-div dark:border-app-800">
                     <div className="w-full h-60 mx-auto bg-gray-500 animate-pulse">

@@ -75,10 +75,17 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => getenv('DB_HOST'),
-	'username' => getenv('DB_USER'),
-	'password' => getenv('DB_PASS'),
-	'database' => getenv('DB_NAME'),
+	// Default Routes
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => '',
+	// 'database' => 'myshopapp',
+	// API Routes
+	'hostname' => 'sql.freedb.tec',
+	'username' => 'freedb_samsam',
+	'password' => 'M8Yq3XEMaD8F2Z$',
+	'database' => 'freedb_myshop-app',
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

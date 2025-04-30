@@ -9,7 +9,7 @@ const LoginPage = () => {
     const [LoginForm, setLoginForm] = useState({ number: '', password: '' })
     const navigate = useNavigate()
     const location = useLocation()
-    const { login, isLoggingLoad, loginErrors, setLoginErrors } = useAuth()
+    const { login, isLoggingLoad, loginErrors } = useAuth()
     const from = location.state?.from || '/user';
     const search = location.state?.search || '';
 
@@ -37,8 +37,8 @@ const LoginPage = () => {
     return (
         <div className="ms_Main mb-16">
             <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full md:w-8/12 text-gray-600 pt-24 pb-12 rounded-xl bg-white/70 shadow border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitLogin}>
-                    <div className="w-9/12">
+                <form className="w-full md:w-8/12 text-gray-600 pt-24 pb-12 rounded-xl sm:bg-white/70 md:shadow md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitLogin}>
+                    <div className="md:w-9/12 w-full">
                         <InputField
                             label="Numéro de téléphone :"
                             type="number"

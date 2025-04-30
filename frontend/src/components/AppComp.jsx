@@ -73,7 +73,7 @@ export const InputField = ({ label, type = "text", name, value, onChange, error,
                 className={`w-full ${type !== 'file' ? "py-2 px-5" : "cursor-pointer"} border-2 rounded-full ${error ? "border-red-400" : "border-app-300"}`}
             />
             <i className='fa fa-lock'></i>
-            {error && <div className="text-red-400 text-base mt-1">{error}</div>}
+            {error && <div className="input-alert">{error}</div>}
         </div>
     )
 }
@@ -93,7 +93,7 @@ export const InputFieldAdd = forwardRef(({ label, type = "text", name, value = '
                 className={`w-full ${type !== 'file' ? "px-5 py-2.5" : "transition duration-200 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-600/30"} border rounded-full ${error ? "border-red-500" : "border-gray-300"}`}
             />
             <i className='fa fa-lock'></i>
-            {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
+            {error && <div className="input-alert">{error}</div>}
         </div>
     )
 })
@@ -112,7 +112,7 @@ export const InputFieldFile = ({ label, type = "text", name, value = '', onChang
                 className={`w-full ${type !== 'file' ? "px-5 py-2.5" : "transition duration-200 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-600/30"} border rounded-full ${error ? "border-red-500" : "border-gray-300"}`}
             />
             <i className='fa fa-lock'></i>
-            {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
+            {error && <div className="input-alert">{error}</div>}
         </div>
     )
 }
@@ -156,7 +156,7 @@ export const SelectField_categories = ({ onChange, error, classData, valueProp }
                         onChange={onChange} error={error} name='category' id='category' classData={classData} valueProp={valueProp} />
                 </span>
                 <i className="file fa fa-upload"></i>
-                {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
+                {error && <div className="bg-red-400 text-white border-l-2 border-red-600 py-1 px-3 mx-5 text-sm text-leftt-1">{error}</div>}
             </div>
         </>
     );

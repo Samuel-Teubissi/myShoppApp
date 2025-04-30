@@ -49,7 +49,6 @@ export default function DefaultRouterComp() {
 
     // const isLoadingPage = navigation.state === "loading";
     useEffect(() => {
-        console.log('isLoadingPage', isLoadingPage);
         // Quand l'URL change, on arrête le loading
         setIsLoadingPage(false);
     }, [location.pathname]);
@@ -183,7 +182,7 @@ export default function DefaultRouterComp() {
             </nav>
         </header >
         <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-500 ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-            <div className={`modal-Sidebar transition-transform duration-500 ease-in-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
+            <div className={`modal-Sidebar w-full min-w-[25%] sm:w-96 transition-transform duration-500 ease-in-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
                 <XIcon className="absolute top-7 right-5 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
                 <div className="">
                     <NavLink to='/' className='flex items-center' onClick={handleCloseSidebar}>
@@ -191,7 +190,7 @@ export default function DefaultRouterComp() {
                         <h3>MyShop App</h3>
                     </NavLink>
                 </div>
-                <ul className={`--nav_submenu ${openSubmenu ? 'showNav' : ''}`} onClick={handleCloseSidebar}>
+                <ul className={`--nav_submenu mt-3 ${openSubmenu ? 'showNav' : ''}`} onClick={handleCloseSidebar}>
                     <li>
                         <NavLink to='/home'>
                             <HomeIcon />

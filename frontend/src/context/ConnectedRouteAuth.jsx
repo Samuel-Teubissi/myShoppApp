@@ -10,7 +10,7 @@ const ConnectedRouteAuth = ({ children }) => {
     const searchParams = new URLSearchParams(location.search);
     const params = new URLSearchParams()
 
-    // if (isLogging) return <LoaderComp />
+    if (isLogging) return <LoaderComp />
     if (isAuthenticated) {
         const redirectPath = userSession.role === "admin" ? "/admin" : "/user";
         return <Navigate to={redirectPath} replace state={{ from: location }} />;
