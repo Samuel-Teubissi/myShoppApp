@@ -8,6 +8,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN a2enmod rewrite
 
 # Copie le projet dans le dossier du serveur
+RUN echo "Listing current dir:" && ls -al
 COPY . /var/www/html/
 
 # Donne les bons droits d’accès
