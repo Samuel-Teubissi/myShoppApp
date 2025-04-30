@@ -87,10 +87,11 @@ export default function DefaultRouterComp() {
 
     // Fermer la Sidebar si onclique à l'extérieur
     useCloseOutsideModal(SidebarRef, () => setOpenHeader(false))
-    const handleCloseSidebar = () => {
-        setTimeout(() => {
-            setOpenHeader(false)
-        }, 150);
+    const handleCloseSidebar = (e) => {
+        if (e.target.tagName === 'A' || e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') {
+            // Fermer *avec un petit délai*
+            setTimeout(() => setOpenHeader(false), 150);
+        }
     }
 
     // document.querySelectorAll('.header-modal ul li a').forEach(link => {
@@ -164,8 +165,8 @@ export default function DefaultRouterComp() {
                 {/* </div> */}
             </nav>
         </header >
-        {openHeader && <div className="inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen flex justify-center items-center btn-trans">
-            <div className={`modal-Sidebar`} ref={SidebarRef} data-aos='slide-left' data-aos-duration='200' data-aos-easing='ease-in-out'>
+        <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-300 ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+            <div className={`modal-Sidebar transition-transform duration-300 ease-in-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
                 <XIcon className="absolute top-7 right-5 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
                 <div className="">
                     <NavLink to='/' className='flex items-center' onClick={handleCloseSidebar}>
@@ -229,7 +230,6 @@ export default function DefaultRouterComp() {
                 </ul>
             </div>
         </div>
-        }
         <div className="ms_Main">
             <Outlet />
         </div>

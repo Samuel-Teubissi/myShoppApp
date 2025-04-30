@@ -1,5 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
@@ -8,6 +9,9 @@ const LandingPage = () => {
     const openHome = () => {
         navigate('/home')
     }
+    useEffect(() => {
+        document.title = 'Bienvenue sur MyShop App'
+    }, []);
     return (
         <>
             <div className="ms_Main bg-app-h banner_home text-white">
@@ -18,7 +22,7 @@ const LandingPage = () => {
                             Site Numéro 1 de la vente d'articles sans intermédiaires
                         </h2>
                     </div>
-                    <p className="font-normal text-lg mt-4 w-[90%] md:w-[40%]">
+                    <p className="font-normal text-base md:text-lg mt-4 w-[90%] md:w-[40%]">
                         Un article dans la liste ci-dessous vous interresse vous n'avez qu'à joindre le numéro en dessous et discuter des détails de la transaction avec le marchand ! Rien de plus simple !
                     </p>
                     <p>

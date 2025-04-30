@@ -19,13 +19,8 @@ const LoginPage = () => {
         setLoginForm({ ...LoginForm, [e.target.name]: e.target.value })
     }
 
-    useEffect(() => {
-        setLoginErrors({})
-    }, []);
-
     const submitLogin = async (e) => {
         e.preventDefault()
-        SoundNotif()
         const LoginData = new FormData(e.target)
         const res = await login(LoginData)
         if (res?.success) {
@@ -41,7 +36,7 @@ const LoginPage = () => {
     }
 
     return (
-        <div className="ms_Main mb-16" id='scroll-container'>
+        <div className="mb-16" id='scroll-container'>
             <div className="Main">
                 <form className="w-[100%] md:w-8/12 text-gray-600 animO pt-24 pb-12 rounded-xl bg-white/70 shadow border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitLogin}>
                     <div className="w-9/12">
@@ -63,9 +58,12 @@ const LoginPage = () => {
                         />
                     </div>
                     <div className="text-gray-500"></div>
-                    <div className="w-full mt-4">
-                        <button type="submit" className={`text-white rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out ${isLogging && " text-center text-white cursor-not-allowed"}`} disabled={isLogging}>
-                            {isLogging ? '...' : 'Connexion'}
+                    <div className="w-full mt-4 flex justify-center">
+                        <button type="submit" className={`text-white flex items-center justify-center rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out ${isLogging && " text-center text-white cursor-not-allowed"}`} disabled={isLogging}>
+                            {!isLogging
+                                ? 'Connexion'
+                                : <span className="w-6 h-6 block border-4 border-app-500 border-t-transparent rounded-full animate-spin"></span>
+                            }
                         </button>
                     </div>
                     <div className="w-full mt-4">

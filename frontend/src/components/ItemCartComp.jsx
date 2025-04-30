@@ -19,13 +19,10 @@ const ItemCartComp = ({ item, num }) => {
         updateCartQty(item.id_articles, newQty)
         setErrorQty(false);
     }
-    // numeral(5).format('00');     // "05"
-    // numeral(1234).format('0,0');
-    // const itemPrice = 
 
     return (
         <>
-            <div className="cart--item btn-trans hover:bg-gray-100 dark:hover:bg-app/10 h-20">
+            <div key={item.id_articles} className="cart--item btn-trans hover:bg-gray-100 dark:hover:bg-app/10 h-20">
                 <div className="bg-gray-400 h-4 w-4 mr-1 rounded-full"></div>
                 <div className="flex justify-between flex-grow gap-x-2">
                     <span className="text-left my-auto min-w-[85px]">{item.article}</span>
@@ -33,7 +30,7 @@ const ItemCartComp = ({ item, num }) => {
                 </div>
                 <div className="">
                     <input type="number" name="quantity"
-                        className={`w-20 py-3 px-2 border rounded-xl pl-4 dark:bg-app-300/30 dark:text-white flex-grow ${errorQty ? "border-red-500" : "border-gray-300"}`}
+                        className={`w-20 py-3 px-2 border rounded pl-4 dark:bg-app-300/30 dark:text-white flex-grow ${errorQty ? "border-red-500" : "border-gray-300"}`}
                         placeholder="Quantité"
                         value={item.orderedQty}
                         min={1}

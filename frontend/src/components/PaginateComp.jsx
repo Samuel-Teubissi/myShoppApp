@@ -35,7 +35,7 @@ export default function PaginateComponent({ defaultQuery, controller }) {
 
     if (defaultQuery?.error) { console.log(defaultQuery?.error) }
     if (defaultQuery?.isLoading) return <div className="mt-1"><LoaderSkeletonArticle /></div>
-    if (defaultQuery?.isError) return <ErrorComp message="Erreur de récupération des articles de la page d'acecuil." />
+    if (defaultQuery?.isError) return <ErrorComp message="Erreur de récupération des articles de la page d'acceuil." />
     if (!defaultQuery.data?.articlesData || defaultQuery.data?.total_pages < 1) return <ErrorComp type="nothing" message="Vous n'avez aucun article exposé sur notre site !" />
     return (
         <>

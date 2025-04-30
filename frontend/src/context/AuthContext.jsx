@@ -3,7 +3,7 @@ import { API_href } from "../App.json";
 // import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { waitSync } from "../components/AppComp";
+import { SoundNotif, waitSync } from "../components/AppComp";
 import { api } from "../hooks/api";
 import { Toaster, toast } from "sonner";
 
@@ -13,7 +13,7 @@ axios.defaults.baseURL = API_href;
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLogging, setIsLogging] = useState(false)
+    const [isLogging, setIsLogging] = useState(true)
     const [isRegisterLoad, setIsRegisterLoad] = useState(false)
     const [loginErrors, setLoginErrors] = useState({})
     const [registerErrors, setRegisterErrors] = useState({})
@@ -68,11 +68,11 @@ export const AuthProvider = ({ children }) => {
     }, [isAuthenticated]);
 
     const login = async (dataForm, redirectCallback) => {
-        setIsLogging(true)
         try {
             // `${API_href}/login`
             const res = await axios.post('/login', dataForm, { withCredentials: true })
             if (res.data.status === 'success') {
+                SoundNotif()
                 toast.success(res.data.message)
                 setUserSession(res.data.user_token)
                 setLoginErrors({})
@@ -81,6 +81,8 @@ export const AuthProvider = ({ children }) => {
                     return { success: true }
                 }, 1000);
             } else {
+                console.log('res.data.errors', res.data.errors);
+                SoundNotif()
                 toast.error('Remplissez correctement tous les champs', { description: 'Erreur de remplissage', duration: 3000 })
                 setLoginErrors(res.data.errors || {})
                 return { success: false }
@@ -90,9 +92,9 @@ export const AuthProvider = ({ children }) => {
             toast.error('Erreur de connexion')
             return { success: false }
         } finally {
-            setIsLogging(false)
             // setTimeout(() => {
-            // }, 1000)
+            setIsLogging(false)
+            // }, 300);
         }
     }
 
@@ -101,6 +103,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await axios.post(`/register`, RegisterData)
             if (response.data.status === 'success') {
+                SoundNotif()
                 toast.success(response.data.message)
                 setUserSession(response.data.user_token)
                 await createNotification('admin', 'addUser')
@@ -111,6 +114,7 @@ export const AuthProvider = ({ children }) => {
                     return { success: true }
                 }, 1000);
             } else {
+                SoundNotif()
                 setRegisterErrors(response.data.errors)
                 toast.error('Remplissez correctement tous les champs')
             }

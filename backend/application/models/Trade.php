@@ -5,7 +5,7 @@
         public function VerifyTrader($id)
         {
             $req = $this->db->query("SELECT * FROM trader WHERE id_trader = ?", $id);
-            return $req->result_array();
+            return $req->result_array()[0];
         }
         public function dataTrader($number)
         {

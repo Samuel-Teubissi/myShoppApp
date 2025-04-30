@@ -13,28 +13,46 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../hooks/api";
 import axios from "axios";
 import ModalEmpty from "./ModalEmpty";
+import { SoundNotif } from "../components/AppComp";
+import { useNotificationsStore } from "../hooks/useNotifications";
 
 const ModalCart = ({ onClose, redirect }) => {
     const { cartItems, removeFromCart, clearCart, totalCart } = useCart()
     const { isAuthenticated, userSession } = useAuth()
     const { openModal, closeModal } = useModal()
     const queryClient = useQueryClient()
+    const createNotification = useNotificationsStore((s) => s.createNotification)
 
     const { mutate, isLoading: isSaving } = useMutation({
-        mutationFn: (data) => axios.post('/command/add', data),
-        onSuccess: (response) => {
+        mutationKey: ['cart', 'addCommand'],
+        mutationFn: async (data) => {
+            const res = axios.post('/command/add', data)
+            return res.data
+        },
+        onSuccess: async (response) => {
             // Recharge la liste des articles sur le site après ajout
-            queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
+            if (response.status === "success") {
+                SoundNotif()
+                toast.success('Nouvelle commande générée')
+                await createNotification(userSession.user_id, 'addCommand')
+                queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
+            } else {
+                SoundNotif()
+                toast.success(response.message)
+                console.log('Une erreur est survenue : ', response.message)
+            }
+        }, onError: (error) => {
+            toast.success('Erreur de sauvegarde de la commande.')
+            console.log('Erreur de sauvegarde de la commande : ', error.message)
         }
     });
     const handleCommand = () => {
         if (isAuthenticated) {
-            toast.success('Nouvelle commande générée')
-            mutate({ total: totalCart, cartItems: JSON.stringify(cartItems) })
-            // clearCart()
-            // clearCartCookie(userSession?.user_id)
+            mutate({ total: totalCart, cartItems: cartItems, user: userSession.user_id })
+            clearCart()
+            clearCartCookie(userSession?.user_id)
         } else {
-            openModal(<ConnectToCart onClose={closeModal} redirect={redirect} />)
+            openModal(<ConnectToCart onClose={closeModal} redirect={redirect} />, 'Connectez-vous pour commander')
         }
     }
 

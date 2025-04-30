@@ -14,11 +14,11 @@ const AdminPage = () => {
     return (
         <>
             <div className="">
-                <div className="pt-32 pb-4 text-white bg-red-500 w-full banner_trader">
+                <div className="pt-32 pb-4 text-white bg-red-500 w-full banner_trader px-4 sm:max-w-[90%] rounded-xl mx-auto">
                     <h1 className="">Bienvenue Administrateur !</h1>
-                    <div className="bg-white/90 backdrop-blur-2xl p-4 rounded-3xl max-w-min mx-auto mt-3 text-app-h">
+                    <div className="bg-white/90 backdrop-blur-2xl p-4 rounded-3xl mt-3 text-app-h">
                         <h2 className="admin-header">Dernières informations globales du site</h2>
-                        <div className=" flex justify-center gap-1">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-2">
                             <div className="admin-block-dataBox">
                                 <div className="admin-block-dataBox_title flex items-center gap-1">Ventes
                                     <FontAwesomeIcon icon={faBox} className="admin-block-dataBox_item" />
@@ -37,7 +37,7 @@ const AdminPage = () => {
                                 </div>
                                 <Separator orientation='vertical' />
                             </div>
-                            <div className="admin-block-dataBox">
+                            <div className="admin-block-dataBox col-span-2 lg:col-auto">
                                 <div className="admin-block-dataBox_title flex items-center gap-1">Chiffre d'affaire
                                     <FontAwesomeIcon icon={faDollarSign} className="admin-block-dataBox_item __item-price" />
                                 </div>
@@ -49,12 +49,12 @@ const AdminPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-2 max-w-[90%] mx-auto rounded-2xl p-4">
+                <div className="mt-2 max-w-[90%] mx-auto rounded-2xl p-4 dark:text-white/90 text-black/70">
                     <div className="mb-4">
-                        <div className="admin-block-dataBox_title admin-header">Dernières Inscriptions</div>
-                        <div className="flex justify-center flex-wrap items-start gap-4">
+                        <h3 className="admin-block-dataBox_title admin-header">Dernières Inscriptions</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center items-start gap-2 bg-dark p-4 rounded">
                             {dataUsers?.data?.usersData?.map((user, key) => (
-                                <div key={key + 1} value={key + 1} className="bg-white rounded-xl px-7 py-9 flex gap-3 border border-gray-200 hover:bg-gray-50 transform hover:scale-[1.03] transition duration-300 cursor-default">
+                                <div key={key + 1} value={key + 1} className="bg-white/90 rounded-xl px-7 py-9 flex gap-3 border border-gray-200 hover:bg-app-050 transform transition duration-300 cursor-default text-black/90">
                                     <div>
                                         <FontAwesomeIcon icon={faUser} className="admin-block-dataBox_icon" />
                                     </div>
@@ -70,10 +70,10 @@ const AdminPage = () => {
                         </div>
                     </div>
                     <div className="mb-4">
-                        <div className="admin-block-dataBox_title admin-header">Derniers Produits Ajoutés</div>
-                        <div className="flex justify-center flex-wrap items-start gap-2">
+                        <h3 className="admin-block-dataBox_title admin-header">Derniers Produits Ajoutés</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center items-start gap-2 bg-dark p-4 rounded">
                             {dataArticles?.data?.articlesData.map((article, i) => (
-                                <div key={i + 1} value={i + 1} className="bg-white rounded-xl p-8 flex items-center gap-3 border border-gray-200 hover:bg-gray-50 transform hover:scale-[1.03] transition duration-300 cursor-default">
+                                <div key={i + 1} value={i + 1} className="bg-white/90 rounded-xl px-7 py-9 flex gap-3 border border-gray-100 hover:bg-app-050 transform transition duration-300 cursor-defaulttext-black/90">
                                     <div className="bg-gray-50 w-32 h-32 rounded-full overflow-hidden border border-gray-300 shadow">
                                         <img src={API_href + '/assets/img/articles/' + article.file_name} alt="" className="w-full h-full object-cover" />
                                     </div>

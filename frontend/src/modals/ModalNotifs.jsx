@@ -32,7 +32,7 @@ const ModalNotifs = ({ onClose }) => {
                                 <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-white" />
                                 {/* <MessageSquareIcon className="text-2xl text-white w-8 h-8" /> */}
                             </div>
-                            <div className={`bg-gray-50 dark:bg-app-300/10 shadow p-4 border-l-2 border-app-h flex-grow text-left pb-6 tracking-wide ${notif.notif_status === 'unread' && 'bg-app-300/50'}`}>
+                            <div className={`bg-gray-50 dark:bg-app-300/10 shadow p-4 border-l-2 border-app-h flex-grow text-left pb-6 tracking-wide ${notif.notif_status === 'unread' && 'bg-app-300/80 dark:bg-app-300/50'}`}>
                                 <div>{notif.notif_message}
                                     &nbsp;<span className="text-gray-500 float-end dark:text-gray-300">{formatElapsedTime(notif.notif_date)}</span>
                                 </div>

@@ -135,7 +135,7 @@ const ModalAddComp = ({ isOpen, onClose }) => {
                         onChange={HandleChange}
                         error={addFormError?.category} classData='w-full px-5 py-2.5 transition duration-200 cursor-pointer border rounded-full appearance-none'
                     />
-                    <ChevronDownIcon className="w-6 h-6 text-black/70 dark:text-white absolute top-8 right-5" />
+                    <ChevronDownIcon className="w-6 h-6 text-black/70 dark:text-white absolute top-9 right-5 pointer-events-none" />
                 </div>
                 <div className="btn-modal-container">
                     <button type="button" onClick={onClose} className="btn-modal-cancel" disabled={isAddSubmitting}>

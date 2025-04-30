@@ -27,13 +27,10 @@ const ProtectedRouteAuth = ({ children, allowedRoles }) => {
     const from = location.state?.from || '/user';
     const search = location.state?.search || '';
 
-    if (isLogging) return <div className="ms_Main mb-12"><LoaderComp /></div>
-    console.log('ProtectedRouteAuth');
+    if (isLogging) return <LoaderComp />
     if (!userSession) {
         // Pas connecté → vers login
         // state={{ from: location }}
-        console.log('ProtectedRouteAuth !userSession');
-
         return <Navigate to="/login" replace state={{ from: from, search: search }} />
     }
     // Si des rôles sont requis, vérifier si l'utilisateur a le bon rôle
@@ -41,17 +38,10 @@ const ProtectedRouteAuth = ({ children, allowedRoles }) => {
     // const roles = Array.isArray(allowedRoles) ? allowedRoles : [allowedRoles];
 
     // Si l'utilisateur n'a pas de rôle ou si son rôle n'est pas dans la liste des rôles autorisés
-    console.log('allowedRoles', userSession.role, allowedRoles);
 
-    if (!userSession.role || !allowedRoles.includes(userSession.role)) {
+    if (userSession?.role && allowedRoles !== userSession.role) {//!allowedRoles.includes(userSession?.role)
         return <Navigate to='/unauthorized' replace state={{ from: location }} />;
     }
-    // }
-    useEffect(() => {
-        if (userSession?.user_id) {
-            mergeCartsAndSave(userSession?.user_id)
-        }
-    }, [userSession])
 
     return children
 }

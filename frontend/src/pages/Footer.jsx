@@ -10,7 +10,7 @@ import ModalNotifs from "../modals/ModalNotifs";
 import { useModal } from "../context/useModal";
 import useLinks from "../hooks/useLinks";
 import { MdLocalGroceryStore, MdLogin, MdLogout } from 'react-icons/md';
-import { Bell, HelpCircleIcon, HomeIcon, KeyIcon, ShoppingCartIcon, SquarePlusIcon, UserPlus } from "lucide-react";
+import { Bell, BookIcon, HelpCircleIcon, HomeIcon, KeyIcon, ShoppingCartIcon, SquarePlusIcon, UserPlus } from "lucide-react";
 
 const Footer = () => {
     const { userSession, Become_Trader } = useAuth()
@@ -67,6 +67,12 @@ const Footer = () => {
                                         </li>
                                     </>
                                     : <>
+                                        <li>
+                                            <NavLink to={'/' + userSession?.role}>
+                                                <BookIcon />
+                                                <span>Dashboard</span>
+                                            </NavLink>
+                                        </li>
                                         <li>
                                             <button onClick={handleCart}>
                                                 <ShoppingCartIcon className="" />Consulter votre panier</button>

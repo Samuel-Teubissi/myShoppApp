@@ -5,6 +5,22 @@
     font-size: 15px;
 }
 
+/* body::after {
+    content: " ";
+    display: block;
+    height: 1px;
+    width: 200vw;
+    background: red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+* {
+    outline: 1px solid red;
+} */
+
 :root {
     --bg-page: #fde6fb;
     --bg-white: #fef5fd;
@@ -34,6 +50,7 @@
 
 body {
     font-family: "Proxima Soft", "Proxima Nova Soft", "Poppins", Helvetica, "Consolas", Arial, sans-serif !important;
+    /* overflow-x: hidden; */
     /* background-color: color-mix(in srgb, var(--bg-page) 80%, black 20%); */
     /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('../img/bg_whole.jpg') center center fixed repeat; */
 }
@@ -544,6 +561,39 @@ input[type="number"].inpt-f {
 
 .modal-overlay {
     background-color: rgba(0, 0, 0, 0.5);
+    will-change: opacity;
+
+    /* Style général pour Chrome, Safari, Edge */
+    ::-webkit-scrollbar {
+        width: 6px;
+        /* Fine */
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+        /* Fond invisible */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(100, 100, 100, 0.5);
+        /* Curseur gris clair transparent */
+        border-radius: 10px;
+        /* Bords arrondis */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(100, 100, 100, 0.6);
+        /* Curseur plus foncé au survol */
+    }
+
+    /* Firefox */
+    * {
+        scrollbar-width: 6px;
+        /* Barre fine */
+        scrollbar-color: rgba(100, 100, 100, 0.5) transparent;
+        /* Curseur gris clair */
+    }
 }
 
 ::-webkit-file-upload-button {
@@ -720,6 +770,12 @@ footer>div {
 .modal-Sidebar ul li a:hover,
 .modal-Sidebar ul li button:hover {
     background-color: var(--color_bg-nav2);
+    padding-left: 30px;
+    color: #ffffffe7;
+}
+
+.modal-Sidebar ul li a.active {
+    background-color: var(--bg-app-800);
     padding-left: 30px;
     color: #ffffffe7;
 }

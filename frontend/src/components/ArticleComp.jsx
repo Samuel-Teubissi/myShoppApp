@@ -24,12 +24,12 @@ const ArticleComp = ({ art, articleRef, controller }) => {
     const artID = art.id_articles
     const { openModal, closeModal } = useModal();
     const { addToCart, removeFromCart, isInCart } = useCart();
-
+    // const { handleEdit, handleDelete } = useLinks()
     const handleEdit = () => {
-        openModal(<EditArticleForm id={artID} onClose={closeModal} />)
+        openModal(<EditArticleForm id={artID} onClose={closeModal} />, 'Editer un article')
     }
     const handleDelete = () => {
-        openModal(<DeleteArticleForm artId={artID} artName={art.article} onClose={closeModal} />)
+        openModal(<DeleteArticleForm artId={artID} artName={art.article} onClose={closeModal} />, 'Supprimer un article')
     }
 
     const inCart = isInCart(artID);

@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .hover-rotate-y {
+        transform: perspective(1000px) rotateY(0);
+    }
+
+    .hover-rotate-y:hover {
+        transform: perspective(1000px) rotateY(-5deg);
+    }
+}
+
 @layer components {
     /* .pagination {
         @apply bg-white space-x-2 px-2 py-1 border border-gray-200 rounded-xl
@@ -58,7 +68,7 @@
     }
 
     .cart--item-box {
-        @apply border-l bg-gray-200 border-gray-300 px-4 py-4 rounded-xl text-center shadow-inner text-gray-900 dark:bg-dark-div dark:text-white/90
+        @apply border-l bg-gray-200 border-gray-300 px-4 py-4 rounded text-center shadow-inner text-gray-900 dark:bg-dark-div dark:text-white/90
     }
 
     .trader-block button {
@@ -85,11 +95,11 @@
     }
 
     .admin-block-dataBox {
-        @apply bg-white shadow-inner border border-gray-200 w-[280px] px-4 pt-2 rounded-3xl;
+        @apply bg-white shadow-inner border border-gray-200 px-4 pt-2 rounded-3xl;
     }
 
     .admin-block-dataBox_title {
-        @apply text-left underline-offset-4 underline text-sm;
+        /* @apply text-left underline-offset-4 underline text-sm; */
     }
 
     .admin-block-dataBox_item {
@@ -113,7 +123,7 @@
     }
 
     .about-balance>div {
-        @apply bg-gray-800 rounded-xl p-5 my-4 sm:my-0
+        @apply bg-gray-800 rounded-xl p-5 ml-0 m-2 sm:mt-0
     }
 
     .var-text-dark {
@@ -153,15 +163,15 @@
     } */
 
     h1 {
-        @apply text-6xl tracking-tighter font-bold
+        @apply text-4xl md:text-6xl tracking-tighter font-bold whitespace-normal break-words;
     }
 
     h2 {
-        @apply text-3xl font-semibold
+        @apply text-2xl md:text-3xl font-semibold whitespace-normal break-words;
     }
 
     h3 {
-        @apply text-xl font-semibold
+        @apply text-lg md:text-xl font-semibold whitespace-normal break-words;
     }
 
     h4 {

@@ -35,10 +35,10 @@ export const ModalProvider = ({ children }) => {
     return (
         <ModalContext.Provider value={{ openModal, closeModal }}>
             {children}
-            {modalContent && (<div className="inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen flex justify-center items-center btn-trans">
+            {modalContent && (<div className="inset-0 z-50 modal-overlay backdrop-blur-sm fixed top-0 left-0 w-full h-screen flex justify-center items-center btn-trans">
                 <div className="bg-white modal-parent dark:text-dark-app-100 dark:border-app-900 p-2 md:px-5 pb-8 text-center shadow-sm relative btn-trans max-h-[90vh] max-w-[98%] w-[90%] xl:w-min xl:min-w-[50%] rounded-xl dark:bg-dark" ref={ModalRef} data-aos='zoom-in' data-aos-duration='100' data-aos-easing='ease-in-out'>
                     <h2 className='pt-14 pb-8'>{titleContent}</h2>
-                    <div className='modal-content'>
+                    <div className='modal-content pt-1'>
                         <XIcon className="absolute top-7 right-3 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 dark:text-white/70 hover:text-white" onClick={closeModal} title="Fermer" />
                         {modalContent}
                     </div>

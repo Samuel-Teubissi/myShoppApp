@@ -1,114 +1,14 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
+/**
+ * @property API_Model $API_Model
+ */
 class API_Controller extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        // Model responsable des données à traiter
-        $this->load->model('API_Model');
         $this->pagination_limit = 3;
-        // $this->load->library('form_validation');
-        // $this->load->library('Cors');
-        // $this->cors->allow();  // Autoriser CORS
-
-        
-        // 🔥 Autorisation CORS avec credentials
-        $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-        $allowed_origins = ['http://localhost:5173'];
-
-        if (in_array($origin, $allowed_origins)) {
-            header("Access-Control-Allow-Origin: $origin");
-            header("Access-Control-Allow-Credentials: true");
-        }
-
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
-
-        // Répondre directement aux requêtes OPTIONS (prévol)
-        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-            http_response_code(200);
-            exit;
-        }
-    }
-
-
-    public function API_Home_Articles()
-    {
-
-        // Pagination
-        $per_page = $this->pagination_limit;
-        $currentPage = (int)($this->input->get('page') ?? 1) ?: 1;
-        $offset = ($currentPage - 1) * $per_page;
-        
-        // Récupérer les articles paginés 
-        $limit["start"] = $offset;
-        $limit["per_page"] = $per_page;
-        $articles = $this->API_Model->API_get_Articles($limit);
-        $total_articles = count($this->API_Model->API_get_Articles(0));
-
-        // Calcal des pages totales 
-        $total_pages = ceil($total_articles / $per_page);
-        echo json_encode([
-            'articles' => $articles,
-            'total_pages' => $total_pages,
-            'total_articles' => $total_articles
-        ]);
-    }
-    public function API_Trader_Articles()
-    {
-        if ($this->session->has_userdata('data_trader')) {
-            // $id_trader = $trader['id_trader'];
-            $id_trader = $this->session->data_trader['id_trader'];
-            // Pagination
-            $per_page = $this->pagination_limit;
-            $currentPage = (int)($this->input->get('page') ?? 1) ?: 1;
-            $offset = ($currentPage - 1) * $per_page;
-            
-            // Récupérer les articles paginés 
-            $limit["start"] = $offset;
-            $limit["per_page"] = $per_page;
-            $articles = $this->API_Model->API_get_StockArticles($id_trader, $limit);
-            $total_articles = count($this->API_Model->API_get_StockArticles($id_trader, []));
-
-            // Calcal des pages totales 
-            $total_pages = ceil($total_articles / $per_page);
-            echo json_encode([
-                'articles' => $articles,
-                'total_pages' => $total_pages,
-                'total_articles' => $total_articles
-            ]);
-        }
-    }
-
-    public function API_count_Articles ( $dataType ) {
-        switch ($dataType) {
-            case 'home':
-                $per_page = $this->pagination_limit;
-                $total_articles = count($this->API_Model->API_get_Articles(0));
-                $total_pages = ceil($total_articles / $per_page);
-                echo json_encode([
-                    'latest_total_pages' => $total_pages,
-                    'latest_total_articles' => $total_articles
-                ]);
-                break;
-
-            case 'trader':
-                if ($this->session->has_userdata('data_trader')) {
-                    $id_trader = $this->session->data_trader['id_trader'];
-                    $per_page = $this->pagination_limit;
-                    $total_articles = count($this->API_Model->API_get_StockArticles($id_trader, []));
-                    $total_pages = ceil($total_articles / $per_page);
-                    echo json_encode([
-                        'latest_total_pages' => $total_pages,
-                        'latest_total_articles' => $total_articles
-                    ]);
-                }
-                break;
-            
-            default:
-                echo json_encode(['error' => 'Accès Non Autorisé : '.$dataType]);
-                break;
-        }
     }
 
     //fonction LOGIN
@@ -117,70 +17,79 @@ class API_Controller extends CI_Controller
         // $_POST = json_decode(file_get_contents("php://input"), true);
         //Gestion inputs
 
-        $this->form->set_rules('number', "Numéro de l'utilisateur", 'required|min_length[9]');
+        $this->form->set_rules('number', "Numéro de l'utilisateur", 'required|min_length[3]');
         $this->form->set_rules('password', "Mot de passe de l'utilisateur", 'required');
 
         if ($this->form->run()) {
-            $number = $this->security->xss_clean($this->input->post('number'));
-            $pswd = $this->input->post('password');
-            if ($number == '000000000' and $pswd == 'admin') {
+            $number = $this->input->post('number', true);
+            $pswd = $this->input->post('password', true);
+            if ($number == '000000000' and $pswd === 'admin') {
                 // Création de l'id Trader pr récup les data dans l'espace admin
                 $userData = [
                     'id_trader' => null,
-                    'user_id' => '0',
+                    'user_id' => 'admin',
                     'user_name' => 'admin',
-                    'user_number' => '000000000'
+                    'user_number' => 'admin',
+                    'role' => 'admin'
                 ];
                 $this->session->set_userdata($userData);
 
                 echo json_encode(['status' => "success", "message" => "Administrateur connecté", "user_token" => $this->session->userdata()]);
             } else {
-                $req = $this->API_Model->API_checkUser($number);
-                if (!empty($req)) {
+                $reqUser = $this->API_Model->API_checkUser($number);
+                if (!empty($reqUser)) {
+                    $req = $reqUser[0];
                     $pswd = hash('sha256', $pswd);
-                    if ($req[0]['password'] == $pswd) {
+                    if ($req['password'] == $pswd) {
 
                         // Vérification de l'existence d'un Trader
-                        $dataTrader = $this->Trade->dataTrader($req[0]['number']);
+                        $dataTrader = $this->apiModel_trader->API_dataTrader($req['number']);
+                        $idTrader = null;
+                        if (!empty($dataTrader)) {
+                            $idTrader = $dataTrader[0]['id_trader'];
+                        }
+                        // return var_dump($req['number'], $dataTrader, $idTrader);
                         $userData = [
-                            'data_trader' => $dataTrader[0],
-                            'user_id' => $req[0]['id_user'],
-                            'user_name' => $req[0]['name'],
-                            'user_number' => $req[0]['number']
+                            'data_trader' => $idTrader,
+                            'user_id' => $req['id_user'],
+                            'user_name' => $req['name'],
+                            'user_number' => $req['number'],
+                            'role' => 'user'
                         ];
-
                         // Création de l'id Trader pr récup les data dans l'espace admin
-                        // var_dump("session", $this->session);
                         $this->session->set_userdata($userData);
-
-                        echo json_encode(['status' => "success",
-                        "message" => "Connexion Réussie",
-                        "user_token" => $this->session->userdata()]);
+                        echo json_encode([
+                            'status' => "success",
+                            "message" => "Connexion Réussie",
+                            "user_token" => $this->session->userdata()
+                        ]);
                     } else {
-                        echo json_encode(['status' => "error",
-                        "message" => '',
-                        'errors' => ['password' => "Mot de passe saisi incorrect"]]);
+                        echo json_encode([
+                            'status' => "error",
+                            "message" => '',
+                            'errors' => ['password' => "Mot de passe saisi incorrect"]
+                        ]);
                     }
                 } else {
-                    echo json_encode(['status' => "error",
-                    "message" => '',
-                    'errors' => ['number' => "Numéro saisi incorrect ou sans compte"]]);
+                    echo json_encode([
+                        'status' => "error",
+                        "message" => '',
+                        'errors' => ['number' => "Numéro saisi incorrect ou sans compte"]
+                    ]);
                 }
             }
         } else {
-            echo json_encode(['status' => "error",
-            "message" => "Remplissez correctement tous les champs",
-            "errors" => $this->form->error_array()]);
+            echo json_encode([
+                'status' => "error",
+                "message" => "Remplissez correctement tous les champs",
+                "errors" => $this->form->error_array()
+            ]);
         }
     }
     //Fonction Register        
     public function API_Register()
     {
-        $_POST = json_decode(file_get_contents("php://input"), true);
-
         // Processing Inscription
-
-        // $this->form->set_rules('name','nom','required');
         $this->form->set_rules('number', "Numéro de l'utilisateur", 'required|min_length[9]|is_unique[user.number]');
         $this->form->set_rules('username', "Nom de l'utilisateur", 'required|min_length[3]');
         $this->form->set_rules('password', "Mot de passe de l'utilisateur", 'required');
@@ -190,18 +99,23 @@ class API_Controller extends CI_Controller
             $number = $this->security->xss_clean($this->input->post('number'));
             $name = $this->security->xss_clean($this->input->post('username'));
             $pswd = hash('sha256', $this->input->post('password'));
-            $data = array(
-                'name' => $name,
-                'number' => $number,
-                'password' => $pswd
-            );
 
-            if ($this->db->insert('user', $data)) {
-                $this->session->set_userdata('id_user', $this->db->insert_id());
-                $this->session->set_userdata('name', $name);
-                $this->session->set_userdata('number', $number);
-
-                echo json_encode(['status' => "success", "message" => "Inscription réussie"]);
+            $idUser = $this->db->insert_id();
+            $userData = [
+                'data_trader' => null,
+                'user_id' => $idUser,
+                'user_name' => $name,
+                'user_number' => $number,
+                'role' => 'user'
+            ];
+            if ($this->db->insert('user', $userData)) {
+                // Création de l'id Trader pr récup les data dans l'espace admin
+                $this->session->set_userdata($userData);
+                // $this->API_Model->saveNotification($idUser, 'addUser');
+                echo json_encode(['status' => "success",
+                            "message" => "Inscription réussie",
+                            "user_token" => $this->session->userdata()]
+                    );
             } else {
                 echo json_encode(['status' => "error", "message" => "Echec de l'enregistrement"]);
             }
@@ -213,22 +127,25 @@ class API_Controller extends CI_Controller
     public function API_logout()
     {
         $this->session->sess_destroy();
+        // delete_cookie('ci_session');
         $this->cart->destroy();
-        echo json_encode(["status" => "success", "message" => "Déconnexion réussie"]);
+        echo json_encode(["status" => true, "message" => "Déconnexion..."]);
     }
 
     public function API_logged()
     {
         // var_dump('session : ', $this->session);
-        if ($this->session->has_userdata('user_id')) {
-            $dataUser = $this->session->userdata();
-            echo json_encode(
-                ["status" => "success",
+        // $this->session->sess_destroy();
+        if ($this->session->userdata('user_id')) {
+            echo json_encode([
+                "status" => "success",
                 "message" => "Utilisateur connecté",
-                'dataUser' => $dataUser]);
-        }else {
+                'dataUser' => $this->session->userdata()
+            ]);
+        } else {
             // http_response_code(401);
-            echo json_encode(["status" => "error",
+            echo json_encode([
+                "status" => "error",
                 "message" => "Utilisateur non connecté"
             ]);
         }
@@ -238,34 +155,36 @@ class API_Controller extends CI_Controller
     public function API_add_Article()
     {
         // var_dump('test data : ', $this->session->has_userdata('data_trader'));
+        // return var_dump($this->session);
         if ($this->session->has_userdata('data_trader')) {
             $addData['categories'] = $this->API_Model->API_get_Categories(true);
             unset($addData['categories'][0]);
             $categ_list = implode(',', array_keys($addData['categories']));
 
-            $trader = $this->session->data_trader['id_trader'];
+            $trader = $this->session->data_trader;
 
             if (!isset($trader) && empty($this->API_Model->API_VerifyTrader($trader))) {
-                echo json_encode(["status" => "error",
-                "message" => "Le tradeur n'est pas connecté"]);
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "Le tradeur n'est pas connecté"
+                ]);
                 return;
             }
             //Gestion inputs
-            $this->form->set_rules('article', "Nom de l'article", 'required|min_length[3]|trim|is_unique[articles.article]');
+            $this->form->set_rules('article', "Nom de l'article", 'required|min_length[3]|trim|is_unique[articles.article]|regex_match[/^[\p{L}\p{N} ]+$/u]');
             $this->form->set_rules('price', "Prix de l'article", 'required|min_length[2]|trim|numeric|greater_than[0]');
             $this->form->set_rules('quantity', "Quantité", 'required|numeric|greater_than[0]|trim');
             $this->form->set_rules('category', "Catégorie de l'article", 'required|trim|in_list[' . $categ_list . ']');
             $this->form->set_message('in_list', "Sélectionnez une catégorie dans la liste");
-            
+
             if ($this->form->run()) {
-                // echo 'yess connecté';
                 //Récupération des données envoyées
-                $article = $this->security->xss_clean($this->input->post('article'));
-                $price   = $this->security->xss_clean($this->input->post('price'));
-                $qty     = $this->security->xss_clean($this->input->post('quantity'));
-                $categ   = $this->security->xss_clean($this->input->post('category'));
-                
-                
+                $article = $this->input->post('article', TRUE);
+                $price   = $this->input->post('price', TRUE);
+                $qty     = $this->input->post('quantity', TRUE);
+                $categ   = $this->input->post('category', TRUE);
+
+
                 //Gestion fichiers FILES
                 //  $data = $this->upload->data();
                 $config['upload_path']   = './assets/img/articles';
@@ -276,39 +195,183 @@ class API_Controller extends CI_Controller
                 //$config['file_name'] = 'file'.'_'.$data['file_name'].'_'.date('YmdHis');
                 $config['file_ext_tolower'] = true;
                 $this->load->library('upload', $config);
-                
-                $regexText = "/^[a-zA-Z0-9 -]+$/i";
-                $regexNum = "/^[0-9]+$/";
-                if (preg_match($regexText, $article)) {
-                    if (!$this->upload->do_upload('userfile')) {
-                        echo json_encode(
-                            ['status' => "error",
+
+                if (!$this->upload->do_upload('userfile')) {
+                    echo json_encode(
+                        [
+                            'status' => "error",
                             "message" => "Remplissez correctement tous les champs",
-                            "errors" => ['userfile' => strip_tags($this->upload->display_errors())]]
-                        );
-                    } else {
-                        $dataFile = $this->upload->data();
-                        $this->Article->add_Article($trader, $price, $article, $qty, $categ, $dataFile['file_name']);
-                        
-                        echo json_encode(
-                            ['status' => "success",
-                            "message" => "L'article a été ajouté avec succès"]);
-                    }
+                            "errors" => ['userfile' => strip_tags($this->upload->display_errors())]
+                        ]
+                    );
                 } else {
-                    echo json_encode(['status' => "error",
-                    "message" => "Remplissez correctement tous les champs",
-                    "errors" => ['article' => "Le nom ne doit contenir que des chiffres, lettres, espaces et tirets"]]);
+                    $dataFile = $this->upload->data();
+                    $this->API_Model->add_Article($trader, $price, $article, $qty, $categ, $dataFile['file_name']);
+                    // $this->API_Model->saveNotification($trader, 'addArticle');
+
+                    echo json_encode(
+                        [ 'status' => "success",
+                            "message" => "L'article a été ajouté avec succès"
+                        ]);
                 }
             } else {
-                echo json_encode(['status' => "error",
-                "message" => "Remplissez correctement tous les champs",
-                "errors" => $this->form->error_array()]);
+                echo json_encode([
+                    'status' => "error",
+                    "message" => "Remplissez correctement tous les champs",
+                    "errors" => $this->form->error_array()
+                ]);
             }
         } else {
-            echo json_encode(['status' => "error",
-            "message" => "Pas d'utilisateur connecté !"]);
+            echo json_encode([
+                'status' => "error",
+                "message" => "Pas d'utilisateur connecté !"
+            ]);
         }
-        //Chargement du Template View Add    
-        // $this->load->view('templateForm', ['admin' => true, 'view' => $this->load->view('Add', $addData, true)]);
     }
+
+    public function API_categories()
+    {
+        echo json_encode([
+            'status' => TRUE,
+            "data" => $this->API_Model->API_get_Categories(true)
+        ]);
+    }
+
+    public function addCommand ()
+    {
+        $datas = json_decode(file_get_contents("php://input"), true);
+        $totalCommand = $datas['total'];
+        $CartCommand = $datas['cartItems'];
+        $user = $datas['user'];
+
+        if ($totalCommand && $CartCommand && $user) {
+            $id_command = $this->API_Model->saveCommand($user, $totalCommand);
+            if ($id_command) {
+                foreach ($CartCommand as $dataCart) {
+                    $bdQty = (int) $this->API_Model->get_qtyArticles($dataCart['id_articles']);
+                    if ($bdQty) {
+                        $newQty = $bdQty - $dataCart['orderedQty'];
+                        if ($newQty >= 0) {
+                            $this->db->where('id_articles', $dataCart['id_articles']);
+                            $this->db->update('articles', [ 'quantity' => $newQty ]);
+                            $dataContent = [
+                                'id_command' => $id_command,
+                                'id_article' => $dataCart['id_articles'],
+                                'name' => $dataCart['article'],
+                                'price' => $dataCart['price'],
+                                'quantity' => $dataCart['orderedQty']
+                            ];
+                            $this->API_Model->saveCart($dataContent);
+                            // $this->API_Model->saveNotification($this->session->user_id, 'addCommand');
+                            echo json_encode([
+                                'status' => 'success',
+                                "message" => 'Command saved'
+                            ]);
+                        } else {
+                            echo json_encode([
+                                'status' => 'error',
+                                "message" => "Stock insuffisant pour certains articles"]);
+                        }
+                    } else {
+                        echo json_encode([
+                            'status' => 'error',
+                            "message" => 'Erreur de récupération de quantité' ]);
+                    }
+                }
+            }
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                "message" => 'Need a ressource for save command'
+            ]);
+        }
+    }
+
+    // Récupérer les notifications
+    public function API_getNotif( $userId )
+    {
+        // $user = $this->session->user_id;
+        echo json_encode([
+            'status' => 'success',
+            "dataNotifs" => $this->API_Model->API_get_notifications($userId),
+            "countNotifs" => $this->API_Model->apiNotif_count_unread($userId)
+        ]);
+    }
+    public function API_readNotif( $notif_id )
+    {
+        $this->API_Model->apiNotif_mark_as_read($notif_id);
+        echo json_encode([
+            'status' => 'success',
+            "message" => 'Notif read'
+        ]);
+    }
+
+    public function API_CreateNotif ()
+    {
+        $userId = $this->input->post('userId');
+        $type = $this->input->post('type');
+        if ($userId && $type) {
+            switch ($type) {
+                case 'addCommand':
+                    $message = 'Vous avez validé une nouvelle commande';
+                    $role = 'user';
+                    break;
+                case 'addUser':
+                    $message = 'Un nouvel utilisateur inscrit sur la plateforme';
+                    $role = 'admin';
+                    break;
+                case 'addArticle':
+                    $message = 'Vous avez ajouté un nouveau produit sur la plateforme';
+                    $role = 'user';
+                    break;
+                case 'updateArticle':
+                    $message = 'Vous avez mis à jour un produit';
+                    $role = 'user';
+                    break;
+                case 'deleteArticle':
+                    $message = 'Vous avez supprimé un produit du site';
+                    $role = 'user';
+                    break;
+                default:
+                    $message = 'default';
+                    $role = 'default';
+                    break;
+            }
+            $data = array(
+                'notif_message' => $message,
+                'notif_user' => $userId,
+                'notif_type' => $type
+            );
+            $this->API_Model->saveNotification($data);
+        }
+    }
+
+    // public function addCommand ()
+    // {
+    // if ($CartCommand) {
+    //         foreach ($CartCommand as $dataCart) {
+    //             $VerifQuantity = $this->Article->get_Art_Articles($dataCart['id']);
+    //             $BDqty = (int)$VerifQuantity[0]['quantity'];
+    //             $updateArticle = [ 'quantity' => $BDqty - $dataCart['qty'] ];
+    //             $this->db->update('articles', $updateArticle,"id_articles = ".$dataCart['id']);
+    //             $dataContent = [
+    //                 'id_command' => $id_command,
+    //                 'id_article' => $dataCart['id'],
+    //                 'name' => $dataCart['name'],
+    //                 'price' => $dataCart['price'],
+    //                 'quantity' => $dataCart['qty']
+    //             ];
+    //             $this->API_Model->saveCart($dataContent);
+    //         }
+    //         echo json_encode([
+    //             'status' => 'success',
+    //             "idCommand" => ''
+    //         ]);
+    //     } else {
+    //         echo json_encode([
+    //             'status' => 'error',
+    //             "message" => 'Need a ressource for save cart'
+    //         ]);
+    //     }
+    // }
 }

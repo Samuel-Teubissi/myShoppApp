@@ -70,12 +70,52 @@ $route['translate_uri_dashes'] = FALSE;
  * Lorsqu'on tape localhost/NomDeDossier/monprofil en coulisse ça lance le controller "About"
  */
 // $route['monprofil'] = 'About';
-$route['articles/home'] = 'API_controller/API_Home_Articles';
-$route['articles/trader'] = 'API_controller/API_Trader_Articles';
-$route['articles/total_home'] = 'API_controller/API_count_Articles/home';
-$route['articles/total_trader'] = 'API_controller/API_count_Articles/trader';
+
+/**
+ * Routage d'affichage d'articles'
+ */
+$route['articles/home'] = 'apiController_articles/API_Home_Articles';
+$route['articles/trader'] = 'apiController_articles/API_Trader_Articles';
+$route['articles/total_home'] = 'apiController_articles/API_count_Articles/home';
+$route['articles/total_trader'] = 'apiController_articles/API_count_Articles/trader';
+$route['articles/categories'] = 'apiController_articles/API_categories';
+$route['articles/search'] = 'apiController_articles/API_Search';
+/**
+ * Routage de modificcation d'articles
+ */
+$route['article/add'] = 'apiController_articles/API_add_Article';
+$route['article/(:num)'] = 'apiController_articles/API_Trader_Article/$1';
+$route['article/update/(:num)'] = 'apiController_articles/API_update_Article/$1';
+$route['article/delete/(:num)'] = 'apiController_articles/API_deleteArticle/$1';
+/**
+ * Routage de gestion des commandes
+ */
+$route['command/add'] = 'API_controller/addCommand';
+/**
+ * Routage de gestion des utilisateurs
+ */
 $route['login'] = 'API_controller/API_Login';
 $route['register'] = 'API_controller/API_Register';
 $route['logout'] = 'API_controller/API_logout';
 $route['logged'] = 'API_controller/API_logged';
-$route['user/add'] = 'API_controller/API_add_Article';
+$route['user/become_trader'] = 'apiController_trader/API_BTrader';
+/**
+ * Routage de gestion des utilisateurs
+ */
+$route['admin/all_users'] = 'apiController_admin/API_dataListUsers';
+$route['admin/dashboard'] = 'apiController_admin/API_dataDashboard';
+$route['admin/articles'] = 'apiController_admin/API_dataArticles';
+/**
+ * Routage de gestion des notifications
+ */
+// $route['notif/add'] = 'API_Controller/API_addNotif';
+$route['notifs/fetch/(:num)'] = 'API_Controller/API_getNotif/$1';
+$route['notifs/fetch/admin'] = 'API_Controller/API_getNotif/admin';
+$route['notifs/read/(:num)'] = 'API_Controller/API_readNotif/$1';
+$route['notifs/create'] = 'API_Controller/API_CreateNotif';
+
+$route['art'] = 'API_Controller/def';
+// $route['api/articles/(:num)']['PUT'] = 'api/articles/$1';
+// $route['api/articles']['POST'] = 'api/articles';
+// $route['api/articles/(:num)']['DELETE'] = 'api/articles/$1';
+

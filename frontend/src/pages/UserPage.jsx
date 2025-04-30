@@ -12,24 +12,25 @@ import ModalCart from "../modals/ModalCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus, faHandHoldingHand, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import { ShoppingCartIcon, SquarePlusIcon } from "lucide-react";
+import useLinks from "../hooks/useLinks";
+import { mergeCartsAndSave } from "../context/useCookie";
 
 const UserPage = () => {
     const { userSession, Become_Trader, isLogging } = useAuth()
     const { openModal, closeModal } = useModal();
-    const [canAddArticles, setCanAddArticles] = useState(false);
+    const { handleAdd, handleCart } = useLinks()
 
-    const handleAdd = () => {
-        openModal(<ModalAddComp onClose={closeModal} />)
-    }
-    const handleCart = () => {
-        openModal(<ModalCart onClose={closeModal} />)
-    }
     useEffect(() => {
-        if (userSession?.data_trader) {
-            setCanAddArticles(true)
+        document.title = 'Dashboard | MyShop App'
+    }, []);
+    useEffect(() => {
+        if (userSession.user_id) {
+            mergeCartsAndSave(userSession.user_id)
         }
-    }, [userSession?.data_trader]);
+    }, [userSession])
+    const canAddArticles = !!userSession.data_trader
 
+    if (isLogging) return <LoaderComp />
     return (
         <div id='scroll-container'>
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}

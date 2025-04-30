@@ -23,16 +23,10 @@ const RegisterPage = () => {
     }
     const submitRegister = async (e) => {
         e.preventDefault()
-        // setRegisterErrors({})
-        // setRegisterLoad(true)
-        SoundNotif()
-
         const RegisterData = new FormData(e.target)
         const res = await Register(RegisterData)
         if (res?.success) {
             navigate("/user", { replace: true })
-            // if (from !== '/') navigate(from, { replace: true })
-            // queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
         }
     }
 
@@ -40,8 +34,8 @@ const RegisterPage = () => {
         <div className="ms_Main mb-16">
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
             <div className="Main">
-                <form className="w-[100%] md:w-8/12 text-gray-600 pt-16 pb-8 rounded-xl bg-white/70 shadow-md border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark mt-6" onSubmit={submitRegister}>
-                    <div className="insc w-9/12">
+                <form className="w-full px-4 mx md:w-8/12 text-gray-600 pt-16 pb-8 mt-6 rounded-xl bg-white/70 shadow-md border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitRegister}>
+                    <div className="insc md:w-9/12 w-full">
                         <InputField
                             label="Numéro de téléphone :"
                             type="number"
@@ -74,9 +68,12 @@ const RegisterPage = () => {
                             placeholder="Ressaisissez le mot de passe"
                         />
                     </div>
-                    <div className="w-full mt-2">
-                        <button type="submit" className={`animZ text-white rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out animZ ${isRegisterLoad && "bg-gray-400 text-white cursor-not-allowed"}`} disabled={isRegisterLoad}>
-                            {isRegisterLoad ? '...' : 'Inscription'}
+                    <div className="w-full mt-2 flex justify-center">
+                        <button type="submit" className={`animZ flex items-center justify-center text-white rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out animZ`} disabled={isRegisterLoad}>
+                            {!isRegisterLoad
+                                ? 'Inscription'
+                                : <span className="w-6 h-6 block border-4 border-app-500 border-t-transparent rounded-full animate-spin"></span>
+                            }
                         </button>
                     </div>
                     <div className="w-full mt-4">
