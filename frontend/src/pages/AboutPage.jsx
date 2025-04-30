@@ -38,12 +38,12 @@ const AboutPage = () => {
         })
     }, []);
 
-    return <div id='scroll-container' className="ms_Main">
+    return <div id='scroll-container'>
         <div className="flex flex-col xl:flex-row justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 bg-white/30 dark:bg-dark mt-2 dark:text-dark-app-100 border dark:border-transparent">
             <div className="about_img flex flex-col justify-center items-center pt-4 sm:pt-0 xl:w-2/3 w-full main-about overflow-hidden">
                 {/* <img src={linkMsg} alt="Author" className="rounded object-cover block absolute top-[8%] left-[8%] xl:top-[-3px] xl:left-[55px] scale-95 hover:scale-100 max-w-full z-0 w-[400px] sm:w-[350px] lg:w-[500px] xl:w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} /> */}
                 <div className="relative">
-                    <img src={linkMsg} alt="Author" className="rounded object-cover block absolute -top-[64px] left-0 scale-95 hover:scale-100 max-w-full z-0 w-[400px] xl:hidden" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} />
+                    <img src={linkMsg} alt="Author" className="rounded object-cover block absolute -top-[64px] left-0 scale-95 hover:scale-100 max-w-full z-0 w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} />
                     <img src={link} alt="Author" className="max-w-full rounded object-cover z-10 hover-rotate-y transition-transform duration-300" width={430} height={430} />
                 </div>
                 <div className="flex items-center gap-1 text-dark-app-100 mt-2">
@@ -162,13 +162,13 @@ const AboutPage = () => {
             </div>
             <div className="mt-10 about-block">
                 <h2 className="py-4">Remerciements</h2>
-                <p className="">
+                <div className="">
                     Je vais être très bref dans cette section, merci à
                     <ul>
                         <li><span className="highlight">Monsieur Akono Nkolo</span> pour l'accompagnement tant sur le plan moral que technique avec ses conseils avisés pour la conception du backend de ce projet</li>
                         <li><span className="highlight">Njikam Salim Mohamed</span> celui qui se s'auto-surnomme le <code className="highlight">GOAT du CSS</code> (très humble le mec) m'a épaulé tant sur la partie design et surtout sur le frontend de cette app</li>
                     </ul>
-                </p>
+                </div>
             </div>
             <div className="bg-gray-800 mt-10 py-8 text-center text-white/90 rounded-xl trigger-links" data-aos='zoom-in' data-aos-delay={0} data-aos-duration={200}>
                 <h2 className="p-2">Bossons ensemble dès maintenant.</h2>

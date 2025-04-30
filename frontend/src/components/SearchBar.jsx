@@ -72,14 +72,14 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
     const { searchQuery, defaultQuery, hasSearchParams } = useSearch(params);
 
     if (searchQuery?.error) { console.log(searchQuery?.error) }
-    if (searchQuery.isError) return (<div className="mt-10" ref={resultsRef}><ErrorComp message="Erreur d'accès à la base de donnée du site" /></div>)
-    if (defaultEndpoint === 'trader' && !userSession?.data_trader) return <div className="mt-10" ref={resultsRef}><ErrorComp type="nothing" message="Vous n'avez encore aucun article exposé sur notre site !" /></div>
+    if (searchQuery.isError) return (<ErrorComp message="Erreur d'accès à la base de donnée du site" />)
+    if (defaultEndpoint === 'trader' && !userSession?.data_trader) return <ErrorComp type="nothing" message="Vous n'avez encore aucun article exposé sur notre site !" />
 
     return (
         <>
-            <form id="container-search" onSubmit={handleSubmitSearch}>
+            <form id="container-search" onSubmit={handleSubmitSearch} className="pt-12">
                 <div className="h-11 relative flex justify-center gap-2">
-                    <div className="h-full relative w-[40rem] max-w-[90%]">
+                    <div className="h-full relative w-[40rem] max-w-[80%]">
                         <input type="search" name="search_article" placeholder={placeholder} className='h-full bg-white dark:bg-app-300/30 rounded-full pl-10 pr-12 outline-app border border-app-300/70 w-full' value={searchValues.search_article} onChange={handleInputChange} />
                         <button type="submit" className='absolute top-1.5 right-3' title="Rechercher">
                             <SearchIcon className="transition duration-300 text-gray-400 hover:text-app-600 w-8 h-8 dark:text-app-400" />
@@ -98,7 +98,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                     <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-xl border border-app-300/70 xl:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
                 </div>
             </form>
-            <div className="mt-3 flex flex-col items-center h-full" ref={resultsRef}>
+            <div className="mt-3 w-full flex flex-col items-center main-search" ref={resultsRef}>
                 {searchQuery.isLoading
                     ? <LoaderSkeletonArticle />
                     : hasSearchParams ? (<>

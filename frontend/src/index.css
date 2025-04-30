@@ -205,4 +205,8 @@
     .main-about {
         height: calc(100vh - 70px);
     }
+
+    .main-search {
+        height: calc(100vh - 210px);
+    }
 }

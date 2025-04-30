@@ -4,11 +4,7 @@ import SearchBar from "../components/SearchBar";
 const HomePage = () => {
     return (
         <>
-            <div className="mt-24 mb-14">
-                <div className="w-full">
-                    <SearchBar endpoint='/articles/search' defaultEndpoint='home' placeholder="Rechercher des articles sur le site" />
-                </div>
-            </div>
+            <SearchBar endpoint='/articles/search' defaultEndpoint='home' placeholder="Rechercher des articles sur le site" />
         </>
     )
 }

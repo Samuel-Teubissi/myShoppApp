@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom"
+import { Link, NavLink, Outlet, useLocation, useNavigate, useNavigation } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import { useEffect, useState } from "react"
 // import { toast } from "react-toastify"
@@ -25,6 +25,7 @@ import useCloseOutsideModal from "../hooks/useCloseOutsideModal"
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import ScrollToTop from "../hooks/useScrollToTop";
+import LoaderComp from "./LoaderComp";
 
 export default function DefaultRouterComp() {
     const { isAuthenticated, logout, userSession } = useAuth()
@@ -41,6 +42,18 @@ export default function DefaultRouterComp() {
     const [openSubmenu, setOpenSubmenu] = useState(false);
     const [openHeader, setOpenHeader] = useState(false);
     const SidebarRef = useRef(null)
+
+    const [isLoadingPage, setIsLoadingPage] = useState(false);
+    const location = useLocation();
+    // const navigation = useNavigation();
+
+    // const isLoadingPage = navigation.state === "loading";
+    useEffect(() => {
+        console.log('isLoadingPage', isLoadingPage);
+        // Quand l'URL change, on arrête le loading
+        setIsLoadingPage(false);
+    }, [location.pathname]);
+
 
     const toggleNav = () => {
         setshowMenu(!showMenu)
@@ -82,6 +95,7 @@ export default function DefaultRouterComp() {
         const isDark = document.documentElement.classList.contains('dark')
         setTimeout(() => {
             setThemeApp(isDark ? 'light' : 'dark')
+            setIsLoadingPage(false);
         }, 200);
     }
 
@@ -90,7 +104,10 @@ export default function DefaultRouterComp() {
     const handleCloseSidebar = (e) => {
         if (e.target.tagName === 'A' || e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') {
             // Fermer *avec un petit délai*
-            setTimeout(() => setOpenHeader(false), 150);
+            // setTimeout(() =>
+            setIsLoadingPage(true);
+            setOpenHeader(false)
+            // , 50);
         }
     }
 
@@ -165,8 +182,8 @@ export default function DefaultRouterComp() {
                 {/* </div> */}
             </nav>
         </header >
-        <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-300 ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-            <div className={`modal-Sidebar transition-transform duration-300 ease-in-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
+        <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-500 ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+            <div className={`modal-Sidebar transition-transform duration-500 ease-in-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
                 <XIcon className="absolute top-7 right-5 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
                 <div className="">
                     <NavLink to='/' className='flex items-center' onClick={handleCloseSidebar}>
@@ -230,8 +247,12 @@ export default function DefaultRouterComp() {
                 </ul>
             </div>
         </div>
-        <div className="ms_Main main-about">
-            <Outlet />
+        <div className="ms_Main">
+            {isLoadingPage
+                ? <LoaderComp />
+                : <Outlet />
+            }
+            {/* <Outlet /> */}
         </div>
         <Footer />
     </>
