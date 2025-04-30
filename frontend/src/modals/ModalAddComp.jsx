@@ -16,7 +16,8 @@ import { ArrowDown, ArrowDown01Icon, ChevronDownIcon } from "lucide-react";
 const ModalAddComp = ({ isOpen, onClose }) => {
     // if (!isOpen) return null;
 
-    axios.defaults.baseURL = API_href;
+    axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+    // axios.defaults.baseURL = API_href;
     const { login, userSession } = useAuth()
     const formRef = useRef(null)
     const fileRef = useRef(null)

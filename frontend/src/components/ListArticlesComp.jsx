@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import ArticleComp from "./ArticleComp"
-import { API_href } from "../App.json";
 
 const ListArticlesComp = ({ articles, controller }) => {
     return (

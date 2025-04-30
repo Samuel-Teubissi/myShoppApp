@@ -90,7 +90,8 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
         queryFn: async () => {
             // console.log('endpoint', endpoint, 'searchDataForm', JSON.stringify(searchForm), 'currentPage', currentPage);
             if (!showResults || !searchDataForm) return { dataArticles: [], totalArticles: 0 }
-            axios.defaults.baseURL = API_href;
+            axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+            // axios.defaults.baseURL = API_href;
             axios.defaults.withCredentials = true;
             const response = await axios.get(`${endpoint}?${url.toString()}`, {
                 params: {

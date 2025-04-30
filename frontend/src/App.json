@@ -1,5 +1,5 @@
 {
-    "API_href": "https://myshoppapp.onrender.com",
+    "API_href": "http://localhost/MyShoppApp_Repo/backend",
     "APP_Categories": [
         "Toutes les catégories",
         "Alimentation",

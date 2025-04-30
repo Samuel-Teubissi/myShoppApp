@@ -9,7 +9,8 @@ import { Toaster, toast } from "sonner";
 
 // Création du contexte d'authentification
 const AuthContext = createContext();
-axios.defaults.baseURL = API_href;
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+// axios.defaults.baseURL = API_href;
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);

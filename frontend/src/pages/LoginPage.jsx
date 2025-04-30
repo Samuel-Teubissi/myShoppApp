@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 // import { toast, ToastContainer } from "react-toastify"
-import { API_href as reqAPI } from "../App.json";
 import InputField, { SoundNotif } from "../components/AppComp";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";

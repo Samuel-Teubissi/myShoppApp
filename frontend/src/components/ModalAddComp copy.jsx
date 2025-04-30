@@ -10,7 +10,8 @@ import axios from "axios";
 const ModalAddComp = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
-    axios.defaults.baseURL = API_href;
+    axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+    // axios.defaults.baseURL = API_href;
     const { login } = useAuth()
     const formRef = useRef(null)
     const [addFormError, setAddFormError] = useState({})

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import ReactPaginate from "react-paginate"
 import axios from "axios"
-import { API_href } from "../App.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import ListArticlesComp from "./ListArticlesComp";
 import LoaderComp from "./LoaderComp";

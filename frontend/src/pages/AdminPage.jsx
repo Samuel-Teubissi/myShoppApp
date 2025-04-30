@@ -5,9 +5,10 @@ import { Separator } from "../components/ui/separator";
 import { useAdmin } from "../hooks/useAdmin";
 import { useEffect } from "react";
 import _ from "lodash";
-import { API_href } from "../App.json";
+// import { API_href } from "../App.json";
 // import { Separator } from "@/components/ui/separator"
 
+let API_href = import.meta.env.VITE_API_URL
 const AdminPage = () => {
     const { dataUsers, dataDashboard, dataArticles } = useAdmin();
 

@@ -5,7 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "set-api-url": "node setApiUrl.js",
+    "build": "npm run set-api-url && react-scripts build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

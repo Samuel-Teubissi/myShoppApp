@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { API_href } from "../App.json";
 
-const API_BASE_URL = API_href;
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export const api = axios.create({
     baseURL: API_BASE_URL,
