@@ -55,7 +55,7 @@ const AboutPage = () => {
                 </div>
             </div>
             <div className="text-left pt-8 xl:pt-0 pb-20 sm:pr-10 flex flex-col justify-center sm:justify-start">
-                <h1 className="text-gray-600 dark:text-gray-300 px-5">Hello World, moi c'est Sam !</h1>
+                <h1 className="text-gray-600 dark:text-gray-300 px-5">Hello World, moi c'est Sam&nbsp;!</h1>
                 <div>
                     <div className="py-4 px-10">
                         Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁

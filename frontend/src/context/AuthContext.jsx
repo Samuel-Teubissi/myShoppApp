@@ -14,6 +14,7 @@ axios.defaults.baseURL = API_href;
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLogging, setIsLogging] = useState(true)
+    const [isLoggingLoad, setIsLoggingLoad] = useState(false)
     const [isRegisterLoad, setIsRegisterLoad] = useState(false)
     const [loginErrors, setLoginErrors] = useState({})
     const [registerErrors, setRegisterErrors] = useState({})
@@ -63,11 +64,13 @@ export const AuthProvider = ({ children }) => {
         // setIsAuthenticated(true);
         // `${API_href}/logged`
         setLoginErrors({})
+        setRegisterErrors({})
         checkAuth()
 
     }, [isAuthenticated]);
 
     const login = async (dataForm, redirectCallback) => {
+        setIsLoggingLoad(true)
         try {
             // `${API_href}/login`
             const res = await axios.post('/login', dataForm, { withCredentials: true })
@@ -92,9 +95,7 @@ export const AuthProvider = ({ children }) => {
             toast.error('Erreur de connexion')
             return { success: false }
         } finally {
-            // setTimeout(() => {
-            setIsLogging(false)
-            // }, 300);
+            setIsLoggingLoad(false)
         }
     }
 
@@ -160,7 +161,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            isAuthenticated, login, logout, loginErrors, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors, setLoginErrors
+            isAuthenticated, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors, setLoginErrors
         }}>
             {/* <ToastContainer position="bottom-right" autoClose={2000} /> */}
             <Toaster position="bottom-right" />

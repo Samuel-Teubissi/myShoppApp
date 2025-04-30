@@ -33,8 +33,8 @@ const RegisterPage = () => {
     return (
         <div className="ms_Main mb-16">
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
-            <div className="Main">
-                <form className="w-full px-4 mx md:w-8/12 text-gray-600 pt-16 pb-8 mt-6 rounded-xl bg-white/70 shadow-md border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitRegister}>
+            <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
+                <form className="w-full px-4 mx md:w-8/12 text-gray-600 pt-16 pb-8 rounded-xl bg-white/70 shadow-md border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitRegister}>
                     <div className="insc md:w-9/12 w-full">
                         <InputField
                             label="Numéro de téléphone :"

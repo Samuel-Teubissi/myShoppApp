@@ -10,7 +10,7 @@ const LoginPage = () => {
     const [LoginForm, setLoginForm] = useState({ number: '', password: '' })
     const navigate = useNavigate()
     const location = useLocation()
-    const { login, isLogging, loginErrors, setLoginErrors } = useAuth()
+    const { login, isLoggingLoad, loginErrors, setLoginErrors } = useAuth()
     const from = location.state?.from || '/user';
     const search = location.state?.search || '';
 
@@ -36,9 +36,9 @@ const LoginPage = () => {
     }
 
     return (
-        <div className="mb-16" id='scroll-container'>
-            <div className="Main">
-                <form className="w-[100%] md:w-8/12 text-gray-600 animO pt-24 pb-12 rounded-xl bg-white/70 shadow border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitLogin}>
+        <div className="ms_Main mb-16">
+            <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
+                <form className="w-full md:w-8/12 text-gray-600 pt-24 pb-12 rounded-xl bg-white/70 shadow border border-app-200 flex justify-center flex-wrap dark:bg-dark dark:text-dark-app-100 dark:border-dark" onSubmit={submitLogin}>
                     <div className="w-9/12">
                         <InputField
                             label="Numéro de téléphone :"
@@ -59,8 +59,8 @@ const LoginPage = () => {
                     </div>
                     <div className="text-gray-500"></div>
                     <div className="w-full mt-4 flex justify-center">
-                        <button type="submit" className={`text-white flex items-center justify-center rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out ${isLogging && " text-center text-white cursor-not-allowed"}`} disabled={isLogging}>
-                            {!isLogging
+                        <button type="submit" className={`animZ text-white flex items-center justify-center rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out ${isLoggingLoad && " text-center text-white cursor-not-allowed"}`} disabled={isLoggingLoad}>
+                            {!isLoggingLoad
                                 ? 'Connexion'
                                 : <span className="w-6 h-6 block border-4 border-app-500 border-t-transparent rounded-full animate-spin"></span>
                             }

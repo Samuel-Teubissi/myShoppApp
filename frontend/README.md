@@ -1,14 +1,5 @@
 # React + Vite
 
-# Application React + CodeIgniter 3
-
-Ce projet est une application web combinant :
-
-- 💻 **Frontend** en React (dossier `/frontend`)
-- 🔧 **Backend** en CodeIgniter 3 (dossier `/backend`)
-
-## 📁 Structure du projet
-
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
