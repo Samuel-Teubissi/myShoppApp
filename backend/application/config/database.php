@@ -81,7 +81,7 @@ $db['default'] = array(
 	// 'password' => '',
 	// 'database' => 'myshopapp',
 	// API Routes
-	'hostname' => 'sql.freedb.tec',
+	'hostname' => 'sql.freedb.tech',
 	'username' => 'freedb_samsam',
 	'password' => 'M8Yq3XEMaD8F2Z$',
 	'database' => 'freedb_myshop-app',
