@@ -25,6 +25,10 @@ module.exports = {
 					'900': '#6f205e',
 					'950': '#49093b',
 				},
+				'deg': {
+					'light': 'color-mix(in srgb, #ce39b6 10%, #fff 90%)',
+					'dark': 'color-mix(in srgb, #2c2129 60%, black 20%)'
+				},
 				'dark': {
 					DEFAULT: "color-mix(in oklab, #ce39b6 10%, #272727 90%)",
 					'div': "color-mix(in oklab, #ce39b6 60%, #272727 40%)",

@@ -37,8 +37,11 @@ const LoginPage = () => {
     return (
         <div className="ms_Main mb-16">
             <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full md:w-8/12 text-gray-600 pt-24 pb-12 rounded-xl sm:bg-white/70 md:shadow md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitLogin}>
+                <form className="w-full md:w-8/12 text-gray-600 py-12 rounded-xl sm:bg-white/70 md:shadow md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitLogin}>
                     <div className="md:w-9/12 w-full">
+                        <div className="border-8 border-transparent border-l-app bg-app/10 p-4 py-8 w-full mb-10 text-left font-medium">
+                            Des tonnes de commandes vous attendent sûrement !
+                        </div>
                         <InputField
                             label="Numéro de téléphone :"
                             type="number"
@@ -61,7 +64,7 @@ const LoginPage = () => {
                         <button type="submit" className={`animZ text-white flex items-center justify-center rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out ${isLoggingLoad && " text-center text-white cursor-not-allowed"}`} disabled={isLoggingLoad}>
                             {!isLoggingLoad
                                 ? 'Connexion'
-                                : <span className="w-6 h-6 block border-4 border-app-500 border-t-transparent rounded-full animate-spin"></span>
+                                : <span className="w-6 h-6 block border-4 border-app-500/50 border-t-transparent rounded-full animate-spin"></span>
                             }
                         </button>
                     </div>

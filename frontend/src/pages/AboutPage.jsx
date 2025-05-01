@@ -60,7 +60,7 @@ const AboutPage = () => {
                     <div className="py-4 px-10">
                         Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁
                     </div>
-                    <div className="rounded-xl overflow-hidden mt-4 mx-auto" data-aos='fade-up' data-aos-delay={0} data-aos-offset={100}>
+                    <div className="rounded-xl overflow-hidden mt-4 mx-auto max-w-full" data-aos='fade-up' data-aos-delay={0} data-aos-offset={100}>
                         <div className="bg-gray-800 px-3 py-2 rounded-t-lg flex gap-2 items-center">
                             <span className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-300 cursor-pointer"></span>
                             <span className="w-3 h-3 bg-yellow-400 rounded-full hover:bg-yellow-200 cursor-pointer"></span>
@@ -77,7 +77,7 @@ const AboutPage = () => {
                     </div>
                     <div className="mt-6 px-10">
                         <h2 className="text-gray-600 dark:text-gray-300">À propos de moi</h2>
-                        <div className="mt-2 text-justify">
+                        <div className="mt-2">
                             Je suis <span className="highlight">Teubissi Samuel</span>, <span className="highlight">développeur web fullstack</span> et <span className="highlight">dinfographiste passionné</span>, spécialisé dans la création de sites web modernes et l'optimisation d'expériences visuelles.🌐<br />
                             J'utilise des technologies comme <span className="highlight">React.js</span> et <span className="highlight">Tailwind CSS</span> pour développer des interfaces dynamiques et performantes. <br />
                             En parallèle, j'apporte mon expertise en <span className="highlight">infographie</span> pour concevoir des visuels attrayants, que ce soit pour des sites web ou des campagnes promotionnelles. <br />
@@ -134,7 +134,7 @@ const AboutPage = () => {
             </div>
             <div className="mt-10">
                 <h2 className="p-4">Technologies Utilisées ou Acquises <span className="text-base">(📌: En cours)</span></h2>
-                <div className="flex justify-center gap-2 lg:gap-6 flex-wrap">
+                <div className="grid grid-cols-3 sm:flex justify-center gap-2 lg:gap-6 flex-wrap">
                     {technoImgs.map((techno, key) => (
                         <div key={key} className="bg-gray-800 rounded-xl p-4 flex justify-center items-center relative" data-aos='fade-up' data-aos-duration={300} data-aos-delay={50 * (key + 1)} data-aos-easing='ease-in-back'>
                             <img src={techno.icon} className="w-20 h-20" title={techno.title} />

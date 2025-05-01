@@ -76,15 +76,15 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	// Default Routes
-	// 'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'myshopapp',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'myshopapp',
 	// API Routes
-	'hostname' => 'sql.freedb.tech',
-	'username' => 'freedb_samsam',
-	'password' => 'M8Yq3XEMaD8F2Z$',
-	'database' => 'freedb_myshop-app',
+	// 'hostname' => 'sql.freedb.tech',
+	// 'username' => 'freedb_samsam',
+	// 'password' => 'M8Yq3XEMaD8F2Z$',
+	// 'database' => 'freedb_myshop-app',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

@@ -11,6 +11,8 @@
 # Dossier de build React
 /frontend/build/
 
+/CodeIgniter-3.1.13/
+
 # Cache et logs
 *.log
 .DS_Store

@@ -156,7 +156,7 @@ export const SelectField_categories = ({ onChange, error, classData, valueProp }
                         onChange={onChange} error={error} name='category' id='category' classData={classData} valueProp={valueProp} />
                 </span>
                 <i className="file fa fa-upload"></i>
-                {error && <div className="bg-red-400 text-white border-l-2 border-red-600 py-1 px-3 mx-5 text-sm text-leftt-1">{error}</div>}
+                {error && <div className="input-alert">{error}</div>}
             </div>
         </>
     );

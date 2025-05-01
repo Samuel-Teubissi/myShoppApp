@@ -157,6 +157,10 @@
         @apply animate-ping
     }
 
+    .cart-content div span {
+        @apply text-lg md:text-base tracking-wide md:tracking-normal capitalize
+    }
+
 
     /* .dark .pagination a {
         @apply bg-
@@ -183,7 +187,7 @@
     }
 
     input {
-        @apply outline-1 focus:outline-app-900 dark:focus:outline-app-500 bg-app-600/5 dark:bg-app-300/30 dark:text-white
+        @apply outline-1 focus:outline-app-900 dark:focus:outline-app-500 bg-app-050 dark:bg-white dark:text-black/70
     }
 
     select {
@@ -199,7 +203,7 @@
     }
 
     .ms_Main {
-        @apply mt-16 sm:mt-[78px]
+        @apply mt-16 sm:mt-[80px]
     }
 
     .main-about {
@@ -211,6 +215,6 @@
     }
 
     .input-alert {
-        @apply bg-red-400 text-white border-l-2 border-red-600 py-1 px-3 mx-6 text-sm text-left mt-1;
+        @apply bg-red-500 text-white border-l-2 border-red-600 py-2 px-3 mx-6 text-sm text-left mt-1;
     }
 }

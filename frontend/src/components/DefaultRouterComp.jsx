@@ -123,8 +123,8 @@ export default function DefaultRouterComp() {
 
     return <>
         <ScrollToTop />
-        <header className="fixed w-full h-auto top-0 left-0 z-50 pointer-events-none shadow-md">
-            <nav className="py-2 md:py-3 pl-3">
+        <header className="fixed w-full h-auto top-0 left-0 z-50 pointer-events-none">
+            <nav className="py-3 md:py-3 pl-5">
                 <div className="animT pointer-events-auto">
                     <NavLink to='/' className='flex items-center'>
                         <img src={LogoLink} alt="Logo MyShopAPP" className="" width={50} height={50} />
@@ -181,8 +181,8 @@ export default function DefaultRouterComp() {
                 {/* </div> */}
             </nav>
         </header >
-        <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-500 ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-            <div className={`modal-Sidebar w-full min-w-[25%] sm:w-96 transition-transform duration-500 ease-in-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
+        <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-300 ease-in ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+            <div className={`modal-Sidebar w-4/5 min-w-[25%] sm:w-96 transition-transform duration-500 ease ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
                 <XIcon className="absolute top-7 right-5 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
                 <div className="">
                     <NavLink to='/' className='flex items-center' onClick={handleCloseSidebar}>

@@ -56,7 +56,7 @@ const ArticleComp = ({ art, articleRef, controller }) => {
     }, []);
 
     return (
-        <div className="border border-app-200 shadow-md w-80 bg-app-050 rounded-xl overflow-hidden dark:bg-dark dark:text-white/90 dark:border-none" ref={articleRef} data-aos='fade-right'>
+        <div className="border border-app-200 shadow-md w-80 bg-app-050 rounded-xl overflow-hidden dark:bg-app-600/5 dark:text-white/90 dark:border-none" ref={articleRef} data-aos='fade-right'>
             <div className="w-full h-60 mx-auto rounded-br-[60px] relative">
                 {/* <img src={imgLink} alt="Image de l'article" className="w-full h-full object-cover rounded-full border-2 border-gray-300" /> */}
                 <img src={imgLink} alt="Image de l'article" className="w-full h-full object-cover" />

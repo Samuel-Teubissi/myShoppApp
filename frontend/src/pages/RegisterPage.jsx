@@ -32,9 +32,12 @@ const RegisterPage = () => {
     return (
         <div className="ms_Main mb-16">
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
-            <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full px-4 mx md:w-8/12 text-gray-600 pt-16 pb-8 rounded-xl sm:bg-white/70 md:shadow-md md:border border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitRegister}>
+            <div className="max-w-full h-min mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
+                <form className="w-full h-min mt-2 px-4 mx md:w-8/12 text-gray-600 py-8 rounded-xl sm:bg-white/70 md:shadow-md md:border border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitRegister}>
                     <div className="insc md:w-9/12 w-full">
+                        <div className="border-8 border-transparent border-l-app bg-app/10 p-4 py-8 w-full mb-10 text-left font-medium">
+                            Rejoignez la grande communauté de personnes qui perçoivent de gros revenus en une année !
+                        </div>
                         <InputField
                             label="Numéro de téléphone :"
                             type="number"
@@ -71,7 +74,7 @@ const RegisterPage = () => {
                         <button type="submit" className={`animZ flex items-center justify-center text-white rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out animZ`} disabled={isRegisterLoad}>
                             {!isRegisterLoad
                                 ? 'Inscription'
-                                : <span className="w-6 h-6 block border-4 border-app-500 border-t-transparent rounded-full animate-spin"></span>
+                                : <span className="w-6 h-6 block border-4 border-app-500/50 border-t-transparent rounded-full animate-spin"></span>
                             }
                         </button>
                     </div>
