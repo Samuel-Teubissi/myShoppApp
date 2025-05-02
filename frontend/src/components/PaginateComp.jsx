@@ -34,14 +34,14 @@ export default function PaginateComponent({ defaultQuery, controller }) {
 
     if (defaultQuery?.error) { console.log(defaultQuery?.error) }
     if (defaultQuery?.isLoading) return <div className="mt-1"><LoaderSkeletonArticle /></div>
-    if (defaultQuery?.isError) return <ErrorComp message="Erreur de récupération des articles de la page d'acceuil." />
+    if (defaultQuery?.isError) return <ErrorComp message="Petit soucis technique avec la base de données." />
     if (!defaultQuery.data?.articlesData || defaultQuery.data?.total_pages < 1) return <ErrorComp type="nothing" message="Vous n'avez aucun article exposé sur notre site !" />
     return (
         <>
-            <div className="">
-                {/* <h2 className="text-3xl dark:border-app-400/30 mx-auto cursor-default mt-24 mb-5 dark:text-dark-app-50">Articles En Vente</h2> */}
-            </div>
-            <div id='scroll-container'></div>
+            {/* <div className=""> */}
+            {/* <h2 className="text-3xl dark:border-app-400/30 mx-auto cursor-default mt-24 mb-5 dark:text-dark-app-50">Articles En Vente</h2> */}
+            {/* </div> */}
+            {/* <div id='scroll-container'></div> */}
             <ListArticlesComp articles={defaultQuery.data?.articlesData || []} controller={controller} />
             <div id="endSearch" >
                 <ReactPaginate

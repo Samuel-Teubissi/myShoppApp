@@ -74,6 +74,10 @@ nav .nav-link .active button {
   background-color: #e9bed4b7;
 }
 
+.dark nav .nav-link .active button {
+  background-color: #e9bed418;
+}
+
 nav .nav-link li>button:hover,
 nav .nav-link li>a:hover {
   background-color: var(--color_bg-nav2);
@@ -129,4 +133,12 @@ nav .--nav_submenu>li {
   /* nav .nav-link .--nav_submenu li>span {
     display: block;
   } */
+}
+
+@media (max-width: 640px) {
+
+  nav .nav-link li>button,
+  nav .nav-link li>a {
+    padding: 0.95rem 1.15rem;
+  }
 }

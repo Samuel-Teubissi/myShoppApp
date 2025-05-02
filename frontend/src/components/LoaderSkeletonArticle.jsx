@@ -4,7 +4,7 @@ const LoaderSkeletonArticle = () => {
     return (
         <div className="flex flex-wrap justify-center w-full gap-2 pb-16">
             {[...Array(3)].map((_, key) => (
-                <div key={key} className="border border-app-200 dark:border-app-950 w-80 rounded-xl overflow-hidden">
+                <div key={key} className="border border-app-200 dark:border-dark w-80 rounded-xl overflow-hidden">
                     <div className="w-full h-60 mx-auto bg-gray-500 animate-pulse">
                         <div className="">
                         </div>

@@ -507,3 +507,310 @@ ERROR - 2025-05-02 06:13:50 --> Severity: error --> Exception: Too few arguments
 ERROR - 2025-05-02 06:14:02 --> Severity: error --> Exception: Too few arguments to function articleController::API_Trader_Article_post(), 1 passed in C:\xampp\htdocs\MyShoppApp_Repo\codeigniter-rest-api-master\application\libraries\REST_Controller.php on line 739 and exactly 2 expected C:\xampp\htdocs\MyShoppApp_Repo\codeigniter-rest-api-master\application\controllers\api\articleController.php 133
 ERROR - 2025-05-02 06:15:01 --> Severity: error --> Exception: Call to undefined method articleModel::API_get_Categories() C:\xampp\htdocs\MyShoppApp_Repo\codeigniter-rest-api-master\application\controllers\api\articleController.php 140
 ERROR - 2025-05-02 06:15:22 --> Severity: error --> Exception: Call to undefined method articleModel::API_get_Categories() C:\xampp\htdocs\MyShoppApp_Repo\codeigniter-rest-api-master\application\controllers\api\articleController.php 140
+ERROR - 2025-05-02 16:45:25 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:25 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:25 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:26 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:26 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:26 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:27 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:27 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:27 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:28 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:28 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:28 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:29 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:29 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:29 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:31 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:31 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:31 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:32 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:32 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:32 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:33 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:33 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:33 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:34 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:34 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:34 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:35 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:35 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:35 --> Unable to connect to the database
+ERROR - 2025-05-02 16:45:36 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:36 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:45:36 --> Unable to connect to the database
+ERROR - 2025-05-02 16:48:37 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:37 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:37 --> Unable to connect to the database
+ERROR - 2025-05-02 16:48:38 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:38 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:38 --> Unable to connect to the database
+ERROR - 2025-05-02 16:48:39 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:39 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:39 --> Unable to connect to the database
+ERROR - 2025-05-02 16:48:40 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:40 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:40 --> Unable to connect to the database
+ERROR - 2025-05-02 16:48:41 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:41 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:41 --> Unable to connect to the database
+ERROR - 2025-05-02 16:48:42 --> Severity: Warning --> mysqli::real_connect(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:42 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:48:42 --> Unable to connect to the database
+ERROR - 2025-05-02 16:50:49 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:50:49 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:50:49 --> Unable to connect to the database
+ERROR - 2025-05-02 16:50:49 --> Unable to connect to the database
+ERROR - 2025-05-02 16:50:59 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:50:59 --> Unable to connect to the database
+ERROR - 2025-05-02 16:51:09 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:51:09 --> Unable to connect to the database
+ERROR - 2025-05-02 16:51:19 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:51:19 --> Unable to connect to the database
+ERROR - 2025-05-02 16:51:20 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:51:20 --> Unable to connect to the database
+ERROR - 2025-05-02 16:56:53 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:56:53 --> Unable to connect to the database
+ERROR - 2025-05-02 16:57:03 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:57:03 --> Unable to connect to the database
+ERROR - 2025-05-02 16:57:13 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:57:13 --> Unable to connect to the database
+ERROR - 2025-05-02 16:57:23 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:57:23 --> Unable to connect to the database
+ERROR - 2025-05-02 16:57:33 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:57:33 --> Unable to connect to the database
+ERROR - 2025-05-02 16:57:43 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 16:57:43 --> Unable to connect to the database
+ERROR - 2025-05-02 17:16:14 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:16:14 --> Unable to connect to the database
+ERROR - 2025-05-02 17:16:14 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:16:14 --> Unable to connect to the database
+ERROR - 2025-05-02 17:16:24 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:16:24 --> Unable to connect to the database
+ERROR - 2025-05-02 17:16:34 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:16:34 --> Unable to connect to the database
+ERROR - 2025-05-02 17:16:44 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:16:44 --> Unable to connect to the database
+ERROR - 2025-05-02 17:16:55 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:16:55 --> Unable to connect to the database
+ERROR - 2025-05-02 17:18:47 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:18:47 --> Unable to connect to the database
+ERROR - 2025-05-02 17:18:57 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:18:57 --> Unable to connect to the database
+ERROR - 2025-05-02 17:19:07 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:19:07 --> Unable to connect to the database
+ERROR - 2025-05-02 17:19:17 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:19:17 --> Unable to connect to the database
+ERROR - 2025-05-02 17:19:27 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:19:27 --> Unable to connect to the database
+ERROR - 2025-05-02 17:19:38 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:19:38 --> Unable to connect to the database
+ERROR - 2025-05-02 17:36:57 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:36:57 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:36:57 --> Unable to connect to the database
+ERROR - 2025-05-02 17:36:57 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:07 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:07 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:17 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:17 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:17 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:17 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:27 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:27 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:37 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:37 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:47 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:47 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:48 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:48 --> Unable to connect to the database
+ERROR - 2025-05-02 17:37:57 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:37:57 --> Unable to connect to the database
+ERROR - 2025-05-02 17:38:13 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:38:13 --> Unable to connect to the database
+ERROR - 2025-05-02 17:38:23 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:38:23 --> Unable to connect to the database
+ERROR - 2025-05-02 17:38:34 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:38:34 --> Unable to connect to the database
+ERROR - 2025-05-02 17:38:44 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:38:44 --> Unable to connect to the database
+ERROR - 2025-05-02 17:38:54 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:38:54 --> Unable to connect to the database
+ERROR - 2025-05-02 17:39:04 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:39:04 --> Unable to connect to the database
+ERROR - 2025-05-02 17:39:14 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:39:14 --> Unable to connect to the database
+ERROR - 2025-05-02 17:39:24 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:39:24 --> Unable to connect to the database
+ERROR - 2025-05-02 17:39:34 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:39:34 --> Unable to connect to the database
+ERROR - 2025-05-02 17:39:44 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:39:44 --> Unable to connect to the database
+ERROR - 2025-05-02 17:39:54 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:39:54 --> Unable to connect to the database
+ERROR - 2025-05-02 17:40:04 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:40:04 --> Unable to connect to the database
+ERROR - 2025-05-02 17:40:14 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:40:14 --> Unable to connect to the database
+ERROR - 2025-05-02 17:40:24 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-02 17:40:24 --> Unable to connect to the database
+ERROR - 2025-05-02 17:51:29 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 17:51:29 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 17:51:29 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 17:51:29 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 17:51:29 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 17:51:34 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 18:37:30 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 18:37:30 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 18:37:30 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 18:37:33 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:05:37 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:05:37 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:05:37 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:05:37 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:05:37 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:05:39 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:07:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:07:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:07:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:07:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:07:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:07:16 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:28:30 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:28:33 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:28:45 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:28:45 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:28:45 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:28:46 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:05 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:11 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:36 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:40 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:40 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:40 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:40 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:40 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:42 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:42 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:50 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:51 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:54 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:54 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:54 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:54 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:54 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:55 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:55 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:29:55 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:11 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:11 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:11 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:13 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:13 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:14 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:15 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:30:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:25 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:25 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:25 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:25 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:26 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:34 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:34 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:34 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:31:35 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:09 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:32 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:35 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:35 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:35 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:35 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:35 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:35 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:38 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:32:39 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:33:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:33:27 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:33:39 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:33:39 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:33:39 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 19:33:40 --> Severity: error --> Exception: Call to undefined function pg_connect() C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 21:31:50 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 21:31:50 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 21:31:50 --> Unable to connect to the database
+ERROR - 2025-05-02 21:31:50 --> Unable to connect to the database
+ERROR - 2025-05-02 21:31:50 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 21:31:50 --> Unable to connect to the database
+ERROR - 2025-05-02 21:31:50 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 21:31:50 --> Unable to connect to the database
+ERROR - 2025-05-02 21:31:50 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 21:31:50 --> Unable to connect to the database
+ERROR - 2025-05-02 21:32:11 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 21:32:11 --> Unable to connect to the database
+ERROR - 2025-05-02 22:23:05 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:23:05 --> Unable to connect to the database
+ERROR - 2025-05-02 22:23:09 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:23:09 --> Unable to connect to the database
+ERROR - 2025-05-02 22:23:59 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:23:59 --> Unable to connect to the database
+ERROR - 2025-05-02 22:24:03 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:24:03 --> Unable to connect to the database
+ERROR - 2025-05-02 22:33:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:33:14 --> Unable to connect to the database
+ERROR - 2025-05-02 22:33:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:33:14 --> Unable to connect to the database
+ERROR - 2025-05-02 22:33:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:33:14 --> Unable to connect to the database
+ERROR - 2025-05-02 22:33:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:33:14 --> Unable to connect to the database
+ERROR - 2025-05-02 22:33:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:33:14 --> Unable to connect to the database
+ERROR - 2025-05-02 22:33:18 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:33:18 --> Unable to connect to the database
+ERROR - 2025-05-02 22:36:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:36:36 --> Unable to connect to the database
+ERROR - 2025-05-02 22:36:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:36:36 --> Unable to connect to the database
+ERROR - 2025-05-02 22:36:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:36:36 --> Unable to connect to the database
+ERROR - 2025-05-02 22:36:37 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:36:37 --> Unable to connect to the database
+ERROR - 2025-05-02 22:38:17 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:38:17 --> Unable to connect to the database
+ERROR - 2025-05-02 22:38:19 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:38:19 --> Unable to connect to the database
+ERROR - 2025-05-02 22:38:22 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-02 22:38:22 --> Unable to connect to the database
+ERROR - 2025-05-02 22:40:17 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:40:17 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:41:24 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:41:24 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:41:24 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:43:22 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:43:22 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:43:22 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:47:56 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:47:56 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:47:56 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:49:08 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:49:08 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-02 22:49:08 --> Could not find the language line "form_validation_required"

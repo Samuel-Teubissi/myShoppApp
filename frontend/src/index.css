@@ -161,6 +161,10 @@
         @apply text-lg md:text-base tracking-wide md:tracking-normal capitalize font-light md:font-normal cursor-default
     }
 
+    html header>nav {
+        @apply py-2 md:py-3 pl-5
+    }
+
 
     /* .dark .pagination a {
         @apply bg-
@@ -211,10 +215,10 @@
     }
 
     .main-search {
-        height: calc(100vh - 210px);
+        height: calc(100vh - 170px);
     }
 
     .input-alert {
-        @apply dark:bg-red-500 bg-red-500/90 text-white border-l-2 border-red-600 py-2 px-3 mx-6 text-sm text-left mt-1;
+        @apply dark:bg-red-500 bg-red-500/90 text-white border-l-2 border-red-600 py-2 px-3 mx-6 text-center text-sm text-left mt-1 rounded-br-3xl rounded-bl-3xl;
     }
 }

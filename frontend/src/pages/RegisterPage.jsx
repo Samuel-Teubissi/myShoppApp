@@ -36,10 +36,10 @@ const RegisterPage = () => {
         <div className="ms_Main mb-16">
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
             <div className="max-w-full h-min mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full h-min mt-2 px-4 mx md:w-8/12 text-gray-600 py-8 rounded-xl sm:bg-white/70 md:shadow-md md:border border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitRegister}>
+                <form className="w-full h-min mt-2 px-4 mx md:w-8/12 text-gray-600 py-8 rounded-xl sm:bg-white/70 md:border border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitRegister}>
                     <div className="insc md:w-9/12 w-full">
                         <div className="border-8 border-transparent border-l-app bg-app/10 p-4 py-8 w-full mb-10 text-left font-medium">
-                            <strong>Rejoignez notre grande communauté de vendeurs</strong>. Devenez un businessman prospère dès aujourd'hui !
+                            <strong className="uppercase">Rejoignez notre grande communauté de vendeurs</strong>. Devenez un businessman prospère dès aujourd'hui !
                         </div>
                         <InputField
                             label="Numéro de téléphone :"

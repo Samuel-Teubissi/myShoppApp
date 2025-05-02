@@ -648,7 +648,7 @@ span.red {
 .banner_home {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(39, 18, 35, 0.9)), url('../img/default_banner_home.jpg') center center fixed no-repeat;
     background-size: cover;
-    height: calc(100vh - 75px);
+    height: calc(100vh - 60px);
 }
 
 .banner_trader {
@@ -761,11 +761,13 @@ footer>div {
 .modal-Sidebar ul li a,
 .modal-Sidebar ul li button {
     display: flex;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 100%;
     gap: 0.5rem;
     padding: 10px 3rem;
     margin: 0.25rem 0;
+    box-shadow: none;
+    transition: ease-in-out .4s all;
 }
 
 .modal-Sidebar ul li a:hover,

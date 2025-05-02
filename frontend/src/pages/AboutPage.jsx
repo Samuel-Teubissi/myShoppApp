@@ -139,7 +139,7 @@ const AboutPage = () => {
                 <h2 className="p-4">Technologies Utilisées ou Acquises <span className="text-base">(📌: En cours)</span></h2>
                 <div className="grid grid-cols-3 sm:flex justify-center gap-2 lg:gap-6 flex-wrap">
                     {technoImgs.map((techno, key) => (
-                        <div key={key} className="bg-gray-800 rounded-xl p-4 flex justify-center items-center relative" data-aos='fade-up' data-aos-duration={300} data-aos-delay={50 * (key + 1)} data-aos-easing='ease-in-back'>
+                        <div key={key} className="bg-gray-800 rounded-xl p-4 flex justify-center items-center relative transform hover:scale-105" data-aos='fade-up' data-aos-duration={300} data-aos-delay={50 * (key + 1)} data-aos-easing='ease-in-back'>
                             <img src={techno.icon} className="w-20 h-20" title={techno.title} />
                             {techno.now && <span className="absolute top-0 left-1">📌</span>}
                         </div>
@@ -160,7 +160,7 @@ const AboutPage = () => {
                     <div className="text-gray-400 text-sm">Martin Luther King</div>
                 </div>
                 <div className="order-1 sm:order-2">
-                    <img src={linkMartin} alt="Author" className="max-w-full rounded object-cover" width={230} height={230} data-aos='fade-up' data-aos-duration={600} />
+                    <img src={linkMartin} alt="Author" className="max-w-full rounded object-cover hover-rotate-y" width={230} height={230} data-aos='fade-up' data-aos-duration={600} />
                 </div>
             </div>
             <div className="mt-10 about-block">

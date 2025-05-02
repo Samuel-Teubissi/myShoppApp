@@ -40,7 +40,7 @@ const LoginPage = () => {
     return (
         <div className="ms_Main mb-16">
             <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full md:w-8/12 text-gray-600 py-12 rounded-xl sm:bg-white/70 md:shadow md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitLogin}>
+                <form className="w-full md:w-8/12 text-gray-600 py-12 rounded-xl sm:bg-white/70 md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitLogin}>
                     <div className="md:w-9/12 w-full">
                         <div className="border-8 border-transparent border-l-app bg-app/10 p-4 py-8 w-full mb-10 text-left font-medium">
                             <strong className="uppercase">Connectez vous vite !</strong> Des tonnes de commandes vous attendent sûrement.

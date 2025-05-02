@@ -76,17 +76,24 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	// Default Routes
-	// 'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'myshopapp',
-	// API Routes
-	'hostname' => 'sql.freedb.tech',
-	'username' => 'freedb_samsam',
-	'password' => 'M8Yq3XEMaD8F2Z$',
-	'database' => 'freedb_myshop-app',
-
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'myshopapp',
 	'dbdriver' => 'mysqli',
+	// API Routes
+	// 'hostname' => 'sql.freedb.tech',
+	// 'username' => 'freedb_samsam',
+	// 'password' => 'M8Yq3XEMaD8F2Z$',
+	// 'database' => 'freedb_myshop-app',
+	// 'dbdriver' => 'mysqli',
+	// API Routes
+	// 'hostname' => 'dpg-d0ad2q2dbo4c73ec4vn0-a.oregon-postgres.render.com',
+	// 'username' => 'my_shopp_app_user',
+	// 'password' => 'rWHgHGHNrzBJtqgGRK2bufWCJ1h8wMkR',
+	// 'database' => 'my_shopp_app',
+	// 'dbdriver' => 'postgre',
+
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
