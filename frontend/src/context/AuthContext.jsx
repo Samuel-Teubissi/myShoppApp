@@ -42,7 +42,8 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const checkSess = await api.get("/logged")
+            // const checkSess = await api.get("/logged")
+            const checkSess = await axios.get('/logged', { withCredentials: true })
             if (checkSess.data.status === 'success') {
                 // console.log(checkSess.data.dataUser);
                 setUserSession(checkSess.data.dataUser)
@@ -74,7 +75,6 @@ export const AuthProvider = ({ children }) => {
     const login = async (dataForm, redirectCallback) => {
         setIsLoggingLoad(true)
         try {
-            // `${API_href}/login`
             const res = await axios.post('/login', dataForm, { withCredentials: true })
             if (res.data.status === 'success') {
                 SoundNotif()
@@ -86,7 +86,6 @@ export const AuthProvider = ({ children }) => {
                     return { success: true }
                 }, 1000);
             } else {
-                console.log('res.data.errors', res.data.errors);
                 SoundNotif()
                 toast.error('Remplissez correctement tous les champs', { description: 'Erreur de remplissage', duration: 3000 })
                 setLoginErrors(res.data.errors || {})

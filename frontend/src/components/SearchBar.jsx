@@ -12,6 +12,7 @@ import { useAuth } from "../context/AuthContext"
 import ErrorComp from "./ErrorComp"
 import { DeleteIcon, RecycleIcon, SearchIcon, XIcon } from "lucide-react"
 import LoaderSkeletonArticle from "./LoaderSkeletonArticle"
+import useShowSearchBar from "../hooks/useShowSearchBar"
 
 
 const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." }) => {
@@ -19,12 +20,14 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
     const location = useLocation();
     const resultsRef = useRef(null);
     const { userSession } = useAuth()
+    const showSearchBar = useShowSearchBar((s) => s.showSearchBar)
+    const resetShowSearchBar = useShowSearchBar((s) => s.resetShowBar)
 
     // useScrollAfterSearch(resultsRef, !!searchQuery)
 
     // Récupération des paramètres de l'URL
     const searchParams = new URLSearchParams(location.search);
-    let cancelSearch = searchParams.size > 1
+    let cancelSearch = searchParams.size > 0
     // console.log('cancelSearch', cancelSearch);
 
 
@@ -56,6 +59,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
         if (searchValues.search_article) params.set('search_article', searchValues.search_article)
         if (searchValues.search_categ) params.set('search_categ', searchValues.search_categ)
         // Mise à jour de l'URL avec les nouveaux paramètres
+        resetShowSearchBar()
         navigate({
             pathname: location.pathname,
             search: params.toString()
@@ -63,7 +67,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
     }
     // Fonction pour effacer la recherche
     const clearSearch = () => {
-        setSearchValues({ search_article: '', search_categ: '' });
+        setSearchValues({ search_article: '', search_categ: '', page: 1 });
         navigate({
             pathname: location.pathname,
             search: ''
@@ -87,7 +91,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
     return (
         <>
             {/* pt-12 sm:max-w-[90%] */}
-            <form id="container-search" onSubmit={handleSubmitSearch} className="pt-3 pb-3 mx-auto flex flex-col gap-2 lg:flex-row items-center justify-center space-y-2 md:space-y-0 w-full bg-deg-light dark:bg-deg-dark fixed top-[80px] left-0 z-10 backdrop-blur-[60px] overflow-hidden">
+            <form id="container-search" onSubmit={handleSubmitSearch} className={`pt-3 pb-3 mx-auto flex flex-col gap-2 lg:flex-row items-center justify-center space-y-2 md:space-y-0 w-full bg-deg-light dark:bg-deg-dark fixed top-[80px] left-0 z-10 backdrop-blur-[60px] overflow-hidden transition-transform duration-500 ease ${showSearchBar ? 'translate-y-0' : '-translate-y-full'}`} >
                 <div className="dark:text-white/90 max-w-[90%] flex flex-col xl:flex-row gap-1 items-center justify-center mt-2 mx-auto sm:m-0 order-2 lg:order-1">
                     <span className="text-black/70 dark:text-white/90 font-semibold hidden">Trier les résultats par :</span>
                     <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-xl border border-app-300/70 xl:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
@@ -108,7 +112,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                     )}
                 </div>
             </form>
-            <div className=" w-full flex flex-col items-center h-full mt-56 lg:mt-40" ref={resultsRef}>
+            <div className=" w-full flex flex-col items-center h-full pt-4" ref={resultsRef}>
                 {searchQuery.isLoading
                     ? <LoaderSkeletonArticle />
                     : hasSearchParams ? (<>

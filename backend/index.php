@@ -1,4 +1,6 @@
 <?php
+// file_put_contents(__DIR__ . '/cors_triggered.log', date('Y-m-d H:i:s') . " - index.php triggered\n", FILE_APPEND);
+
 /**
  * CodeIgniter
  *
@@ -110,7 +112,7 @@ switch (ENVIRONMENT)
  * use an absolute (full) server path.
  * For more info please see the user guide:
  *
- * https://codeigniter.com/userguide3/general/managing_apps.html
+ * https://codeigniter.com/user_guide/general/managing_apps.html
  *
  * NO TRAILING SLASH!
  */
@@ -313,6 +315,3 @@ switch (ENVIRONMENT)
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
-
-?>
-

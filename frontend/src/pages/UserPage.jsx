@@ -35,7 +35,7 @@ const UserPage = () => {
         <div id='scroll-container'>
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
             <div className="">
-                <div className="pt-40 text-white pb-1 bg-red-500 w-full banner_trader text-center">
+                <div className="pt-16 text-white pb-1 bg-red-500 w-full banner_trader text-center">
                     <h1 className="mb-2">Bienvenue {userSession?.user_name} !</h1>
                     <div className="text-xl xl:text-3xl font-semibold">Votre numéro est le +237 {userSession?.user_number}</div>
                     <div className="m-4 p-1 xl:px-5 py-4">

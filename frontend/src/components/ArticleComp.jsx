@@ -19,7 +19,7 @@ import 'aos/dist/aos.css';
 
 const ArticleComp = ({ art, articleRef, controller }) => {
 
-    const imgLink = import.meta.env.VITE_API_URL + '/assets/img/articles/' + art.file_name
+    const imgLink = import.meta.env.VITE_IMG_URL + '/assets/img/articles/' + art.file_name
     // const imgLink = API_href + '/assets/img/articles/' + art.file_name
     // const imgLink = `${import.meta.env.VITE_PUBLIC_URL}/images/articles/${art.file_name}`;
     const artID = art.id_articles

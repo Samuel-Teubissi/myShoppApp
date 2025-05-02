@@ -85,7 +85,6 @@ $db['default'] = array(
 	// 'username' => 'freedb_samsam',
 	// 'password' => 'M8Yq3XEMaD8F2Z$',
 	// 'database' => 'freedb_myshop-app',
-
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

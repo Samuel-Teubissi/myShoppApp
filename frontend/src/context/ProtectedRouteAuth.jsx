@@ -31,7 +31,7 @@ const ProtectedRouteAuth = ({ children, allowedRoles }) => {
     if (!isAuthenticated) {
         // Pas connecté → vers login
         // state={{ from: location }}
-        // return <Navigate to="/login" replace state={{ from: from, search: search }} />
+        return <Navigate to="/login" replace state={{ from: from, search: search }} />
     }
     // Si des rôles sont requis, vérifier si l'utilisateur a le bon rôle
     // if (allowedRoles) {

@@ -12,6 +12,7 @@
 /frontend/build/
 
 /CodeIgniter-3.1.13/
+/backend old/
 
 # Cache et logs
 *.log

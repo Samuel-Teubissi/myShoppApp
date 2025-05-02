@@ -9,6 +9,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNotifications } from "../hooks/useNotifications old";
 import { useNotificationsStore } from "../hooks/useNotifications";
 import { queryClient } from "../main";
+import axios from "axios";
 
 export const EditArticleForm = ({ id, onClose }) => {
     const [article, setArticle] = useState({ name: '' });
@@ -19,6 +20,7 @@ export const EditArticleForm = ({ id, onClose }) => {
     // const { createNotification } = useNotifications(userSession.user_id)
     const createNotification = useNotificationsStore((s) => s.createNotification)
     const fetchNotifications = useNotificationsStore((s) => s.fetchNotifications)
+    axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
     // useQuery({
     //     queryKey: ['post', id],
@@ -46,8 +48,11 @@ export const EditArticleForm = ({ id, onClose }) => {
         mutationFn: async (e) => {
             e.preventDefault()
             const editData = new FormData(e.target)
+            // editData.append('user_id', )
+            editData.append('user_id', userSession.user_id)
             // const updateData = await updateArticle({ id, editData })
-            const response = await api.post(`/article/update/${id}`, editData)
+            const response = await api.post(`/article/${id}`, editData)
+            // const response = await axios.post(`/article/${id}`, editData, { withCredentials: true })
             return response.data
         },
         onSuccess: async (response) => {

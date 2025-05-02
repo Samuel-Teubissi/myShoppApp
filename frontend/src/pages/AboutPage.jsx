@@ -21,6 +21,9 @@ import { SiWhatsapp, SiGmail, SiGithub } from 'react-icons/si'
 // import { SiReact, SiTailwindcss, SiPhp, SiCss3, SiMysql } from 'react-icons/si'
 
 const AboutPage = () => {
+    useEffect(() => {
+        document.title = "Mon portfolio | MyShop App"
+    }, []);
     // const location = 'http://localhost/MyShopI/'
     // const link = "assets/img/tayz.jpg"
     let technoImgs = [

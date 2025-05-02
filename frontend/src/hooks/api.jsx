@@ -53,7 +53,7 @@ export const getDataArticle = async ({ id }) => {
 
 export const updateArticle = async ({ id, editData }) => {
     try {
-        const response = await api.post(`/article/update/${id}`, editData)
+        const response = await api.put(`/article/${id}`, editData)
         return response.data
     } catch (error) {
         console.log('updateArticle :' + error)

@@ -21,7 +21,7 @@ const DeleteArticleForm = ({ artId, artName, onClose }) => {
     const { mutate, isLoading: isDeleting } = useMutation({
         mutationFn: async (e) => {
             e.preventDefault()
-            const deleteData = await api.get(`/article/delete/${artId}`)
+            const deleteData = await api.delete(`/article/${artId}`)
             return deleteData.data
         },
         onSuccess: async (response) => {

@@ -48,6 +48,7 @@ const ModalCart = ({ onClose, redirect }) => {
     });
     const handleCommand = () => {
         if (isAuthenticated) {
+            // console.log({ total: totalCart, cartItems: cartItems, user: userSession.user_id });
             mutate({ total: totalCart, cartItems: cartItems, user: userSession.user_id })
             clearCart()
             clearCartCookie(userSession?.user_id)
@@ -62,7 +63,7 @@ const ModalCart = ({ onClose, redirect }) => {
     // Si contenu présent
     return <>
         <div className="w-full pr-2">
-            <div class="hidden md:grid grid-cols-6 gap-4 bg-gray-100 text-gray-700 dark:bg-app-600/20 dark:text-white/90 text-sm px-4 py-5 border-b rounded-tr-xl rounded-tl-xl">
+            <div className="hidden md:grid grid-cols-6 gap-4 bg-gray-100 text-gray-700 dark:bg-app-600/20 dark:text-white/90 text-sm px-4 py-5 border-b rounded-tr-xl rounded-tl-xl">
                 <div>Article</div>
                 <div>Prix</div>
                 <div>Quantité</div>

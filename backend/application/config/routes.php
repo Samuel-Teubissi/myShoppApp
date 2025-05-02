@@ -1,15 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// Autoriser CORS
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+// // Autoriser CORS
+// header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+// header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-// Gérer les requêtes OPTIONS (préflight)
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    exit;
-}
+// // Gérer les requêtes OPTIONS (préflight)
+// if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+//     exit;
+// }
+
 
 /*
 | -------------------------------------------------------------------------
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 |
 | Please see the user guide for complete details:
 |
-|	https://codeigniter.com/userguide3/general/routing.html
+|	https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -59,63 +60,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
-
-/**
- * Exemple de Route
- * $route['monprofil'] = 'About'; 
- * Lorsqu'on tape localhost/NomDeDossier/monprofil en coulisse ça lance le controller "About"
- */
-// $route['monprofil'] = 'About';
+$route['default_controller'] = 'welcome';
 
 /**
- * Routage d'affichage d'articles'
+ * TOJOURS AJOUTER ""api/"" AU DEBUT D'UNE ROUTE API REST
+ * Routage d'affichage d'articles' ""articles_Controller""
  */
-$route['articles/home'] = 'apiController_articles/API_Home_Articles';
-$route['articles/trader'] = 'apiController_articles/API_Trader_Articles';
-$route['articles/total_home'] = 'apiController_articles/API_count_Articles/home';
-$route['articles/total_trader'] = 'apiController_articles/API_count_Articles/trader';
-$route['articles/categories'] = 'apiController_articles/API_categories';
-$route['articles/search'] = 'apiController_articles/API_Search';
+$route['api/articles/home'] = 'api/articlesController/API_Home_Articles';
+$route['api/articles/trader'] = 'api/articlesController/API_Trader_Articles';
+$route['api/articles/total_home'] = 'api/articlesController/API_count_Articles/home';
+$route['api/articles/total_trader'] = 'api/articlesController/API_count_Articles/trader';
+$route['api/articles/categories'] = 'api/articlesController/API_categories';
+$route['api/articles/search'] = 'api/articlesController/API_Search';
 /**
- * Routage de modificcation d'articles
+ * Routage de modificcation d'articles ""article_Controller""
  */
-$route['article/add'] = 'apiController_articles/API_add_Article';
-$route['article/(:num)'] = 'apiController_articles/API_Trader_Article/$1';
-$route['article/update/(:num)'] = 'apiController_articles/API_update_Article/$1';
-$route['article/delete/(:num)'] = 'apiController_articles/API_deleteArticle/$1';
+$route['api/article/add'] = 'api/articleController/API_add_Article';
+$route['api/article/(:num)'] = 'api/articleController/API_Trader_Article/$1';
 /**
  * Routage de gestion des commandes
  */
-$route['command/add'] = 'API_controller/addCommand';
+$route['api/command/add'] = 'api/articlesController/addCommand';
 /**
  * Routage de gestion des utilisateurs
  */
-$route['login'] = 'API_controller/API_Login';
-$route['register'] = 'API_controller/API_Register';
-$route['logout'] = 'API_controller/API_logout';
-$route['logged'] = 'API_controller/API_logged';
-$route['user/become_trader'] = 'apiController_trader/API_BTrader';
+$route['api/login'] = 'api/globalController/API_Login';
+$route['api/register'] = 'api/globalController/API_Register';
+$route['api/logout'] = 'api/globalController/API_logout';
+$route['api/logged'] = 'api/globalController/API_logged';
+$route['api/user/become_trader'] = 'api/globalController/API_BTrader';
 /**
  * Routage de gestion des utilisateurs
  */
-$route['admin/all_users'] = 'apiController_admin/API_dataListUsers';
-$route['admin/dashboard'] = 'apiController_admin/API_dataDashboard';
-$route['admin/articles'] = 'apiController_admin/API_dataArticles';
+$route['api/admin/all_users'] = 'api/adminController/API_dataListUsers';
+$route['api/admin/dashboard'] = 'api/adminController/API_dataDashboard';
+$route['api/admin/articles'] = 'api/adminController/API_dataArticles';
 /**
  * Routage de gestion des notifications
  */
-// $route['notif/add'] = 'API_Controller/API_addNotif';
-$route['notifs/fetch/(:num)'] = 'API_Controller/API_getNotif/$1';
-$route['notifs/fetch/admin'] = 'API_Controller/API_getNotif/admin';
-$route['notifs/read/(:num)'] = 'API_Controller/API_readNotif/$1';
-$route['notifs/create'] = 'API_Controller/API_CreateNotif';
-
-$route['art'] = 'API_Controller/def';
-// $route['api/articles/(:num)']['PUT'] = 'api/articles/$1';
-// $route['api/articles']['POST'] = 'api/articles';
-// $route['api/articles/(:num)']['DELETE'] = 'api/articles/$1';
-
+$route['api/notifs/fetch/(:num)'] = 'api/globalController/API_getNotif/$1';
+$route['api/notifs/fetch/admin'] = 'api/globalController/API_getNotif/admin';
+$route['api/notifs/read/(:num)'] = 'api/globalController/API_readNotif/$1';
+$route['api/notifs/create'] = 'api/globalController/API_CreateNotif';

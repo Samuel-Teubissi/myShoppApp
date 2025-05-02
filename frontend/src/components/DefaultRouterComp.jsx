@@ -19,13 +19,14 @@ import Footer from "../pages/Footer"
 import { queryClient } from "../main"
 import useLinks from "../hooks/useLinks"
 import { MdLocalGroceryStore, MdLogin, MdLogout, MdPhoneAndroid, MdWbSunny } from 'react-icons/md';
-import { HomeIcon, BookIcon, Bell, ShoppingCartIcon, User, SquarePlus, SquarePlusIcon, HelpCircleIcon, UserPlus, UserMinus, MoonIcon, SunIcon, UserCheck, KeyIcon, XIcon, Sidebar } from 'lucide-react';
+import { HomeIcon, BookIcon, Bell, ShoppingCartIcon, User, SquarePlus, SquarePlusIcon, HelpCircleIcon, UserPlus, UserMinus, MoonIcon, SunIcon, UserCheck, KeyIcon, XIcon, Sidebar, SearchIcon } from 'lucide-react';
 import { setThemeApp } from "./AppComp"
 import useCloseOutsideModal from "../hooks/useCloseOutsideModal"
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import ScrollToTop from "../hooks/useScrollToTop";
 import LoaderComp from "./LoaderComp";
+import useShowSearchBar from "../hooks/useShowSearchBar";
 
 export default function DefaultRouterComp() {
     const { isAuthenticated, logout, userSession } = useAuth()
@@ -42,15 +43,18 @@ export default function DefaultRouterComp() {
     const [openSubmenu, setOpenSubmenu] = useState(false);
     const [openHeader, setOpenHeader] = useState(false);
     const SidebarRef = useRef(null)
-
     const [isLoadingPage, setIsLoadingPage] = useState(false);
     const location = useLocation();
+    const toggleShowSearchBar = useShowSearchBar((s) => s.ToggleShowBar)
+    const resetShowSearchBar = useShowSearchBar((s) => s.resetShowBar)
+    const showSearchBar = useShowSearchBar((s) => s.showSearchBar)
     // const navigation = useNavigation();
 
     // const isLoadingPage = navigation.state === "loading";
     useEffect(() => {
         // Quand l'URL change, on arrête le loading
         setIsLoadingPage(false);
+        resetShowSearchBar()
     }, [location.pathname]);
 
 
@@ -132,6 +136,11 @@ export default function DefaultRouterComp() {
                     </NavLink>
                 </div>
                 <ul className="nav-link pointer-events-auto">
+                    <li className={`btn-trans nav-search relative ${showSearchBar ? 'active' : ''}`}>
+                        <button onClick={toggleShowSearchBar} title="Effectuer une recherche">
+                            <SearchIcon className="" />
+                        </button>
+                    </li>
                     <li className="btn-trans nav-trans relative">
                         <button onClick={handleCart} title="Consulter le panier">
                             {/* <FontAwesomeIcon icon={faCartPlus} color="rgba(190, 24, 93)" /> */}

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Cors {
     public function handle() {
         // Définir la ou les origines autorisées
-        $allowed_origins = ['http://localhost:5173', 'http://localhost:5175'];
+        $allowed_origins = ['http://localhost:5173', 'http://localhost:5175', 'https://myshoppapp.onrender.com', 'https://my-shopp-app-virid.vercel.app'];
         
         // Récupérer l'origine de la requête
         $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
