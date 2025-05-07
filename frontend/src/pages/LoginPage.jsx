@@ -55,11 +55,13 @@ const LoginPage = () => {
     }, []);
 
     return (
-        <div className="ms_Main mb-16">
-            <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full md:w-8/12 text-gray-600 py-10 rounded-xl sm:bg-white/50 backdrop-blur md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none overflow-hidden shadow-md" onSubmit={LoginSubmit}>
-                    <div className="md:w-9/12 max-w-full mx-2 overflow-hidden">
-                        <div className="flex gap-4 items-center border-2 border-transparent bg-app-h text-white dark:bg-app-700/20 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center border-l-app-700 sm:border-l-transparent sm:border-t-app-700">
+        <div className="ms_Main main-about flex justify-center items-center">
+            <div className="text-center overflow-hidden relative md:w-8/12 flex justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none">
+                <div className="auth-design dsn-1"></div>
+                <div className="auth-design dsn-2"></div>
+                <form className="w-full text-gray-600 py-10 sm:bg-white/50 backdrop-blur flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 overflow-hidden px-2.5" onSubmit={LoginSubmit}>
+                    <div className="md:w-9/12 overflow-hidden">
+                        <div className="flex gap-4 items-center border-2 border-transparent bg-app-h text-white dark:bg-app-700/20 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center border-l-app-700 sm:border-l-transparent sm:border-t-app-700 rounded-3xl">
                             <div><InfoIcon className="w-14 h-14" /></div>
                             <div className="text-left flex flex-col">
                                 <strong className="uppercase">Connectez vous vite !</strong> Des tonnes de commandes vous attendent sûrement.

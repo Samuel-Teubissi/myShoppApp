@@ -10,11 +10,11 @@ const SliderAbout = () => {
 
     const handleNext = () => {
         setCurrentIndex((prev) => (prev + 1) % totalSlides);
-    };
+    }
 
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-    };
+    }
 
     // useEffect(() => {
     //     if (!slideRef.current) return;
@@ -34,7 +34,6 @@ const SliderAbout = () => {
         const marginRight = parseFloat(window.getComputedStyle(slide).marginRight);
         const slideWidth = slide.offsetWidth + marginRight;
         const offset = (wrapper.offsetWidth - slide.offsetWidth) / 2;
-        console.log(window.getComputedStyle(slide), slideWidth, offset);
 
         container.style.transform = `translateX(${offset - currentIndex * slideWidth}px)`;
     }, [currentIndex]);
@@ -65,7 +64,7 @@ const SliderAbout = () => {
         },
         {
             'h3': "🔧 Optimisations techniques",
-            'li': ["Utilisation de lodash-debounce pour limiter les appels API", "Application sécurisée grâce à une bonne pratique du traitement des données en backend", "Utilisation de React Query pour les communications serveur sans coûts supplémentaires, avec une licence open-source MIT"]
+            'li': ["Lodash-debounce pour limiter les appels API", "Sécurité du traitement des données en backend", "React Query pour les communications serveur"]
         }
     ]
 
@@ -73,7 +72,7 @@ const SliderAbout = () => {
         <div className="slider">
             <div className="about-balance text-white/90 slides" ref={slidesContainerRef}>
                 {slidesAbout.map((slide, index) => (
-                    <div key={index} ref={index === 0 ? slideRef : null} className={`slide ${index === currentIndex ? 'active-slide' : ''}`}>
+                    <div key={index} ref={index === 0 ? slideRef : null} className={`slide ${index === currentIndex ? 'active-slide' : ''}  ${index === slidesAbout.length && 'flex'}`}>
                         <h3>{slide.h3}</h3>
                         <ul>
                             {slide.li.map((li_content, li_key) => (

@@ -73,6 +73,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
             pathname: location.pathname,
             search: ''
         })
+        resetShowSearchBar()
     }
 
     const handleInputChange = (e) => {
@@ -111,15 +112,11 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
     return (
         <>
             {/* pt-12 sm:max-w-[90%] */}
-            <form id="container-search" onSubmit={handleSubmitSearch} className={`pt-3 pb-1.5 w-full bg-deg-light dark:bg-deg-dark fixed top-[65px] md:top-[80px] left-0 z-10 backdrop-blur-[60px] overflow-hidden transition-transform duration-300 ease-in-out ${showSearchBar ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'}`} >
-                <div className="w-full max-w-[90%] lg:w-1/2 flex flex-col lg:flex-row gap-2 items-center justify-center mx-auto">
-                    <div className="dark:text-white/90 max-w-[70%] flex flex-col gap-1 items-center justify-center mx-auto order-2">
-                        <span className="text-black/70 dark:text-white/90 font-semibold hidden">Trier les résultats par :</span>
-                        <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-xl border border-app-300/70 w-3/4 md:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
-                    </div>
-                    <div className="h-11 flex justify-center items-center gap-2 order-1 max-w-[98%]">
-                        <div className="h-full flex items-center relative w-[40rem]">
-                            <input type="search" name="search_article" placeholder={placeholder} className='h-full bg-white text-black/70 py-6 pl-10 pr-12 outline-app border border-app-300/70 w-full shadow' value={searchValues.search_article} onChange={handleInputChange} />
+            <form id="container-search" onSubmit={handleSubmitSearch} className={`h-32 pt-3 pb-1.5 w-full bg-deg-light dark:bg-deg-dark fixed top-[65px] md:top-[80px] left-0 z-10 backdrop-blur-[60px] overflow-hidden transition-transform duration-300 ease-in-out ${showSearchBar ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'}`} >
+                <div className="max-w-[98%] mx-auto flex flex-col gap-4 justify-center items-center">
+                    <div className="h-11 w-full md:w-1/2 flex justify-center items-center gap-2">
+                        <div className="h-full w-full flex justify-center items-center gap-2 relative">
+                            <input type="search" name="search_article" placeholder={placeholder} className='h-full bg-white text-black/70 py-6 pl-10 pr-12 outline-none border border-app-300/70 w-full' value={searchValues.search_article} onChange={handleInputChange} />
                             <button type="submit" className='absolute top-3.5 right-3' title="Rechercher">
                                 <SearchIcon className="transition duration-300 text-gray-400 hover:text-app-600 w-8 h-8 dark:text-app-400" />
                             </button>
@@ -127,10 +124,14 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                         {cancelSearch && (
                             <button
                                 onClick={clearSearch}
-                                title="Effacer la recherche" >
+                                title="Effacer la recherche" className="h-4" >
                                 <DeleteIcon className="w-8 h-8 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-app hover:text-white" />
                             </button>
                         )}
+                    </div>
+                    <div className="dark:text-white/90 max-w-[70%] w-full text-center">
+                        <span className="text-black/70 dark:text-white/90 font-semibold hidden">Trier les résultats par :</span>
+                        <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-xl border border-app-300/70 w-3/4 md:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
                     </div>
                 </div>
             </form>

@@ -1,6 +1,6 @@
 <?php
 
-$lang['required']                = "Le champ %s est requis.";
+$lang['required']                = "Le champ est requis.";
 $lang['isset']                    = "Le champ %s doit avoir une valeur.";
 $lang['valid_email']            = "Le champ %s doit contenir une adresse email valide.";
 $lang['valid_emails']            = "Le champ %s ne peut contenir que des adresses email valides.";
@@ -23,7 +23,7 @@ $lang['is_natural_no_zero']        = "Le champ %s ne peut contenir que des nombr
 $lang['decimal']                = "Le champ %s doit contenir un nombre décimal.";
 $lang['less_than']                = "Le champ %s doit contenir un nombre inférieur &agrave; %s.";
 $lang['greater_than']            = "Le champ %s doit contenir un nombre supérieur &agrave; %s.";
-$lang['in_list']                = "Sélectionnez une catégorie dans la liste.";
+$lang['in_list']                = "Le champ est requis";
 
 
 /* End of file form_validation_lang.php */

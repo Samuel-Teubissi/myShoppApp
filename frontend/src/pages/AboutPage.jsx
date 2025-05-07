@@ -43,7 +43,7 @@ const AboutPage = () => {
     }, []);
 
     return <div id='scroll-container'>
-        <div className="flex flex-col xl:flex-row justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 bg-white/20 dark:bg-dark mt-2 dark:text-dark-app-100 border dark:border-transparent">
+        <div className="flex flex-col xl:flex-row justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 md:bg-white/10 dark:bg-dark mt-2 dark:text-dark-app-100">
             <div className="about_img flex flex-col justify-center items-center pt-4 sm:pt-0 xl:w-2/3 w-full main-about overflow-hidden">
                 {/* <img src={linkMsg} alt="Author" className="rounded object-cover block absolute top-[8%] left-[8%] xl:top-[-3px] xl:left-[55px] scale-95 hover:scale-100 max-w-full z-0 w-[400px] sm:w-[350px] lg:w-[500px] xl:w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} /> */}
                 <div className="relative">
@@ -59,9 +59,9 @@ const AboutPage = () => {
                 </div>
             </div>
             <div className="text-left pt-8 xl:pt-0 max-w-[100%] sm:pr-10 flex flex-col justify-center sm:justify-start pb-12">
-                <h1 className="text-gray-600 dark:text-gray-300 px-5 about-header">Hello World, moi c'est Sam&nbsp;!</h1>
+                <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est Sam&nbsp;!</h1>
                 <div>
-                    <div className="py-4 px-10">
+                    <div className="py-4  px-4 sm:px-10">
                         Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁
                     </div>
                     <div className="rounded-xl overflow-hidden mt-4 mx-auto max-w-full" data-aos='fade-up' data-aos-delay={0} data-aos-offset={100}>
@@ -80,7 +80,7 @@ const AboutPage = () => {
                             </pre>
                         </div>
                     </div>
-                    <div className="mt-6 px-10">
+                    <div className="mt-6 px-4 sm:px-10">
                         <h2 className="text-gray-600 dark:text-gray-300">À propos de moi</h2>
                         <div className="mt-2">
                             Je suis <span className="highlight">Teubissi Samuel</span>, <span className="highlight">développeur web fullstack</span> et <span className="highlight">dinfographiste passionné</span>, spécialisé dans la création de sites web modernes et l'optimisation d'expériences visuelles.🌐<br />
@@ -93,17 +93,19 @@ const AboutPage = () => {
                 </div>
             </div>
         </div>
-        <div className="about-detail dark:text-white/90 bg-app/10 dark:bg-transparent mt-4 p-6 sm:px-8 mb-3">
-            <div className="w-full md:w-[90%] mx-auto">
-                <h1 className="mt-10 xl:max-w-[70%] xl:mx-auto">Détails sur le projet <span className="text-app text-5xl">`MyShop App`</span></h1>
-                <p className="mt-5 about-block">J'ai pendant 2 mois travaillé sur le développement de cette <span className="highlight">application e-commerce en React</span>, avec pour objectif de créer une expérience utilisateur <span className="highlight">fluide et fiable</span> autour de la gestion du panier.</p>
-                <div className="mt-10">
-                    <h2 className="my-4 whitespace-nowrap">Fonctionnalités principales :</h2>
-                    <SliderAbout />
+        <div className=" dark:text-white/90 bg-app/10 dark:bg-transparent mt-4 py-6">
+            <div className="about-detail w-full md:w-[90%] mx-auto">
+                <div>
+                    <h1 className="mt-10 xl:max-w-[70%] xl:mx-auto">Détails sur le projet <span className="text-app text-5xl">`MyShop App`</span></h1>
+                    <p className="mt-5 about-block">J'ai pendant 2 mois travaillé sur le développement de cette <span className="highlight">application e-commerce en React</span>, avec pour objectif de créer une expérience utilisateur <span className="highlight">fluide et fiable</span> autour de la gestion du panier.</p>
                 </div>
+                <nav className="mt-10">
+                    <h2 className="m-6 mb-0 whitespace-nowrap">Fonctionnalités principales :</h2>
+                    <SliderAbout />
+                </nav>
                 <div className="mt-10">
-                    <h2 className="p-4">Technologies Utilisées ou Acquises <span className="text-base">(📌: En cours)</span></h2>
-                    <div className="grid grid-cols-3 sm:flex justify-center gap-2 lg:gap-6 flex-wrap">
+                    <h2>Technologies Utilisées ou Acquises <span className="text-base">(📌: En cours)</span></h2>
+                    <div className="mt-5 grid grid-cols-3 sm:flex justify-center gap-2 lg:gap-6 flex-wrap">
                         {technoImgs.map((techno, key) => (
                             <div key={key} className="bg-gray-800 rounded-xl p-4 flex justify-center items-center relative transform hover:scale-105" data-aos='fade-up' data-aos-duration={300} data-aos-delay={50 * (key + 1)} data-aos-easing='ease-in-back'>
                                 <img src={techno.icon} className="w-20 h-20" title={techno.title} />
@@ -120,7 +122,7 @@ const AboutPage = () => {
                         <h3>Venez on travaille un projet ensemble, ça va être <span className="highlight text-xl tracking-wide">GRANDIOSE</span> !</h3>
                     </div>
                 </div>
-                <div className="dream sm:full mx-auto flex flex-col sm:flex-row gap-5 pb-5 px-10 justify-center items-center rounded-xl mt-8 bg-gray-800 overflow-hidden shadow-inner bg-no-repeat" style={{ backgroundImage: `url(${quote})`, backgroundPosition: "-8% 83%", backgroundSize: '150px 150px' }}>
+                <div className="dream sm:full mx-auto flex flex-col sm:flex-row gap-5 pb-5 px-10 justify-center items-center md:rounded-xl mt-8 bg-gray-800 overflow-hidden shadow-inner bg-no-repeat" style={{ backgroundImage: `url(${quote})`, backgroundPosition: "-8% 83%", backgroundSize: '150px 150px' }}>
                     <div className="text-center sm:text-right order-2 sm:order-1 min-w-[200px] md:max-w-[65%]" data-aos='zoom-in-up' data-aos-duration={600}>
                         <blockquote className="sm:border-r-4 border-app-500 p-4 pt-0 italic text-xl font-serif text-pretty text-white/90">"J'ai fait un rêve, je codais la meilleure appli de l'année et <span className="highlight text-xl">c'était la vôtre</span> !"</blockquote>
                         <div className="text-gray-400 text-sm">Martin Luther King</div>

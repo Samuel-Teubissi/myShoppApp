@@ -82,11 +82,11 @@ $db['default'] = array(
 	// 'database' => 'myshopapp',
 	// 'dbdriver' => 'mysqli',
 	// Default Routes ENV
-	'hostname' => getenv('DB_HOST'),
-	'username' => getenv('DB_USER'),
-	'password' => getenv('DB_PASS'),
-	'database' => getenv('DB_NAME'),
-	'dbdriver' => 'mysqli',
+	// 'hostname' => getenv('DB_HOST'),
+	// 'username' => getenv('DB_USER'),
+	// 'password' => getenv('DB_PASS'),
+	// 'database' => getenv('DB_NAME'),
+	// 'dbdriver' => 'mysqli',
 	// API Routes
 	// 'hostname' => 'sql.freedb.tech',
 	// 'username' => 'freedb_samsam',
@@ -99,6 +99,12 @@ $db['default'] = array(
 	// 'password' => 'rWHgHGHNrzBJtqgGRK2bufWCJ1h8wMkR',
 	// 'database' => 'my_shopp_app',
 	// 'dbdriver' => 'postgre',
+	// API Routes
+	'hostname' => 'sql105.infinityfree.com',
+	'username' => 'if0_38869070',
+	'password' => 'gikOyiS8oo',
+	'database' => 'if0_38869070_myshop_db',
+	'dbdriver' => 'postgre',
 
 	'dbprefix' => '',
 	'pconnect' => FALSE,

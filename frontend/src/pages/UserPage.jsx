@@ -22,6 +22,7 @@ const UserPage = () => {
 
     useEffect(() => {
         document.title = 'Dashboard | MyShop App'
+        window.scrollTo(0, 0)
     }, []);
     useEffect(() => {
         if (userSession.user_id) {

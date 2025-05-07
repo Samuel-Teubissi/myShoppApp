@@ -73,7 +73,7 @@ class articleController extends REST_Controller
             $this->form_validation->set_rules('price', "Prix de l'article", 'required|min_length[2]|trim|numeric|greater_than[0]');
             $this->form_validation->set_rules('quantity', "Quantité", 'required|numeric|greater_than[0]|trim');
             $this->form_validation->set_rules('category', "Catégorie de l'article", 'required|trim|in_list[' . $categ_list . ']');
-            $this->form_validation->set_message('in_list', "Sélectionnez une catégorie dans la liste");
+            // $this->form_validation->set_message('in_list', "Sélectionnez une catégorie dans la liste");
 
             if ($this->form_validation->run()) {
                 //Récupération des données envoyées
@@ -197,7 +197,8 @@ class articleController extends REST_Controller
             if (!$fieldRule) {
                 $this->response(array(
                     'status' => "error",
-                    "message" => "Aucune donnée à mettre à jour."
+                    "message" => "Aucune donnée à mettre à jour",
+                    "error" => $this->input->post()
                 ), REST_Controller::HTTP_OK);
                 return;
             }

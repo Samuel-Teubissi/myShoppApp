@@ -8,43 +8,44 @@ export const useNotificationsStore = create((set, get) => ({
     isLoadingNotifs: false,
 
     fetchNotifications: async (userId) => {
-        getNotifsCookie()
-        // set({ isLoadingNotifs: true })
-        // try {
-        //     const resNotif = await api.get(`/notifs/fetch/${userId}`)
-        //     set({ notifications: resNotif.data.dataNotifs })
-        // } catch (error) {
-        //     console.log('Erreur fetch articles', error);
-        // } finally {
-        //     set({ isLoadingNotifs: false })
-        // }
+        // getNotifsCookie()
+
+        set({ isLoadingNotifs: true })
+        try {
+            const resNotif = await api.get(`/notifs/fetch/${userId}`)
+            set({ notifications: resNotif.data.dataNotifs })
+        } catch (error) {
+            console.log('Erreur fetch articles', error);
+        } finally {
+            set({ isLoadingNotifs: false })
+        }
     },
     markNotifRead: async (notifId) => {
-        // await api.get('/notifs/read/' + notifId)
+        await api.get('/notifs/read/' + notifId)
         set((state) => ({
             notifications: state.notifications.map((n) => n.notif_id === notifId ? { ...n, notif_status: 'read' } : n)
         }))
     },
     createNotification: async (userId, type) => {
         SoundNotif()
-        saveNotifications(type)
+        // saveNotifications(type)
 
-        // try {
-        //     const formPost = new FormData()
-        //     formPost.append('userId', userId)
-        //     formPost.append('type', type)
-        //     await api.post('/notifs/create', formPost)
-        //     SoundNotif()
-        //     // const { fetchNotifications } = get()
-        //     // await get().fetchNotifications() // Refresh
-        // } catch (error) {
-        //     console.error('Erreur lors de la création de notification', error);
-        // }
+        try {
+            const formPost = new FormData()
+            formPost.append('userId', userId)
+            formPost.append('type', type)
+            await api.post('/notifs/create', formPost)
+            // SoundNotif()
+            // const { fetchNotifications } = get()
+            // await get().fetchNotifications() // Refresh
+        } catch (error) {
+            console.error('Erreur lors de la création de notification', error);
+        }
     },
-    // markAllNotifRead: async() => {
-    //     const { notifications, markNotifRead } = get()
-    //     const unread = notifications.filter((n) => n.notif_status === 'unread')
-    //     for (const notif of unread) await markNotifRead(notif.notif_id)
-    // },
+    markAllNotifRead: async () => {
+        const { notifications, markNotifRead } = get()
+        const unread = notifications.filter((n) => n.notif_status === 'unread')
+        for (const notif of unread) await markNotifRead(notif.notif_id)
+    },
     unreadNotifs: () => get().notifications.filter((n) => n.notif_status === 'unread').length
 }))

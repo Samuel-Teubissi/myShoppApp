@@ -93,15 +93,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<p>Database Status :</p>
 			<code>
 				<?php
-				$mysqli = new mysqli(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'));
+				// $mysqli = new mysqli(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'));
 
-				if ($mysqli->connect_error) {
-					die("Erreur de connexion : " . $mysqli->connect_error);
-				} else {
-					echo "Connexion réussie !";
-				}
+				// if ($mysqli->connect_error) {
+				// 	die("Erreur de connexion : " . $mysqli->connect_error);
+				// } else {
+				// 	echo "Connexion réussie !";
+				// }
 				?>
-
+				Now Online
 			</code>
 		</div>
 

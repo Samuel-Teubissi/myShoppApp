@@ -102,7 +102,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="py-7 border-t border-white justify-center mx-14">
-                    <div className="text-sm">© 2025 MyShop App, Version 4 ~ All rights reserved.</div>
+                    <div className="text-sm">© 2025 MyShop App, Version 1.4 ~ All rights reserved.</div>
                 </div>
             </footer>
         </>

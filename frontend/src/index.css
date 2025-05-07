@@ -33,21 +33,21 @@
     }
 
     .btn-modal-container {
-        @apply flex gap-x-2 justify-center pb-6 flex-wrap
+        @apply flex gap-2 justify-center pb-6 flex-wrap mt-4
     }
 
     .btn-modal-cancel {
-        @apply text-white px-4 py-3 w-40 bg-gray-600 transition duration-300 ease-in-out mt-4 rounded-[10px];
+        @apply text-white px-4 py-3 w-40 bg-gray-600 transition duration-300 ease-in-out rounded-[10px];
         @apply hover:bg-gray-500;
     }
 
     .btn-modal-confirm {
-        @apply text-white px-4 py-3 w-40 bg-red-700 transition duration-300 ease-in-out mt-4 rounded-[10px];
+        @apply text-white px-4 py-3 w-40 bg-red-700 transition duration-300 ease-in-out rounded-[10px];
         @apply hover:bg-red-500;
     }
 
     .btn-modal-submit {
-        @apply text-white px-4 py-3 w-40 bg-app-h transition duration-300 ease-in-out mt-4 rounded-[10px];
+        @apply text-white px-4 py-3 w-40 bg-app-h transition duration-300 ease-in-out rounded-[10px];
         @apply hover:bg-app;
     }
 

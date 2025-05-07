@@ -27,11 +27,11 @@ const ModalNotifs = ({ onClose }) => {
             <div className="">
                 <div className="motif-block">
                     {notifs?.map((notif, key) => (
-                        <div className='motif-item flex space-x-2 mb-2' key={key}>
-                            <div className="w-12 h-12 p-4 flex justify-center items-center bg-app-800 shadow rounded-full">
+                        <div className='motif-item flex mb-2' key={key}>
+                            <div className="w-12 h-12 p-4 hidden sm:flex justify-center items-center bg-app-800 shadow rounded-full">
                                 <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-white" />
                             </div>
-                            <div className={`bg-transparent rounded rounded-s-none p-4 border-l-4 border-app-h flex-grow text-left pb-6 tracking-wide ${notif.notif_status === 'unread' && 'bg-app-500/10 dark:bg-app-300/10'}`}>
+                            <div className={`bg-transparent rounded rounded-s-none p-4 border-b sm:border-l-4 border-app-h flex-grow text-left pb-6 tracking-wide ${notif.notif_status != 'read' && 'bg-app-500/20 dark:bg-app-300/10'}`}>
                                 <div>{notif.notif_message}
                                     &nbsp;<span className="text-gray-500 float-end dark:text-gray-300">{formatElapsedTime(notif.notif_date)}</span>
                                 </div>

@@ -9,7 +9,7 @@ const ModalEmpty = ({ modal, onClose }) => {
                     {modal === 'cart' && <FontAwesomeIcon icon={faCartShopping} size="" className="w-14 h-14 text-gray-400" />}
                     {modal === 'notif' && <FontAwesomeIcon icon={faBell} size="" className="w-14 h-14 text-gray-400" />}
                 </div>
-                <div className="text-lg text-gray-900 tracking-wide dark:text-white/70">
+                <div className="text-lg text-gray-900 tracking-wide dark:text-white/70 text-left">
                     <div className="w-1/2 mb-2 py-1 bg-gray-400 rounded animate-pulse"></div>
                     <div>
                         {modal === 'cart' && 'Aucun article dans votre panier'}

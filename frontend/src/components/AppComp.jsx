@@ -91,7 +91,7 @@ export const InputFieldAdd = forwardRef(({ label, type = "text", name, value = '
             <input
                 id={name}
                 type={type}
-                // name={name}
+                name={name}
                 defaultValue={value}
                 // onChange={onChange}
                 {...(type === 'file' ? { ref } : {})}
@@ -144,10 +144,10 @@ export const Select_categories = ({ onChange, error, name = '', id = '', classDa
     if (categoriesData.length < 1) return null
     return (
         <select
-            // name={name}
+            name={name}
             // value={valueProp}
             className={`${classData} ${error ? "border-red-500" : ''}`}
-            // onChange={onChange}
+            onChange={onChange}
             title="category" id={id}
             {...props}
         >
@@ -167,7 +167,7 @@ export const SelectField_categories = ({ onChange, error, classData, valueProp, 
                         onChange={onChange} error={error} name='category' id='category' classData={classData} valueProp={valueProp} {...props} />
                 </span>
                 <i className="file fa fa-upload"></i>
-                {error && <div className="input-alert">{error}</div>}
+                {error && <div className="input-alert"><span>{error}</span></div>}
             </div>
         </>
     );

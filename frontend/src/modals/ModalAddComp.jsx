@@ -127,82 +127,83 @@ const ModalAddComp = ({ isOpen, onClose }) => {
         // queryClient.invalidateQueries(['articles', 'default'])
     }
 
-    // const queryClient = useQueryClient();
-    // const { isLoading: isAddSubmitting, mutate } = useMutation({
-    //     mutationFn: async (e) => {
-    //         e.preventDefault();
-    //         const addData = new FormData(e.target)
-    //         const response = await api.post('/article/add', addData)
-    //         return response.data
-    //     },
-    //     onSuccess: async (response) => {
-    //         if (response.status === 'success') {
-    //             toast.success('Article Ajouté')
-    //             await createNotification(userSession.user_id, 'addArticle')
-    //             fetchNotifications(userSession.user_id)
-    //             setAddFormError({})
-    //             formRef.current.reset()
-    //             queryClient.invalidateQueries(['articles', 'default'])
-    //             // queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
-    //         } else {
-    //             setAddFormError(response.errors || {})
-    //             if (!fileRef.current.files[0]) {
-    //                 setAddFormError(prev => ({ ...prev, userfile: 'Un fichier visuel est requis' }))
-    //             }
-    //         }
-    //     },
-    //     onError: (error) => {
-    //         toast.error("Erreur avec l'envoi de données")
-    //         console.error("Erreur lors de l'envoi de l'article: ", error)
-    //     }
-    // })
+    const queryClient = useQueryClient();
+    const { isLoading: isAddSubmitting, mutate } = useMutation({
+        mutationFn: async (e) => {
+            e.preventDefault();
+            const addData = new FormData(e.target)
+            const response = await api.post('/article/add', addData)
+            return response.data
+        },
+        onSuccess: async (response) => {
+            if (response.status === 'success') {
+                toast.success('Article Ajouté')
+                await createNotification(userSession.user_id, 'addArticle')
+                fetchNotifications(userSession.user_id)
+                setAddFormError({})
+                queryClient.invalidateQueries(['articles', 'default'])
+                formRef.current.reset()
+                // queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
+            } else {
+                setAddFormError(response.errors || {})
+                if (!fileRef.current.files[0]) {
+                    setAddFormError(prev => ({ ...prev, userfile: 'Un fichier visuel est requis' }))
+                }
+            }
+        },
+        onError: (error) => {
+            toast.error("Erreur avec l'envoi de données")
+            console.error("Erreur lors de l'envoi de l'article: ", error)
+        }
+    })
 
-    return (
-        <form onSubmit={handleSubmit(FormSubmitAdd)} className="contents">
+    return <>
+        <form onSubmit={mutate} className="contents" ref={formRef}>
             <div className="pt-4 px-2">
                 <InputFieldAdd
                     label="Nom de l'article :"
                     type="text"
-                    // name="article"
+                    name="article"
                     // onChange={HandleChange}
                     placeholder='T Shirt Louis Vuitton'
-                    error={errors.article?.message}
-                    {...register('article')}
+                    // error={errors.article?.message}
+                    error={addFormError?.article}
+                // {...register('article')}
                 />
                 <InputFieldAdd
                     label="Prix de l'article :"
                     type="number"
-                    // name="price"
+                    name="price"
                     // onChange={HandleChange}
                     placeholder='12 000 Fcfa'
-                    error={errors.price?.message}
-                    {...register('price')}
+                    error={addFormError?.price}
+                // {...register('price')}
                 />
                 <InputFieldAdd
                     label="Quantité :"
                     type="number"
-                    // name="quantity"
+                    name="quantity"
                     // onChange={HandleChange}
                     placeholder='24'
-                    error={errors.quantity?.message}
-                    {...register('quantity')}
+                    error={addFormError?.quantity}
+                // {...register('quantity')}
                 />
                 <InputFieldAdd
                     label="Photo de l'article :"
                     type="file"
-                    // name="userfile"
+                    name="userfile"
                     // onChange={handleFileChange}
                     placeholder='Saisissez un nom'
                     ref={fileRef}
-                    error={errors.userfile?.message}
-                    {...register('userfile')}
+                    error={addFormError?.userfile}
+                // {...register('userfile')}
                 />
                 <div className="relative">
                     <SelectField_categories
                         // onChange={HandleChange}
                         classData='w-full px-5 py-2.5 transition duration-200 cursor-pointer border rounded-xl appearance-none'
-                        error={errors.category?.message}
-                        {...register('category')}
+                        error={addFormError?.category}
+                    // {...register('category')}
                     />
                     <ChevronDownIcon className="w-6 h-6 text-black/70 dark:text-white absolute top-9 right-5 pointer-events-none" />
                 </div>
@@ -210,15 +211,14 @@ const ModalAddComp = ({ isOpen, onClose }) => {
                     <button type="button" onClick={onClose} className="btn-modal-cancel">
                         Annuler
                     </button>
-                    {/* disabled={isAddSubmitting} */}
-                    <button type="submit" className=" btn-modal-submit">
-                        {/* {isAddSubmitting ? "..." : "Ajouter"} */}
-                        Ajouter
+                    <button type="submit" className=" btn-modal-submit" disabled={isAddSubmitting}>
+                        {isAddSubmitting ? "..." : "Ajouter"}
+                        {/* Ajouter */}
                     </button>
                 </div>
             </div>
         </form>
-    )
+    </>
 }
 
 export default ModalAddComp

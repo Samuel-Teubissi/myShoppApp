@@ -20,7 +20,7 @@ axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLogging, setIsLogging] = useState(false)
+    const [isLogging, setIsLogging] = useState(true)
     const [isLoggingLoad, setIsLoggingLoad] = useState(false)
     const [isRegisterLoad, setIsRegisterLoad] = useState(false)
     const [loginErrors, setLoginErrors] = useState({})

@@ -337,3 +337,113 @@ ERROR - 2025-05-07 06:07:36 --> Unable to connect to the database
 ERROR - 2025-05-07 06:08:24 --> Severity: Warning --> mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
 ERROR - 2025-05-07 06:08:24 --> Severity: Warning --> mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known.  C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
 ERROR - 2025-05-07 06:10:11 --> Severity: Warning --> mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
+ERROR - 2025-05-07 06:14:35 --> Severity: Warning --> mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
+ERROR - 2025-05-07 06:14:39 --> Severity: Warning --> mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
+ERROR - 2025-05-07 06:14:42 --> Severity: Warning --> mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
+ERROR - 2025-05-07 06:16:37 --> Severity: Warning --> mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
+ERROR - 2025-05-07 06:16:39 --> Severity: Warning --> mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) C:\xampp\htdocs\MyShoppApp_Repo\backend\application\views\welcome_message.php 96
+ERROR - 2025-05-07 07:46:46 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 07:46:46 --> Unable to connect to the database
+ERROR - 2025-05-07 07:46:50 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 07:46:50 --> Unable to connect to the database
+ERROR - 2025-05-07 08:21:07 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 08:21:07 --> Unable to connect to the database
+ERROR - 2025-05-07 08:21:10 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 08:21:10 --> Unable to connect to the database
+ERROR - 2025-05-07 08:21:43 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 08:21:43 --> Unable to connect to the database
+ERROR - 2025-05-07 08:21:47 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 08:21:47 --> Unable to connect to the database
+ERROR - 2025-05-07 16:47:00 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:47:00 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:47:00 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:47:00 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:47:07 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:47:07 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:47:07 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:47:07 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:48:49 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:48:49 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:48:49 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:48:49 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:05 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:05 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:05 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:05 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:56 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:56 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:56 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:56 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:49:57 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:01 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:01 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:01 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:01 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 16:50:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:03:12 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:03:12 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:03:12 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:03:12 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:31 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:31 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:31 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:31 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:35 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:35 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:35 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:10:35 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:14:41 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:14:41 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:14:41 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 17:14:41 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:47:20 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:51:33 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:51:33 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:51:33 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:53:19 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:53:19 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:53:19 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:15 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:15 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:15 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:15 --> Could not find the language line "form_validation_in_list"
+ERROR - 2025-05-07 18:54:28 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:28 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:28 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:28 --> Could not find the language line "form_validation_in_list"
+ERROR - 2025-05-07 18:54:55 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:55 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:55 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:54:55 --> Could not find the language line "form_validation_in_list"
+ERROR - 2025-05-07 18:55:02 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:55:02 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:55:02 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 18:55:02 --> Could not find the language line "form_validation_in_list"
+ERROR - 2025-05-07 19:11:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 19:11:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 19:11:04 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 19:11:04 --> Could not find the language line "form_validation_in_list"
+ERROR - 2025-05-07 19:11:27 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 19:11:27 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 19:11:27 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 19:11:27 --> Could not find the language line "form_validation_in_list"
+ERROR - 2025-05-07 19:24:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 19:24:36 --> Unable to connect to the database
+ERROR - 2025-05-07 19:24:39 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 19:24:39 --> Unable to connect to the database
+ERROR - 2025-05-07 19:24:40 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 19:24:40 --> Unable to connect to the database

@@ -119,9 +119,9 @@ nav .--nav_submenu>li {
 
 .about-header {
   animation: animate_text 5s steps(28), animate_blink 0.5s infinite alternate;
-  border-right: 4px solid #fff;
+  border-right: 4px solid var(--color_text2);
   overflow: hidden;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   padding: 5px !important;
 }
 
@@ -155,7 +155,7 @@ nav .--nav_submenu>li {
 }
 
 .slides div {
-  /* width: 40%; */
+  /* width: 100%; */
   height: min-content;
   min-height: 60%;
   padding: 0 0 25px 0;
@@ -177,7 +177,7 @@ nav .--nav_submenu>li {
 
 .slides div:last-child {
   flex-shrink: 0;
-  max-width: 555px;
+  /* max-width: 555px; */
   /* width: 40%; */
 }
 
@@ -192,6 +192,7 @@ nav .--nav_submenu>li {
 
 .slides ul li {
   margin-top: 10px;
+  padding: 0 10px;
 }
 
 .slides div ul:last-child li {
@@ -229,6 +230,35 @@ button.next {
   right: -5%;
 }
 
+.auth-design {
+  position: absolute;
+  transform: rotate(45deg);
+  width: 30%;
+  height: 50%;
+  background-color: #e451cf;
+  opacity: 0.5;
+  border-radius: 50px;
+  /* animation: animate_design 5s alternate-reverse; */
+}
+
+.auth-design.dsn-1 {
+  top: 10px;
+  left: -100px;
+}
+
+.auth-design.dsn-2 {
+  bottom: 10px;
+  right: -100px;
+}
+
+.about-text-appear {
+  animation: animate_text 5s steps(46);
+}
+
+.about-detail>div {
+  padding: 0 20px;
+}
+
 html input:-internal-autofill-selected,
 input::webkit-autofill,
 input::webkit-autofill:hover,
@@ -237,6 +267,16 @@ input::webkit-autofill:active {
   box-shadow: 0 0 0 30px transparent inset !important;
   -webkit-box-shadow: 0 0 0 30px transparent inset !important;
   background: inherit !important;
+}
+
+@keyframes animate_design {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes animate_text {
@@ -277,17 +317,34 @@ input::webkit-autofill:active {
   } */
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
+
+  .slider .btn-slide.prev,
+  .slider .btn-slide.next {
+    padding: 8px;
+  }
+
+  .slider {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  button.prev {
+    left: 4px;
+  }
+
+  button.next {
+    right: 4px;
+  }
 
   .slides div {
     width: 80%;
   }
 
   .slides div ul:last-child {
-    width: 90%;
-    text-align: justify;
+    width: 100%;
+    /* text-align: justify; */
   }
-
 
   nav .nav-link li>button,
   nav .nav-link li>a {
