@@ -21,14 +21,14 @@ const Footer = () => {
         <>
             <footer className="text-black/70 text-xl dark:text-dark-app-100 dark:border-dark-app-600">
                 <div className=" flex flex-col lg:flex-row gap-8 px-10 py-14 md:py-20 md:pb-28 md:px-36 md:gap-36">
-                    <div className="order-2 xl:order-1">
+                    <div className="order-2 md:order-1">
                         <NavLink to='/' className='border-0 text-center flex flex-col justify-center items-center'>
                             <img src={LogoLink} alt="Logo MyShopAPP" className="" width={120} height={120} />
                             <h3>MyShop App</h3>
                         </NavLink>
                     </div>
-                    <div className="order-1 xl:order-2">
-                        <div className="footer_body flex flex-col lg:flex-row gap-8 md:gap-16">
+                    <div className="order-1 md:order-2">
+                        <div className="footer_body flex flex-col md:flex-row gap-8 md:gap-16">
                             <ul className="">
                                 <li>
                                     <h3>MyShop App</h3>

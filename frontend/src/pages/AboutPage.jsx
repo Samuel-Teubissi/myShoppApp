@@ -43,8 +43,8 @@ const AboutPage = () => {
     }, []);
 
     return <div id='scroll-container'>
-        <div className="flex flex-col xl:flex-row justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 md:bg-white/10 dark:bg-dark mt-2 dark:text-dark-app-100">
-            <div className="about_img flex flex-col justify-center items-center pt-4 sm:pt-0 xl:w-2/3 w-full main-about overflow-hidden">
+        <div className="flex flex-col xl:flex-row justify-start lg:justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 md:bg-white/10 dark:bg-dark mt-2 dark:text-dark-app-100">
+            <div className="about_img flex flex-col justify-center items-center mt-3 sm:pt-0 xl:w-2/3 w-full main-about">
                 {/* <img src={linkMsg} alt="Author" className="rounded object-cover block absolute top-[8%] left-[8%] xl:top-[-3px] xl:left-[55px] scale-95 hover:scale-100 max-w-full z-0 w-[400px] sm:w-[350px] lg:w-[500px] xl:w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} /> */}
                 <div className="relative">
                     <img src={linkMsg} alt="Author" className="rounded object-cover block absolute -top-[64px] left-0 scale-95 hover:scale-100 max-w-full z-0 w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} />
@@ -57,13 +57,21 @@ const AboutPage = () => {
                         </Link>
                     ))}
                 </div>
-            </div>
-            <div className="text-left pt-8 xl:pt-0 max-w-[100%] sm:pr-10 flex flex-col justify-center sm:justify-start pb-12">
-                <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est Sam&nbsp;!</h1>
-                <div>
-                    <div className="py-4  px-4 sm:px-10">
+                <div className="text-center xl:hidden mt-2">
+                    <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est Sam&nbsp;!</h1>
+                    <div className="px-4 sm:px-10">
                         Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁
                     </div>
+                </div>
+            </div>
+            <div className="text-left xl:pt-0 max-w-[100%] sm:pr-10 flex flex-col justify-center sm:justify-start">
+                <div className="hidden xl:block">
+                    <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est Sam&nbsp;!</h1>
+                    <div className="py-4 px-4 sm:px-10">
+                        Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁
+                    </div>
+                </div>
+                <div>
                     <div className="rounded-xl overflow-hidden mt-4 mx-auto max-w-full" data-aos='fade-up' data-aos-delay={0} data-aos-offset={100}>
                         <div className="bg-gray-800 px-3 py-2 rounded-t-lg flex gap-2 items-center">
                             <span className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-300 cursor-pointer"></span>
@@ -80,7 +88,7 @@ const AboutPage = () => {
                             </pre>
                         </div>
                     </div>
-                    <div className="mt-6 px-4 sm:px-10">
+                    <div className="px-4 lg:px-10 mt-4">
                         <h2 className="text-gray-600 dark:text-gray-300">À propos de moi</h2>
                         <div className="mt-2">
                             Je suis <span className="highlight">Teubissi Samuel</span>, <span className="highlight">développeur web fullstack</span> et <span className="highlight">dinfographiste passionné</span>, spécialisé dans la création de sites web modernes et l'optimisation d'expériences visuelles.🌐<br />
@@ -141,7 +149,7 @@ const AboutPage = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="bg-gray-800 mt-10 py-8 text-center text-white/90 rounded-xl trigger-links" data-aos='zoom-in' data-aos-delay={0} data-aos-duration={50} data-aos-offset={50}>
+                <div className="bg-gray-800 mt-10 py-8 text-center text-white/90 trigger-links" data-aos='zoom-in' data-aos-delay={0} data-aos-duration={50} data-aos-offset={50}>
                     <h2 className="p-2">Bossons ensemble dès maintenant.</h2>
                     <div className="flex justify-center items-center gap-2 flex-wrap">
                         {contacts.map((contact, key) => (
