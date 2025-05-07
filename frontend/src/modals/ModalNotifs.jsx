@@ -31,7 +31,7 @@ const ModalNotifs = ({ onClose }) => {
                             <div className="w-12 h-12 p-4 hidden sm:flex justify-center items-center bg-app-800 shadow rounded-full">
                                 <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-white" />
                             </div>
-                            <div className={`bg-transparent rounded rounded-s-none p-4 border-b sm:border-l-4 border-app-h flex-grow text-left pb-6 tracking-wide ${notif.notif_status != 'read' && 'bg-app-500/20 dark:bg-app-300/10'}`}>
+                            <div className={`rounded rounded-s-none p-4 border-b sm:border-l-4 border-app-h flex-grow text-left pb-6 tracking-wide bg-app-500/20 ${notif.notif_status === 'unread' ? ' dark:bg-app-300/10' : 'bg-transparent'}`}>
                                 <div>{notif.notif_message}
                                     &nbsp;<span className="text-gray-500 float-end dark:text-gray-300">{formatElapsedTime(notif.notif_date)}</span>
                                 </div>

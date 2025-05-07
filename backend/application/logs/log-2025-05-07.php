@@ -447,3 +447,25 @@ ERROR - 2025-05-07 19:24:39 --> Severity: Warning --> pg_connect(): Unable to co
 ERROR - 2025-05-07 19:24:39 --> Unable to connect to the database
 ERROR - 2025-05-07 19:24:40 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
 ERROR - 2025-05-07 19:24:40 --> Unable to connect to the database
+ERROR - 2025-05-07 23:14:47 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 23:14:47 --> Unable to connect to the database
+ERROR - 2025-05-07 23:14:49 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 23:14:49 --> Unable to connect to the database
+ERROR - 2025-05-07 23:15:12 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 23:15:12 --> Unable to connect to the database
+ERROR - 2025-05-07 23:15:12 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 23:15:12 --> Unable to connect to the database
+ERROR - 2025-05-07 23:15:53 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 23:15:53 --> Unable to connect to the database
+ERROR - 2025-05-07 23:15:53 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not translate host name &quot;sql105.infinityfree.com&quot; to address: Unknown host C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\postgre\postgre_driver.php 154
+ERROR - 2025-05-07 23:15:53 --> Unable to connect to the database
+ERROR - 2025-05-07 23:17:01 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-07 23:17:01 --> Unable to connect to the database
+ERROR - 2025-05-07 23:17:05 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it C:\xampp\htdocs\MyShoppApp_Repo\backend\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2025-05-07 23:17:05 --> Unable to connect to the database
+ERROR - 2025-05-07 23:17:27 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 23:17:27 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validation_required"
+ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validation_in_list"

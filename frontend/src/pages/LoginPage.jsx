@@ -61,7 +61,7 @@ const LoginPage = () => {
                 <div className="auth-design dsn-2"></div>
                 <form className="w-full text-gray-600 py-10 sm:bg-white/50 backdrop-blur flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 overflow-hidden px-4" onSubmit={LoginSubmit}>
                     <div className="md:w-9/12 overflow-hidden">
-                        <div className="flex gap-4 items-center border-2 border-transparent bg-app-h text-white dark:bg-app-700/20 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center border-l-app-700 sm:border-l-transparent sm:border-t-app-700 rounded-3xl">
+                        <div className="flex gap-4 items-center border-2 border-transparent bg-app-h text-white dark:bg-app-900/80 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center border-l-app-700 sm:border-l-transparent sm:border-t-app-700">
                             <div><InfoIcon className="w-14 h-14" /></div>
                             <div className="text-left flex flex-col">
                                 <strong className="uppercase">Connectez vous vite !</strong> Des tonnes de commandes vous attendent sûrement.
