@@ -24,7 +24,7 @@ const Footer = () => {
                     <div className="order-2 xl:order-1">
                         <NavLink to='/' className='border-0 text-center flex flex-col justify-center items-center'>
                             <img src={LogoLink} alt="Logo MyShopAPP" className="" width={120} height={120} />
-                            <h2>MyShop App</h2>
+                            <h3>MyShop App</h3>
                         </NavLink>
                     </div>
                     <div className="order-1 xl:order-2">
@@ -70,7 +70,7 @@ const Footer = () => {
                                         <li>
                                             <NavLink to={'/' + userSession?.role}>
                                                 <BookIcon />
-                                                <span>Dashboard</span>
+                                                Dashboard
                                             </NavLink>
                                         </li>
                                         <li>

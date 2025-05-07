@@ -4,6 +4,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import InputField, { SoundNotif } from "../components/AppComp";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { InfoIcon } from "lucide-react";
 
 const LoginPage = () => {
     const [LoginForm, setLoginForm] = useState({ number: '', password: '' })
@@ -12,26 +15,40 @@ const LoginPage = () => {
     const { login, isLoggingLoad, loginErrors } = useAuth()
     const from = location.state?.from || '/user';
     const search = location.state?.search || '';
+    const [isLoadingLogin, setIsLoadingLogin] = useState(false);
 
-    const HandleChange = (e) => {
-        // new FormData([e.target.name], e.target.value)
-        setLoginForm({ ...LoginForm, [e.target.name]: e.target.value })
-    }
+    // const HandleChange = (e) => {
+    //     // new FormData([e.target.name], e.target.value)
+    //     setLoginForm({ ...LoginForm, [e.target.name]: e.target.value })
+    // }
 
-    const submitLogin = async (e) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
+
+    const LoginSubmit = async (e) => {
         e.preventDefault()
-        const LoginData = new FormData(e.target)
-        const res = await login(LoginData)
+        // setIsLoadingLogin(true)
+        const loginData = new FormData(e.target)
+        const res = await login(loginData)
+        // const res = await login(data)
         if (res?.success) {
             if (from !== '/') navigate(from, { replace: true })
             if (res?.role === 'user') {
-                // queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
-                navigate("/user", { replace: true })
+                toast.success('Connexion réussie !');
+                setTimeout(() => navigate('/user', { replace: true }), 1000);
             }
             if (res?.role === 'admin') {
-                navigate("/admin", { replace: true })
+                setTimeout(() => navigate('/admin', { replace: true }), 1000);
             }
+        } else {
+            toast.error('Revérifiez le formulaire.');
         }
+        // setTimeout(() => {
+        //     setIsLoadingLogin(false)
+        // }, 300);
     }
     useEffect(() => {
         document.title = "Connexion | MyShop App"
@@ -40,38 +57,45 @@ const LoginPage = () => {
     return (
         <div className="ms_Main mb-16">
             <div className="max-w-full mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full md:w-8/12 text-gray-600 py-12 rounded-xl sm:bg-white/70 md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitLogin}>
-                    <div className="md:w-9/12 w-full">
-                        <div className="border-8 border-transparent border-l-app bg-app/10 p-4 py-8 w-full mb-10 text-left font-medium">
-                            <strong className="uppercase">Connectez vous vite !</strong> Des tonnes de commandes vous attendent sûrement.
+                <form className="w-full md:w-8/12 text-gray-600 py-10 rounded-xl sm:bg-white/50 backdrop-blur md:border md:border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none overflow-hidden shadow-md" onSubmit={LoginSubmit}>
+                    <div className="md:w-9/12 max-w-full mx-2 overflow-hidden">
+                        <div className="flex gap-4 items-center border-2 border-transparent bg-app-h text-white dark:bg-app-700/20 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center border-l-app-700 sm:border-l-transparent sm:border-t-app-700">
+                            <div><InfoIcon className="w-14 h-14" /></div>
+                            <div className="text-left flex flex-col">
+                                <strong className="uppercase">Connectez vous vite !</strong> Des tonnes de commandes vous attendent sûrement.
+                            </div>
                         </div>
                         <InputField
                             label="Numéro de téléphone :"
                             type="number"
                             name="number"
-                            onChange={HandleChange}
-                            error={loginErrors?.number}
+                            icon='user'
+                            // onChange={HandleChange}
                             placeholder="+237 XXXXXXXXX"
+                            error={errors?.number?.message || loginErrors.number}
+                        // {...register('number', { required: 'Numéro requis' })}
                         />
                         <InputField
                             label="Mot de Passe :"
                             type="password"
                             name="password"
-                            onChange={HandleChange}
-                            error={loginErrors?.password}
+                            icon='pswd'
+                            // onChange={HandleChange}
                             placeholder="Votre mot de passe"
+                            error={errors?.password?.message || loginErrors.password}
+                        // {...register('password', { required: 'Mot de passe requis' })}
                         />
                     </div>
                     <div className="text-gray-500"></div>
-                    <div className="w-full mt-4 flex justify-center">
-                        <button type="submit" className={`animZ text-white flex items-center justify-center rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out ${isLoggingLoad && " text-center text-white cursor-not-allowed"}`} disabled={isLoggingLoad}>
+                    <div className="w-full mt-6 flex justify-center">
+                        <button type="submit" className={`text-white flex items-center justify-center rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out ${isLoggingLoad && " text-center text-white cursor-not-allowed"}`} disabled={isLoggingLoad}>
                             {!isLoggingLoad
                                 ? 'Connexion'
                                 : <span className="w-6 h-6 block border-4 border-app-500/50 border-t-transparent rounded-full animate-spin"></span>
                             }
                         </button>
                     </div>
-                    <div className="w-full mt-4">
+                    <div className="w-full mt-8">
                         Vous n'avez pas encore de compte ?<br />
                         <Link to="/register" className="text-app hover:underline">Inscrivez-vous !</Link>
                     </div>

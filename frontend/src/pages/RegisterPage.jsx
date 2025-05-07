@@ -6,20 +6,57 @@ import { createRoot } from "react-dom/client";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { useNotificationsStore } from "../hooks/useNotifications";
+import * as Yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { InfoIcon } from "lucide-react";
 
 const RegisterPage = () => {
     const [RegisterForm, setRegisterForm] = useState(
         { number: '', username: '', password: '', confirm_password: '' }
     )
     // const [RegisterErrors, setRegisterErrors] = useState({})
-    const [RegisterLoad, setRegisterLoad] = useState(false)
+    const [registerLoad, setRegisterLoad] = useState(false)
     const navigate = useNavigate()
     const createNotification = useNotificationsStore((s) => s.createNotification)
     const { Register, isRegisterLoad, registerErrors } = useAuth()
 
-    const HandleChange = (e) => {
-        setRegisterForm({ ...RegisterForm, [e.target.name]: e.target.value })
-    }
+    // const HandleChange = (e) => {
+    //     setRegisterForm({ ...RegisterForm, [e.target.name]: e.target.value })
+    // }
+
+    // 1. Schéma Yup
+    const schema = Yup.object().shape({
+        number: Yup.string()
+            .required('Le nom est requis')
+            .min(9, 'Entrez un numéro valide de 9 chiffres')
+            .matches(/^[0-9]+$/, 'Format de numéro incorrect'),
+        username: Yup.string()
+            .min(3, "Entrez un nom d'au moins 3 caractères")
+            .required('Email requis'),
+        password: Yup.string()
+            .required('Mot de passe requis'),
+        // .min(18, 'Tu dois avoir au moins 18 ans'),
+        confirm_password: Yup.string()
+            .required('Confirmez le mot de passe')
+            .oneOf([Yup.ref('password'), null], "La valeur doit être la même que celle du champ Mot de passe")
+    });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(schema)
+    });
+    // const submitRegister = async (data) => {
+    //     setRegisterLoad(true)
+    //     SoundNotif()
+    //     const res = await Register(data)
+    //     if (res?.success) {
+    //         setTimeout(() => navigate('/user', { replace: true }), 1000);
+    //     }
+    //     setRegisterLoad(false)
+    // }
     const submitRegister = async (e) => {
         e.preventDefault()
         const RegisterData = new FormData(e.target)
@@ -36,44 +73,55 @@ const RegisterPage = () => {
         <div className="ms_Main mb-16">
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
             <div className="max-w-full h-min mx-2 md:mx-auto text-center main-about flex flex-col justify-center items-center">
-                <form className="w-full h-min mt-2 px-4 mx md:w-8/12 text-gray-600 py-8 rounded-xl sm:bg-white/70 md:border border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitRegister}>
+                <form className="w-full h-min mt-2 px-4 mx md:w-8/12 text-gray-600 py-10 rounded-xl sm:bg-white/70 md:border border-app-200 flex justify-center flex-wrap sm:dark:bg-dark dark:text-dark-app-100 dark:border-none" onSubmit={submitRegister}>
                     <div className="insc md:w-9/12 w-full">
-                        <div className="border-8 border-transparent border-l-app bg-app/10 p-4 py-8 w-full mb-10 text-left font-medium">
-                            <strong className="uppercase">Rejoignez notre grande communauté de vendeurs</strong>. Devenez un businessman prospère dès aujourd'hui !
+                        <div className="flex gap-4 items-center border-2 border-transparent bg-app-h text-white dark:bg-app-700/20 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center border-l-app-700 sm:border-l-transparent sm:border-t-app-700">
+                            <div><InfoIcon className="w-14 h-14" /></div>
+                            <div className="text-left flex flex-col">
+                                <strong className="uppercase">Rejoignez notre grande communauté de vendeurs.</strong> Devenez un business man prospère dès aujourd'hui !
+                            </div>
                         </div>
                         <InputField
                             label="Numéro de téléphone :"
                             type="number"
                             name="number"
-                            onChange={HandleChange}
-                            error={registerErrors.number}
+                            icon='user'
+                            // onChange={HandleChange}
                             placeholder="+237 XXXXXXXXX"
+                            error={errors.number?.message || registerErrors.number}
+                            {...register('number')}
                         />
                         <InputField
                             label="Nom d'Utilisateur :"
                             name="username"
-                            onChange={HandleChange}
-                            error={registerErrors.username}
+                            icon='name'
+                            // onChange={HandleChange}
+                            error={errors.username?.message || registerErrors.username}
                             placeholder="Bernard Dubois"
+                            {...register('username')}
                         />
                         <InputField
                             label="Mot de Passe :"
                             type="password"
                             name="password"
-                            onChange={HandleChange}
-                            error={registerErrors.password}
+                            icon='pswd'
+                            // onChange={HandleChange}
+                            error={errors.password?.message || registerErrors.password}
                             placeholder="Utilisez des chiffres et des symboles"
+                            {...register('password')}
                         />
                         <InputField
                             label="Confirmez votre Mot de Passe :"
                             type="password"
                             name="confirm_password"
-                            onChange={HandleChange}
-                            error={registerErrors.confirm_password}
+                            icon='pswd'
+                            // onChange={HandleChange}
+                            error={errors.confirm_password?.message || registerErrors.confirm_password}
                             placeholder="Ressaisissez le mot de passe"
+                            {...register('confirm_password')}
                         />
                     </div>
-                    <div className="w-full mt-2 flex justify-center">
+                    <div className="w-full mt-4 flex justify-center">
                         <button type="submit" className={`animZ flex items-center justify-center text-white rounded px-4 py-3 w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out animZ`} disabled={isRegisterLoad}>
                             {!isRegisterLoad
                                 ? 'Inscription'

@@ -25,10 +25,13 @@ const SearchPaginate = ({ results, currentPage, totalItems, isLoading, totalPage
             search: searchParams.toString()
         });
     };
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
     // const articles = Object.entries(results)
 
-    if (isLoading) return <LoaderSkeletonArticle />
-    if (totalItems < 1) return <ErrorComp type='nothing' message='Aucun résultat pour cette recherche.' />
+    // if (isLoading) return <LoaderSkeletonArticle />
+    if (totalItems < 1) return <ErrorComp type='empty' message='Aucun résultat pour cette recherche.' />
 
     return (
         <div className=''>
@@ -42,7 +45,7 @@ const SearchPaginate = ({ results, currentPage, totalItems, isLoading, totalPage
                         nextLabel='>'
                         onPageChange={handlePageChange}
                         marginPagesDisplayed={1} // Nombre de pages à afficher au début et à la fin
-                        pageRangeDisplayed={3}
+                        pageRangeDisplayed={2}
                         pageCount={totalPages}
                         previousLabel='<'
                         containerClassName={"pagination flex justify-center select-none mt-2"}

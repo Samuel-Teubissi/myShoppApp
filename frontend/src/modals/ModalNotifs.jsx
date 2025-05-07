@@ -30,7 +30,6 @@ const ModalNotifs = ({ onClose }) => {
                         <div className='motif-item flex space-x-2 mb-2' key={key}>
                             <div className="w-12 h-12 p-4 flex justify-center items-center bg-app-800 shadow rounded-full">
                                 <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-white" />
-                                {/* <MessageSquareIcon className="text-2xl text-white w-8 h-8" /> */}
                             </div>
                             <div className={`bg-transparent rounded rounded-s-none p-4 border-l-4 border-app-h flex-grow text-left pb-6 tracking-wide ${notif.notif_status === 'unread' && 'bg-app-500/10 dark:bg-app-300/10'}`}>
                                 <div>{notif.notif_message}
@@ -42,7 +41,6 @@ const ModalNotifs = ({ onClose }) => {
                                     ?
                                     <button title="Marquer comme lu" onClick={() => markNotifRead(notif.notif_id)}>
                                         <FontAwesomeIcon icon={faSquareCheck} className="text-2xl text-app-800 w-8 h-8 p-2 rounded-xl hover:text-app hover:dark:text-white btn-trans" />
-                                        {/* <Check className="text-2xl w-10 h-10 p-2 text-app rounded-xl hover:bg-app hover:text-white btn-trans" /> */}
                                     </button>
                                     :
                                     <CheckCheck className="text-2xl w-10 h-10 p-2 text-app rounded-xl btn-trans" />

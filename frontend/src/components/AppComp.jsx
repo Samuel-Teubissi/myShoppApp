@@ -2,6 +2,9 @@ import SoundLink from "../assets/sound/App_Notif.wav"
 import axios from "axios";
 import { forwardRef, useEffect, useState } from "react";
 import { api } from "../hooks/api";
+import bcrypt from 'bcryptjs';
+import { APP_Categories as articlesCategories } from '../App.json'
+import { LockIcon, PhoneIcon, UserIcon } from "lucide-react";
 
 export const SoundNotif = () => {
     const audio = new Audio(SoundLink)
@@ -35,7 +38,7 @@ export const setThemeApp = (theme) => {
 
 export const formatElapsedTime = (rawDateStr) => {
     // Transforme "2024-11-08 17:19:16" → "2024-11-08T17:19:16"
-    const pastDate = new Date(rawDateStr.replace(" ", "T"));
+    const pastDate = new Date(String(rawDateStr).replace(" ", "T"));
     const now = new Date();
     const diffMs = now - pastDate;
 
@@ -59,23 +62,26 @@ export const formatElapsedTime = (rawDateStr) => {
     return `${years} an${years > 1 ? "s" : ""}`;
 }
 
-export const InputField = ({ label, type = "text", name, value, onChange, error, placeholder }) => {
-    return (
-        <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-1 text-sm text-left dark:text-dark-app-100" htmlFor={name}>{label}</label>
+export const InputField = ({ label, type = "text", icon = '', name, value, onChange, error, placeholder, ...props }) => {
+    return (<>
+        <div className="mb-4 input-group">
+            {icon === 'user' && <i><PhoneIcon className={`${error && "text-red-400"}`} /></i>}
+            {icon === 'name' && <i><UserIcon className={`${error && "text-red-400"}`} /></i>}
+            {icon === 'pswd' && <i><LockIcon className={`${error && "text-red-400"}`} /></i>}
             <input
                 id={name}
                 type={type}
                 name={name}
                 defaultValue={value}
-                // onChange={onChange}
-                placeholder={placeholder}
-                className={`w-full ${type !== 'file' ? "py-2 px-5" : "cursor-pointer"} border-2 rounded-full ${error ? "border-red-400" : "border-app-300"}`}
+                onChange={onChange}
+                placeholder=""//{placeholder}
+                className={`cursor-pointer border-b-2 ${error ? "border-red-400" : "border-app-h"} autofill:bg-transparent focus:border-app`}
+                {...props}
             />
-            <i className='fa fa-lock'></i>
-            {error && <div className="input-alert">{error}</div>}
+            <label className={`input_label`} htmlFor={name}>{label}</label>
+            {error && <div className="input-alert"><span>{error}</span></div>}
         </div>
-    )
+    </>)
 }
 
 export const InputFieldAdd = forwardRef(({ label, type = "text", name, value = '', onChange, error, placeholder }, ref) => {
@@ -85,15 +91,15 @@ export const InputFieldAdd = forwardRef(({ label, type = "text", name, value = '
             <input
                 id={name}
                 type={type}
-                name={name}
+                // name={name}
                 defaultValue={value}
                 // onChange={onChange}
                 {...(type === 'file' ? { ref } : {})}
                 placeholder={placeholder}
-                className={`w-full ${type !== 'file' ? "px-5 py-2.5" : "transition duration-200 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-600/30"} border rounded-full ${error ? "border-red-500" : "border-gray-300"}`}
+                className={`w-full ${type !== 'file' ? "px-5 py-3.5" : "transition duration-200 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-600/30"} border rounded-xl ${error ? "border-red-500" : "border-gray-300"}`}
             />
             <i className='fa fa-lock'></i>
-            {error && <div className="input-alert">{error}</div>}
+            {error && <div className="input-alert"><span>{error}</span></div>}
         </div>
     )
 })
@@ -105,40 +111,45 @@ export const InputFieldFile = ({ label, type = "text", name, value = '', onChang
             <input
                 id={name}
                 type={type}
-                name={name}
-                defaultValue={value}
+                // name={name}
+                // defaultValue={value}
                 // onChange={onChange}
                 placeholder={placeholder}
-                className={`w-full ${type !== 'file' ? "px-5 py-2.5" : "transition duration-200 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-600/30"} border rounded-full ${error ? "border-red-500" : "border-gray-300"}`}
+                className={`w-full ${type !== 'file' ? "px-5 py-3.5" : "transition duration-200 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-600/30"} border rounded-xl ${error ? "border-red-500" : "border-gray-300"}`}
             />
             <i className='fa fa-lock'></i>
-            {error && <div className="input-alert">{error}</div>}
+            {error && <div className="input-alert"><span>{error}</span></div>}
         </div>
     )
 }
 
-export const Select_categories = ({ onChange, error, name = '', id = '', classData, valueProp }) => {
+export const Select_categories = ({ onChange, error, name = '', id = '', classData, valueProp, ...props }) => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        api.get(`/articles/categories`)
-            .then(response => {
-                setCategories(response.data.data)
-            })
-            .catch(err => {
-                console.log('Erreur dans la requête des catégories');
-            })
+        setCategories(articlesCategories)
     }, []);
+    // useEffect(() => {
+    //     api.get(`/articles/categories`)
+    //         .then(response => {
+    //             setCategories(response.data.data)
+    //         })
+    //         .catch(err => {
+    //             console.log('Erreur dans la requête des catégories');
+    //         })
+    // }, []);
 
     const categoriesData = Object.values(categories);
 
     if (categoriesData.length < 1) return null
     return (
-        <select name={name}
-            value={valueProp}
+        <select
+            // name={name}
+            // value={valueProp}
             className={`${classData} ${error ? "border-red-500" : ''}`}
-            onChange={onChange}
+            // onChange={onChange}
             title="category" id={id}
+            {...props}
         >
             {categoriesData.map((categ, index) => (
                 <option value={index} key={index}>{categ}</option>
@@ -146,20 +157,30 @@ export const Select_categories = ({ onChange, error, name = '', id = '', classDa
         </select>
     )
 }
-export const SelectField_categories = ({ onChange, error, classData, valueProp }) => {
+export const SelectField_categories = ({ onChange, error, classData, valueProp, ...props }) => {
     return (
         <>
             <div className="inpt categ">
                 <label htmlFor='category' className="block text-gray-700 font-semibold mb-1 text-left text-sm dark:text-white/90">Catégorie de l'article :</label>
                 <span>
                     <Select_categories
-                        onChange={onChange} error={error} name='category' id='category' classData={classData} valueProp={valueProp} />
+                        onChange={onChange} error={error} name='category' id='category' classData={classData} valueProp={valueProp} {...props} />
                 </span>
                 <i className="file fa fa-upload"></i>
                 {error && <div className="input-alert">{error}</div>}
             </div>
         </>
     );
+}
+
+export const randomIP = () => {
+    return Math.floor(Math.random() * 256)
+}
+
+export const encodePassword = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
+    return hash
 }
 
 

@@ -49,7 +49,7 @@ const ModalCart = ({ onClose, redirect }) => {
     const handleCommand = () => {
         if (isAuthenticated) {
             // console.log({ total: totalCart, cartItems: cartItems, user: userSession.user_id });
-            mutate({ total: totalCart, cartItems: cartItems, user: userSession.user_id })
+            // mutate({ total: totalCart, cartItems: cartItems, user: userSession.user_id })
             clearCart()
             clearCartCookie(userSession?.user_id)
         } else {
@@ -63,31 +63,16 @@ const ModalCart = ({ onClose, redirect }) => {
     // Si contenu présent
     return <>
         <div className="w-full pr-2">
-            <div className="hidden md:grid grid-cols-6 gap-4 bg-gray-100 text-gray-700 dark:bg-app-600/20 dark:text-white/90 text-sm px-4 py-5 border-b rounded-tr-xl rounded-tl-xl">
+            <div className="hidden md:grid grid-cols-5 gap-4 bg-gray-100 text-gray-700 dark:bg-app-600/20 dark:text-white/90 text-sm px-4 py-5 border-b rounded-tr-xl rounded-tl-xl">
                 <div>Article</div>
                 <div>Prix</div>
                 <div>Quantité</div>
-                <div>Stock</div>
+                {/* <div>Stock</div> */}
                 <div>Prix Total</div>
             </div>
-            {/* <div className="cart-header text-gray-700 bg-gray-50 p-2 rounded-tr-xl rounded-tl-xl border-b-2 border-gray-300 shadow-inner dark:bg-dark-div dark:text-white/90">
-                <div className="cart--item btn-trans h-10 border-none px-0">
-                    <div className="w-5"><span className="" >N°</span></div>
-                    <div className="flex justify-between flex-grow">
-                        <span className="text-left">Article</span>
-                        <span className="">Prix</span>
-                    </div>
-                    <div className="w-20">Quantité</div>
-                    <div className="w-10 text-left">Stock</div>
-                    <div className="min-w-28 hidden xl:block">Prix Total</div>
-                    <div className="w-7"></div>
-                </div>
-            </div> */}
             <div className="cart-content">
                 {cartItems.map((item, key) => (
-                    <>
-                        <ItemCartComp key={key} item={item} />
-                    </>
+                    <ItemCartComp key={item.id_articles} item={item} />
                 ))}
             </div>
             <div className="cart-footer">

@@ -1,6 +1,7 @@
 // api.js - Service pour les appels API avec Axios
 import axios from 'axios';
 import { API_href } from "../App.json";
+import { APP_Articles } from '../App.json'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -14,7 +15,6 @@ export const api = axios.create({
 })
 
 export const searchArticles = async ({ search_article, search_categ, page = 1, controllerLink = 'home' }) => {
-    //  /articles/search
     const params = new URLSearchParams();
 
     // if (endpoint) params.append('search_controller', endpoint);
@@ -27,6 +27,29 @@ export const searchArticles = async ({ search_article, search_categ, page = 1, c
     const response = await api.get(`/articles/search?${params.toString()}`);
     // console.log(`/articles/search?${params.toString()}`, response);
     return response.data;
+
+    let perPage = 3
+    // const articles = { isLoading: false }
+    const visiblesArticles = APP_Articles.filter(n => n.art_visible > 0)
+    const filteredArticles = visiblesArticles.filter(art => {
+        const matchName = art.article.toLowerCase().includes(search_article.toLowerCase());
+        const matchCategory = search_categ === '0' || art.category === parseInt(search_categ);
+        return matchName && matchCategory;
+    })
+
+    let total_articles = filteredArticles.length
+    let total_pages = Math.ceil(Number(total_articles) / perPage)
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    const dataArticles = filteredArticles.slice(start, end);
+    const articles = {
+        // ...articles,
+        // isLoading: false,
+        articlesData: dataArticles,
+        total_pages: total_pages,
+        total_articles: total_articles
+    }
+    return articles
 }
 
 export const getDefaultArticles = async ({ controllerLink, page = 1 }) => {
@@ -39,6 +62,26 @@ export const getDefaultArticles = async ({ controllerLink, page = 1 }) => {
     // }
     const response = await api.get(`/articles/${controllerLink}/?page=${page}&controller=${controllerLink}`)
     return response.data
+
+    let perPage = 3
+    // const articlesData = []
+    let userID = localStorage.getItem('userId')
+    const visiblesArticles = APP_Articles.filter(n => n.art_visible > 0)
+    const filteredArticles = visiblesArticles.filter(prevArticle => {
+        const matchUser = controllerLink === 'home' ? prevArticle.number !== userID : prevArticle.number === userID
+        return matchUser
+    })
+    let total_articles = filteredArticles.length
+    let total_pages = Math.ceil(Number(total_articles) / perPage)
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    const dataArticles = filteredArticles.slice(start, end);
+    const articles = {
+        articlesData: dataArticles,
+        total_pages: total_pages,
+        total_articles: total_articles
+    }
+    return articles
 }
 
 export const getDataArticle = async ({ id }) => {

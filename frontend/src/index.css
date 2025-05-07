@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer utilities {
+    .rotate-y {
+        transform: perspective(800px) rotateY(40deg);
+    }
+
     .hover-rotate-y {
         transform: perspective(1000px) rotateY(0);
     }
@@ -68,7 +72,7 @@
     }
 
     .cart--item-box {
-        @apply border-l bg-gray-200 border-gray-300 px-4 py-4 rounded text-center shadow-inner text-gray-900 dark:bg-dark-div dark:text-white/90
+        @apply bg-gray-200 px-4 py-4 text-center shadow-inner text-gray-900 dark:bg-dark-div dark:text-white/90
     }
 
     .trader-block button {
@@ -122,8 +126,8 @@
         @apply text-justify xl:max-w-[70%] xl:mx-auto
     }
 
-    .about-balance>div {
-        @apply bg-gray-800 rounded-xl p-5 ml-0 m-2 sm:mt-0
+    .slides div {
+        @apply bg-gray-900
     }
 
     .var-text-dark {
@@ -134,24 +138,16 @@
         @apply float-right h-min w-1/2
     } */
 
-    .about-detail ul li {
-        @apply ml-12 mt-2 list-disc
-    }
-
-    .about-detail h3 {
-        @apply mt-4
-    }
-
     .--icon-notif {
-        @apply absolute -top-0.5 right-2 bg-red-600 text-gray-50 font-bold text-xs px-2 py-0.5 rounded-full
+        @apply absolute -top-0 right-0 sm:-top-0.5 sm:right-2 bg-red-600 text-gray-50 font-bold text-xs px-1.5 py-0.5 rounded-full
     }
 
-    .modal-Sidebar ul li:hover a svg,
+    /* .modal-Sidebar ul li:hover a svg,
     .modal-Sidebar ul li:hover button svg,
     footer ul li a:hover svg,
     footer ul li button:hover svg {
         @apply animate-bounce
-    }
+    } */
 
     .landing-btn:hover svg {
         @apply animate-ping
@@ -191,7 +187,32 @@
     }
 
     input {
-        @apply outline-1 focus:outline-app-900 dark:focus:outline-app-500 bg-app-050 dark:bg-white dark:text-black/70
+        @apply outline-none bg-transparent text-black/90 dark:text-white/90 mt-4 w-[100%]
+    }
+
+    .input-group {
+        @apply relative h-[65px]
+    }
+
+    .input-group input {
+        @apply pl-8 pb-2
+    }
+
+    .input-group i {
+        @apply absolute top-3.5 left-0 text-sm text-gray-400
+    }
+
+    .input-group i svg {
+        @apply h-6 w-6
+    }
+
+    .input-group .input_label {
+        @apply absolute top-4 left-8 text-base transition-all duration-200 cursor-pointer dark:text-gray-300
+    }
+
+    .input-group input:focus+.input_label,
+    .input-group input:not(:placeholder-shown)+.input_label {
+        @apply -top-1.5 left-0 text-sm text-gray-500 dark:text-gray-400
     }
 
     select {
@@ -215,10 +236,14 @@
     }
 
     .main-search {
-        height: calc(100vh - 170px);
+        min-height: calc(100vh - 170px);
     }
 
     .input-alert {
-        @apply dark:bg-red-500 bg-red-500/90 text-white border-l-2 border-red-600 py-2 px-3 mx-6 text-center text-sm text-left mt-1 rounded-br-3xl rounded-bl-3xl;
+        @apply flex justify-center;
+    }
+
+    .input-alert span {
+        @apply dark:bg-red-500 bg-red-500/90 text-white py-1.5 px-3 mx-8 text-center w-fit rounded-br-xl rounded-bl-xl
     }
 }

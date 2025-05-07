@@ -35,7 +35,7 @@ const UserPage = () => {
         <div id='scroll-container'>
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
             <div className="">
-                <div className="pt-16 text-white pb-1 bg-red-500 w-full banner_trader text-center">
+                <div className="pt-16 text-white pb-1 w-full banner_trader text-center">
                     <h1 className="mb-2">Bienvenue {userSession?.user_name} !</h1>
                     <div className="text-xl xl:text-3xl font-semibold">Votre numéro est le +237 {userSession?.user_number}</div>
                     <div className="m-4 p-1 xl:px-5 py-4">
@@ -44,7 +44,7 @@ const UserPage = () => {
                             : canAddArticles
                                 ? <>
                                     {/* <h3 className="p-4">Espace Marchand</h3> */}
-                                    <div className="flex gap-x-2 text-white justify-center trader-block">
+                                    <div className="flex flex-col md:flex-row gap-2 w-3/4 mx-auto md:w-full text-white items-center justify-center trader-block">
                                         <button onClick={handleAdd} className="btn-trade">
                                             <SquarePlusIcon className="h-5 w-5" />
                                             <span>Ajouter un article</span>
@@ -55,7 +55,7 @@ const UserPage = () => {
                                         </button>
                                     </div>
                                 </>
-                                : <div className="bg-app-h/50 pt-8 p-3 xl:pt-4 xl:pr-6 w-full xl:w-[60%] rounded-xl mx-auto flex flex-col xl:flex-row justify-center items-center gap-3 xl:gap-6">
+                                : <div className="bg-app-h/50 pt-10 p-5 xl:pt-4 xl:pr-6 w-full xl:w-[60%] rounded-xl mx-auto flex flex-col xl:flex-row justify-center items-center gap-3 xl:gap-6">
                                     {/* <button onClick={BecomeTrader} className="">Devenir Trader ?</button> */}
                                     <div className="text-center xl:text-right tracking-wider">
                                         <h3 className="mb-3">Commencez cette <span className="border-b-2 border-dashed border-app-700 text-xl text-app capitalize">nouvelle aventure</span> avec nous !

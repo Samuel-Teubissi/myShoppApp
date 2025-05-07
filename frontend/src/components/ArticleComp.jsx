@@ -16,10 +16,11 @@ import { formatElapsedTime } from "./AppComp";
 import { BoxIcon, ClockIcon, PhoneIcon } from "lucide-react";
 import Aos from "aos";
 import 'aos/dist/aos.css';
+import { APP_Categories as articlesCategories } from '../App.json'
 
 const ArticleComp = ({ art, articleRef, controller }) => {
-
     const imgLink = import.meta.env.VITE_IMG_URL + '/assets/img/articles/' + art.file_name
+    // const imgLink = '/public/img/articles/' + art.file_name
     // const imgLink = API_href + '/assets/img/articles/' + art.file_name
     // const imgLink = `${import.meta.env.VITE_PUBLIC_URL}/images/articles/${art.file_name}`;
     const artID = art.id_articles
@@ -81,7 +82,7 @@ const ArticleComp = ({ art, articleRef, controller }) => {
                             </div>
                         </>}
                         <div className="flex items-center text-center uppercase">
-                            <span title={art.content} className="border rounded-full border-app-500 py-0.5 px-3 text-sm text-app-500">{art.content}</span>
+                            <span title={art.content} className="border rounded-full border-app-500 py-0.5 px-3 text-sm text-app-500">{articlesCategories[art.category]}</span>
                         </div>
                         <div className="flex justify-between">
                             <div className="flex gap-2 items-center">

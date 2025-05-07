@@ -93,7 +93,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<p>Database Status :</p>
 			<code>
 				<?php
-				$mysqli = new mysqli('sql.freedb.tech', 'freedb_samsam', 'M8Yq3XEMaD8F2Z$', 'freedb_myshop-app');
+				$mysqli = new mysqli(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASS'), getenv('DB_NAME'));
 
 				if ($mysqli->connect_error) {
 					die("Erreur de connexion : " . $mysqli->connect_error);

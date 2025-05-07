@@ -55,10 +55,12 @@ export default function DefaultRouterComp() {
     // const isLoadingPage = navigation.state === "loading";
     useEffect(() => {
         // Quand l'URL change, on arrête le loading
-        setIsLoadingPage(false);
         resetShowSearchBar()
+        setIsLoadingPage(false);
         setVisibleSearchBar(location.pathname === '/home' || location.pathname === '/user')
     }, [location.pathname]);
+    // useEffect(() => {
+    // }, [isLoadingPage]);
 
 
     const toggleNav = () => {

@@ -10,6 +10,7 @@ import { useNotifications } from "../hooks/useNotifications old";
 import { useNotificationsStore } from "../hooks/useNotifications";
 import { queryClient } from "../main";
 import axios from "axios";
+import { ChevronDownIcon } from "lucide-react";
 
 export const EditArticleForm = ({ id, onClose }) => {
     const [article, setArticle] = useState({ name: '' });
@@ -45,11 +46,12 @@ export const EditArticleForm = ({ id, onClose }) => {
     }, [dataArticle]);
 
     const { isLoading: isEditSubmitting, mutate } = useMutation({
+        mutationKey: ['article', 'edit'],
         mutationFn: async (e) => {
             e.preventDefault()
             const editData = new FormData(e.target)
             // editData.append('user_id', )
-            editData.append('user_id', userSession.user_id)
+            // editData.append('user_id', userSession.user_id)
             // const updateData = await updateArticle({ id, editData })
             const response = await api.post(`/article/${id}`, editData)
             // const response = await axios.post(`/article/${id}`, editData, { withCredentials: true })
@@ -152,12 +154,15 @@ export const EditArticleForm = ({ id, onClose }) => {
                     error={editFormError?.userfile}
                     placeholder='Saisissez un nom'
                 />
-                <SelectField_categories
-                    onChange={handleInputChange}
-                    valueProp={article?.category}
-                    error={editFormError?.category}
-                    classData='w-full px-5 py-2.5 transition duration-200 cursor-pointer border rounded-full appearance-none'
-                />
+                <div className="relative">
+                    <SelectField_categories
+                        onChange={handleInputChange}
+                        valueProp={article?.category}
+                        error={editFormError?.category}
+                        classData='w-full px-5 py-2.5 transition duration-200 cursor-pointer border rounded-full appearance-none'
+                    />
+                    <ChevronDownIcon className="w-6 h-6 text-black/70 dark:text-white absolute top-9 right-5 pointer-events-none" />
+                </div>
                 <div className="space-x-2">
                     <button type="button" onClick={onClose} className="btn-modal-cancel" disabled={isEditSubmitting}>
                         Annuler

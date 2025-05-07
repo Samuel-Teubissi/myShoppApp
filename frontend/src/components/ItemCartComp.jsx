@@ -1,24 +1,87 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import _ from "lodash";
+import _, { debounce } from "lodash";
 import { useCart } from "../context/useCart";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import numeral from "numeral";
+import { MinusCircleIcon, MinusIcon, PlusCircleIcon, PlusIcon } from "lucide-react";
 
 const ItemCartComp = ({ item, num }) => {
     const price = item.price
     const cart_total = price * item.orderedQty
     const [errorQty, setErrorQty] = useState(false);
+    const [orderQty, setOrderQty] = useState(1);
     const { updateCartQty, removeFromCart } = useCart()
 
-    const handleNewQuantity = (e) => {
-        let newQty = parseInt(e.target.value) || 1;
-        let stockAvailable = item.quantity
-        if (newQty > stockAvailable) newQty = stockAvailable;//setErrorQty(true);
-        if (newQty < 1) newQty = 1;//setErrorQty(true);
-        updateCartQty(item.id_articles, newQty)
-        setErrorQty(false);
+    const increase = () => {
+        setOrderQty(prev => (prev < item.quantity ? prev + 1 : item.quantity))
+        // setOrderQty(prev => prev + 1)
     }
+    const decrease = () => {
+        setOrderQty(prev => (prev > 1 ? prev - 1 : 1))
+    }
+    useEffect(() => {
+        updateCartQty(item.id_articles, orderQty)
+        // useCallback(
+        // debounce(() => updateCartQty(item.id_articles, orderQty), 500)
+        // , [])
+    }, [orderQty]);
+
+    // const handleNewQuantity = (type) => {
+    //     let newQty = parseInt(e.target.value) || 1;
+    //     let stockAvailable = item.quantity
+    //     if (orderQty > stockAvailable) orderQty = stockAvailable;//setErrorQty(true);
+    //     if (orderQty < 1) orderQty = 1;//setErrorQty(true);
+    //     updateCartQty(item.id_articles, orderQty)
+    //     setErrorQty(false)
+    // }
+
+    return <>
+        <div className="space-y-2" key={item.id_articles}>
+            <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-5 md:grid-rows-1 text-left lg:text-center justify-start gap-3 gap-x-5 md:gap-4 px-8 md:px-4 pt-10 pb-4 md:py-2 bg-gray-100 mt-2 md:bg-white dark:bg-dark dark:text-white/90 items-center border-t md:border-none border-app-900">
+                <div className="flex sm:justify-start items-center text-left gap-2 col-span-2 md:col-span-1">
+                    <span>
+                        <span className="hidden md:block bg-gray-400 h-4 w-4 rounded-full"></span>
+                        <span className="md:hidden font-bold">Article: </span>
+                    </span>
+                    <span>{item.article}</span>
+                </div>
+                <div>
+                    <span className="md:hidden font-bold">Prix: </span>
+                    <span>{price.toLocaleString('fr-FR')}</span>
+                </div>
+                <div>
+                    {/* <span className="md:hidden font-bold">Quantité: </span>
+                    <input type="number" name="quantity"
+                        className={`w-20 p-2 border rounded pl-4 bg-white text-black/70 flex-grow ${errorQty ? "border-red-500" : "border-gray-300"}`}
+                        placeholder="Quantité"
+                        value={item.orderedQty}
+                        min={1}
+                        max={item.quantity}
+                        onChange={handleNewQuantity}
+                    /> */}
+                    <div className="flex gap-2 md:justify-center justify-end">
+                        <button onClick={decrease} className="text-app hover:bg-app hover:text-white/90 rounded-full btn-trans" disabled={orderQty <= 1}><MinusCircleIcon /></button>
+                        <span className="font-bold">{_.padStart(String(orderQty), 2, '0')}/{_.padStart(String(item.quantity), 2, '0')}</span>
+                        <button onClick={increase} className="text-app hover:bg-app hover:text-white/90 rounded-full btn-trans" disabled={orderQty >= item.quantity}><PlusCircleIcon /></button>
+                    </div>
+                </div>
+                {/* <div>
+                    <span className="md:hidden font-bold">Stock restant: </span>
+                    <span>{_.padStart(String(item.quantity), 2, '0')}</span>
+                </div> */}
+                <div>
+                    <span className="md:hidden font-bold">Prix total: </span>
+                    <span className="hidden cart--item-box bg-app-h bg-opacity-30 w-full md:block">{cart_total.toLocaleString('fr-FR')}</span>
+                    <span className="md:hidden">{cart_total.toLocaleString('fr-FR')}</span>
+                </div>
+                <div className="col-span-2 md:col-span-1 flex justify-center items-center bg-red-800 md:bg-transparent lg:hover:bg-transparent hover:bg-red-700 hover:text-white transition duration-300 text-white/90 gap-4 py-3 rounded-xl" onClick={() => { removeFromCart(item.id_articles) }}>
+                    <span className="md:hidden">Effacer</span>
+                    <FontAwesomeIcon icon={faTrashCan} size="" className="w-7 h-7 text-white md:text-app-h cursor-pointer hover:text-app btn-trans transform hover:scale-110" title="Supprimer" />
+                </div>
+            </div>
+        </div>
+    </>
 
     // return (
     //     <>
@@ -53,46 +116,5 @@ const ItemCartComp = ({ item, num }) => {
     //         </div>
     //     </>
     // );
-    return <>
-        <div class="space-y-2" key={item.id_articles}>
-            <div class="grid grid-cols-1 grid-rows-6 md:grid-cols-6 md:grid-rows-1 text-left lg:text-center justify-start gap-2 md:gap-4 px-8 md:px-4 pt-14 pb-4 md:py-2 bg-gray-100 shadow mt-2 md:bg-white dark:bg-app-600/10 dark:text-white/90 rounded-xl items-center">
-                <div className="flex justify-start items-center text-left gap-2">
-                    <span>
-                        <span className="hidden md:block bg-gray-400 h-4 w-4 rounded-full"></span>
-                        <span class="md:hidden font-bold">Article: </span>
-                    </span>
-                    <span>{item.article}</span>
-                </div>
-                <div>
-                    <span class="md:hidden font-bold">Prix: </span>
-                    <span>{price.toLocaleString('fr-FR')}</span>
-                </div>
-                <div>
-                    <span class="md:hidden font-bold">Quantité: </span>
-                    <input type="number" name="quantity"
-                        className={`w-20 p-2 border rounded pl-4 bg-white text-black/70 flex-grow ${errorQty ? "border-red-500" : "border-gray-300"}`}
-                        placeholder="Quantité"
-                        value={item.orderedQty}
-                        min={1}
-                        max={item.quantity}
-                        onChange={handleNewQuantity}
-                    />
-                </div>
-                <div>
-                    <span class="md:hidden font-bold">Stock restant: </span>
-                    <span>{_.padStart(String(item.quantity), 2, '0')}</span>
-                </div>
-                <div>
-                    <span class="md:hidden font-bold">Prix total: </span>
-                    <span className="hidden cart--item-box bg-app-h bg-opacity-30 w-full md:block">{cart_total.toLocaleString('fr-FR')}</span>
-                    <span class="md:hidden">{cart_total.toLocaleString('fr-FR')}</span>
-                </div>
-                <div className="flex justify-center items-center bg-red-800 md:bg-transparent lg:hover:bg-transparent hover:bg-red-700 hover:text-white transition duration-300 text-white/90 gap-4 py-3 rounded-xl">
-                    <span className="md:hidden">Effacer</span>
-                    <FontAwesomeIcon icon={faTrashCan} size="" className="w-7 h-7 text-white md:text-app-h cursor-pointer hover:text-app btn-trans transform hover:scale-110" onClick={() => { removeFromCart(item.id_articles) }} title="Supprimer" />
-                </div>
-            </div>
-        </div>
-    </>
 }
 export default ItemCartComp

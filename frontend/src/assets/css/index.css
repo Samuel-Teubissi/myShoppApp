@@ -139,10 +139,6 @@ body {
     color: inherit;
 }
 
-input:focus {
-    border: none;
-}
-
 .logo {
     display: inline-block;
     height: min-content;
@@ -597,12 +593,16 @@ input[type="number"].inpt-f {
     }
 }
 
+
 ::-webkit-file-upload-button {
     color: #fef5fd;
     background: #aa6289;
+    box-sizing: border-box;
     padding: 10px 20px;
-    border-radius: 40px;
-    border: none;
+    margin: 2px;
+    margin-right: 15px;
+    border-radius: 8px;
+    border: transparent;
     box-shadow: 0 1px 1px #6b4559;
     outline: none;
     transition: 0.2s ease-in-out;
@@ -734,6 +734,7 @@ footer>div {
     align-items: center;
     gap: 4px;
     transition: 0.1s ease-in all;
+    /* font-size: smaller; */
 }
 
 .footer_body ul li a:hover,
@@ -750,9 +751,9 @@ footer>div {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 3rem;
+    /* padding: 3rem; */
     padding-top: 2rem;
-    padding-left: 10px;
+    padding-left: 0px;
     /* width: 20rem; */
     height: 100%;
     text-transform: capitalize;
@@ -761,13 +762,13 @@ footer>div {
 .modal-Sidebar ul li a,
 .modal-Sidebar ul li button {
     display: flex;
-    border-radius: 8px;
+    /* border-radius: 0 8px 8px 0; */
     width: 100%;
     gap: 0.5rem;
     padding: 10px 3rem;
     margin: 0.25rem 0;
     box-shadow: none;
-    transition: ease-in-out .4s all;
+    transition: ease-in-out .2s all;
 }
 
 .modal-Sidebar ul li a:hover,
@@ -779,7 +780,7 @@ footer>div {
 
 .modal-Sidebar ul li a.active {
     background-color: var(--bg-app-800);
-    padding-left: 30px;
+    /* padding-left: 30px; */
     color: #ffffffe7;
 }
 

@@ -133,15 +133,16 @@ class articleController extends REST_Controller
     public function API_Trader_Article_post($id)
     {
         // var_dump($this->session);
-        // if ($this->session->has_userdata('data_trader')) {
-        if ($this->input->post('user_id')) {
+        if ($this->session->has_userdata('data_trader')) {
+            // if ($this->input->post('user_id')) {
             $data = [];
             $fieldRule = false;
             $addData['categories'] = $this->articlesModel->API_get_Categories(true);
             unset($addData['categories'][0]);
             $categ_list = implode(',', array_keys($addData['categories']));
 
-            $trader = $this->input->post('user_id');
+            $trader = $this->session->data_trader;
+            // $trader = $this->input->post('user_id');
 
             if (!isset($trader) && empty($this->traderModel->API_VerifyTrader($trader))) {
                 echo json_encode([

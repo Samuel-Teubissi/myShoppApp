@@ -26,7 +26,7 @@ const LandingPage = () => {
                         Un article dans la liste ci-dessous vous interresse vous n'avez qu'à joindre le numéro en dessous et discuter des détails de la transaction avec le marchand ! Rien de plus simple !
                     </p>
                     <p>
-                        <button onClick={openHome} className="landing-btn mt-8 bg-app-h py-4 px-5 rounded-3xl hover:bg-app transition duration-300 font-normal flex items-center mx-auto gap-2">Découvrez notre liste de produits <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />
+                        <button onClick={openHome} className="landing-btn mt-8 bg-app-h py-4 px-5 rounded-xl hover:bg-app transition duration-300 font-normal flex items-center mx-auto gap-2">Découvrez notre liste de produits <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />
                         </button>
                     </p>
                 </div>

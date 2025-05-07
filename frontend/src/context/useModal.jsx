@@ -29,6 +29,16 @@ export const ModalProvider = ({ children }) => {
     useEffect(() => {
         Aos.init()
     }, []);
+    useEffect(() => {
+        if (modalContent) {
+            // Quand la modale s'ouvre on masque la barre du body
+            document.body.style.overflow = 'hidden'
+            return () => {
+                // Quand la modale se ferme on réinitialise
+                document.body.style.overflow = ''
+            }
+        }
+    }, [modalContent]);
     // Fermer la modale si onclique à l'extérieur
     useCloseOutsideModal(ModalRef, closeModal)
 

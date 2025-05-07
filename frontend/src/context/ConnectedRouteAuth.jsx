@@ -12,7 +12,8 @@ const ConnectedRouteAuth = ({ children }) => {
 
     if (isLogging) return <LoaderComp />
     if (isAuthenticated) {
-        const redirectPath = userSession.role === "admin" ? "/admin" : "/user";
+        // const redirectPath = userSession.role === "admin" ? "/admin" : "/user";
+        const redirectPath = "/user";
         return <Navigate to={redirectPath} replace state={{ from: location }} />;
     }
     return children
