@@ -88,7 +88,7 @@ const AboutPage = () => {
                             </pre>
                         </div>
                     </div>
-                    <div className="px-4 lg:px-10 mt-4">
+                    <div className="px-4 lg:px-10 mt-8">
                         <h2 className="text-gray-600 dark:text-gray-300">À propos de moi</h2>
                         <div className="mt-2">
                             Je suis <span className="highlight">Teubissi Samuel</span>, <span className="highlight">développeur web fullstack</span> et <span className="highlight">dinfographiste passionné</span>, spécialisé dans la création de sites web modernes et l'optimisation d'expériences visuelles.🌐<br />
