@@ -48,7 +48,7 @@ const AboutPage = () => {
                 {/* <img src={linkMsg} alt="Author" className="rounded object-cover block absolute top-[8%] left-[8%] xl:top-[-3px] xl:left-[55px] scale-95 hover:scale-100 max-w-full z-0 w-[400px] sm:w-[350px] lg:w-[500px] xl:w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} /> */}
                 <div className="relative">
                     <img src={linkMsg} alt="Author" className="rounded object-cover block absolute -top-[64px] left-0 scale-95 hover:scale-100 max-w-full z-0 w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} />
-                    <img src={link} alt="Author" className="max-w-full rounded object-cover z-10 hover-rotate-y transition-transform duration-300" width={430} height={430} />
+                    <img src={link} alt="Author" className="max-w-full rounded object-cover z-10 hover-rotate-y transition-transform duration-300 about-img" width={430} height={430} />
                 </div>
                 <div className="flex items-center gap-1 text-dark-app-100 mt-2">
                     {contacts.map((contact, key) => (

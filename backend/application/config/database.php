@@ -76,11 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	// Default Routes
-	// 'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => '',
-	// 'database' => 'myshopapp',
-	// 'dbdriver' => 'mysqli',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'myshopapp',
+	'dbdriver' => 'mysqli',
 	// Default Routes ENV
 	// 'hostname' => getenv('DB_HOST'),
 	// 'username' => getenv('DB_USER'),
@@ -100,11 +100,11 @@ $db['default'] = array(
 	// 'database' => 'my_shopp_app',
 	// 'dbdriver' => 'postgre',
 	// API Routes
-	'hostname' => 'sql105.infinityfree.com',
-	'username' => 'if0_38869070',
-	'password' => 'gikOyiS8oo',
-	'database' => 'if0_38869070_myshop_db',
-	'dbdriver' => 'postgre',
+	// 'hostname' => 'sql105.infinityfree.com',
+	// 'username' => 'if0_38869070',
+	// 'password' => 'gikOyiS8oo',
+	// 'database' => 'if0_38869070_myshop_db',
+	// 'dbdriver' => 'postgre',
 
 	'dbprefix' => '',
 	'pconnect' => FALSE,

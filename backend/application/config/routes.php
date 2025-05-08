@@ -64,6 +64,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'welcome';
 
+
+$route['api/(:any)'] = 'api/$1';
 /**
  * TOJOURS AJOUTER ""api/"" AU DEBUT D'UNE ROUTE API REST
  * Routage d'affichage d'articles' ""articles_Controller""

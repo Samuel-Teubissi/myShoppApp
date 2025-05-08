@@ -469,3 +469,4 @@ ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validatio
 ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validation_required"
 ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validation_required"
 ERROR - 2025-05-07 23:20:07 --> Could not find the language line "form_validation_in_list"
+ERROR - 2025-05-07 23:59:59 --> 404 Page Not Found: api//index

@@ -126,18 +126,18 @@ export const InputFieldFile = ({ label, type = "text", name, value = '', onChang
 export const Select_categories = ({ onChange, error, name = '', id = '', classData, valueProp, ...props }) => {
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        setCategories(articlesCategories)
-    }, []);
     // useEffect(() => {
-    //     api.get(`/articles/categories`)
-    //         .then(response => {
-    //             setCategories(response.data.data)
-    //         })
-    //         .catch(err => {
-    //             console.log('Erreur dans la requête des catégories');
-    //         })
+    //     setCategories(articlesCategories)
     // }, []);
+    useEffect(() => {
+        api.get(`/articles/categories`)
+            .then(response => {
+                setCategories(response.data.data)
+            })
+            .catch(err => {
+                console.log('Erreur dans la requête des catégories');
+            })
+    }, []);
 
     const categoriesData = Object.values(categories);
 
