@@ -38,12 +38,12 @@ const SliderAbout = () => {
         container.style.transform = `translateX(${offset - currentIndex * slideWidth}px)`;
     }, [currentIndex]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            handleNext();
-        }, autoSlideInterval);
-        return () => clearInterval(interval)
-    }, [currentIndex]);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         handleNext();
+    //     }, autoSlideInterval);
+    //     return () => clearInterval(interval)
+    // }, [currentIndex]);
 
     const slidesAbout = [
         {
@@ -70,10 +70,12 @@ const SliderAbout = () => {
 
     return <>
         <div className="slider">
-            <div className="about-balance text-white/90 slides" ref={slidesContainerRef}>
+            <div className="about-balance text-white/90 slides" ref={slidesContainerRef} style={{ '--total-slide': 5 }}>
                 {slidesAbout.map((slide, index) => (
-                    <div key={index} ref={index === 0 ? slideRef : null} className={`slide ${index === currentIndex ? 'active-slide' : ''}  ${index === slidesAbout.length && 'flex'}`}>
-                        <h3>{slide.h3}</h3>
+                    <div key={index} ref={index === 0 ? slideRef : null} className={`slide ${index === currentIndex ? 'active-slide' : ''}`}
+                        style={{ "--position-slide": index + 1 }}>
+                        {/* ${index === slidesAbout.length && 'flex'} */}
+                        <h3 className='font-semibold'>{slide.h3}</h3>
                         <ul>
                             {slide.li.map((li_content, li_key) => (
                                 <li key={li_key}>{li_content}</li>

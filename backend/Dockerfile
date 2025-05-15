@@ -1,22 +1,42 @@
-# Utilise une image officielle avec Apache et PHP
-FROM php:7.4-apache
+# 1. Image de base PHP 8.0 + Apache
+FROM php:8.0-apache
 
-# Installe les extensions nécessaires à CodeIgniter
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+# 2. Installer les dépendances système puis les extensions PHP
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    libonig-dev \
+    libzip-dev \
+    zip \
+    unzip \
+    libxml2-dev \
+    default-mysql-client \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install \
+    mbstring \
+    mysqli \
+    pdo_mysql \
+    zip \
+    xml \
+    && rm -rf /var/lib/apt/lists/*
 
-# Active mod_rewrite pour les URLs propres
+# 3. Activer mod_rewrite pour les URL propres CI3
 RUN a2enmod rewrite
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-# Copie tous les fichiers du backend dans le dossier Apache
-COPY . /var/www/html
+# 4. Autoriser les .htaccess (rewrite) dans Apache
+RUN echo '<Directory /var/www/html/>\n\
+    AllowOverride All\n\
+    Require all granted\n\
+    </Directory>' \
+    > /etc/apache2/conf-available/override.conf \
+    && a2enconf override
 
-# Change les droits pour éviter des erreurs de permission
-RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+# 5. Copier ton backend CI3 (index.php, application/, system/, .htaccess…)
+COPY . /var/www/html/
 
-# Configure Apache pour CodeIgniter (si besoin)
-# COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
+# 6. Droits d’accès pour Apache
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
 
-# Expose le port 80 (celui utilisé par Apache)
+# 7. Exposer le port 80 et démarrer Apache
 EXPOSE 80
-
+CMD ["apache2-foreground"]

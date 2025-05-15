@@ -134,11 +134,11 @@ class articlesController extends REST_Controller
 
             $count_articles = count($this->articlesModel->API_get_Search_Articles($search, $categ, [], $controller));
             $articles = $this->articlesModel->API_get_Search_Articles($search, $categ, $limit_pag, $controller);
-            $count_results = count($articles);
-            $count_pages = ceil($count_articles / $per_page);
-            if (empty($articles)) {
-                $count_articles = $count_pages = 0;
-            }
+            // $count_results = count($articles);
+            $count_pages = ($count_articles > 0) ? ceil($count_articles / $per_page) : 0;
+            // if (empty($articles)) {
+            //     $count_articles = $count_pages = 0;
+            // }
             $this->response(array(
                 "status" => "success",
                 "articlesData" => $articles,

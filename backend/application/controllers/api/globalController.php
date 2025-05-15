@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 require APPPATH . 'libraries/REST_Controller.php';
 
@@ -107,15 +108,21 @@ class globalController extends REST_Controller
             $name = $this->input->post('username', true);
             $pswd = hash('sha256', $this->input->post('password'));
 
-            $idUser = $this->db->insert_id();
-            $userData = [
-                'data_trader' => null,
-                'user_id' => $idUser,
-                'user_name' => $name,
-                'user_number' => $number,
-                'role' => 'user'
+            // $idUser = $this->db->insert_id();
+            $dbData = [
+                'password' => $pswd,
+                'name' => $name,
+                'number' => $number
             ];
-            if ($this->db->insert('user', $userData)) {
+            if ($this->db->insert('user', $dbData)) {
+                $idUser = $this->db->insert_id();
+                $userData = [
+                    'data_trader' => null,
+                    'user_id' => $idUser,
+                    'user_name' => $name,
+                    'user_number' => $number,
+                    'role' => 'user'
+                ];
                 // Création de l'id Trader pr récup les data dans l'espace admin
                 $this->session->set_userdata($userData);
                 $this->response(array(

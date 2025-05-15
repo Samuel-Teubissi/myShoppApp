@@ -25,7 +25,7 @@ export const searchArticles = async ({ search_article, search_categ, page = 1, c
     params.append('controller', controllerLink);
 
     const response = await api.get(`/articles/search?${params.toString()}`);
-    // console.log(`/articles/search?${params.toString()}`, response);
+    // console.log(params.toString(), response.data);
     return response.data;
 
     let perPage = 3

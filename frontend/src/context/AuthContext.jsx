@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { API_href } from "../App.json";
 // import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { encodePassword, SoundNotif, waitSync } from "../components/AppComp";
 import { api } from "../hooks/api";
 import { Toaster, toast } from "sonner";
@@ -32,11 +32,9 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const checkSess = await axios.get('/logged', { withCredentials: true })
+            const checkSess = await axios.get('/auth/logged', { withCredentials: true })
             if (checkSess.data.status === 'success') {
                 setUserSession(checkSess.data.dataUser)
-                // console.log(checkSess.data.dataUser);
-
                 setIsAuthenticated(true)
 
             } else {
@@ -67,15 +65,12 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         checkAuth()
     }, [isAuthenticated]);
-    useEffect(() => {
-        setLoginErrors({})
-        setRegisterErrors({})
-    }, [location.pathname]);
 
     const login = async (dataForm) => {
         SoundNotif()
+        setIsLoggingLoad(true)
         try {
-            const res = await axios.post('/login', dataForm, { withCredentials: true })
+            const res = await axios.post('/auth/login', dataForm, { withCredentials: true })
             if (res.data.status === 'success') {
                 // SoundNotif()
                 toast.success(res.data.message)
@@ -96,7 +91,9 @@ export const AuthProvider = ({ children }) => {
             toast.error('Erreur de connexion')
             // return { success: false }
         } finally {
-            setIsLoggingLoad(false)
+            setTimeout(() => {
+                setIsLoggingLoad(false)
+            }, 1000);
         }
         return;
 
@@ -123,7 +120,7 @@ export const AuthProvider = ({ children }) => {
         setIsRegisterLoad(true)
         SoundNotif()
         try {
-            const response = await axios.post(`/register`, RegisterData)
+            const response = await axios.post(`/auth/register`, RegisterData)
             if (response.data.status === 'success') {
                 // SoundNotif()
                 toast.success(response.data.message)
@@ -177,7 +174,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
         try {
             // `${API_href}/logout`
-            const dellSess = await axios.get('/logout', { withCredentials: true });
+            const dellSess = await axios.get('/auth/logout', { withCredentials: true });
             if (dellSess?.data?.status) {
                 toast(dellSess.data.message, { autoClose: 1000 });
                 setIsAuthenticated(false);
@@ -204,7 +201,7 @@ export const AuthProvider = ({ children }) => {
 
     const Become_Trader = async () => {
         try {
-            const BTrader = await axios.get('/user/become_trader', { withCredentials: true })
+            const BTrader = await axios.get('/auth/become_trader', { withCredentials: true })
             if (BTrader?.data?.status) {
                 toast.success(BTrader?.data?.message)
             } else {
@@ -230,7 +227,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            isAuthenticated, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors
+            isAuthenticated, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors, setLoginErrors, setRegisterErrors
         }}>
             {/* <ToastContainer position="bottom-right" autoClose={2000} /> */}
             <Toaster position="bottom-right" />

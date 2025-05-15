@@ -14,9 +14,12 @@ export default function PaginateComponent({ defaultQuery, controller }) {
     const navigate = useNavigate();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search)
-    const initialPage = parseInt(searchParams.get('page')) || 1
+    const initialPage = parseInt(searchParams.get('page'))
     const [currentPage, setCurrentPage] = useState(initialPage)
 
+    useEffect(() => {
+        setCurrentPage(initialPage || 1)
+    }, [initialPage]);
     const handlePageClick = (seletedItem) => {
         const selectedPage = seletedItem.selected + 1
         setCurrentPage(selectedPage)

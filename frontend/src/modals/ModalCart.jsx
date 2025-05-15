@@ -26,7 +26,7 @@ const ModalCart = ({ onClose, redirect }) => {
     const { mutate, isLoading: isSaving } = useMutation({
         mutationKey: ['cart', 'addCommand'],
         mutationFn: async (data) => {
-            const res = axios.post('/command/add', data)
+            const res = await axios.post('/command/add', data)
             return res.data
         },
         onSuccess: async (response) => {
@@ -38,18 +38,17 @@ const ModalCart = ({ onClose, redirect }) => {
                 queryClient.invalidateQueries({ predicate: (query) => query.queryKey.includes('articles') })
             } else {
                 SoundNotif()
-                toast.success(response.message)
+                toast(response.message)
                 console.log('Une erreur est survenue : ', response.message)
             }
         }, onError: (error) => {
-            toast.success('Erreur de sauvegarde de la commande.')
+            toast('Erreur de sauvegarde de la commande.')
             console.log('Erreur de sauvegarde de la commande : ', error.message)
         }
     });
     const handleCommand = () => {
         if (isAuthenticated) {
-            // console.log({ total: totalCart, cartItems: cartItems, user: userSession.user_id });
-            // mutate({ total: totalCart, cartItems: cartItems, user: userSession.user_id })
+            mutate({ total: totalCart, cartItems: cartItems, user: userSession.user_id })
             clearCart()
             clearCartCookie(userSession?.user_id)
         } else {

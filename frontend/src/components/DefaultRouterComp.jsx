@@ -113,7 +113,9 @@ export default function DefaultRouterComp() {
         if (e.target.tagName === 'A' || e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') {
             // Fermer *avec un petit délai*
             // setTimeout(() =>
-            setIsLoadingPage(true);
+            if (e.target.href !== location.pathname) {
+                setIsLoadingPage(true);
+            }
             setOpenHeader(false)
             // , 50);
         }
@@ -136,8 +138,8 @@ export default function DefaultRouterComp() {
             <nav>
                 <div className="animT pointer-events-auto">
                     <NavLink to='/' className='flex items-center'>
-                        <img src={LogoLink} alt="Logo MyShopAPP" className="" width={50} height={50} />
-                        <h3 className="hidden md:block">MyShop App</h3>
+                        <img src={LogoLink} alt="Logo MyShopAPP" className="hidden md:block" width={50} height={50} />
+                        <h3 className="">MyShop App</h3>
                     </NavLink>
                 </div>
                 <ul className="nav-link pointer-events-auto">
@@ -199,7 +201,7 @@ export default function DefaultRouterComp() {
         </header >
         <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-250 ease-in ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
             <div className={`modal-Sidebar w-4/5 min-w-[25%] sm:w-96 transition-transform duration-300 ease-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
-                <XIcon className="absolute top-7 right-5 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
+                <XIcon className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
                 <div className="">
                     <NavLink to='/' className='flex items-center' onClick={handleCloseSidebar}>
                         <img src={LogoLink} alt="Logo MyShopAPP" className="" width={70} height={70} />
@@ -251,15 +253,16 @@ export default function DefaultRouterComp() {
                             </li>
                         </>
                     }
-                    <li className="btn-trans nav-trans">
-                        <button onClick={handleDarkMode}>
-                            <MoonIcon className="inline dark:hidden" />
-                            <span className="inline dark:hidden">Mode Nuit</span>
-                            <SunIcon className="hidden dark:inline" />
-                            <span className="hidden dark:inline">Mode Jour</span>
-                        </button>
-                    </li>
                 </ul>
+                <div className="btn-trans nav-trans switchDark">
+                    <input type="checkbox" onChange={handleDarkMode} id="switchDark" />
+                    <label htmlFor="switchDark">
+                        <MoonIcon className="inline dark:hidden" />
+                        <SunIcon className="hidden dark:inline" />
+                    </label>
+                    <span className="inline dark:hidden">Mode Nuit</span>
+                    <span className="hidden dark:inline">Mode Jour</span>
+                </div>
             </div>
         </div>
         <div className="ms_Main">

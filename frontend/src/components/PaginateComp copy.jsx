@@ -51,7 +51,7 @@ export default function PaginateComponent(link, scrollRef) {
     // }
     const checkNewArticles = async () => {
         try {
-            const res = await axios.get(`/articles/total_${linkComp}`, { withCredentials: true });
+            const res = await axios.get(`/articles/total/${linkComp}`, { withCredentials: true });
             if (res.data.success) {
                 if (res.data.latest_total_articles !== totalArticles) {
                     let newValue = Math.abs(res.data.latest_total_articles - totalArticles)

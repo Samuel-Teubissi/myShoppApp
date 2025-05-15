@@ -8,7 +8,7 @@ const ConnectToCart = ({ onClose, redirect }) => {
         <>
             <div>
                 <div className="modal-body">Vous devez <span className="text-app">vous connecter</span> pour passer des commandes</div>
-                <div className="modal-footer">
+                <div className="btn-modal-container">
                     <button type="button" onClick={onClose} className="btn-modal-cancel">
                         Annuler
                     </button>

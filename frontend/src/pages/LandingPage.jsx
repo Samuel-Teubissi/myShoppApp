@@ -17,7 +17,7 @@ const LandingPage = () => {
             <div className="ms_Main bg-app-h banner_home text-white">
                 <div className="animT text-center font-bold flex justify-center items-center flex-col h-full gap-y-2">
                     <div className="w-[90%] md:w-[70%]">
-                        <h1 className="">Bienvenue sur My ShopAPP</h1>
+                        <h1 className="tracking-tighter">Bienvenue sur My ShopAPP</h1>
                         <h2 className="mt-2">
                             Site Numéro 1 de la vente d'articles sans intermédiaires
                         </h2>

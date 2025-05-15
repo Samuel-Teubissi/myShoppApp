@@ -7,13 +7,13 @@
     ],
     "APP_Categories": [
         "Toutes les catégories",
-        "Alimentation",
-        "Beauté & Cosmétique",
-        "Décoration & Accéssoire",
-        "Électronique",
-        "Enfant & Jouet",
-        "Livre",
-        "Vêtement"
+        "électronique",
+        "décoration & accéssoire",
+        "beauté & cosmétique",
+        "enfant & jouet",
+        "alimentation",
+        "vêtement",
+        "livre"
     ],
     "APP_Articles": [
         {

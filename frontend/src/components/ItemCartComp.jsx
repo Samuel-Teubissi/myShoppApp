@@ -38,7 +38,7 @@ const ItemCartComp = ({ item, num }) => {
 
     return <>
         <div className="space-y-2" key={item.id_articles}>
-            <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-5 md:grid-rows-1 text-left lg:text-center justify-start gap-3 gap-x-5 md:gap-4 px-8 md:px-4 pt-10 pb-4 md:py-2 bg-app-050/50 mt-2 md:bg-white dark:bg-app-600/5 dark:text-white/90 items-center border-t md:border-none border-app-300 dark:border-app-900">
+            <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-5 md:grid-rows-1 text-left lg:text-center justify-start gap-3 gap-x-5 md:gap-4 px-8 md:px-4 pt-10 pb-4 md:py-2 bg-gray-100/70 mt-2 dark:bg-app-600/5 dark:text-white/90 items-center border-t dark:border-none md:border-none border-app-300 dark:border-app-900">
                 <div className="flex sm:justify-start items-center text-left gap-2 col-span-2 md:col-span-1">
                     <span>
                         <span className="hidden md:block bg-gray-400 h-4 w-4 rounded-full"></span>
@@ -60,10 +60,10 @@ const ItemCartComp = ({ item, num }) => {
                         max={item.quantity}
                         onChange={handleNewQuantity}
                     /> */}
-                    <div className="flex gap-2 md:justify-center justify-end">
-                        <button onClick={decrease} className="text-app hover:bg-app hover:text-white/90 rounded-full btn-trans" disabled={orderQty <= 1}><MinusCircleIcon /></button>
+                    <div className="flex gap-2 md:justify-center justify-end items-center">
+                        <button onClick={decrease} className="text-app hover:bg-app hover:text-white/90 rounded-full btn-trans" disabled={orderQty <= 1}><MinusCircleIcon className="h-7 w-7" /></button>
                         <span className="font-bold">{_.padStart(String(orderQty), 2, '0')}/{_.padStart(String(item.quantity), 2, '0')}</span>
-                        <button onClick={increase} className="text-app hover:bg-app hover:text-white/90 rounded-full btn-trans" disabled={orderQty >= item.quantity}><PlusCircleIcon /></button>
+                        <button onClick={increase} className="text-app hover:bg-app hover:text-white/90 rounded-full btn-trans" disabled={orderQty >= item.quantity}><PlusCircleIcon className="h-7 w-7" /></button>
                     </div>
                 </div>
                 {/* <div>

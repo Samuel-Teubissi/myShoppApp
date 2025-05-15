@@ -43,7 +43,7 @@ const AboutPage = () => {
     }, []);
 
     return <div id='scroll-container'>
-        <div className="flex flex-col xl:flex-row justify-start lg:justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 md:bg-white/10 dark:bg-dark mt-2 dark:text-dark-app-100">
+        <div className="flex flex-col xl:flex-row justify-start lg:justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 md:bg-white/10 dark:bg-dark mt-2 dark:text-dark-app-100 pb-8 md:pb-0">
             <div className="about_img flex flex-col justify-center items-center mt-3 sm:pt-0 xl:w-2/3 w-full main-about">
                 {/* <img src={linkMsg} alt="Author" className="rounded object-cover block absolute top-[8%] left-[8%] xl:top-[-3px] xl:left-[55px] scale-95 hover:scale-100 max-w-full z-0 w-[400px] sm:w-[350px] lg:w-[500px] xl:w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} /> */}
                 <div className="relative">
@@ -57,9 +57,9 @@ const AboutPage = () => {
                         </Link>
                     ))}
                 </div>
-                <div className="text-center xl:hidden mt-2">
-                    <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est Sam&nbsp;!</h1>
-                    <div className="px-4 sm:px-10">
+                <div className="text-left xl:hidden mt-2">
+                    <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est <span className="text-app-500 text-4xl md:text-6xl">Sam</span>&nbsp;!</h1>
+                    <div className="px-4 sm:px-10 mt-2">
                         Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁
                     </div>
                 </div>
@@ -101,7 +101,7 @@ const AboutPage = () => {
                 </div>
             </div>
         </div>
-        <div className=" dark:text-white/90 bg-app/10 dark:bg-transparent mt-4 py-6">
+        <div className=" dark:text-white/90 dark:bg-transparent mt-4 py-6">
             <div className="about-detail w-full md:w-[90%] mx-auto">
                 <div>
                     <h1 className="mt-10 xl:max-w-[70%] xl:mx-auto">Détails sur le projet <span className="text-app text-5xl">`MyShop App`</span></h1>
@@ -112,21 +112,22 @@ const AboutPage = () => {
                     <SliderAbout />
                 </nav>
                 <div className="mt-10">
-                    <h2>Technologies Utilisées ou Acquises <span className="text-base">(📌: En cours)</span></h2>
+                    <h2>Technologies Utilisées ou Acquises</h2>
                     <div className="mt-5 grid grid-cols-3 sm:flex justify-center gap-2 lg:gap-6 flex-wrap">
                         {technoImgs.map((techno, key) => (
-                            <div key={key} className="bg-gray-800 rounded-xl p-4 flex justify-center items-center relative transform hover:scale-105" data-aos='fade-up' data-aos-duration={300} data-aos-delay={50 * (key + 1)} data-aos-easing='ease-in-back'>
+                            <div key={key} className="bg-gray-900 rounded-xl p-4 flex justify-center items-center relative transform hover:scale-105" data-aos='fade-up' data-aos-duration={300} data-aos-delay={50 * (key + 1)} data-aos-easing='ease-in-back'>
                                 <img src={techno.icon} className="w-20 h-20" title={techno.title} />
                                 {techno.now && <span className="absolute top-0 left-1">📌</span>}
                             </div>
                         ))}
-                    </div>
+                    </div><br />
+                    <span className="text-base text-gray-500">(📌: En cours)</span>
                 </div>
                 <div className="mt-10 about-block">
                     <h1 className="py-4">Conclusion</h1>
                     <div className="">Ce projet a été un vrai défi, entre la gestion du panier en frontend, l'optimisation de la persistance des données, et l'architecture modulaire que j'ai adoptée (useCart, useCookie) pour rendre le code <span className="text-app-500">évolutif et maintenable</span>. <br />
                         L'utilisation d'un backend en <span className="text-app-500">PHP</span> est en fait un renouement avec le language qui m'a fait entrer pleinement dans ce qui est aujourd'hui ma passion, j'ai nommé <span className="text-app-500">la programmation</span>. <br /><br />
-                        Et 2 minutes plus tard c'est sur cette déclaration très personnelle et profonde que je pense vous avoir convaincu de débuter une nouvelle aventure de création avec moi ! 🤝 <br />
+                        Et 2 minutes plus tard c'est sur cette déclaration très personnelle et profonde que je pense vous avoir convaincu de débuter une nouvelle aventure de création avec moi ! 🤝 <br /><br />
                         <h3>Venez on travaille un projet ensemble, ça va être <span className="highlight text-xl tracking-wide">GRANDIOSE</span> !</h3>
                     </div>
                 </div>
@@ -142,8 +143,8 @@ const AboutPage = () => {
                 <div className="mt-10 about-block">
                     <h2 className="py-4">Remerciements</h2>
                     <div className="">
-                        Je vais être très bref dans cette section, merci à
-                        <ul>
+                        Je vais être très bref dans cette section, merci à : <br /><br />
+                        <ul className="list-disc ml-5">
                             <li><span className="highlight">Monsieur Akono Nkolo</span> pour l'accompagnement tant sur le plan moral que technique avec ses conseils avisés pour la conception du backend de ce projet</li>
                             <li><span className="highlight">Njikam Salim Mohamed</span> celui qui se s'auto-surnomme le <code className="highlight">GOAT du CSS</code> (très humble le mec) m'a épaulé tant sur la partie design et surtout sur le frontend de cette app</li>
                         </ul>

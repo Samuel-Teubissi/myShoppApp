@@ -130,7 +130,7 @@ class articleController extends REST_Controller
         }
     }
 
-    public function API_Trader_Article_post($id)
+    public function API_Trader_Article_put($id)
     {
         // var_dump($this->session);
         if ($this->session->has_userdata('data_trader')) {

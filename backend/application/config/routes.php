@@ -65,15 +65,16 @@ $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'welcome';
 
 
-$route['api/(:any)'] = 'api/$1';
+$route['api'] = 'api/api/index';
 /**
  * TOJOURS AJOUTER ""api/"" AU DEBUT D'UNE ROUTE API REST
  * Routage d'affichage d'articles' ""articles_Controller""
  */
 $route['api/articles/home'] = 'api/articlesController/API_Home_Articles';
 $route['api/articles/trader'] = 'api/articlesController/API_Trader_Articles';
-$route['api/articles/total_home'] = 'api/articlesController/API_count_Articles/home';
-$route['api/articles/total_trader'] = 'api/articlesController/API_count_Articles/trader';
+$route['api/articles/total/(:any)'] = 'api/articlesController/API_count_Articles/$1';
+// $route['api/articles/total_home'] = 'api/articlesController/API_count_Articles/home';
+// $route['api/articles/total_trader'] = 'api/articlesController/API_count_Articles/trader';
 $route['api/articles/categories'] = 'api/articlesController/API_categories';
 $route['api/articles/search'] = 'api/articlesController/API_Search';
 /**
@@ -88,11 +89,11 @@ $route['api/command/add'] = 'api/articlesController/addCommand';
 /**
  * Routage de gestion des utilisateurs
  */
-$route['api/login'] = 'api/globalController/API_Login';
-$route['api/register'] = 'api/globalController/API_Register';
-$route['api/logout'] = 'api/globalController/API_logout';
-$route['api/logged'] = 'api/globalController/API_logged';
-$route['api/user/become_trader'] = 'api/globalController/API_BTrader';
+$route['api/auth/login'] = 'api/globalController/API_Login';
+$route['api/auth/register'] = 'api/globalController/API_Register';
+$route['api/auth/logout'] = 'api/globalController/API_logout';
+$route['api/auth/logged'] = 'api/globalController/API_logged';
+$route['api/auth/become_trader'] = 'api/globalController/API_BTrader';
 /**
  * Routage de gestion des utilisateurs
  */

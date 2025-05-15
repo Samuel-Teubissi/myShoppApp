@@ -95,6 +95,7 @@ export const InputFieldAdd = forwardRef(({ label, type = "text", name, value = '
                 defaultValue={value}
                 // onChange={onChange}
                 {...(type === 'file' ? { ref } : {})}
+                // {...(type === 'file' ? " accept='image/png, image/jpeg, image/jpg, image/webp'" : {})}
                 placeholder={placeholder}
                 className={`w-full ${type !== 'file' ? "px-5 py-3.5" : "transition duration-200 cursor-pointer hover:bg-gray-200 dark:hover:bg-app-600/30"} border rounded-xl ${error ? "border-red-500" : "border-gray-300"}`}
             />
@@ -123,7 +124,7 @@ export const InputFieldFile = ({ label, type = "text", name, value = '', onChang
     )
 }
 
-export const Select_categories = ({ onChange, error, name = '', id = '', classData, valueProp, ...props }) => {
+export const Select_categories = ({ onChange, error, name = '', id = '', classData, valueProp = 0, ...props }) => {
     const [categories, setCategories] = useState([]);
 
     // useEffect(() => {
@@ -145,7 +146,7 @@ export const Select_categories = ({ onChange, error, name = '', id = '', classDa
     return (
         <select
             name={name}
-            // value={valueProp}
+            defaultValue={valueProp}
             className={`${classData} ${error ? "border-red-500" : ''}`}
             onChange={onChange}
             title="category" id={id}

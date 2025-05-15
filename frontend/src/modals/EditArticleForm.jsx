@@ -53,7 +53,7 @@ export const EditArticleForm = ({ id, onClose }) => {
             // editData.append('user_id', )
             // editData.append('user_id', userSession.user_id)
             // const updateData = await updateArticle({ id, editData })
-            const response = await api.post(`/article/${id}`, editData)
+            const response = await api.put(`/article/${id}`, editData)
             // const response = await axios.post(`/article/${id}`, editData, { withCredentials: true })
             return response.data
         },
@@ -163,7 +163,7 @@ export const EditArticleForm = ({ id, onClose }) => {
                     />
                     <ChevronDownIcon className="w-6 h-6 text-black/70 dark:text-white absolute top-9 right-5 pointer-events-none" />
                 </div>
-                <div className="space-x-2">
+                <div className="btn-modal-container">
                     <button type="button" onClick={onClose} className="btn-modal-cancel" disabled={isEditSubmitting}>
                         Annuler
                     </button>

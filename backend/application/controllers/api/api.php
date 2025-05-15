@@ -1,8 +1,9 @@
 <?php
+require APPPATH . 'libraries/REST_Controller.php';
 
-class api extends CI_Controller
+class api extends REST_Controller
 {
-    public function index()
+    public function index_get()
     {
         echo 'API Root';
     }

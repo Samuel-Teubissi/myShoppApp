@@ -29,6 +29,7 @@
     --bg-app-800: #872173;
     --color_app: #ce39b6;
     --color_text: #313131;
+    --color_box: #ffffffe1;
     --color_bg-nav2: #e451cf;
     --my-bg-position: 10% 90%;
 
@@ -41,6 +42,7 @@
     --bg-page: #2c2129;
     --bg-border_app: #2c2129;
     --color_text: #ffffffe1;
+    --color_box: #313131;
     --dark-block: color-mix(in oklab, var(--bg-app) 40%, #000 60%);
 
     body {
@@ -648,7 +650,7 @@ span.red {
 .banner_home {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(39, 18, 35, 0.9)), url('../img/default_banner_home.jpg') center center fixed no-repeat;
     background-size: cover;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 65px);
 }
 
 .banner_trader {
@@ -752,7 +754,7 @@ footer>div {
     top: 0;
     right: 0;
     /* padding: 3rem; */
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-left: 0px;
     /* width: 20rem; */
     height: 100%;
@@ -765,10 +767,50 @@ footer>div {
     /* border-radius: 0 8px 8px 0; */
     width: 100%;
     gap: 0.5rem;
-    padding: 15px 3rem;
+    padding: 12px 2.5rem;
     margin: 0.25rem 0;
     box-shadow: none;
     transition: ease-in-out .2s all;
+}
+
+#switchDark {
+    position: absolute;
+    left: 100vh;
+}
+
+.switchDark {
+    padding: 12px 2rem;
+    margin: 0.25rem 0;
+    /* width: fit-content; */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.switchDark label {
+    background-color: var(--color_text);
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    border: 0.15rem solid var(--bg-app-800);
+    position: relative;
+    box-sizing: content-box;
+    cursor: pointer;
+}
+
+.switchDark label svg {
+    background-color: var(--color_box);
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 0.3rem;
+    transition: transform 0.3s;
+}
+
+.switchDark input:checked+label svg {
+    transform: translate(1.5rem);
 }
 
 .modal-Sidebar ul li a:hover,

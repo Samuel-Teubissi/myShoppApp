@@ -100,8 +100,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				// } else {
 				// 	echo "Connexion réussie !";
 				// }
+				// phpinfo();
 				?>
-				Now Online
+				Now Online Clean
 			</code>
 		</div>
 
