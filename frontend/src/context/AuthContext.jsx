@@ -32,9 +32,10 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const checkSess = await axios.get('/auth/logged', { withCredentials: true })
+            const checkSess = await api.get('/auth/logged')
             if (checkSess.data.status === 'success') {
                 setUserSession(checkSess.data.dataUser)
+                console.log('user-sess checkAuth', checkSess.data.dataUser);
                 setIsAuthenticated(true)
             } else {
                 setUserSession(null)
@@ -69,11 +70,12 @@ export const AuthProvider = ({ children }) => {
         SoundNotif()
         setIsLoggingLoad(true)
         try {
-            const res = await axios.post('/auth/login', dataForm, { withCredentials: true })
+            const res = await api.post('/auth/login', dataForm)
             if (res.data.status === 'success') {
                 // SoundNotif()
                 toast.success(res.data.message)
                 setUserSession(res.data.user_token)
+                console.log('user-sess', res.data.dataUser);
                 setLoginErrors({})
                 setTimeout(() => {
                     setIsAuthenticated(true)
@@ -119,7 +121,7 @@ export const AuthProvider = ({ children }) => {
         setIsRegisterLoad(true)
         SoundNotif()
         try {
-            const response = await axios.post(`/auth/register`, RegisterData)
+            const response = await api.post(`/auth/register`, RegisterData)
             if (response.data.status === 'success') {
                 // SoundNotif()
                 toast.success(response.data.message)
@@ -173,7 +175,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
         try {
             // `${API_href}/logout`
-            const dellSess = await axios.get('/auth/logout', { withCredentials: true });
+            const dellSess = await api.get('/auth/logout');
             if (dellSess?.data?.status) {
                 toast(dellSess.data.message, { autoClose: 1000 });
                 setIsAuthenticated(false);
@@ -200,7 +202,7 @@ export const AuthProvider = ({ children }) => {
 
     const Become_Trader = async () => {
         try {
-            const BTrader = await axios.get('/auth/become_trader', { withCredentials: true })
+            const BTrader = await api.get('/auth/become_trader')
             if (BTrader?.data?.status) {
                 toast.success(BTrader?.data?.message)
             } else {
