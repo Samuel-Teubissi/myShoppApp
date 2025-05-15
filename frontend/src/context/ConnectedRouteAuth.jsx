@@ -10,7 +10,9 @@ const ConnectedRouteAuth = ({ children }) => {
     const searchParams = new URLSearchParams(location.search);
     const params = new URLSearchParams()
 
-    if (isLogging) return <LoaderComp />
+    console.log("ConnectedRouteAuth");
+
+    // if (isLogging) return <LoaderComp />
     if (isAuthenticated) {
         // const redirectPath = userSession.role === "admin" ? "/admin" : "/user";
         const redirectPath = "/user";
