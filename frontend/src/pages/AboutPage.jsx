@@ -8,9 +8,9 @@ import quote from '../assets/img/quote.png'
 import techImg0 from '../assets/img/tech_reactjs.svg'
 import techImg1 from '../assets/img/tech_js.webp'
 import techImg2 from '../assets/img/tech_tailwind.webp'
-import techImg3 from '../assets/img/tech_php.webp'
+import techImg3 from '../assets/img/tech-express.png'
 import techImg4 from '../assets/img/tech_css3.webp'
-import techImg5 from '../assets/img/tech_mysql.webp'
+import techImg5 from '../assets/img/tech_sqlite.png'
 import techImg6 from '../assets/img/tech_github.webp'
 import techImg7 from '../assets/img/tech_typescript.webp'
 import techImg8 from '../assets/img/tech_next.webp'
@@ -29,8 +29,8 @@ const AboutPage = () => {
     // const link = "assets/img/tayz.jpg"
     let technoImgs = [
         { icon: techImg0, title: 'React' }, { icon: techImg2, title: 'TailwindCss' },
-        { icon: techImg1, title: 'JS' }, { icon: techImg3, title: 'Php' }, { icon: techImg4, title: 'Css3' },
-        { icon: techImg5, title: 'MySql' }, { icon: techImg7, title: 'Typescript', now: true },
+        { icon: techImg1, title: 'JS' }, { icon: techImg3, title: 'Express JS' }, { icon: techImg4, title: 'Css3' },
+        { icon: techImg5, title: 'SQLite' }, { icon: techImg7, title: 'Typescript', now: true },
         { icon: techImg8, title: 'NextJS', now: true }]
     let contacts = [{ icon: SiWhatsapp, label: 'Whatsapp', color: '#25D366', link: 'https://wa.me/237696771089' },
     { icon: SiGmail, label: 'Gmail', color: '#D14836', link: 'mailto:samtebs07@gmail.com' },

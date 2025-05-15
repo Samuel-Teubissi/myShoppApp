@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }) => {
             if (checkSess.data.status === 'success') {
                 setUserSession(checkSess.data.dataUser)
                 setIsAuthenticated(true)
-
             } else {
                 setUserSession(null)
                 setIsAuthenticated(false)
@@ -48,18 +47,18 @@ export const AuthProvider = ({ children }) => {
         } finally {
             setIsLogging(false)
         }
-        return;
+        // return;
 
-        const userCookie = getSessionCookie(localStorage.getItem('userID'))
-        const userConnected = getSessionCookie(localStorage.getItem('userConnected'))
-        console.log("userCookie", userCookie);
-        if (userCookie && userConnected === 'yes') {
-            setUserSession(userCookie)
-            setIsAuthenticated(true)
-        } else {
-            setUserSession(null)
-            setIsAuthenticated(false)
-        }
+        // const userCookie = getSessionCookie(localStorage.getItem('userID'))
+        // const userConnected = getSessionCookie(localStorage.getItem('userConnected'))
+        // console.log("userCookie", userCookie);
+        // if (userCookie && userConnected === 'yes') {
+        //     setUserSession(userCookie)
+        //     setIsAuthenticated(true)
+        // } else {
+        //     setUserSession(null)
+        //     setIsAuthenticated(false)
+        // }
     }
 
     useEffect(() => {
@@ -95,25 +94,25 @@ export const AuthProvider = ({ children }) => {
                 setIsLoggingLoad(false)
             }, 1000);
         }
-        return;
+        // return;
 
-        let User = getSessionCookie(dataForm.number)
-        setTimeout(() => {
-            if (User.length !== 0) {
-                // let loginPassword = encodePassword(dataForm.password)
-                const userPass = localStorage.getItem('userPassword')
-                if (bcrypt.compareSync(dataForm.password, userPass)) {
-                    // setUserSession(User)
-                    localStorage.setItem('userConnected', 'yes')
-                    setIsAuthenticated(true)
-                    return { success: true }
-                } else {
-                    setLoginErrors({ password: "Mot de passe incorect !" })
-                }
-            } else {
-                setLoginErrors({ number: "Ce numéro n'a pas de compte !" })
-            }
-        }, 1000);
+        // let User = getSessionCookie(dataForm.number)
+        // setTimeout(() => {
+        //     if (User.length !== 0) {
+        //         // let loginPassword = encodePassword(dataForm.password)
+        //         const userPass = localStorage.getItem('userPassword')
+        //         if (bcrypt.compareSync(dataForm.password, userPass)) {
+        //             // setUserSession(User)
+        //             localStorage.setItem('userConnected', 'yes')
+        //             setIsAuthenticated(true)
+        //             return { success: true }
+        //         } else {
+        //             setLoginErrors({ password: "Mot de passe incorect !" })
+        //         }
+        //     } else {
+        //         setLoginErrors({ number: "Ce numéro n'a pas de compte !" })
+        //     }
+        // }, 1000);
     }
 
     const Register = async (RegisterData) => {
@@ -145,30 +144,30 @@ export const AuthProvider = ({ children }) => {
                 setIsRegisterLoad(false)
             }, 1000);
         }
-        return;
+        // return;
 
-        let ckeckUser = getSessionCookie(RegisterData.number)
-        if (!ckeckUser) {
-            let userSession = {
-                data_trader: null,
-                user_id: RegisterData.number,
-                user_name: RegisterData.username,
-                user_number: RegisterData.number,
-                role: 'user'
-            }
-            localStorage.setItem('userID', RegisterData.number)
-            localStorage.setItem('userConnected', 'yes')
-            localStorage.setItem('userPassword', encodePassword(RegisterData.password))
-            // setUserSession(userSession)
-            saveSessionCookie(RegisterData, null, true)
-            toast.success("Inscription réussie")
-            setTimeout(() => {
-                setIsAuthenticated(true)
-                return { success: true }
-            }, 1000);
-        } else {
-            setLoginErrors({ number: "Ce numéro a déjà un compte !" })
-        }
+        // let ckeckUser = getSessionCookie(RegisterData.number)
+        // if (!ckeckUser) {
+        //     let userSession = {
+        //         data_trader: null,
+        //         user_id: RegisterData.number,
+        //         user_name: RegisterData.username,
+        //         user_number: RegisterData.number,
+        //         role: 'user'
+        //     }
+        //     localStorage.setItem('userID', RegisterData.number)
+        //     localStorage.setItem('userConnected', 'yes')
+        //     localStorage.setItem('userPassword', encodePassword(RegisterData.password))
+        //     // setUserSession(userSession)
+        //     saveSessionCookie(RegisterData, null, true)
+        //     toast.success("Inscription réussie")
+        //     setTimeout(() => {
+        //         setIsAuthenticated(true)
+        //         return { success: true }
+        //     }, 1000);
+        // } else {
+        //     setLoginErrors({ number: "Ce numéro a déjà un compte !" })
+        // }
     }
 
     const logout = async () => {
@@ -184,19 +183,19 @@ export const AuthProvider = ({ children }) => {
             console.error("Erreur lors de la déconnexion :", error);
             toast.error('Erreur lors de la déconnexion')
         }
-        return;
+        // return;
 
-        let userID = localStorage.getItem('userID')
-        const userSess = getSessionCookie(userID)
-        if (userSess.length !== 0) {
-            const dataUser = { data_trader: userSess.data_trader, username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
-            delSessionCookie()
-            localStorage.setItem('userConnected', 'no')
-            // saveSessionCookie(userSess, userSess.user_number, null)
-            toast.success('Déconnexion')
-            checkAuth()
-        }
-        console.log("userSess", userSess);
+        // let userID = localStorage.getItem('userID')
+        // const userSess = getSessionCookie(userID)
+        // if (userSess.length !== 0) {
+        //     const dataUser = { data_trader: userSess.data_trader, username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
+        //     delSessionCookie()
+        //     localStorage.setItem('userConnected', 'no')
+        //     // saveSessionCookie(userSess, userSess.user_number, null)
+        //     toast.success('Déconnexion')
+        //     checkAuth()
+        // }
+        // console.log("userSess", userSess);
     }
 
     const Become_Trader = async () => {
@@ -212,17 +211,17 @@ export const AuthProvider = ({ children }) => {
             toast.error('Erreur lors du procéssus de création de trader')
         }
         checkAuth()
-        return;
+        // return;
 
-        // console.log('userSess', getSessionCookie(localStorage.getItem('userID')), localStorage.getItem('userID'));
-        const userSess = getSessionCookie(localStorage.getItem('userID'))
+        // // console.log('userSess', getSessionCookie(localStorage.getItem('userID')), localStorage.getItem('userID'));
+        // const userSess = getSessionCookie(localStorage.getItem('userID'))
 
-        if (userSess.length !== 0) {
-            const dataUser = { username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
-            saveSessionCookie(dataUser, dataUser.number, true)
-            toast.success('Vous êtes désormais un Trader !!!')
-            checkAuth()
-        }
+        // if (userSess.length !== 0) {
+        //     const dataUser = { username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
+        //     saveSessionCookie(dataUser, dataUser.number, true)
+        //     toast.success('Vous êtes désormais un Trader !!!')
+        //     checkAuth()
+        // }
     }
 
     return (

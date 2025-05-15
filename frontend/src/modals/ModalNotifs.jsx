@@ -27,7 +27,7 @@ const ModalNotifs = ({ onClose }) => {
             <div className="">
                 <div className="motif-block">
                     {notifs?.map((notif, key) => (
-                        <div className='motif-item flex mb-2' key={key}>
+                        <div className='motif-item flex mb-2 gap-1' key={key}>
                             <div className="w-12 h-12 p-4 hidden sm:flex justify-center items-center bg-app-800 shadow rounded-full">
                                 <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-white" />
                             </div>

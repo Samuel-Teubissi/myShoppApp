@@ -54,7 +54,7 @@ const DeleteArticleForm = ({ artId, artName, onClose }) => {
     return (
         <form onSubmit={mutate} className="contents">
             <div className="">
-                <div className="modal-body">Êtes vous sûr de vouloir supprimer l'article <span className="text-app">{artName}</span> de votre catalogue ?</div>
+                <div className="modal-body">Êtes vous sûr de vouloir supprimer l'article <span className="text-app">{artName}</span> de votre catalogue&nbsp;?</div>
                 <div className="btn-modal-container">
                     <button type="button" onClick={onClose} className="btn-modal-cancel" disabled={isDeleting}>
                         Annuler
