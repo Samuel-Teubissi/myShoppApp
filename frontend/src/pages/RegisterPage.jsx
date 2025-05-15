@@ -127,7 +127,7 @@ const RegisterPage = () => {
                             {...register('confirm_password')}
                         />
                     </div>
-                    <div className="w-full flex justify-center">
+                    <div className="w-full flex justify-center mt-4">
                         <button type="submit" className={`animZ flex items-center justify-center text-white rounded h-[45px] w-40 bg-app-h hover:bg-app transition duration-300 ease-in-out animZ`} disabled={isRegisterLoad}>
                             {!isRegisterLoad
                                 ? 'Inscription'
