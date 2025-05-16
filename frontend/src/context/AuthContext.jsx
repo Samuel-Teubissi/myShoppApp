@@ -91,13 +91,15 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
-        try {
-            localStorage.removeItem('accessToken');
-            setUserSession(null);
-        } catch (error) {
-            console.error("Erreur lors de la déconnexion :", error);
-            toast.error('Erreur lors de la déconnexion')
-        }
+        // try {
+        localStorage.removeItem('accessToken');
+        toast("Déconnexion", { autoClose: 1000 });
+        setIsAuthenticated(false);
+        setUserSession({});
+        // } catch (error) {
+        //     console.error("Erreur lors de la déconnexion :", error);
+        //     toast.error('Erreur lors de la déconnexion')
+        // }
     };
 
     const login = async (dataForm) => {

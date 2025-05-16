@@ -29,7 +29,7 @@ const UserPage = () => {
             mergeCartsAndSave(userSession.user_id)
         }
     }, [userSession])
-    const canAddArticles = !!userSession.data_trader
+    const canAddArticles = !!userSession?.data_trader
 
     if (isLogging) return <LoaderComp />
     return (
