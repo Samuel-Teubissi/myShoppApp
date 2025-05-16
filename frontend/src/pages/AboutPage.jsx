@@ -43,7 +43,7 @@ const AboutPage = () => {
     }, []);
 
     return <div id='scroll-container'>
-        <div className="flex flex-col xl:flex-row justify-start lg:justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 md:bg-white/10 dark:bg-dark mt-2 dark:text-dark-app-100 pb-8 md:pb-0">
+        <div className="flex flex-col xl:flex-row justify-start lg:justify-center items-start gap-2 xl:gap-8 px-2 py-2 xl:p-8 md:bg-white/10 dark:bg-transparent mt-2 dark:text-dark-app-100 pb-8 md:pb-0">
             <div className="about_img flex flex-col justify-center items-center mt-3 sm:pt-0 xl:w-2/3 w-full main-about">
                 {/* <img src={linkMsg} alt="Author" className="rounded object-cover block absolute top-[8%] left-[8%] xl:top-[-3px] xl:left-[55px] scale-95 hover:scale-100 max-w-full z-0 w-[400px] sm:w-[350px] lg:w-[500px] xl:w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} /> */}
                 <div className="relative">
@@ -72,7 +72,7 @@ const AboutPage = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="rounded-xl overflow-hidden mt-4 mx-auto max-w-full" data-aos='fade-up' data-aos-delay={0} data-aos-offset={100}>
+                    <div className="rounded-xl overflow-hidden mt-4 mx-auto max-w-full border-2 dark:border-gray-800" data-aos='fade-up' data-aos-delay={0} data-aos-offset={100}>
                         <div className="bg-gray-800 px-3 py-2 rounded-t-lg flex gap-2 items-center">
                             <span className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-300 cursor-pointer"></span>
                             <span className="w-3 h-3 bg-yellow-400 rounded-full hover:bg-yellow-200 cursor-pointer"></span>

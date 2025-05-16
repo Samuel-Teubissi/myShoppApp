@@ -27,7 +27,7 @@ const ProtectedRouteAuth = ({ children, allowedRoles }) => {
     const from = location.state?.from || '/user';
     const search = location.state?.search || '';
 
-    // if (isLogging) return <LoaderComp />
+    if (isLogging) return <LoaderComp />
     if (!isAuthenticated) {
         // Pas connecté → vers login
         // state={{ from: location }}

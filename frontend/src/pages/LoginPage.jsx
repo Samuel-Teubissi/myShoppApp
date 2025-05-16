@@ -60,7 +60,7 @@ const LoginPage = () => {
 
     return (
         <div className="ms_Main main-about flex justify-center items-center">
-            <div className="text-center overflow-hidden relative md:w-8/12 md:h-min flex justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none">
+            <div className="text-center overflow-hidden relative backdrop-blur md:backdrop-blur-none md:w-8/12 h-full md:h-min flex justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none">
                 <div className="auth-design dsn-1"></div>
                 <div className="auth-design dsn-2"></div>
                 <div className="auth-design dsn-3 w-36 h-36 opacity-65"></div>

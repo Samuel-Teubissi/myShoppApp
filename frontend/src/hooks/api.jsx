@@ -2,10 +2,11 @@
 import axios from 'axios';
 import { API_href } from "../App.json";
 import { APP_Articles } from '../App.json'
+import { redirect } from 'react-router-dom';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
-export const api = axios.create({
+const api = axios.create({
     baseURL: API_BASE_URL,
     // headers: {
     //     // 'Content-Type': 'multipart/form-data'
@@ -13,6 +14,71 @@ export const api = axios.create({
     // },
     withCredentials: true
 })
+// Flag pour éviter les multiples refresh en parallèle
+let isRefreshing = false;
+let failedQueue = [];
+const processQueue = (error, token = null) => {
+    failedQueue.forEach(prom => {
+        if (error) {
+            prom.reject(error);
+        } else {
+            prom.resolve(token);
+        }
+    });
+    failedQueue = [];
+};
+
+// Intercepteur pour ajouter le token à chaque requête
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('accessToken')
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`
+        }
+        return config
+    },
+    (error) => Promise.reject(error)
+)
+
+// Intercepter les erreurs 401 pour refresh automatiquement
+api.interceptors.response.use(
+    (res) => res,
+    async (error) => {
+        const originalRequest = error.config;
+
+        if (error.response?.status === 401 && !originalRequest._retry) {
+            if (isRefreshing) {
+                return new Promise((resolve, reject) => {
+                    failedQueue.push({ resolve, reject });
+                }).then((token) => {
+                    originalRequest.headers.Authorization = `Bearer ${token}`;
+                    return axios(originalRequest);
+                });
+            }
+            originalRequest._retry = true;
+            isRefreshing = true;
+            try {
+                const res = await axios.post('auth/refresh-token');
+
+                const newToken = res.data.accessToken;
+                localStorage.setItem('accessToken', newToken);
+                api.defaults.headers.Authorization = `Bearer ${newToken}`;
+                processQueue(null, newToken);
+                return api(originalRequest);
+            } catch (err) {
+                processQueue(err, null);
+                localStorage.removeItem('accessToken');
+                window.location.href = '/login';
+                return Promise.reject(err);
+            } finally {
+                isRefreshing = false;
+            }
+        }
+        return Promise.reject(error);
+    }
+);
+
+export { api }
 
 export const searchArticles = async ({ search_article, search_categ, page = 1, controllerLink = 'home' }) => {
     const params = new URLSearchParams();

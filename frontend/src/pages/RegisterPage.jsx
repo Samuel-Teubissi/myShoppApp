@@ -75,7 +75,7 @@ const RegisterPage = () => {
     return (
         <div className="ms_Main flex justify-center items-center">
             {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
-            <div className="text-center overflow-hidden relative md:w-8/12 h-full md:h-min flex justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none md:my-4">
+            <div className="text-center overflow-hidden relative md:w-8/12 h-full backdrop-blur md:backdrop-blur-none md:h-min flex justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none md:my-4">
                 <div className="auth-design dsn-1"></div>
                 <div className="auth-design dsn-2"></div>
                 <div className="auth-design dsn-3 w-36 h-36 opacity-65"></div>

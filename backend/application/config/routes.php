@@ -82,6 +82,7 @@ $route['api/articles/search'] = 'api/articlesController/API_Search';
  */
 $route['api/article/add'] = 'api/articleController/API_add_Article';
 $route['api/article/(:num)'] = 'api/articleController/API_Trader_Article/$1';
+$route['api/article/become_trader'] = 'api/articleController/API_BTrader';
 /**
  * Routage de gestion des commandes
  */
@@ -93,7 +94,6 @@ $route['api/auth/login'] = 'api/globalController/API_Login';
 $route['api/auth/register'] = 'api/globalController/API_Register';
 $route['api/auth/logout'] = 'api/globalController/API_logout';
 $route['api/auth/logged'] = 'api/globalController/API_logged';
-$route['api/auth/become_trader'] = 'api/globalController/API_BTrader';
 /**
  * Routage de gestion des utilisateurs
  */
