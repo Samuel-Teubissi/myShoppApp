@@ -778,6 +778,30 @@ footer>div {
     left: 100vh;
 }
 
+.online-user {
+    padding: 12px 2rem;
+    margin: 0.25rem 0;
+    background-color: #ffffff46;
+    margin-top: 30px;
+}
+
+.dark .online-user {
+    background-color: #ffffff11;
+}
+
+.online-user div {
+    padding: 5px;
+}
+
+.online-user ul {
+    color: gray;
+    margin-left: 20px;
+}
+
+.dark .online-user ul {
+    color: rgb(255 255 255 / 70%);
+}
+
 .switchDark {
     padding: 12px 2rem;
     margin: 0.25rem 0;

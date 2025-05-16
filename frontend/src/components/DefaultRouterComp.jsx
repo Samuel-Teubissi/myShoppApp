@@ -263,6 +263,16 @@ export default function DefaultRouterComp() {
                     <span className="inline dark:hidden">Mode Nuit</span>
                     <span className="hidden dark:inline">Mode Jour</span>
                 </div>
+                {isAuthenticated && <div className="online-user">
+                    <div><span className="inline-block bg-green-500 h-4 w-4 rounded-full"></span> Vous êtes connecté !</div>
+                    <div className="text-sm">
+                        <ul>
+                            <li>Session : <span className="text-app">{userSession?.user_name}</span></li>
+                            <li>Numéro : <span className="text-app">{userSession?.user_number}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                }
             </div>
         </div>
         <div className="ms_Main">
