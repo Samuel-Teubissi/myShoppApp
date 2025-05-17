@@ -1,16 +1,16 @@
 :root {
   /* --color_nav: #fff; */
-  --color_nav: #83467e;
+  --color_nav: #a3a9fe;
   --color_text: #fffffff8;
   --color_text2: #202020;
   /* --color_text: #fff; */
-  --color_bg-nav: #83467e;
-  --color_bg-nav2: #e451cf;
+  --color_bg-nav: #827ffa;
+  --color_bg-nav2: #422ea5;
   --color-btn-header: rgba(0, 0, 0, .3);
   --design-opacity: 0.3;
   /* --header-btn: color-mix(in srgb, var(--color_bg-nav2) 25%, #ffffffe8 75%); */
   --header-btn: color-mix(in srgb, var(--color_bg-nav2)l 15%, #ffffffe8 95%);
-  --header-btn-shadow: inset 0px -1px 0px #83467e5d, inset -1px 1px 1px #e451ce1f;
+  --header-btn-shadow: inset 0px -1px 0px #6e61f3, inset -1px 1px 1px #e451ce1f;
 
   header nav,
   footer {
@@ -230,7 +230,7 @@ nav .--nav_submenu>li {
 .slider .btn-slide.next:hover {
   background: var(--color_text);
   color: var(--color_bg-nav2);
-  box-shadow: 0 0 50px #8f1873fa;
+  box-shadow: 0 0 50px #5f43e8e7;
 }
 
 button.prev {

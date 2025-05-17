@@ -24,15 +24,18 @@
 :root {
     --bg-page: #fde6fb;
     --bg-white: #fef5fd;
-    --bg-app: #9f39ce;
+    --bg-app: #5f43e8;
     --bg-border_app: #e2bed3;
-    --bg-app-800: #872173;
-    --color_app: #b039ce;
+    --bg-app-800: #422ea5;
+    --color_app: #5f43e8;
     --color_text: #111827;
     --color_box: #ffffffe1;
-    --color_bg-nav2: #c251e4;
+    --color_bg-nav2: #5f43e8;
     --my-bg-position: 10% 90%;
-    --link-active: #5c206f;
+    --link-active: #392d82;
+    --link-hover: #422ea5;
+    --ln-gradient: linear-gradient(45deg, #8b4699, #5f43e8);
+    --ln_h-gradient: linear-gradient(-45deg, #a12555, #5f43e8);
 
     body {
         background-color: #F9FAFB;
@@ -83,7 +86,7 @@ body {
 }
 
 .btn {
-    background-image: linear-gradient(45deg, #df4881, #c430d7);
+    background-image: var(--ln-gradient);
     padding: 10px 80px;
     text-decoration: none;
     color: #ce39b6;
@@ -99,7 +102,7 @@ body {
 }
 
 .btn:hover {
-    background-image: linear-gradient(-45deg, #a12555, #821691);
+    background-image: var(--ln_h-gradient);
     background: #5b78c7;
     color: #fff;
 }
@@ -130,7 +133,7 @@ body {
 } */
 
 .cart-price {
-    background-image: linear-gradient(45deg, #df4881, #c430d7);
+    background-image: var(--ln-gradient);
 }
 
 .cart:hover {
@@ -661,11 +664,11 @@ span.red {
 }
 
 .btn-trade {
-    background: linear-gradient(45deg, #95395c, #95449f);
+    background: var(--ln-gradient);
 }
 
 .btn-trade:hover {
-    background: linear-gradient(-45deg, #df4881, #c430d7);
+    background: var(--ln_h-gradient);
 }
 
 /* footer {}
