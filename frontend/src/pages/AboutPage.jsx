@@ -131,7 +131,7 @@ const AboutPage = () => {
                         <h3>Venez on travaille un projet ensemble, ça va être <span className="highlight text-xl tracking-wide">GRANDIOSE</span> !</h3>
                     </div>
                 </div>
-                <div className="dream sm:full mx-auto flex flex-col sm:flex-row gap-5 pb-5 px-10 justify-center items-center md:rounded-xl mt-8 bg-gray-800 overflow-hidden shadow-inner bg-no-repeat" style={{ backgroundImage: `url(${quote})`, backgroundPosition: "-8% 83%", backgroundSize: '150px 150px' }}>
+                <div className="dream sm:full mx-auto flex flex-col sm:flex-row gap-5 pb-5 px-10 justify-center items-center md:rounded-xl mt-8 bg-app-600/10 overflow-hidden shadow-inner bg-no-repeat" style={{ backgroundImage: `url(${quote})`, backgroundPosition: "-8% 83%", backgroundSize: '150px 150px' }}>
                     <div className="text-center sm:text-right order-2 sm:order-1 min-w-[200px] md:max-w-[65%]" data-aos='zoom-in-up' data-aos-duration={600}>
                         <blockquote className="sm:border-r-4 border-app-500 p-4 pt-0 italic text-xl font-serif text-pretty text-white/90">"J'ai fait un rêve, je codais la meilleure appli de l'année et <span className="highlight text-xl">c'était la vôtre</span> !"</blockquote>
                         <div className="text-gray-400 text-sm">Martin Luther King</div>

@@ -375,9 +375,10 @@ input::webkit-autofill:active {
     box-shadow: var(--header-btn-shadow);
   }
 
+  /* 
   nav .nav-search:hover {
     background-color: transparent;
-  }
+  } */
 
   /* nav .nav-link li>button:hover,
   nav .nav-link li>a:hover {
@@ -386,11 +387,11 @@ input::webkit-autofill:active {
   } */
 
   html nav .nav-link .active button {
-    background-color: #e9bed4b7;
+    background-color: #91a6e9e0;
   }
 
   .dark nav .nav-link .active button {
-    background-color: #e9bed418;
+    background-color: #9b9ae0d8;
   }
 }
 

@@ -261,8 +261,8 @@ export default function DefaultRouterComp() {
                         <MoonIcon className="inline dark:hidden" />
                         <SunIcon className="hidden dark:inline" />
                     </label>
-                    <span className="inline dark:hidden">Mode Nuit</span>
-                    <span className="hidden dark:inline">Mode Jour</span>
+                    <span className="inline dark:hidden">Dark Mode</span>
+                    <span className="hidden dark:inline">Light Mode</span>
                 </div>
                 {isAuthenticated && <div className="online-user">
                     <div className="">

@@ -112,7 +112,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
     return (
         <>
             {/* pt-12 sm:max-w-[90%] */}
-            <form id="container-search" onSubmit={handleSubmitSearch} className={`h-32 py-1.5 w-full bg-deg-light dark:bg-app-600/10 fixed top-[58px] md:top-[65px] left-0 z-10 backdrop-blur-[60px] overflow-hidden transition-transform duration-300 ease-in-out ${showSearchBar ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'}`} >
+            <form id="container-search" onSubmit={handleSubmitSearch} className={`h-32 py-1.5 w-full bg-app-600/5 dark:bg-app-600/10 fixed top-[58px] md:top-[65px] left-0 z-10 backdrop-blur-[60px] overflow-hidden transition-transform duration-300 ease-in-out ${showSearchBar ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'}`} >
                 <div className="max-w-[95%] mx-auto flex flex-col gap-4 justify-center items-center">
                     <div className="h-11 w-full md:w-1/2 flex justify-center items-center gap-2">
                         <div className="h-full w-full flex justify-center items-center gap-2 relative">
