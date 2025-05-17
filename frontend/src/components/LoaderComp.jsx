@@ -4,7 +4,7 @@ import { ScaleLoader } from "react-spinners";
 
 
 const LoaderComp = () => {
-    let color = "#ce39b6";
+    let color = "#b039ce";
     return (//<div className="inset-0 z-50 bg-app-950/85 backdrop-blur-sm fixed top-0 left-0 w-full h-screen flex justify-center items-center btn-trans">
         <div className="flex justify-center items-center py-14 main-about">
             <ScaleLoader

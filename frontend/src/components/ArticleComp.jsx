@@ -57,19 +57,20 @@ const ArticleComp = ({ art, articleRef, controller }) => {
     }, []);
 
     return (
-        <div className="border border-app-050 w-80 bg-app-050 rounded-xl overflow-hidden dark:bg-app-600/5 dark:text-white/90 dark:border-none" ref={articleRef} data-aos='fade-right' data-aos-offset={100}>
-            <div className="w-full h-60 mx-auto rounded-br-[60px] relative">
+        <div className="border border-[#D1D5DB] max-w-[95%] w-[380px] md:w-80 bg-app-050 rounded-xl overflow-hidden dark:bg-app-600/5 dark:text-white/90 dark:border-none" ref={articleRef} data-aos='fade-right' data-aos-offset={100}>
+            <div className="w-full h-80 mx-auto rounded-br-[60px] relative">
                 {/* <img src={imgLink} alt="Image de l'article" className="w-full h-full object-cover rounded-full border-2 border-gray-300" /> */}
-                <img src={imgLink} alt="Image de l'article" className="w-full h-full object-cover" />
-                <div className="cart-price font-medium bg-app rounded-3xl rounded-bl-none text-white box-border absolute bottom-0.5 right-0.5 py-1 px-4 shadow">
-                    <span className="text-lg">{articlePrice}</span>
+                <img src={imgLink} alt="Image de l'article" className="w-full h-full object-cover rounded-xl" />
+                <div className="cart-price font-medium bg-app border border-app-400 rounded-3xl rounded-bl-none text-white box-border absolute bottom-2 right-2 py-2 px-4 shadow">
+                    <span className="text-xl">{articlePrice}</span>
                 </div>
             </div>
             <div className="p-5 pb-3">
-                <div className="flex items-center h-[70px] text-left capitalize line-clamp-2 text-app overflow-ellipsis pb-4">
+                {/* h-[70px] */}
+                <div className="flex items-center text-left capitalize line-clamp-2 text-app overflow-ellipsis pb-4 px-1 border-b border-app-300 dark:border-app-600">
                     <span className="text-xl font-medium" title={art.article}>{art.article}</span>
                 </div>
-                <div className="text-sm text-black/70 dark:text-white/70">
+                <div className="text-sm text-black/70 dark:text-white/70 mt-4">
                     <div className="flex flex-col gap-2 px-2">
                         {controller !== 'trader' && <>
                             <div className="flex gap-2 items-center text-gray-900 dark:text-white/90 uppercase">
@@ -90,13 +91,13 @@ const ArticleComp = ({ art, articleRef, controller }) => {
                                     {/* <FiPackage className="inline-block" /> */}
                                     <BoxIcon className="w-4 h-4" />
                                 </span>
-                                <span className="text-sm">{art.quantity > 0 ? art.quantity + rest : 'Epuisé'}</span>
+                                <span className="">{art.quantity > 0 ? art.quantity + rest : 'Epuisé'}</span>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <span className="text-app-500 flex justify-center items-center">
                                     <ClockIcon className="w-4 h-4" />
                                 </span>
-                                <span className="text-sm">Il y a {formatElapsedTime(art.date)}</span>
+                                <span className="">Il y a {formatElapsedTime(art.date)}</span>
                             </div>
                         </div>
                     </div>
@@ -123,10 +124,10 @@ const ArticleComp = ({ art, articleRef, controller }) => {
                 <div className="flex justify-end gap-1 rounded-bl-xl rounded-br-xl">
                     {controller === 'trader' && <>
                         <button onClick={handleEdit} title="Modifier l'article">
-                            <FontAwesomeIcon icon={faPencil} size="" className="w-8 h-8 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-app hover:text-white" />
+                            <FontAwesomeIcon icon={faPencil} size="" className="w-10 h-10 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-app hover:text-white" />
                         </button>
                         <button onClick={handleDelete} title="Supprimer l'article">
-                            <FontAwesomeIcon icon={faTrash} size="" className="w-8 h-8 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-red-500 hover:text-white" />
+                            <FontAwesomeIcon icon={faTrash} size="" className="w-10 h-10 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-red-500 hover:text-white" />
                         </button>
                     </>
                     }

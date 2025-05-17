@@ -9,8 +9,8 @@
   --color-btn-header: rgba(0, 0, 0, .3);
   --design-opacity: 0.3;
   /* --header-btn: color-mix(in srgb, var(--color_bg-nav2) 25%, #ffffffe8 75%); */
-  --header-btn: color-mix(in srgb, var(--color_bg-nav2) 15%, #ffffffe8 95%);
-  --header-btn-shadow: inset 0px -1px 2px #83467e5d, inset -1px 1px 1px #e451ce1f;
+  --header-btn: color-mix(in srgb, var(--color_bg-nav2)l 15%, #ffffffe8 95%);
+  --header-btn-shadow: inset 0px -1px 0px #83467e5d, inset -1px 1px 1px #e451ce1f;
 
   header nav,
   footer {
@@ -51,7 +51,7 @@ header nav {
   width: 100%;
   text-transform: capitalize;
   align-items: center;
-  padding: 0 4px;
+  padding: 8px;
   border-bottom: 1px solid #83467e60;
 }
 
@@ -61,7 +61,7 @@ nav .nav-link {
 
 nav .nav-link>li {
   position: relative;
-  margin: 0 0.125rem;
+  margin: 0;
   padding: 0.125rem;
 }
 
@@ -168,14 +168,15 @@ nav .--nav_submenu>li {
   /* width: 100%; */
   height: min-content;
   min-height: 60%;
-  padding: 0 0 25px 0;
+  /* max-height: 218px; */
+  padding-bottom: 25px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
   font-size: 24px;
-  border-radius: 8px;
+  border-radius: 15px;
   overflow: hidden;
   opacity: 0.5;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -351,6 +352,15 @@ input::webkit-autofill:active {
 
 @media screen and (max-width: 720px) {
 
+  .slides .slide:last-child {
+    max-height: 230px;
+    overflow: hidden;
+  }
+
+  .slides .slide ul:last-child {
+    overflow: hidden;
+  }
+
   nav .nav-link li>button,
   nav .nav-link li>a {
     /* border: 1px solid color-mix(in srgb, var(--color_text22) 10%, #0c0c0ce8 80%); */
@@ -438,7 +448,7 @@ input::webkit-autofill:active {
   }
 
   nav .nav-link li svg {
-    width: 22px;
-    height: 22px;
+    width: 25px;
+    height: 25px;
   }
 }

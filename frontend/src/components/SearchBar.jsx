@@ -116,7 +116,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                 <div className="max-w-[95%] mx-auto flex flex-col gap-4 justify-center items-center">
                     <div className="h-11 w-full md:w-1/2 flex justify-center items-center gap-2">
                         <div className="h-full w-full flex justify-center items-center gap-2 relative">
-                            <input type="search" name="search_article" placeholder={placeholder} className='h-full bg-white text-black/70 py-6 pl-10 pr-12 outline-none border border-app-300/70 w-full' value={searchValues.search_article} onChange={handleInputChange} />
+                            <input type="search" name="search_article" placeholder={placeholder} className='h-full rounded-full bg-white text-black/70 py-6 pl-10 pr-12 outline-none border border-app-300/70 w-full' value={searchValues.search_article} onChange={handleInputChange} />
                             <button type="submit" className='absolute top-3.5 right-3' title="Rechercher">
                                 <SearchIcon className="transition duration-300 text-gray-400 hover:text-app-600 w-8 h-8 dark:text-app-400" />
                             </button>
@@ -131,7 +131,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                     </div>
                     <div className="dark:text-white/90 max-w-[70%] w-full text-center">
                         <span className="text-black/70 dark:text-white/90 font-semibold hidden">Trier les résultats par :</span>
-                        <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-xl border border-app-300/70 w-3/4 md:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
+                        <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-full border border-app-300/70 w-3/4 md:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
                     </div>
                 </div>
             </form>
@@ -141,20 +141,20 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                         ? <LoaderComp />
                         :
                         hasSearchParams ? (<>
-                            <div className="xl:w-1/2 mx-auto text-left my-5">
+                            <div className="max-w-full mx-5 xl:w-1/2 xl:mx-auto text-left my-5">
                                 <h3 className="font-semibold dark:text-white/90">
                                     Résultats de votre recherche
                                 </h3>
                                 <div className="text-sm text-gray-700 dark:text-gray-300">
                                     Votre recherche à renvoyée au total <span className="font-bold text-lg">{searchQuery.data?.total_articles}</span> article{searchQuery.data?.total_articles > 1 && 's'}
                                 </div>
-                                <div className="mt-1 space-x-1">
-                                    {searchArticle && <span className="border rounded-full border-app-500 py-0.5 px-3 text-sm text-app-500">article: "{params.search_article}"</span>
+                                <div className="mt-1 space-x-1 flex flex-wrap gap-1">
+                                    {searchArticle && <div className="border rounded-full border-app-500 py-0.5 px-3 text-sm text-app-500">article: "{params.search_article}"</div>
                                     }
-                                    {searchCateg && <span className="border rounded-full border-app-500 py-0.5 px-3 text-sm text-app-500">catégorie: "{articlesCategories[params.search_categ]}"</span>
+                                    {searchCateg && <div className="border rounded-full border-app-500 py-0.5 px-3 text-sm text-app-500">catégorie: "{articlesCategories[params.search_categ]}"</div>
                                     }
                                 </div>
-                                <span className="border-b border-gray-500 pt-4 block"></span>
+                                <span className="border-b border-gray-400 pt-4 block"></span>
                             </div>
                             <SearchPaginate
                                 results={searchQuery.data?.articlesData || []}

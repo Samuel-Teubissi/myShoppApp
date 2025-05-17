@@ -8,7 +8,7 @@ const HomePage = () => {
     }, []);
     return (
         <>
-            <div className="xl:w-1/2 mx-auto text-center pt-10">
+            <div className="xl:w-1/2 mx-auto text-center pt-14 md:pt-10">
                 <h2 className="font-semibold dark:text-white/90">
                     Derniers produits en vente
                 </h2>

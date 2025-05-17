@@ -75,9 +75,9 @@ const ModalCart = ({ onClose, redirect }) => {
                 ))}
             </div>
             <div className="cart-footer">
-                <div className="flex justify-end items-center gap-4 my-2">
-                    <span className="text-gray-600 dark:text-white/90">Total à payer :</span>
-                    <span className="bg-green-300 cart--item-box min-w-28 dark:text-black/70">{totalCart.toLocaleString('fr-FR', { style: 'currency', currency: 'XAF' })}</span>
+                <div className="flex justify-center items-center gap-4 my-2">
+                    <span className="text-gray-600 dark:text-white/90">Montant Total :</span>
+                    <span className="bg-green-300/5 cart--item-box min-w-28 text-xl">{totalCart.toLocaleString('fr-FR', { style: 'currency', currency: 'XAF' })}</span>
                     <div className="w-7"></div>
                 </div>
                 <div className="btn-modal-container">

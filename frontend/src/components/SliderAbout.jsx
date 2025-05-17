@@ -38,20 +38,20 @@ const SliderAbout = () => {
         container.style.transform = `translateX(${offset - currentIndex * slideWidth}px)`;
     }, [currentIndex]);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         handleNext();
-    //     }, autoSlideInterval);
-    //     return () => clearInterval(interval)
-    // }, [currentIndex]);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleNext();
+        }, autoSlideInterval);
+        return () => clearInterval(interval)
+    }, [currentIndex]);
 
     const slidesAbout = [
         {
-            'h3': "🛒 Gestion dynamique du panier",
+            'h3': "Gestion dynamique du panier",
             'li': ['Ajout/supprimer des articles', "Modifier les quantités", "Calcul automatique des totaux unitaires et globaux"]
         },
         {
-            'h3': "💾 Persistance de données",
+            'h3': "📁 Persistance de données",
             'li': ["Conservation du panier dans un cookie sécurisé", "Sauvegarde locale des données non sensibles"]
         },
         {

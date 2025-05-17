@@ -57,7 +57,7 @@ const AboutPage = () => {
                         </Link>
                     ))}
                 </div>
-                <div className="text-left xl:hidden mt-2">
+                <div className="text-left xl:hidden mt-8">
                     <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est <span className="text-app-500 text-4xl md:text-6xl">Sam</span>&nbsp;!</h1>
                     <div className="px-4 sm:px-10 mt-2">
                         Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁
@@ -90,7 +90,7 @@ const AboutPage = () => {
                     </div>
                     <div className="px-4 lg:px-10 mt-8">
                         <h2 className="text-gray-600 dark:text-gray-300">À propos de moi</h2>
-                        <div className="mt-2">
+                        <div className="mt-4">
                             Je suis <span className="highlight">Teubissi Samuel</span>, <span className="highlight">développeur web fullstack</span> et <span className="highlight">dinfographiste passionné</span>, spécialisé dans la création de sites web modernes et l'optimisation d'expériences visuelles.🌐<br />
                             J'utilise des technologies comme <span className="highlight">React.js</span> et <span className="highlight">Tailwind CSS</span>  concevoir des interfaces dynamiques, fluides et performantes. <br /><br />
                             Parallèlement, je mets à profit mes compétences en <span className="highlight">infographie</span> pour créer des visuels percutants, adaptés aussi bien au web qu'à la communication promotionnelle. 🎨 <br />
@@ -104,7 +104,7 @@ const AboutPage = () => {
         <div className=" dark:text-white/90 dark:bg-transparent mt-4 py-6">
             <div className="about-detail w-full md:w-[90%] mx-auto">
                 <div>
-                    <h1 className="mt-10 xl:max-w-[70%] xl:mx-auto">Détails sur le projet <span className="text-app text-5xl">`MyShop App`</span></h1>
+                    <h1 className="mt-10 xl:max-w-[70%] xl:mx-auto">Détails sur le projet <span className="text-app text-5xl">`MyShop&nbsp;App`</span></h1>
                     <p className="mt-5 about-block">J'ai pendant 2 mois travaillé sur le développement de cette <span className="highlight">application e-commerce en React</span>, avec pour objectif de créer une expérience utilisateur <span className="highlight">fluide et fiable</span> autour de la gestion du panier.</p>
                 </div>
                 <nav className="mt-10">

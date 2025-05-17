@@ -19,7 +19,7 @@ import Footer from "../pages/Footer"
 import { queryClient } from "../main"
 import useLinks from "../hooks/useLinks"
 import { MdLocalGroceryStore, MdLogin, MdLogout, MdPhoneAndroid, MdWbSunny } from 'react-icons/md';
-import { HomeIcon, BookIcon, Bell, ShoppingCartIcon, User, SquarePlus, SquarePlusIcon, HelpCircleIcon, UserPlus, UserMinus, MoonIcon, SunIcon, UserCheck, KeyIcon, XIcon, Sidebar, SearchIcon } from 'lucide-react';
+import { HomeIcon, BookIcon, Bell, ShoppingCartIcon, User, SquarePlus, SquarePlusIcon, HelpCircleIcon, UserPlus, UserMinus, MoonIcon, SunIcon, UserCheck, KeyIcon, XIcon, Sidebar, SearchIcon, MenuIcon } from 'lucide-react';
 import { setThemeApp } from "./AppComp"
 import useCloseOutsideModal from "../hooks/useCloseOutsideModal"
 import Aos from "aos";
@@ -113,9 +113,9 @@ export default function DefaultRouterComp() {
         if (e.target.tagName === 'A' || e.target.tagName === 'SPAN' || e.target.tagName === 'BUTTON') {
             // Fermer *avec un petit délai*
             // setTimeout(() =>
-            if (e.target.href !== location.pathname) {
-                setIsLoadingPage(true);
-            }
+            // if (e.target.href !== location.pathname) {
+            //     setIsLoadingPage(true);
+            // }
             setOpenHeader(false)
             // , 50);
         }
@@ -138,8 +138,8 @@ export default function DefaultRouterComp() {
             <nav>
                 <div className="animT pointer-events-auto">
                     <NavLink to='/' className='flex items-center'>
-                        <img src={LogoLink} alt="Logo MyShopAPP" className="hidden md:block" width={50} height={50} />
-                        <h3 className="">MyShop App</h3>
+                        <img src={LogoLink} alt="Logo MyShopAPP" className="" width={50} height={50} />
+                        <h4 className="hidden md:block">MyShop App</h4>
                     </NavLink>
                 </div>
                 <ul className="nav-link pointer-events-auto">
@@ -185,7 +185,8 @@ export default function DefaultRouterComp() {
                     <li>
                         <button onClick={() => setOpenHeader(true)} >
                             <span>Mon Compte</span>
-                            <User />
+                            <User className="hidden md:block" />
+                            <MenuIcon className="md:hidden" />
                         </button>
                     </li>
                 </ul>
@@ -201,14 +202,14 @@ export default function DefaultRouterComp() {
         </header >
         <div className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-250 ease-in ${openHeader ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
             <div className={`modal-Sidebar w-4/5 min-w-[25%] sm:w-96 transition-transform duration-300 ease-out ${openHeader ? 'translate-x-0' : 'translate-x-full'}`} ref={SidebarRef}>
-                <XIcon className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
+                <XIcon className="absolute top-11 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white" onClick={() => setOpenHeader(false)} title="Fermer" />
                 <div className="">
                     <NavLink to='/' className='flex items-center' onClick={handleCloseSidebar}>
                         <img src={LogoLink} alt="Logo MyShopAPP" className="" width={70} height={70} />
                         <h3>MyShop App</h3>
                     </NavLink>
                 </div>
-                <ul className={`--nav_submenu mt-3 ${openSubmenu ? 'showNav' : ''}`} onClick={handleCloseSidebar}>
+                <ul className={`--nav_submenu mt-4 ${openSubmenu ? 'showNav' : ''}`} onClick={handleCloseSidebar}>
                     <li>
                         <NavLink to='/home'>
                             <HomeIcon />
@@ -264,8 +265,11 @@ export default function DefaultRouterComp() {
                     <span className="hidden dark:inline">Mode Jour</span>
                 </div>
                 {isAuthenticated && <div className="online-user">
-                    <div><span className="inline-block bg-green-500 h-4 w-4 rounded-full"></span> Vous êtes connecté !</div>
-                    <div className="text-sm">
+                    <div className="">
+                        <span className="inline-block bg-green-500 h-4 w-4 rounded-full"></span> Vous êtes connecté !
+                        <div className="w-1/2 border-b border-gray-400 dark:border-gray-200/20 pt-2"></div>
+                    </div>
+                    <div className="text-sm mt-2">
                         <ul>
                             <li>Session : <span className="text-app">{userSession?.user_name}</span></li>
                             <li>Numéro : <span className="text-app">{userSession?.user_number}</span></li>

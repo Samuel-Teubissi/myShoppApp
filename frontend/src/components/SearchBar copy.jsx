@@ -158,14 +158,14 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                 </button>
             </form>
             <div id="container-search" className=" flex justify-center mt-4 flex-wrap">
-                {searchQuery.isLoading ? <div className="w-full"><div className="w-1/2 bg-gray-500 text- mx-auto p-4">Chargement de données en cours...</div></div>
+                {searchQuery.isLoading ? <div className="w-full max-w-[90%]"><div className="w-1/2 bg-gray-500 text- mx-auto p-4">Chargement des résultats en cours...</div></div>
                     : showResults ? (<>
-                        <div className="w-full">
+                        <div className="w-full max-w-[90%]">
                             <div className="text-xl p-2 font-bold border-b-2 border-black w-1/2 mt-4 mx-auto">
                                 Résultats de votre recherche
                             </div>
                         </div>
-                        {searchQuery.data?.totalArticles > 0 && <div className="w-full">
+                        {searchQuery.data?.totalArticles > 0 && <div className="w-full max-w-[90%]">
                             <div className="bg-green-700 w-1/2 py-5 rounded text-white mt-2 mx-auto">
                                 Votre recherche à renvoyée au total " {searchQuery.data?.totalArticles} " article(s)
                             </div>

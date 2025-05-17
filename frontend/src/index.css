@@ -37,17 +37,17 @@
     }
 
     .btn-modal-cancel {
-        @apply text-white px-4 py-3 w-40 bg-gray-600 transition duration-300 ease-in-out rounded-[10px];
+        @apply text-white px-5 py-4 w-40 bg-gray-600 transition duration-300 ease-in-out rounded-[5px];
         @apply hover:bg-gray-500;
     }
 
     .btn-modal-confirm {
-        @apply text-white px-4 py-3 w-40 bg-red-700 transition duration-300 ease-in-out rounded-[10px];
+        @apply text-white px-5 py-4 w-40 bg-red-700 transition duration-300 ease-in-out rounded-[5px];
         @apply hover:bg-red-500;
     }
 
     .btn-modal-submit {
-        @apply text-white px-4 py-3 w-40 bg-app-h transition duration-300 ease-in-out rounded-[10px];
+        @apply text-white px-5 py-4 w-40 bg-app-h transition duration-300 ease-in-out rounded-[5px];
         @apply hover:bg-app;
     }
 
@@ -76,7 +76,7 @@
     }
 
     .trader-block button {
-        @apply cursor-pointer ease-in-out flex items-center gap-2 rounded-xl py-4 px-8;
+        @apply cursor-pointer ease-in-out flex items-center gap-2 rounded-[4px] py-4 px-8;
         /* @apply hover:border-none; */
         /* @apply hover:bg-app; */
     }
@@ -195,15 +195,16 @@
     }
 
     .input-group {
-        @apply relative h-[65px]
+        @apply relative bg-app-200/40 dark:bg-app-200/5 px-6 pt-6 pb-2 rounded-[5px]
+        /* h-[65px] */
     }
 
     .input-group input {
-        @apply pl-8 pb-2
+        @apply pl-2 pb-2
     }
 
     .input-group i {
-        @apply absolute top-3.5 left-0 text-sm text-gray-400
+        @apply absolute top-10 left-4 text-sm text-app-600 hidden
     }
 
     .input-group i svg {
@@ -211,12 +212,14 @@
     }
 
     .input-group .input_label {
-        @apply absolute top-4 left-8 text-base transition-all duration-200 cursor-pointer dark:text-gray-300
+        @apply absolute top-4 left-6 text-base transition-all duration-200 cursor-pointer dark:text-gray-300
+        /* top-10 left-12 */
     }
 
     .input-group input:focus+.input_label,
     .input-group input:not(:placeholder-shown)+.input_label {
-        @apply -top-1.5 left-0 text-sm text-gray-500 dark:text-gray-400
+        @apply text-sm
+        /*text-gray-500 dark:text-gray-400 top-2 left-9*/
     }
 
     select {
@@ -248,6 +251,6 @@
     }
 
     .input-alert span {
-        @apply dark:bg-red-500 bg-red-500/90 text-white py-1.5 px-3 mx-8 text-center w-fit rounded-br-xl rounded-bl-xl
+        @apply dark:bg-red-500 bg-red-500/90 text-white py-1.5 px-3 mx-8 text-center w-fit rounded-br-[5px] rounded-bl-[5px]
     }
 }

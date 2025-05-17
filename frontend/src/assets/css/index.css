@@ -24,29 +24,30 @@
 :root {
     --bg-page: #fde6fb;
     --bg-white: #fef5fd;
-    --bg-app: #ce39b6;
+    --bg-app: #9f39ce;
     --bg-border_app: #e2bed3;
     --bg-app-800: #872173;
-    --color_app: #ce39b6;
-    --color_text: #313131;
+    --color_app: #b039ce;
+    --color_text: #111827;
     --color_box: #ffffffe1;
-    --color_bg-nav2: #e451cf;
+    --color_bg-nav2: #c251e4;
     --my-bg-position: 10% 90%;
+    --link-active: #5c206f;
 
     body {
-        background-color: color-mix(in srgb, var(--bg-page) 90%, #fff 10%);
+        background-color: #F9FAFB;
     }
 }
 
 .dark {
     --bg-page: #2c2129;
     --bg-border_app: #2c2129;
-    --color_text: #ffffffe1;
+    --color_text: #F9FAFB;
     --color_box: #313131;
     --dark-block: color-mix(in oklab, var(--bg-app) 40%, #000 60%);
 
     body {
-        background-color: color-mix(in srgb, var(--bg-page) 80%, black 20%);
+        background-color: color-mix(in srgb, var(--bg-page) 80%, rgb(17, 17, 17) 20%);
     }
 }
 
@@ -468,7 +469,7 @@ input[type="number"].inpt-f {
 }
 
 .dark .pagination a {
-    background-color: #6f205e;
+    background-color: var(--link-active);
     color: #ffffffe1;
 }
 
@@ -485,7 +486,7 @@ input[type="number"].inpt-f {
 .pagination .active a {
     box-shadow: none;
     cursor: text;
-    background-color: #6f205e;
+    background-color: var(--link-active);
     color: #fff;
     cursor: default;
 }
@@ -754,7 +755,7 @@ footer>div {
     top: 0;
     right: 0;
     /* padding: 3rem; */
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     padding-left: 0px;
     /* width: 20rem; */
     height: 100%;
@@ -767,7 +768,7 @@ footer>div {
     /* border-radius: 0 8px 8px 0; */
     width: 100%;
     gap: 0.5rem;
-    padding: 12px 2.5rem;
+    padding: 15px 2.5rem;
     margin: 0.25rem 0;
     box-shadow: none;
     transition: ease-in-out .2s all;
@@ -790,12 +791,13 @@ footer>div {
 }
 
 .online-user div {
-    padding: 5px;
+    padding: 5px 0;
 }
 
 .online-user ul {
-    color: gray;
-    margin-left: 20px;
+    color: #9CA3AF;
+    padding: 10px 0 5px;
+    /* margin-left: 20px; */
 }
 
 .dark .online-user ul {
