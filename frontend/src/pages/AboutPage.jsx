@@ -50,7 +50,7 @@ const AboutPage = () => {
                     <img src={linkMsg} alt="Author" className="rounded object-cover block absolute -top-[64px] left-0 scale-95 hover:scale-100 max-w-full z-0 w-[400px]" data-aos='fade-up' data-aos-delay={0} data-aos-duration={1000} />
                     <img src={link} alt="Author" className="max-w-full rounded object-cover z-10 hover-rotate-y transition-transform duration-300 about-img" width={430} height={430} />
                 </div>
-                <div className="flex items-center gap-1 text-dark-app-100 mt-2">
+                <div className="flex items-center gap-1 text-black/70 dark:text-dark-app-100 mt-2">
                     {contacts.map((contact, key) => (
                         <Link key={key} to={contact.link} className="flex items-center dark:bg-app-600/10 rounded-xl py-1 px-3 gap-1 hover:bg-app-800 font-medium btn-trans shadow-xl border border-app-700" target="_blank" data-aos='fade-up' data-aos-delay={50 * key} data-aos-duration={800} data-aos-offset={50}>
                             {contact.label} <contact.icon className="w-[20px] h-[20px]" style={{ color: contact.color }} />
@@ -68,7 +68,7 @@ const AboutPage = () => {
                 <div className="hidden xl:block">
                     <h1 className="text-gray-600 dark:text-gray-300 px-4">Hello World, moi c'est Sam&nbsp;!</h1>
                     <div className="py-4 px-4 sm:px-10">
-                        Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage 😁
+                        Bienvenue sur mon portfolio, donne moi 2 minutes pour te résumer cette app, et mes compétences au passage ✨
                     </div>
                 </div>
                 <div>
@@ -131,7 +131,7 @@ const AboutPage = () => {
                         <h3>Venez on travaille un projet ensemble, ça va être <span className="highlight text-xl tracking-wide">GRANDIOSE</span> !</h3>
                     </div>
                 </div>
-                <div className="dream sm:full mx-auto flex flex-col sm:flex-row gap-5 pb-5 px-10 justify-center items-center md:rounded-xl mt-8 bg-app-600/10 overflow-hidden shadow-inner bg-no-repeat" style={{ backgroundImage: `url(${quote})`, backgroundPosition: "-8% 83%", backgroundSize: '150px 150px' }}>
+                <div className="dream sm:full mx-auto flex flex-col sm:flex-row gap-5 pb-5 px-10 justify-center items-center md:rounded-xl mt-8 bg-gray-800 overflow-hidden shadow-inner bg-no-repeat" style={{ backgroundImage: `url(${quote})`, backgroundPosition: "-8% 83%", backgroundSize: '150px 150px' }}>
                     <div className="text-center sm:text-right order-2 sm:order-1 min-w-[200px] md:max-w-[65%]" data-aos='zoom-in-up' data-aos-duration={600}>
                         <blockquote className="sm:border-r-4 border-app-500 p-4 pt-0 italic text-xl font-serif text-pretty text-white/90">"J'ai fait un rêve, je codais la meilleure appli de l'année et <span className="highlight text-xl">c'était la vôtre</span> !"</blockquote>
                         <div className="text-gray-400 text-sm">Martin Luther King</div>
