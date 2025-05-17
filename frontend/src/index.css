@@ -227,7 +227,7 @@
     }
 
     select option {
-        @apply dark:bg-dark-div
+        @apply dark:bg-app-800
     }
 
     button, a {

@@ -52,7 +52,7 @@ const AboutPage = () => {
                 </div>
                 <div className="flex items-center gap-1 text-dark-app-100 mt-2">
                     {contacts.map((contact, key) => (
-                        <Link key={key} to={contact.link} className="flex items-center bg-dark-div rounded-xl py-1 px-3 gap-1 hover:bg-app-800 font-medium btn-trans shadow-xl border border-app-700" target="_blank" data-aos='fade-up' data-aos-delay={50 * key} data-aos-duration={800} data-aos-offset={50}>
+                        <Link key={key} to={contact.link} className="flex items-center dark:bg-app-600/10 rounded-xl py-1 px-3 gap-1 hover:bg-app-800 font-medium btn-trans shadow-xl border border-app-700" target="_blank" data-aos='fade-up' data-aos-delay={50 * key} data-aos-duration={800} data-aos-offset={50}>
                             {contact.label} <contact.icon className="w-[20px] h-[20px]" style={{ color: contact.color }} />
                         </Link>
                     ))}
@@ -154,7 +154,7 @@ const AboutPage = () => {
                     <h2 className="p-2">Bossons ensemble dès maintenant.</h2>
                     <div className="flex justify-center items-center gap-2 flex-wrap">
                         {contacts.map((contact, key) => (
-                            <Link key={key} to={contact.link} className="flex items-center bg-dark-div rounded-xl py-1 px-3 gap-1 hover:bg-app-800 font-medium btn-trans shadow-xl border border-app-700" target="_blank">
+                            <Link key={key} to={contact.link} className="flex items-center dark:bg-app-600/10 rounded-xl py-1 px-3 gap-1 hover:bg-app-800 font-medium btn-trans shadow-xl border border-app-700" target="_blank">
                                 {contact.label} <contact.icon className="w-[20px] h-[20px]" style={{ color: contact.color }} />
                             </Link>
                         ))}

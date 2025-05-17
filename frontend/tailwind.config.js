@@ -13,7 +13,7 @@ module.exports = {
 			colors: {
 				app: {
 					DEFAULT: '#5f43e8',
-					'50': '#fcf5fe',
+					'050': '#fcf5fe',
 					'100': '#dfe4ff',
 					'200': '#efd3fb',
 					'300': '#c6cbff',

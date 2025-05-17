@@ -112,7 +112,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
     return (
         <>
             {/* pt-12 sm:max-w-[90%] */}
-            <form id="container-search" onSubmit={handleSubmitSearch} className={`h-32 py-1.5 w-full bg-deg-light dark:bg-deg-dark fixed top-[58px] md:top-[65px] left-0 z-10 backdrop-blur-[60px] overflow-hidden transition-transform duration-300 ease-in-out ${showSearchBar ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'}`} >
+            <form id="container-search" onSubmit={handleSubmitSearch} className={`h-32 py-1.5 w-full bg-deg-light dark:bg-app-600/10 fixed top-[58px] md:top-[65px] left-0 z-10 backdrop-blur-[60px] overflow-hidden transition-transform duration-300 ease-in-out ${showSearchBar ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'}`} >
                 <div className="max-w-[95%] mx-auto flex flex-col gap-4 justify-center items-center">
                     <div className="h-11 w-full md:w-1/2 flex justify-center items-center gap-2">
                         <div className="h-full w-full flex justify-center items-center gap-2 relative">
@@ -131,7 +131,7 @@ const SearchBar = ({ endpoint, defaultEndpoint, placeholder = "Rechercher..." })
                     </div>
                     <div className="dark:text-white/90 max-w-[70%] w-full text-center">
                         <span className="text-black/70 dark:text-white/90 font-semibold hidden">Trier les résultats par :</span>
-                        <Select_categories classData='hover:bg-gray-100 bg-white p-2.5 rounded-full border border-app-300/70 w-3/4 md:w-40 dark:bg-dark-div dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
+                        <Select_categories classData='hover:bg-gray-100 bg-app-O50 p-2.5 rounded-full border border-app-300/70 w-3/4 md:w-40 dark:bg-app-600/10 dark:text-white/90 dark:hover:bg-app-600/80' name="search_categ" valueProp={searchValues.search_categ} onChange={handleInputChange} />
                     </div>
                 </div>
             </form>

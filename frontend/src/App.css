@@ -148,10 +148,14 @@ nav .--nav_submenu>li {
 
 .slider h3 {
   margin-bottom: 15px;
-  background-color: #83467e;
+  background-color: #5135cd;
   padding: 20px;
   /* border-radius: 4px; */
   width: 100%;
+}
+
+.dark .slider h3 {
+  background-color: #392d82;
 }
 
 .slides {
@@ -245,7 +249,7 @@ button.next {
   position: absolute;
   width: 40%;
   height: 50%;
-  background-color: #e451cf;
+  background-color: #5f43e8;
   opacity: var(--design-opacity);
   border-radius: 50px;
   animation: animate_design 5s alternate-reverse infinite;
