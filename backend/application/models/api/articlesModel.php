@@ -9,15 +9,16 @@ class ArticlesModel extends CI_Model
         $this->load->database();
     }
 
-    public function API_get_Articles($limit)
+    public function API_get_Articles($limit, $dataTrader = null)
     {
         $this->db->select('*');
         $this->db->from('articles');
         $this->db->join('category', 'articles.category = category.id_categ', 'inner');
         $this->db->join('trader', 'trader.id_trader = articles.id_trader', 'inner');
         $this->db->where('art_visible !=', 0);
-        if ($this->session->data_trader) {
-            $this->db->where('articles.id_trader !=', $this->session->data_trader);
+        // if ($this->session->data_trader) {
+        if ($dataTrader) {
+            $this->db->where('articles.id_trader !=', $dataTrader);
         }
         if (!empty($limit)) {
             $this->db->limit($limit['per_page'], $limit['start']);
@@ -54,7 +55,7 @@ class ArticlesModel extends CI_Model
         return $Categories;
     }
 
-    public function API_get_Search_Articles($search, $categ, $limit = [], $controller = 'home')
+    public function API_get_Search_Articles($search, $categ, $limit = [], $controller = 'home', $dataTrader = null)
     {
         // Construire la requête avec Query Builder de CI3
         $this->db->select('*');
@@ -64,10 +65,10 @@ class ArticlesModel extends CI_Model
 
         // Ajouter les conditions de la requête
         $this->db->where('articles.art_visible !=', 0); // Condition sur la visibilité de l'article
-        if ($controller === 'home' && !empty($this->session->data_trader)) {
-            $this->db->where('articles.id_trader !=', $this->session->data_trader);
+        if ($controller === 'home' && !empty($dataTrader)) {
+            $this->db->where('articles.id_trader !=', $dataTrader);
         } elseif ($controller === 'trader') {
-            $this->db->where('articles.id_trader', $this->session->data_trader);
+            $this->db->where('articles.id_trader', $dataTrader);
         }
         if (!empty($categ) && $categ > 0) {
             $this->db->like('articles.category', $categ);

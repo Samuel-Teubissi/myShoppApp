@@ -39,12 +39,11 @@ const LoginPage = () => {
         // const res = await login(data)
         if (res?.success) {
             if (from !== '/') navigate(from, { replace: true })
-            if (res?.role === 'user') {
-                toast.success('Connexion réussie !');
-                setTimeout(() => navigate('/user', { replace: true }), 1000);
-            }
             if (res?.role === 'admin') {
                 setTimeout(() => navigate('/admin', { replace: true }), 1000);
+            } else {
+                toast.success('Connexion réussie !');
+                setTimeout(() => navigate('/user', { replace: true }), 1000);
             }
         }
         /* else {
@@ -88,7 +87,7 @@ const LoginPage = () => {
                             icon='user'
                             // onChange={HandleChange}
                             placeholder="+237 XXXXXXXXX"
-                            error={errors?.number?.message || loginErrors.number}
+                            error={errors?.number?.message || loginErrors?.number}
                         // {...register('number', { required: 'Numéro requis' })}
                         />
                         <InputField
@@ -98,7 +97,7 @@ const LoginPage = () => {
                             icon='pswd'
                             // onChange={HandleChange}
                             placeholder="Votre mot de passe"
-                            error={errors?.password?.message || loginErrors.password}
+                            error={errors?.password?.message || loginErrors?.password}
                         // {...register('password', { required: 'Mot de passe requis' })}
                         />
                     </div>

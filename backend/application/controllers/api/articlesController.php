@@ -2,8 +2,23 @@
 
 require APPPATH . 'libraries/REST_Controller.php';
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+/**
+ * @property CI_DB_query_builder db
+ * @property CI_Input input
+ * @property CI_Session session
+ * @property CI_Email email
+ * @property articlesModel $articlesModel
+ * @property articleModel $articleModel
+ */
+
 class articlesController extends REST_Controller
 {
+    private $pagination_limit;
+    private $pagination_search;
+    public $userToken;
 
     public function __construct()
     {
@@ -11,11 +26,18 @@ class articlesController extends REST_Controller
         parent::__construct();
         //load database
         $this->load->database();
-        $this->load->model(array("api/articlesModel"));
-        $this->load->model(array("api/articleModel"));
+        $this->load->model(array("api/articlesModel", "api/articleModel"));
+        $this->load->helper('jwt');
         // Variables de pagination
         $this->pagination_limit = 3;
         $this->pagination_search = 2;
+
+        $headers = $this->input->request_headers();
+        if (isset($headers['Authorization'])) {
+            $token = str_replace('Bearer ', '', $headers['Authorization']);
+            $payload = verifyToken($token);
+            if ($payload) $this->userToken = $payload;
+        }
     }
 
 
@@ -23,6 +45,7 @@ class articlesController extends REST_Controller
     {
 
         // Pagination
+        $id_trader = $this->userToken->data_trader ?? null;
         $per_page = $this->pagination_limit;
         $currentPage = (int)($this->input->get('page') ?? 1) ?: 1;
         $offset = ($currentPage - 1) * $per_page;
@@ -30,8 +53,8 @@ class articlesController extends REST_Controller
         // Récupérer les articles paginés 
         $limit["start"] = $offset;
         $limit["per_page"] = $per_page;
-        $articles = $this->articlesModel->API_get_Articles($limit);
-        $total_articles = count($this->articlesModel->API_get_Articles(0));
+        $articles = $this->articlesModel->API_get_Articles($limit, $id_trader);
+        $total_articles = count($this->articlesModel->API_get_Articles(0, $id_trader));
 
         // Calcal des pages totales 
         $total_pages = ceil($total_articles / $per_page);
@@ -40,14 +63,16 @@ class articlesController extends REST_Controller
             "status" => 'success',
             'articlesData' => $articles,
             'total_pages' => $total_pages,
-            'total_articles' => $total_articles
+            'total_articles' => $total_articles,
+            'debug' => $total_articles
         ), REST_Controller::HTTP_OK);
     }
 
     public function API_Trader_Articles_get()
     {
-        $id_trader = $this->session->data_trader;
-        if ($id_trader && $this->session->role !== 'admin') {
+        // $id_trader = $this->session->data_trader;
+        $id_trader = $this->userToken->data_trader ?? null;
+        if ($id_trader && $this->userToken->role !== 'admin') {
             // Pagination
             $per_page = $this->pagination_limit;
             $currentPage = (int)($this->input->get('page') ?? 1) ?: 1;
@@ -86,7 +111,7 @@ class articlesController extends REST_Controller
                 break;
 
             case 'trader':
-                $id_trader = $this->session->data_trader;
+                $id_trader = $this->userToken->data_trader ?? null;
                 if ($id_trader) {
                     $per_page = $this->pagination_limit;
                     $total_articles = count($this->articlesModel->API_get_StockArticles($id_trader));
@@ -132,8 +157,9 @@ class articlesController extends REST_Controller
             $limit_pag["start"] = ($currentPage - 1) * $per_page;
             $limit_pag["per_page"] = $per_page;
 
-            $count_articles = count($this->articlesModel->API_get_Search_Articles($search, $categ, [], $controller));
-            $articles = $this->articlesModel->API_get_Search_Articles($search, $categ, $limit_pag, $controller);
+            $id_trader = $this->userToken->data_trader ?? null;
+            $count_articles = count($this->articlesModel->API_get_Search_Articles($search, $categ, [], $controller, $id_trader));
+            $articles = $this->articlesModel->API_get_Search_Articles($search, $categ, $limit_pag, $controller, $id_trader);
             // $count_results = count($articles);
             $count_pages = ($count_articles > 0) ? ceil($count_articles / $per_page) : 0;
             // if (empty($articles)) {

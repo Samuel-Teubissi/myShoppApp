@@ -4,7 +4,6 @@ import { API_href } from "../App.json";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { encodePassword, SoundNotif, waitSync } from "../components/AppComp";
-import { api } from "../hooks/api";
 import { Toaster, toast } from "sonner";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -20,7 +19,7 @@ axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 // axios.defaults.baseURL = API_href;
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    // const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLogging, setIsLogging] = useState(true)
     const [isLoggingLoad, setIsLoggingLoad] = useState(false)
     const [isRegisterLoad, setIsRegisterLoad] = useState(false)
@@ -37,15 +36,15 @@ export const AuthProvider = ({ children }) => {
             if (checkSess.data.status === 'success') {
                 setUserSession(checkSess.data.dataUser)
                 console.log('user-sess checkAuth', checkSess.data.dataUser);
-                setIsAuthenticated(true)
+                // setIsAuthenticated(true)
             } else {
                 setUserSession(null)
-                setIsAuthenticated(false)
+                // setIsAuthenticated(false)
             }
         } catch (err) {
             console.log('Authentification Error :' + err)
             setUserSession(null)
-            setIsAuthenticated(false)
+            // setIsAuthenticated(false)
         } finally {
             setIsLogging(false)
         }
@@ -66,14 +65,20 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
 
-        // if (!token) return null;
+        // if (!token) { setIsLogging(false); return }
         try {
             const sessionUser = jwtDecode(token); // { id, email, data_trader, ... }
-            setUserSession(sessionUser)
-            setIsAuthenticated(true)
+            if (sessionUser.exp * 1000 > Date.now()) {
+                setUserSession(sessionUser)
+            } else {
+                localStorage.removeItem('accessToken')
+            }
+            // setIsAuthenticated(true)
         } catch {
-            setIsAuthenticated(false)
+            // setIsAuthenticated(false)
+            console.warn("Token invalide ou expiré")
             setUserSession(null)
+            localStorage.removeItem('accessToken')
         } finally {
             setIsLogging(false)
         }
@@ -94,7 +99,7 @@ export const AuthProvider = ({ children }) => {
         // try {
         localStorage.removeItem('accessToken');
         toast("Déconnexion", { autoClose: 1000 });
-        setIsAuthenticated(false);
+        // setIsAuthenticated(false);
         setUserSession({});
         // } catch (error) {
         //     console.error("Erreur lors de la déconnexion :", error);
@@ -112,10 +117,10 @@ export const AuthProvider = ({ children }) => {
                 toast.success(res.data.message)
                 // setUserSession(res.data.user_session)
                 // localStorage.setItem('accessToken', res.data.user_token);
-                generateToken(res.data.user_token)
                 setLoginErrors({})
-                setIsAuthenticated(true)
-                return { success: true }
+                // setIsAuthenticated(true)
+                generateToken(res.data.user_token)
+                return { success: true, role: res.data.role }
                 // setTimeout(() => {
                 // }, 1000);
             } else {
@@ -167,7 +172,7 @@ export const AuthProvider = ({ children }) => {
                 generateToken(res.data.user_token)
                 await createNotification('admin', 'addUser')
                 // localStorage.setItem("user", JSON.stringify(response.data.user));
-                setIsAuthenticated(true)
+                // setIsAuthenticated(true)
                 return { success: true }
                 // setTimeout(() => {
                 //     // navigate('/user')
@@ -277,7 +282,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            isAuthenticated, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors, setLoginErrors, setRegisterErrors
+            isAuthenticated: !!userSession, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors, setLoginErrors, setRegisterErrors
         }}>
             {/* <ToastContainer position="bottom-right" autoClose={2000} /> */}
             <Toaster position="bottom-right" />

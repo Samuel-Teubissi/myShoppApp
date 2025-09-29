@@ -7,10 +7,17 @@ class traderModel extends CI_Model
         $req = $this->db->query("SELECT * FROM trader WHERE id_trader = ?", $id);
         return $req->result_array();
     }
-    public function API_dataTrader($number)
+    public function API_checkTrader($numTrader)
     {
-        $req = $this->db->query("SELECT * FROM trader WHERE number = ? ORDER BY id_trader DESC", $number);
-        return $req->result_array();
+        // $req = $this->db->query("SELECT * FROM trader WHERE number = ? ORDER BY id_trader DESC", $number);
+        $req = $this->db->get_where('trader', ['number' => $numTrader]);
+        return $req->row();
+    }
+    public function API_dataTrader($idTrader)
+    {
+        // $req = $this->db->query("SELECT * FROM trader WHERE number = ? ORDER BY id_trader DESC", $number);
+        $req = $this->db->get_where('trader', ['id_trader' => $idTrader]);
+        return $req->row();
     }
     public function API_BecomeTrader($id, $data)
     {

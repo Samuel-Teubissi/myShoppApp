@@ -6,10 +6,10 @@
   /* --color_text: #fff; */
   --color_bg-nav: #827ffa;
   --color_bg-nav2: #422ea5;
-  --color-btn-header: rgba(0, 0, 0, .3);
+  --color-btn-header: rgba(0, 0, 0, 0.3);
   --design-opacity: 0.3;
   /* --header-btn: color-mix(in srgb, var(--color_bg-nav2) 25%, #ffffffe8 75%); */
-  --header-btn: color-mix(in srgb, var(--color_bg-nav2)l 15%, #ffffffe8 95%);
+  --header-btn: color-mix(in srgb, var(--color_bg-nav2) l 15%, #ffffffe8 95%);
   --header-btn-shadow: inset 0px -1px 0px #6e61f3, inset -1px 1px 1px #e451ce1f;
 
   header nav,
@@ -30,7 +30,8 @@
   --design-opacity: 0.1;
   --color-btn-header: rgba(255, 255, 255, 0.3);
   --header-btn: color-mix(in srgb, var(--color_bg-nav2) 20%, #000000af 90%);
-  --header-btn-shadow: inset 1px -1px 5px #eae9eb17, inset -1px 1px 3px #5a585a27;
+  --header-btn-shadow: inset 1px -1px 5px #eae9eb17,
+    inset -1px 1px 3px #5a585a27;
 
   header nav,
   footer {
@@ -49,6 +50,7 @@ header nav {
   backdrop-filter: blur(60px);
   display: flex;
   width: 100%;
+  height: 100%;
   text-transform: capitalize;
   align-items: center;
   padding: 8px;
@@ -59,18 +61,19 @@ nav .nav-link {
   display: flex;
 }
 
-nav .nav-link>li {
+nav .nav-link > li {
   position: relative;
   margin: 0;
   padding: 0.125rem;
 }
 
-nav .nav-link li>button,
-nav .nav-link li>a {
+nav .nav-link li > button,
+nav .nav-link li > a {
   display: flex;
   align-items: center;
   height: 100%;
-  padding: 1rem 1.25rem;
+  /* padding: 1rem 1.25rem; */
+  padding: 0.75rem;
   gap: 0.125rem;
   width: 100%;
   transition: 0.2s ease-in;
@@ -86,8 +89,8 @@ nav .nav-link .active button {
   background-color: #e9bed418;
 }
 
-nav .nav-link li>button:hover,
-nav .nav-link li>a:hover {
+nav .nav-link li > button:hover,
+nav .nav-link li > a:hover {
   background-color: var(--color_bg-nav2);
   color: #ffffffe7;
 }
@@ -108,13 +111,13 @@ nav .--nav_submenu {
   /* pointer-events: none; */
 }
 
-nav .nav-link .--nav_submenu>li>button,
-nav .nav-link .--nav_submenu>li>a {
+nav .nav-link .--nav_submenu > li > button,
+nav .nav-link .--nav_submenu > li > a {
   border-radius: 10px;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
-nav .--nav_submenu>li {
+nav .--nav_submenu > li {
   display: block;
   /* width: 100%; */
 }
@@ -277,17 +280,9 @@ button.next {
   animation: animate_text 5s steps(46);
 }
 
-.about-detail>div {
-  padding: 0 20px;
-}
-
 .about-img {
   animation: animateImage 5s ease-in-out infinite;
 }
-
-
-
-
 
 html input:-internal-autofill-selected,
 input::webkit-autofill,
@@ -300,7 +295,6 @@ input::webkit-autofill:active {
 }
 
 @keyframes animateImage {
-
   0% {
     transform: perspective(800px) rotateY(0deg) translateX(0);
   }
@@ -347,7 +341,7 @@ input::webkit-autofill:active {
 }
 
 @media (min-width: 480px) {
-  nav li:hover>.--nav_submenu {
+  nav li:hover > .--nav_submenu {
     display: block !important;
     opacity: 1;
     transform: translateY(0);
@@ -355,7 +349,6 @@ input::webkit-autofill:active {
 }
 
 @media screen and (max-width: 720px) {
-
   .slides .slide:last-child {
     max-height: 230px;
     overflow: hidden;
@@ -365,14 +358,14 @@ input::webkit-autofill:active {
     overflow: hidden;
   }
 
-  nav .nav-link li>button,
-  nav .nav-link li>a {
+  nav .nav-link li > button,
+  nav .nav-link li > a {
     /* border: 1px solid color-mix(in srgb, var(--color_text22) 10%, #0c0c0ce8 80%); */
     /* border: 1px solid #8a4384e8; */
     /* background-color: color-mix(in srgb, var(--color_nav) 20%, #543255e8 40%); */
     /* color: #fff; */
     background-color: var(--header-btn);
-    box-shadow: var(--header-btn-shadow);
+    /* box-shadow: var(--header-btn-shadow); */
   }
 
   /* 
@@ -396,7 +389,7 @@ input::webkit-autofill:active {
 }
 
 @media (max-width: 1280px) {
-  nav ul li button>span:not(.--nav-sub_span) {
+  nav ul li button > span:not(.--nav-sub_span) {
     display: none;
   }
 
@@ -406,7 +399,6 @@ input::webkit-autofill:active {
 }
 
 @media (max-width: 720px) {
-
   .slider .btn-slide.prev,
   .slider .btn-slide.next {
     padding: 8px;
@@ -438,17 +430,17 @@ input::webkit-autofill:active {
     /* text-align: justify; */
   }
 
-  nav .nav-link li>button,
-  nav .nav-link li>a {
+  nav .nav-link li > button,
+  nav .nav-link li > a {
     /* padding: 0.95rem 1.15rem; */
     /* padding: 0.75rem 1rem; */
     /* border-radius: 50%; */
-    padding: 0.75rem .75rem;
+    padding: 0.75rem 0.75rem;
     color: var(--color_text2);
   }
 
-  .dark nav .nav-link li>button:hover,
-  .dark nav .nav-link li>a:hover {
+  .dark nav .nav-link li > button:hover,
+  .dark nav .nav-link li > a:hover {
     background: initial;
   }
 

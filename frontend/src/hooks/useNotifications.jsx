@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { api } from "./api"
+import api from "./api"
 import { SoundNotif } from "../components/AppComp"
 import { getNotifsCookie, saveNotifications } from "../context/useCookie"
 

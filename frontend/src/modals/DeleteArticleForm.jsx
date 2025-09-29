@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 // import { toast } from "react-toastify";
 import { toast } from "sonner";
-import { api, deleteArticle } from "../hooks/api";
+import api from "../hooks/api";
+import { deleteArticle } from "../hooks/api_config";
 import { useAuth } from "../context/AuthContext";
 import { useNotifications } from "../hooks/useNotifications old";
 import { useNotificationsStore } from "../hooks/useNotifications";

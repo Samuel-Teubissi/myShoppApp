@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { api, getDataArticle, updateArticle } from "../hooks/api";
+import api from "../hooks/api";
+import { getDataArticle, updateArticle } from "../hooks/api_config";
 import { InputFieldAdd, InputFieldFile, SelectField_categories } from "../components/AppComp";
 // import { toast } from "react-toastify";
 import { toast } from "sonner";
 import LoaderComp from "../components/LoaderComp";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthContext";
-import { useNotifications } from "../hooks/useNotifications old";
 import { useNotificationsStore } from "../hooks/useNotifications";
 import { queryClient } from "../main";
 import axios from "axios";

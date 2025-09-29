@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { getArticlesAdmin, getDashboard, getUsers, searchArticles } from "./api"
+import { getArticlesAdmin, getDashboard, getUsers, searchArticles } from "./api_config"
 import { useEffect } from "react";
 
 export const useAdmin = () => {

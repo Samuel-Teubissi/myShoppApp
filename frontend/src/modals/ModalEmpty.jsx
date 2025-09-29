@@ -5,7 +5,7 @@ const ModalEmpty = ({ modal, onClose }) => {
     return (
         <>
             <div className="md:flex justify-center items-center px-7 py-20 border bg-gray-50 dark:bg-app-600/5 border-gray-300 dark:border-app-600/10 rounded-xl gap-4 capitalize">
-                <div className="animate-pulse">
+                <div className="">
                     {modal === 'cart' && <FontAwesomeIcon icon={faCartShopping} size="" className="w-28 h-28 text-gray-600" />}
                     {modal === 'notif' && <FontAwesomeIcon icon={faBell} size="" className="w-28 h-28 text-gray-600" />}
                 </div>

@@ -11,6 +11,9 @@ import _ from "lodash";
 let API_href = import.meta.env.VITE_API_URL
 const AdminPage = () => {
     const { dataUsers, dataDashboard, dataArticles } = useAdmin();
+    const dataAdmin_Sales = _.padStart(String(dataDashboard?.data?.total_sales), 2, '0') || '---'
+    const dataAdmin_Users = _.padStart(String(dataDashboard?.data?.total_users), 2, '0') || '---'
+    const dataAdmin_Turnover = Number(dataDashboard?.data?.turnover).toLocaleString('fr-FR') || '---'
 
     return (
         <>
@@ -25,7 +28,7 @@ const AdminPage = () => {
                                     <FontAwesomeIcon icon={faBox} className="admin-block-dataBox_item" />
                                 </div>
                                 <div className="px-4 py-5">
-                                    <span className="text-[45px] font-mono font-bold">{_.padStart(String(dataDashboard?.data?.total_sales), 2, '0')}</span>
+                                    <span className="text-[45px] font-mono font-bold">{dataAdmin_Sales}</span>
                                 </div>
                                 <Separator orientation='vertical' />
                             </div>
@@ -34,7 +37,7 @@ const AdminPage = () => {
                                     <FontAwesomeIcon icon={faUserFriends} className="admin-block-dataBox_item" />
                                 </div>
                                 <div className="px-4 py-5">
-                                    <span className="text-[45px] font-mono font-bold">{_.padStart(String(dataDashboard?.data?.total_users), 2, '0')}</span>
+                                    <span className="text-[45px] font-mono font-bold">{dataAdmin_Users}</span>
                                 </div>
                                 <Separator orientation='vertical' />
                             </div>
@@ -43,7 +46,7 @@ const AdminPage = () => {
                                     <FontAwesomeIcon icon={faDollarSign} className="admin-block-dataBox_item __item-price" />
                                 </div>
                                 <div className="px-4 py-5">
-                                    <span className="text-[45px] __item-price font-mono font-bold">{Number(dataDashboard?.data?.turnover).toLocaleString('fr-FR')}</span>
+                                    <span className="text-[45px] __item-price font-mono font-bold">{dataAdmin_Turnover}</span>
                                 </div>
                                 <Separator orientation='vertical' />
                             </div>

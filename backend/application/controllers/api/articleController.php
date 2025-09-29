@@ -2,8 +2,24 @@
 
 require APPPATH . 'libraries/REST_Controller.php';
 
+/**
+ * @property CI_Input $input
+ * @property CI_Form_validation $form_validation
+ * @property CI_Session $session
+ * @property CI_Upload $upload
+ * @property CI_Email $email
+ * @property CI_DB_query_builder $db
+ * @property number $pagination_limit
+ * @property number $pagination_search
+ * @property traderModel $traderModel
+ * @property articlesModel $articlesModel
+ * @property articleModel $articleModel
+ * @property fileuploader $fileuploader
+ */
+
 class articleController extends REST_Controller
 {
+    public $userToken;
 
     public function __construct()
     {
@@ -11,30 +27,44 @@ class articleController extends REST_Controller
         parent::__construct();
         //load database
         $this->load->database();
-        $this->load->model(array("api/articleModel"));
-        $this->load->model(array("api/articlesModel"));
-        $this->load->model(array("api/traderModel"));
+        $this->load->model(["api/articleModel", "api/articlesModel", "api/traderModel"]);
+        // $this->load->model(array("api/articleModel"));
+        // $this->load->model(array("api/articlesModel"));
+        // $this->load->model(array("api/traderModel"));
         $this->load->library("session");
+        $this->load->helper("jwt");
         // Variables de pagination
         $this->pagination_limit = 3;
         $this->pagination_search = 2;
+
+        $headers = $this->input->request_headers();
+        if (isset($headers['Authorization'])) {
+            $token = str_replace('Bearer ', '', $headers['Authorization']);
+            $payload = verifyToken($token);
+            if ($payload) $this->userToken = $payload;
+        }
     }
 
     // Devenir Trader 
     public function API_BTrader_get()
     {
-        if ($this->session->user_id) {
-            $id = $this->session->data_trader;
-            if (empty($this->traderModel->API_VerifyTrader($id))) {
-                $data = [
-                    "number" => $this->session->user_number,
-                    "name" => $this->session->user_name
+        if ($this->userToken?->user_id) {
+            // $idTrader = $this->userToken?->data_trader;
+            // if (empty($this->traderModel->API_VerifyTrader($idTrader))) {
+            if (empty($this->userToken->data_trader)) {
+                $dataUser = [
+                    "number" => $this->userToken?->user_number,
+                    "name" => $this->userToken?->user_name
                 ];
-                $this->db->insert('trader', $data);
-                $this->session->set_userdata('data_trader', $this->db->insert_id());
+                $this->db->insert('trader', $dataUser);
+                $this->userToken->data_trader = $this->db->insert_id();
+                $accessToken = generateAccessToken($this->userToken);
+                $refreshToken = generateRefreshToken($this->userToken);
+                // $this->userToken?->set_userdata('data_trader', $this->db->insert_id());
                 $this->response(array(
                     'status' => true,
-                    "message" => "Vous êtes désormais un Trader !!!"
+                    'token' => $accessToken,
+                    "message" => "Vous êtes désormais un Trader !"
                 ), REST_Controller::HTTP_OK);
             } else {
                 $this->response(array(
@@ -54,12 +84,12 @@ class articleController extends REST_Controller
     //Fonction Ajout d'articles        
     public function API_add_Article_post()
     {
-        if ($this->session->has_userdata('data_trader')) {
+        if ($this->userToken?->user_id) {
             $addData['categories'] = $this->articlesModel->API_get_Categories(true);
             unset($addData['categories'][0]);
             $categ_list = implode(',', array_keys($addData['categories']));
 
-            $trader = $this->session->data_trader;
+            $trader = $this->userToken?->data_trader;
 
             if (!isset($trader) && empty($this->traderModel->API_VerifyTrader($trader))) {
                 $this->response(array(
@@ -124,8 +154,8 @@ class articleController extends REST_Controller
 
     public function API_Trader_Article_get($id)
     {
-        if ($this->session->has_userdata('data_trader')) {
-            $article = $this->traderModel->getArticle($id, $this->session->data_trader);
+        if ($this->userToken?->data_trader) {
+            $article = $this->traderModel->getArticle($id, $this->userToken?->data_trader);
             echo json_encode($article ?: ['error' => 'Article non trouvé']);
         }
     }
@@ -133,7 +163,7 @@ class articleController extends REST_Controller
     public function API_Trader_Article_put($id)
     {
         // var_dump($this->session);
-        if ($this->session->has_userdata('data_trader')) {
+        if ($this->userToken?->data_trader) {
             // if ($this->input->post('user_id')) {
             $data = [];
             $fieldRule = false;
@@ -141,7 +171,7 @@ class articleController extends REST_Controller
             unset($addData['categories'][0]);
             $categ_list = implode(',', array_keys($addData['categories']));
 
-            $trader = $this->session->data_trader;
+            $trader = $this->userToken?->data_trader;
             // $trader = $this->input->post('user_id');
 
             if (!isset($trader) && empty($this->traderModel->API_VerifyTrader($trader))) {
@@ -233,8 +263,8 @@ class articleController extends REST_Controller
 
     public function API_Trader_Article_delete($id)
     {
-        if ($this->session->has_userdata('data_trader')) {
-            $deleted = $this->traderModel->deleteArticle($id, $this->session->data_trader);
+        if ($this->userToken?->data_trader) {
+            $deleted = $this->traderModel->deleteArticle($id, $this->userToken?->data_trader);
             $this->response(array(
                 'status' => 'success',
                 'message' => "Article supprimé"

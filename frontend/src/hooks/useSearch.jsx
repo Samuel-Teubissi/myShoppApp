@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { searchArticles, getDefaultArticles } from './api';
+import { searchArticles, getDefaultArticles } from './api_config';
 import { useAuth } from '../context/AuthContext';
 
 export const useSearch = (params) => {
