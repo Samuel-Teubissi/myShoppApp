@@ -73,7 +73,7 @@ const SearchBar = ({
     setSearchValues({ search_article: '', search_categ: 0, page: 1 })
     navigate({
       pathname: location.pathname,
-      search: '',
+      search: {},
     })
     resetShowSearchBar()
   }
