@@ -174,11 +174,15 @@ class globalController extends REST_Controller
                     'role' => 'user'
                 ];
                 // Création de l'id Trader pr récup les data dans l'espace admin
-                $this->session->set_userdata($userData);
+                // $this->session->set_userdata($userData);
+                $accessToken = generateAccessToken($userData);
+                $refreshToken = generateRefreshToken($userData);
+                setcookie('refreshToken', $refreshToken, time() + (1 * 24 * 60 * 60), "/", "", false, true);
                 $this->response(array(
                     'status' => "success",
                     "message" => "Inscription réussie",
-                    "user_token" => $this->session->userdata()
+                    'role' => 'user',
+                    "user_token" => $accessToken
                 ), REST_Controller::HTTP_OK);
             } else {
                 $this->response(array(
