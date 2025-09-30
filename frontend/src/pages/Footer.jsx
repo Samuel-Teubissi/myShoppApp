@@ -57,21 +57,15 @@ const Footer = () => {
           </div> */}
           <div className="animT">
             <NavLink to="/" className="flex items-center">
-              <img
-                src={LogoLink}
-                alt="Logo MyShopAPP"
-                className=""
-                width={50}
-                height={50}
-              />
-              <h4 className="hidden md:block">MyShop App</h4>
+              <img src={LogoLink} alt="Logo MyShopAPP" width={50} height={50} />
+              <h4>MyShop App</h4>
             </NavLink>
           </div>
           <div className="order-1 md:order-2">
             <div className="footer_body w-full flex flex-col md:flex-row gap-4 md:gap-8">
               <ul>
                 <li>
-                  <h3>MyShop App</h3>
+                  <h3>Liens Utiles</h3>
                   <span></span>
                 </li>
                 <li>

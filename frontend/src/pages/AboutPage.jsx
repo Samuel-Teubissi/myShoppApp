@@ -2,15 +2,15 @@ import { useEffect } from 'react'
 
 const AboutPage = () => {
   useEffect(() => {
-    document.title = 'Mon portfolio | MyShop App'
+    document.title = 'A Propos | MyShop App'
   }, [])
 
   return (
     <>
       {/* <div className="mz_container"> */}
       <div className="pt-8 md:pt-10">
-        <div className="max-w-7xl w-full md:w-4/5 sm:w-11/12 mx-auto px-3 bg-white mb-4 pt-4">
-          <div className="dark:text-white/90 dark:bg-transparent mt-4 py-6">
+        <div className="max-w-7xl w-full md:w-4/5 sm:w-11/12 mx-auto px-3 bg-white mb-4 pt-4 dark:text-white/90 dark:bg-transparent">
+          <div className="mt-4 py-6">
             <div className="about-detail w-full md:w-[90%] mx-auto space-y-4 pb-5">
               <div className="space-y-3">
                 <h1>À propos de MyShop App</h1>

@@ -76,7 +76,7 @@ const ArticleComp = ({ art, articleRef, controller }) => {
 
   useEffect(() => {
     Aos.init({
-      duration: 800,
+      duration: 300,
       once: true,
     })
   }, [])
@@ -85,8 +85,8 @@ const ArticleComp = ({ art, articleRef, controller }) => {
     <div
       className="border border-[#D1D5DB] max-w-[95%] w-[380px] md:w-80 rounded-xl overflow-hidden bg-app-050 dark:bg-app-600/5 dark:text-white/90 dark:border-none"
       ref={articleRef}
-      data-aos="fade-right"
-      data-aos-offset={100}
+      //   data-aos="fade-right"
+      //   data-aos-offset={100}
     >
       <div className="w-full h-80 mx-auto rounded-br-[60px] relative">
         {/* <img src={imgLink} alt="Image de l'article" className="w-full h-full object-cover rounded-full border-2 border-gray-300" /> */}
@@ -95,7 +95,7 @@ const ArticleComp = ({ art, articleRef, controller }) => {
           alt="Image de l'article"
           className="w-full h-full object-cover rounded-xl"
         />
-        <div className="cart-price font-medium bg-app border border-app-400 rounded-3xl rounded-bl-none text-white box-border absolute bottom-2 right-2 py-2 px-4 shadow">
+        <div className="cart-price font-medium bg-app border border-app-400 rounded-3xl rounded-bl-none text-white box-border absolute bottom-2 right-2 py-1 px-2 shadow">
           <span className="text-xl">{articlePrice}</span>
         </div>
       </div>
@@ -128,12 +128,12 @@ const ArticleComp = ({ art, articleRef, controller }) => {
             <div className="flex items-center text-center uppercase">
               <span
                 title={art.content}
-                className="border rounded-full border-app-500 py-0.5 px-3 text-sm text-app-500"
+                className="border rounded-full border-app-500 py-0.5 px-3 text-[12px] text-app-500"
               >
                 {articlesCategories[art.category]}
               </span>
             </div>
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-[12px]">
               <div className="flex gap-2 items-center">
                 <span className="text-app-500 flex justify-center items-center">
                   {/* <FiPackage className="inline-block" /> */}
