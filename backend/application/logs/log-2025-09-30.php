@@ -54,3 +54,4 @@ ERROR - 2025-09-30 21:47:24 --> Could not find the language line "form_validatio
 ERROR - 2025-09-30 21:47:24 --> Could not find the language line "form_validation_required"
 ERROR - 2025-09-30 21:47:24 --> Could not find the language line "form_validation_in_list"
 ERROR - 2025-09-30 21:55:58 --> 404 Page Not Found: api/Auth/refresh
+ERROR - 2025-09-30 23:34:36 --> Severity: error --> Exception: Firebase\JWT\JWT::decode(): Argument #1 ($jwt) must be of type string, null given, called in C:\xampp\htdocs\MyShoppApp_Repo\backend\application\helpers\jwt_helper.php on line 45 C:\xampp\htdocs\MyShoppApp_Repo\backend\vendor\firebase\php-jwt\src\JWT.php 96
