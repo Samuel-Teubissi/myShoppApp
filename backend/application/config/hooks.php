@@ -19,3 +19,9 @@ $hook['post_controller_constructor'][] = array(
     'filename' => 'Cors.php',
     'filepath' => 'hooks'
 );
+// $hook['post_controller_constructor'][] = array(
+//     'class'    => 'AuthMiddleware',
+//     'function' => 'checkAuth',
+//     'filename' => 'AuthMiddleware.php',
+//     'filepath' => 'hooks'
+// );

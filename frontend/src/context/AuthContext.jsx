@@ -65,29 +65,45 @@ export const AuthProvider = ({ children }) => {
     //     setIsAuthenticated(false)
     // }
   }
+  const decodeToken = (token) => {
+    try {
+      const decodedToken = jwtDecode(token)
+      return decodedToken
+    } catch (error) {
+      console.warn('Token invalide ou expiré', error)
+      return null
+    }
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
+    const storedToken = localStorage.getItem('accessToken')
+    if (storedToken) {
+      const decodedToken = decodeToken(storedToken)
+      if (decodedToken) {
+        setUserSession(decodedToken)
+      }
+    }
+    setIsLogging(false)
 
     // if (!token) { setIsLogging(false); return }
-    try {
-      console.log('token', token)
-      const sessionUser = jwtDecode(token) // { id, email, data_trader, ... }
-      console.log('sessionUser', sessionUser)
-      if (sessionUser.exp * 1000 > Date.now()) {
-        setUserSession(sessionUser)
-      } else {
-        localStorage.removeItem('accessToken')
-      }
-      // setIsAuthenticated(true)
-    } catch {
-      // setIsAuthenticated(false)
-      console.warn('Token invalide ou expiré')
-      setUserSession(null)
-      localStorage.removeItem('accessToken')
-    } finally {
-      setIsLogging(false)
-    }
+    // try {
+    //   const sessionUser = jwtDecode(token)
+    //   if (sessionUser.exp * 1000 > Date.now()) {
+    //     console.log('Token valide')
+    //     setUserSession(sessionUser)
+    //   } else {
+    //     localStorage.removeItem('accessToken')
+    //     logout()
+    //   }
+    //   // setIsAuthenticated(true)
+    // } catch {
+    //   // setIsAuthenticated(false)
+    //   console.warn('Token invalide ou expiré')
+    //   setUserSession(null)
+    //   localStorage.removeItem('accessToken')
+    // } finally {
+    //   setIsLogging(false)
+    // }
   }, [])
 
   // const loadToken = () => {
@@ -251,13 +267,19 @@ export const AuthProvider = ({ children }) => {
   // }
 
   const Become_Trader = async () => {
-    const BTrader = await axios.get('/article/become_trader')
+    const token = localStorage.getItem('accessToken')
+    const BTrader = await axios.get('/article/become_trader', {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     if (BTrader?.data?.status) {
-      toast.success(BTrader?.data?.message)
+      toast.success(BTrader.data.message)
       // localStorage.setItem('accessToken', res.data.token);
-      generateToken(res.data.token)
+      generateToken(BTrader.data.token)
     } else {
-      toast.error(BTrader?.data?.errors)
+      toast.error(BTrader.data.errors)
     }
     // try {
     //     const BTrader = await api.get('/article/become_trader')

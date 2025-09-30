@@ -38,11 +38,35 @@ class articleController extends REST_Controller
         $this->pagination_search = 2;
 
         $headers = $this->input->request_headers();
-        if (isset($headers['Authorization'])) {
-            $token = str_replace('Bearer ', '', $headers['Authorization']);
-            $payload = verifyToken($token);
-            if ($payload) $this->userToken = $payload;
+        $authHeader = isset($headers['Authorization']) 
+        ? $headers['Authorization'] 
+        : (isset($headers['authorization']) ? $headers['authorization'] : null);
+    
+        if (!$authHeader) {
+            return $this->output
+                ->set_status_header(401)
+                ->set_content_type('application/json')
+                ->set_output(json_encode(['error' => 'No token provided']));
         }
+        
+        list($type, $token) = explode(" ", $authHeader, 2);
+        
+        if (strcasecmp($type, "Bearer") != 0) {
+            return $this->output
+                ->set_status_header(401)
+                ->set_content_type('application/json')
+                ->set_output(json_encode(['error' => 'Invalid token type']));
+        }
+
+        $payload = verifyToken($token);
+        if ($payload) $this->userToken = $payload;
+
+
+        // if (isset($headers['Authorization'])) {
+        //     $token = str_replace('Bearer ', '', $headers['Authorization']);
+        //     $payload = verifyToken($token);
+        //     if ($payload) $this->userToken = $payload;
+        // }
     }
 
     // Devenir Trader 
@@ -58,9 +82,11 @@ class articleController extends REST_Controller
                 ];
                 $this->db->insert('trader', $dataUser);
                 $this->userToken->data_trader = $this->db->insert_id();
-                $accessToken = generateAccessToken($this->userToken);
-                $refreshToken = generateRefreshToken($this->userToken);
+                $tokenArray = json_decode(json_encode($this->userToken), true);
+                $accessToken = generateAccessToken($tokenArray);
+                $refreshToken = generateRefreshToken($tokenArray);
                 // $this->userToken?->set_userdata('data_trader', $this->db->insert_id());
+                setcookie('refreshToken', $refreshToken, time() + (1 * 24 * 60 * 60), "/", "", false, true);
                 $this->response(array(
                     'status' => true,
                     'token' => $accessToken,
