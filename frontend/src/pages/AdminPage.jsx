@@ -79,10 +79,10 @@ const AdminPage = () => {
                             {dataArticles?.data?.articlesData.map((article, i) => (
                                 <div key={i + 1} value={i + 1} className="bg-white/90 rounded-xl px-7 py-9 flex gap-3 border border-gray-100 hover:bg-app-050 transform transition duration-300 cursor-defaulttext-black/90">
                                     <div className="bg-gray-50 w-32 h-32 rounded-full overflow-hidden border border-gray-300 shadow">
-                                        <img src={API_href + '/assets/img/articles/' + article.file_name} alt="" className="w-full h-full object-cover" />
+                                        <img src={import.meta.env.VITE_IMG_URL + '/assets/img/articles/' + article.file_name} alt="" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="text-left">
-                                        <div className="capitalize text-lg font-medium py-4">{article.article}</div>
+                                        <div className="capitalize text-lg font-medium py-4 dark:text-black/90">{article.article}</div>
                                         <div className="text-gray-600 font-light">
                                             <div className="capitalize">{article.content}</div>
                                             <div>{article.article_date}</div>

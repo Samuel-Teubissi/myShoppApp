@@ -15,7 +15,7 @@ export const searchArticles = async ({ search_article, search_categ, page = 1, c
     params.append('page', page);
     params.append('controller', controllerLink);
 
-    const response = await api.get(`/articles/search?${params.toString()}`);
+    const response = await axios.get(`/articles/search?${params.toString()}`, );
     // console.log(params.toString(), response.data);
     return response.data;
 
@@ -76,8 +76,12 @@ export const getDefaultArticles = async ({ controllerLink, page = 1 }) => {
 }
 
 export const getDataArticle = async ({ id }) => {
+    const token = localStorage.getItem('acessToken')
     try {
-        const response = await api.get(`/article/${id}`)
+        const response = await axios.get(`/article/${id}`, {
+            withCredentials: true,
+            headers: `Bearer ${token}`
+          })
         return response.data
     } catch (error) {
         console.log('getDataArticle :' + error)
@@ -86,8 +90,12 @@ export const getDataArticle = async ({ id }) => {
 }
 
 export const updateArticle = async ({ id, editData }) => {
+    const token = localStorage.getItem('acessToken')
     try {
-        const response = await api.put(`/article/${id}`, editData)
+        const response = await axios.put(`/article/${id}`, editData, {
+            withCredentials: true,
+            headers: `Bearer ${token}`
+          })
         return response.data
     } catch (error) {
         console.log('updateArticle :' + error)
@@ -96,8 +104,12 @@ export const updateArticle = async ({ id, editData }) => {
 }
 
 export const deleteArticle = async ({ artId }) => {
+    const token = localStorage.getItem('acessToken')
     try {
-        const response = await api.get(`/article/delete/${artId}`)
+        const response = await axios.get(`/article/delete/${artId}`, {
+            withCredentials: true,
+            headers: `Bearer ${token}`
+          })
         return response.data
     } catch (error) {
         console.log('deleteArticle :' + error)
