@@ -18,8 +18,8 @@ const LandingPage = () => {
   return (
     <>
     <div className='ms_Main'></div>
-      <div className="ms_Main min-h-svh bg-app-h banner_home text-white relative grid grid-cols-1 lg:grid-cols-2">
-        <div className="animT pl-0 sm:pl-14 font-bold flex justify-center sm:justify-start md:justify-center text-center sm:text-left items-center sm:items-start flex-col h-full gap-y-2 pb-2">
+      <div className="min-h-svh bg-app-h banner_home text-white relative grid grid-cols-1 lg:grid-cols-2">
+        <div className="animT pl-0 sm:pl-14 font-bold flex justify-center sm:justify-start md:justify-center text-center sm:text-left items-center sm:items-start flex-col gap-y-2">
         <div className='pt-20 hidden sm:block md:hidden'></div>
           <div className="w-[90%] md:w-[70%] lg:w-full">
             <h1 className="tracking-tighter font-black heroTitle">
