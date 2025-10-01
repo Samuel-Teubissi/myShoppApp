@@ -270,7 +270,7 @@ class articleController extends REST_Controller
                 } else {
                     $this->response(array(
                         'status' => "error",
-                        "message" => "Aucune donnée à mettre à jour."
+                        "message" => "Aucune donnée à mettre à jour now. "
                     ), REST_Controller::HTTP_OK);
                 }
             } else {

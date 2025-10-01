@@ -23,7 +23,7 @@ axios.defaults.baseURL = import.meta.env.VITE_API_URL
 // axios.defaults.baseURL = API_href;
 
 export const AuthProvider = ({ children }) => {
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLogging, setIsLogging] = useState(true)
   const [isLoggingLoad, setIsLoggingLoad] = useState(false)
   const [isRegisterLoad, setIsRegisterLoad] = useState(false)
@@ -81,8 +81,9 @@ export const AuthProvider = ({ children }) => {
       const decodedToken = decodeToken(storedToken)
       if (decodedToken) {
         setUserSession(decodedToken)
+        setIsAuthenticated(true)
       }
-    }
+    } else setIsAuthenticated(false)
     setIsLogging(false)
 
     // if (!token) { setIsLogging(false); return }
@@ -121,7 +122,7 @@ export const AuthProvider = ({ children }) => {
     // try {
     localStorage.removeItem('accessToken')
     toast('Déconnexion', { autoClose: 1000 })
-    // setIsAuthenticated(false);
+    setIsAuthenticated(false)
     setUserSession({})
     // } catch (error) {
     //     console.error("Erreur lors de la déconnexion :", error);
@@ -170,7 +171,7 @@ export const AuthProvider = ({ children }) => {
     //         if (bcrypt.compareSync(dataForm.password, userPass)) {
     //             // setUserSession(User)
     //             localStorage.setItem('userConnected', 'yes')
-    //             setIsAuthenticated(true)
+    setIsAuthenticated(true)
     //             return { success: true }
     //         } else {
     //             setLoginErrors({ password: "Mot de passe incorect !" })
@@ -194,7 +195,7 @@ export const AuthProvider = ({ children }) => {
         generateToken(response.data.user_token)
         // await createNotification('admin', 'addUser')
         // localStorage.setItem("user", JSON.stringify(response.data.user));
-        // setIsAuthenticated(true)
+        setIsAuthenticated(true)
         return { success: true }
         // setTimeout(() => {
         //     // navigate('/user')
@@ -311,7 +312,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: !!userSession,
+        isAuthenticated,
         login,
         logout,
         loginErrors,

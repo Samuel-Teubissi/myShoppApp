@@ -82,7 +82,7 @@
   }
 
   .trader-block button {
-    @apply cursor-pointer ease-in-out flex items-center gap-2 rounded-[4px] py-4 px-8;
+    @apply cursor-pointer ease-in-out flex items-center gap-2 rounded-[12px] py-3 px-8;
     /* @apply hover:border-none; */
     /* @apply hover:bg-app; */
   }
@@ -155,9 +155,9 @@
         @apply animate-bounce
     } */
 
-  .landing-btn:hover svg {
+  /* .landing-btn:hover svg {
     @apply animate-ping;
-  }
+  } */
 
   .cart-content div span {
     @apply text-lg md:text-base tracking-wide md:tracking-normal capitalize font-light md:font-normal cursor-default;
@@ -184,7 +184,7 @@
   }
 
   h4 {
-    @apply text-lg md:text-xl font-semibold;
+    @apply text-base md:text-lg font-semibold;
   }
 
   h1,
@@ -242,7 +242,7 @@
   }
 
   .ms_Main {
-    @apply mt-8 sm:mt-[65px] pt-5;
+    @apply pt-16;
   }
 
   .about-detail .title {
@@ -250,7 +250,7 @@
   }
 
   .footer_body ul {
-    @apply md:w-1/4;
+    @apply md:w-1/4 lg:w-1/6;
   }
 
   .main-about {

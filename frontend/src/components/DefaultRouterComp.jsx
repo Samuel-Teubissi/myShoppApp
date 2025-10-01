@@ -9,7 +9,8 @@ import {
 import { useAuth } from '../context/AuthContext'
 import { useEffect, useState } from 'react'
 // import { toast } from "react-toastify"
-import LogoLink from '../assets/img/LOGO_MyShop.png'
+import LogoLink from '../assets/img/logo-B.png'
+import LogoLinkDark from '../assets/img/logo-W.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faSquarePlus,
@@ -71,6 +72,7 @@ import 'aos/dist/aos.css'
 import ScrollToTop from '../hooks/useScrollToTop'
 import LoaderComp from './LoaderComp'
 import useShowSearchBar from '../hooks/useShowSearchBar'
+import LogoApp from './LogoApp'
 
 export default function DefaultRouterComp() {
   const { isAuthenticated, logout, userSession } = useAuth()
@@ -186,21 +188,12 @@ export default function DefaultRouterComp() {
   }, [])
 
   return (
-    <div className="flex flex-col h-screen">
+    <>
       <ScrollToTop />
-      <header className="fixed w-full h-auto top-0 left-0 z-50 pointer-events-none">
+      <header className="fixed w-full h-auto top-0 left-0 z-50">
         <nav>
-          <div className="animT pointer-events-auto">
-            <NavLink to="/" className="flex items-center">
-              <img
-                src={LogoLink}
-                alt="Logo MyShopAPP"
-                className=""
-                width={50}
-                height={50}
-              />
-              <h4 className="hidden md:block">MyShop App</h4>
-            </NavLink>
+          <div className="pointer-events-auto">
+            <LogoApp />
           </div>
           <ul className="nav-link pointer-events-auto">
             {visibleSearchBar && (
@@ -287,25 +280,12 @@ export default function DefaultRouterComp() {
           ref={SidebarRef}
         >
           <XIcon
-            className="absolute top-11 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
+            className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
             onClick={() => setOpenHeader(false)}
             title="Fermer"
           />
-          <div className="">
-            <NavLink
-              to="/"
-              className="flex items-center"
-              onClick={handleCloseSidebar}
-            >
-              <img
-                src={LogoLink}
-                alt="Logo MyShopAPP"
-                className=""
-                width={70}
-                height={70}
-              />
-              <h3>MyShop App</h3>
-            </NavLink>
+          <div className="w-fit ml-4" onClick={handleCloseSidebar}>
+            <LogoApp />
           </div>
           <ul
             className={`--nav_submenu mt-4 ${openSubmenu ? 'showNav' : ''}`}
@@ -367,8 +347,18 @@ export default function DefaultRouterComp() {
               <MoonIcon className="inline dark:hidden" />
               <SunIcon className="hidden dark:inline" />
             </label>
-            <span className="inline dark:hidden">Dark Mode</span>
-            <span className="hidden dark:inline">Light Mode</span>
+            <span
+              className="inline dark:hidden cursor-pointer"
+              onClick={handleDarkMode}
+            >
+              Dark Mode
+            </span>
+            <span
+              className="hidden dark:inline cursor-pointer"
+              onClick={handleDarkMode}
+            >
+              Light Mode
+            </span>
           </div>
           {isAuthenticated && (
             <div className="online-user">
@@ -398,6 +388,6 @@ export default function DefaultRouterComp() {
         {/* <Outlet /> */}
       </div>
       <Footer />
-    </div>
+    </>
   )
 }

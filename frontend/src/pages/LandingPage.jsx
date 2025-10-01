@@ -17,12 +17,12 @@ const LandingPage = () => {
       <div className="ms_Main bg-app-h banner_home text-white">
         <div className="animT text-center font-bold flex justify-center items-center flex-col h-full gap-y-2">
           <div className="w-[90%] md:w-[70%]">
-            <h1 className="tracking-tighter">Bienvenue sur My ShopAPP</h1>
-            <h2 className="mt-2">
+            <h1 className="tracking-tighter">Bienvenue sur My Shop</h1>
+            <h3 className="mt-2">
               Site Numéro 1 de la vente d'articles sans intermédiaires
-            </h2>
+            </h3>
           </div>
-          <p className="font-normal text-base md:text-lg mt-4 w-[90%] md:w-[40%]">
+          <p className="font-normal text-base/tight md:text-lg mt-4 w-[90%] md:w-[40%]">
             Un article dans la liste ci-dessous vous interresse vous n'avez qu'à
             joindre le numéro en dessous et discuter des détails de la
             transaction avec le marchand ! Rien de plus simple !
@@ -30,7 +30,7 @@ const LandingPage = () => {
           <p>
             <button
               onClick={openHome}
-              className="landing-btn mt-8 bg-app-h py-4 px-5 rounded-xl hover:bg-app transition duration-300 font-normal flex items-center mx-auto gap-2 text-sm md:text-base"
+              className="landing-btn mt-8 bg-app-h py-3 px-5 rounded-[4px] gap-2 hover:gap-3 hover:bg-app transition duration-300 font-normal flex items-center mx-auto text-sm md:text-base"
             >
               Notre liste de produits{' '}
               <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />

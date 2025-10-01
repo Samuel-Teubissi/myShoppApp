@@ -91,7 +91,7 @@ const ModalCart = ({ onClose, redirect }) => {
             <span className="text-gray-600 dark:text-white/90 text-sm">
               Montant Total :
             </span>
-            <span className="bg-green-300/5 cart--item-box min-w-28">
+            <span className="bg-green-300/5 cart--item-box min-w-28 text-xl">
               {totalCart.toLocaleString('fr-FR', {
                 style: 'currency',
                 currency: 'XAF',

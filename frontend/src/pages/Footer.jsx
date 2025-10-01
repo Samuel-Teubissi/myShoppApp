@@ -30,6 +30,7 @@ import {
   SquarePlusIcon,
   UserPlus,
 } from 'lucide-react'
+import LogoApp from '../components/LogoApp'
 
 const Footer = () => {
   const { userSession, Become_Trader } = useAuth()
@@ -56,10 +57,7 @@ const Footer = () => {
             </NavLink>
           </div> */}
           <div className="animT">
-            <NavLink to="/" className="flex items-center">
-              <img src={LogoLink} alt="Logo MyShopAPP" width={50} height={50} />
-              <h4>MyShop App</h4>
-            </NavLink>
+            <LogoApp />
           </div>
           <div className="order-1 md:order-2">
             <div className="footer_body w-full flex flex-col md:flex-row gap-4 md:gap-8">
