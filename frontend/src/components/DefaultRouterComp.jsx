@@ -274,7 +274,7 @@ export default function DefaultRouterComp() {
         }`}
       >
         <div
-          className={`modal-Sidebar w-4/5 min-w-[25%] sm:w-96 transition-transform duration-300 ease-out ${
+          className={`modal-Sidebar w-1/5 min-w-[25%] transition-transform duration-300 ease-out ${
             openHeader ? 'translate-x-0' : 'translate-x-full'
           }`}
           ref={SidebarRef}
