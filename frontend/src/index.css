@@ -242,7 +242,7 @@
   }
 
   .ms_Main {
-    @apply pt-16;
+    @apply pt-7 box-content;
   }
 
   .about-detail .title {
@@ -250,7 +250,7 @@
   }
 
   .footer_body ul {
-    @apply md:w-1/4 lg:w-1/6;
+    @apply md:w-1/4 lg:w-fit;
   }
 
   .main-about {

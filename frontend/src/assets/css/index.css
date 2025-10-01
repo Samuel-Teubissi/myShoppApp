@@ -48,6 +48,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: Manrope;
+  src: url('./Manrope-Font.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   font-family: 'Raleway', 'Proxima Soft', 'Proxima Nova Soft', 'Poppins',
@@ -55,6 +61,10 @@ body {
   /* overflow-x: hidden; */
   /* background-color: color-mix(in srgb, var(--bg-page) 80%, black 20%); */
   /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('../img/bg_whole.jpg') center center fixed repeat; */
+}
+
+.heroTitle {
+  font-family: 'Montserrat';
 }
 
 .dark {

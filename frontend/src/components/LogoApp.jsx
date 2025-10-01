@@ -4,7 +4,7 @@ import LogoLinkDark from '../assets/img/logo-W.png'
 
 const LogoApp = () => {
   return (
-    <NavLink to="/" className="flex items-center">
+    <NavLink to="/" className="flex items-center w-fit">
       <img
         src={LogoLink}
         alt="Logo MyShopAPP"

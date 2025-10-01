@@ -45,11 +45,11 @@ const ItemCartComp = ({ item, num }) => {
     <>
       <div className="space-y-2" key={item.id_articles}>
         <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-[200px_repeat(4,1fr)] md:grid-rows-1 text-left justify-start gap-3 gap-x-5 md:gap-4 pb-2 px-2 dark:text-white/90 items-center md:border-none border-app-300 dark:border-app-900 border-b">
-          <div className="flex sm:justify-start items-center col-span-2 md:col-span-1 h-full space-x-1">
+          <div className="flex sm:justify-start items-center col-span-2 md:col-span-1 h-full space-x-1 first:pt-0 pt-6">
             <span>
               <span className="hidden md:block bg-gray-400 h-4 w-4 rounded-full"></span>
             </span>
-            <span className="font-bold text-app-600 line-clamp-2 first:pt-0 pt-6">
+            <span className="font-bold text-app-600 line-clamp-2">
               {item.article}
             </span>
           </div>
