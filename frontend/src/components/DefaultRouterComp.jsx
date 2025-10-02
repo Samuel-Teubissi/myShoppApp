@@ -189,205 +189,213 @@ export default function DefaultRouterComp() {
 
   return (
     <>
-      <ScrollToTop />
-      <header className="fixed w-full h-auto top-0 left-0 z-50">
-        <nav>
-          <div className="pointer-events-auto">
-            <LogoApp />
-          </div>
-          <ul className="nav-link pointer-events-auto">
-            {visibleSearchBar && (
-              <li
-                className={`btn-trans nav-search relative ${
-                  showSearchBar ? 'active' : ''
-                }`}
-              >
-                <button
-                  onClick={toggleShowSearchBar}
-                  title="Effectuer une recherche"
+      <div className="flex flex-col min-h-screen">
+        <ScrollToTop />
+        <header className="fixed w-full h-auto top-0 left-0 z-50">
+          <nav>
+            <div className="pointer-events-auto">
+              <LogoApp />
+            </div>
+            <ul className="nav-link pointer-events-auto">
+              {visibleSearchBar && (
+                <li
+                  className={`btn-trans nav-search relative ${
+                    showSearchBar ? 'active' : ''
+                  }`}
                 >
-                  <SearchIcon className="w-6 h-6" />
+                  <button
+                    onClick={toggleShowSearchBar}
+                    title="Effectuer une recherche"
+                  >
+                    <SearchIcon className="w-6 h-6" />
+                  </button>
+                </li>
+              )}
+              <li className="btn-trans nav-trans relative">
+                <button onClick={handleCart} title="Consulter le panier">
+                  {/* <FontAwesomeIcon icon={faCartPlus} color="rgba(190, 24, 93)" /> */}
+                  <span>Panier</span>
+                  <ShoppingCartIcon className="w-6 h-6" />
+                </button>
+                {newsItems > 0 && (
+                  <span className="--icon-notif">{newsItems}</span>
+                )}
+              </li>
+              {userSession?.data_trader && (
+                <>
+                  <li
+                    className="btn-trans nav-trans"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <button onClick={handleAdd} title="Ajouter un article">
+                      <span>Ajouter un article</span>
+                      <SquarePlusIcon />
+                      {/* <FontAwesomeIcon icon={isHovered || isModalOpen ? faSquarePlus : faRegularSquarePlus} color="rgba(190, 24, 93)" /> */}
+                    </button>
+                  </li>
+                </>
+              )}
+              {userSession?.user_id && (
+                <>
+                  <li className="btn-trans nav-trans relative">
+                    <button onClick={handleNotifs} title="Notifications">
+                      <span>Notifications</span>
+                      <Bell />
+                    </button>
+                    {unreadNotifs > 0 && (
+                      <span className="--icon-notif">{unreadNotifs}</span>
+                    )}
+                  </li>
+                </>
+              )}
+              <li>
+                <button onClick={() => setOpenHeader(true)}>
+                  <span>Mon Compte</span>
+                  <User className="hidden md:block" />
+                  <MenuIcon className="md:hidden" />
                 </button>
               </li>
-            )}
-            <li className="btn-trans nav-trans relative">
-              <button onClick={handleCart} title="Consulter le panier">
-                {/* <FontAwesomeIcon icon={faCartPlus} color="rgba(190, 24, 93)" /> */}
-                <span>Panier</span>
-                <ShoppingCartIcon className="w-6 h-6" />
-              </button>
-              {newsItems > 0 && (
-                <span className="--icon-notif">{newsItems}</span>
-              )}
-            </li>
-            {userSession?.data_trader && (
-              <>
-                <li
-                  className="btn-trans nav-trans"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button onClick={handleAdd} title="Ajouter un article">
-                    <span>Ajouter un article</span>
-                    <SquarePlusIcon />
-                    {/* <FontAwesomeIcon icon={isHovered || isModalOpen ? faSquarePlus : faRegularSquarePlus} color="rgba(190, 24, 93)" /> */}
-                  </button>
-                </li>
-              </>
-            )}
-            {userSession?.user_id && (
-              <>
-                <li className="btn-trans nav-trans relative">
-                  <button onClick={handleNotifs} title="Notifications">
-                    <span>Notifications</span>
-                    <Bell />
-                  </button>
-                  {unreadNotifs > 0 && (
-                    <span className="--icon-notif">{unreadNotifs}</span>
-                  )}
-                </li>
-              </>
-            )}
-            <li>
-              <button onClick={() => setOpenHeader(true)}>
-                <span>Mon Compte</span>
-                <User className="hidden md:block" />
-                <MenuIcon className="md:hidden" />
-              </button>
-            </li>
-          </ul>
-          {/* <div ref={menu_bar} onClick={toggleNav} className="menu rounded">
+            </ul>
+            {/* <div ref={menu_bar} onClick={toggleNav} className="menu rounded">
                     {[...Array(3)].map((_, key) => (
                         <div ref={menu_line.current[key]} key={key}></div>
                     ))} */}
-          {/* <div ref={(el) => menu_line.current[0] = el} className="line"></div>
+            {/* <div ref={(el) => menu_line.current[0] = el} className="line"></div>
                     <div ref={(el) => menu_line.current[1] = el} className="line"></div>
                     <div ref={(el) => menu_line.current[2] = el} className="line"></div> */}
-          {/* </div> */}
-        </nav>
-      </header>
-      <div
-        className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-250 ease-in ${
-          openHeader
-            ? 'opacity-100 pointer-events-auto'
-            : 'opacity-0 pointer-events-none'
-        }`}
-      >
+            {/* </div> */}
+          </nav>
+        </header>
         <div
-          className={`modal-Sidebar w-1/5 min-w-[25%] transition-transform duration-300 ease-out ${
-            openHeader ? 'translate-x-0' : 'translate-x-full'
+          className={`inset-0 z-50 modal-overlay fixed top-0 left-0 w-full h-screen backdrop-blur-sm flex justify-center items-center btn-trans  transition-opacity duration-250 ease-in ${
+            openHeader
+              ? 'opacity-100 pointer-events-auto'
+              : 'opacity-0 pointer-events-none'
           }`}
-          ref={SidebarRef}
         >
-          <XIcon
-            className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
-            onClick={() => setOpenHeader(false)}
-            title="Fermer"
-          />
-          <div className="w-fit ml-4" onClick={handleCloseSidebar}>
-            <LogoApp />
-          </div>
-          <ul
-            className={`--nav_submenu mt-4 ${openSubmenu ? 'showNav' : ''}`}
-            onClick={handleCloseSidebar}
+          <div
+            className={`modal-Sidebar w-1/5 min-w-[25%] transition-transform duration-300 ease-out ${
+              openHeader ? 'translate-x-0' : 'translate-x-full'
+            }`}
+            ref={SidebarRef}
           >
-            <li>
-              <NavLink to="/home">
-                <HomeIcon className="w-6 h-6" />
-                <span>Acceuil</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">
-                <HelpCircleIcon className="w-6 h-6" />
-                <span>à Propos</span>
-              </NavLink>
-            </li>
-            {isAuthenticated ? (
-              <>
-                <li>
-                  <NavLink to={'/' + userSession?.role}>
-                    <BookIcon className="w-6 h-6" />
-                    <span>Dashboard</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <button
-                    onClick={handleLogout}
-                    className=""
-                    title="Se déconnecter"
-                  >
-                    {/* <FontAwesomeIcon icon={isHoverLogout ? faRightToBracket : faRightFromBracket} className="text-white text-lg" /> */}
-                    <MdLogout className="text-xl w-6 h-6" />
-                    <span className="--nav-sub_span">Se déconnecter</span>
-                    {/* <FontAwesomeIcon icon={faRightFromBracket} className="" /> */}
-                  </button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <NavLink to="/login">
-                    <KeyIcon className="w-6 h-6" />
-                    <span>Se Connecter</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/register">
-                    <UserPlus className="w-6 h-6" />
-                    <span>S'inscrire</span>
-                  </NavLink>
-                </li>
-              </>
-            )}
-          </ul>
-          <div className="btn-trans nav-trans switchDark">
-            <input type="checkbox" onChange={handleDarkMode} id="switchDark" />
-            <label htmlFor="switchDark">
-              <MoonIcon className="inline dark:hidden" />
-              <SunIcon className="hidden dark:inline" />
-            </label>
-            <span
-              className="inline dark:hidden cursor-pointer"
-              onClick={handleDarkMode}
-            >
-              Dark Mode
-            </span>
-            <span
-              className="hidden dark:inline cursor-pointer"
-              onClick={handleDarkMode}
-            >
-              Light Mode
-            </span>
-          </div>
-          {isAuthenticated && (
-            <div className="online-user">
-              <div className="">
-                <span className="inline-block bg-green-500 h-4 w-4 rounded-full"></span>{' '}
-                Vous êtes connecté !
-                <div className="w-1/2 border-b border-gray-400 dark:border-gray-200/20 pt-2"></div>
-              </div>
-              <div className="text-sm mt-2">
-                <ul>
-                  <li>
-                    Session :{' '}
-                    <span className="text-app">{userSession?.user_name}</span>
-                  </li>
-                  <li>
-                    Numéro :{' '}
-                    <span className="text-app">{userSession?.user_number}</span>
-                  </li>
-                </ul>
-              </div>
+            <XIcon
+              className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
+              onClick={() => setOpenHeader(false)}
+              title="Fermer"
+            />
+            <div className="w-fit ml-4" onClick={handleCloseSidebar}>
+              <LogoApp />
             </div>
-          )}
+            <ul
+              className={`--nav_submenu mt-4 ${openSubmenu ? 'showNav' : ''}`}
+              onClick={handleCloseSidebar}
+            >
+              <li>
+                <NavLink to="/home">
+                  <HomeIcon className="w-6 h-6" />
+                  <span>Acceuil</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about">
+                  <HelpCircleIcon className="w-6 h-6" />
+                  <span>à Propos</span>
+                </NavLink>
+              </li>
+              {isAuthenticated ? (
+                <>
+                  <li>
+                    <NavLink to={'/' + userSession?.role}>
+                      <BookIcon className="w-6 h-6" />
+                      <span>Dashboard</span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className=""
+                      title="Se déconnecter"
+                    >
+                      {/* <FontAwesomeIcon icon={isHoverLogout ? faRightToBracket : faRightFromBracket} className="text-white text-lg" /> */}
+                      <MdLogout className="text-xl w-6 h-6" />
+                      <span className="--nav-sub_span">Se déconnecter</span>
+                      {/* <FontAwesomeIcon icon={faRightFromBracket} className="" /> */}
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink to="/login">
+                      <KeyIcon className="w-6 h-6" />
+                      <span>Se Connecter</span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/register">
+                      <UserPlus className="w-6 h-6" />
+                      <span>S'inscrire</span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
+            </ul>
+            <div className="btn-trans nav-trans switchDark">
+              <input
+                type="checkbox"
+                onChange={handleDarkMode}
+                id="switchDark"
+              />
+              <label htmlFor="switchDark">
+                <MoonIcon className="inline dark:hidden" />
+                <SunIcon className="hidden dark:inline" />
+              </label>
+              <span
+                className="inline dark:hidden cursor-pointer"
+                onClick={handleDarkMode}
+              >
+                Dark Mode
+              </span>
+              <span
+                className="hidden dark:inline cursor-pointer"
+                onClick={handleDarkMode}
+              >
+                Light Mode
+              </span>
+            </div>
+            {isAuthenticated && (
+              <div className="online-user">
+                <div className="">
+                  <span className="inline-block bg-green-500 h-4 w-4 rounded-full"></span>{' '}
+                  Vous êtes connecté !
+                  <div className="w-1/2 border-b border-gray-400 dark:border-gray-200/20 pt-2"></div>
+                </div>
+                <div className="text-sm mt-2">
+                  <ul>
+                    <li>
+                      Session :{' '}
+                      <span className="text-app">{userSession?.user_name}</span>
+                    </li>
+                    <li>
+                      Numéro :{' '}
+                      <span className="text-app">
+                        {userSession?.user_number}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
+        <div className="ms_Main grow">
+          {isLoadingPage ? <LoaderComp /> : <Outlet />}
+          {/* <Outlet /> */}
+        </div>
+        <Footer />
       </div>
-      <div className="ms_Main grow">
-        {isLoadingPage ? <LoaderComp /> : <Outlet />}
-        {/* <Outlet /> */}
-      </div>
-      <Footer />
     </>
   )
 }

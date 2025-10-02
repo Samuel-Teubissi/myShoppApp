@@ -242,7 +242,7 @@
   }
 
   .ms_Main {
-    @apply pt-7 box-content;
+    @apply pt-5 box-content min-h-7;
   }
 
   .about-detail .title {
