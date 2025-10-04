@@ -26,7 +26,7 @@ const LandingPage = () => {
               Bienvenue sur My&nbsp;Shop
             </h1>
             <h3 className="mt-3">
-              Site Numéro 1 de la vente d'articles sans intermédiaires
+              Votre site e-commerce pour la vente d'articles sans intermédiaires
             </h3>
           </div>
           <p className="font-normal text-base/tight md:text-lg mt-6 w-[90%] lg:w-full">

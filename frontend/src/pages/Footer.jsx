@@ -149,9 +149,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="py-7 border-t border-white justify-center mx-14">
+        <div className="py-7 border-t border-white justify-center flex mx-14">
           <div className="text-sm w-full text-center">
-            © 2025 MyShop App, Version 2.1 ~ All rights reserved.
+            © 2025 MyShop App, Version 3.0 ~ All rights reserved.
           </div>
         </div>
       </footer>
