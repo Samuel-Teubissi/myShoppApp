@@ -73,6 +73,7 @@ import ScrollToTop from '../hooks/useScrollToTop'
 import LoaderComp from './LoaderComp'
 import useShowSearchBar from '../hooks/useShowSearchBar'
 import LogoApp from './LogoApp'
+import { motion } from 'framer-motion'
 
 export default function DefaultRouterComp() {
   const { isAuthenticated, logout, userSession } = useAuth()
@@ -251,9 +252,9 @@ export default function DefaultRouterComp() {
               )}
               <li>
                 <button onClick={() => setOpenHeader(true)}>
-                  <span>Mon Compte</span>
-                  <User className="hidden md:block" />
-                  <MenuIcon className="md:hidden" />
+                  <span>Menu</span>
+                  {/* <User className="hidden md:block" /> */}
+                  <MenuIcon className="hidden md:block" />
                 </button>
               </li>
             </ul>
@@ -280,11 +281,26 @@ export default function DefaultRouterComp() {
             }`}
             ref={SidebarRef}
           >
-            <XIcon
-              className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
-              onClick={() => setOpenHeader(false)}
-              title="Fermer"
-            />
+            <div className="absolute top-9 right-4 w-8 h-8">
+              <motion.div
+                key={openHeader} // <-- Important : force le “re-render” à chaque ouverture
+                // className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                initial={{ rotate: 0, x: '-50%', y: '-50%' }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                style={{
+                  position: 'relative',
+                  left: '50%',
+                  top: '50%',
+                }}
+                title="Fermer"
+              >
+                <XIcon
+                  className=" rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
+                  onClick={() => setOpenHeader(false)}
+                />
+              </motion.div>
+            </div>
             <div className="w-fit ml-4" onClick={handleCloseSidebar}>
               <LogoApp />
             </div>
