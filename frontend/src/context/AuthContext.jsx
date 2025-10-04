@@ -141,7 +141,7 @@ export const AuthProvider = ({ children }) => {
         // setUserSession(res.data.user_session)
         // localStorage.setItem('accessToken', res.data.user_token);
         setLoginErrors({})
-        // setIsAuthenticated(true)
+        setIsAuthenticated(true)
         generateToken(res.data.user_token)
         return { success: true, role: res.data.role }
         // setTimeout(() => {
