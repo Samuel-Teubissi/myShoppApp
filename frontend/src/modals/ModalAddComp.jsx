@@ -129,12 +129,16 @@ const ModalAddComp = ({ isOpen, onClose }) => {
     mutationFn: async (e) => {
       e.preventDefault()
       const addData = new FormData(e.target)
-      const response = await axios.post('/article/add', addData, {
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
+      const response = await api.post(
+        '/article/add',
+        addData,
+        //   , {
+        //   withCredentials: true,
+        //   headers: {
+        //     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        //   },
+        // }
+      )
       return response.data
     },
     onSuccess: async (response) => {

@@ -16,7 +16,8 @@ function generateAccessToken($user)
         'user_number' => $user['user_number'],
         'role' => $user['role'],
         'iat' => time(),
-        'exp' => time() + (5 * 60) // nbr de minutes
+        // 'exp' => time() + (5 * 60) // nbr de minutes
+        'exp' => time() + (1 * 24 * 60 * 60) 
     ];
     return JWT::encode($payload, ACCESS_TOKEN_KEY, 'HS256');
     //getenv('ACCESS_TOKEN_SECRET')

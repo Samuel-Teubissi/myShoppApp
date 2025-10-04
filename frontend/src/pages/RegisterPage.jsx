@@ -81,7 +81,7 @@ const RegisterPage = () => {
   return (
     <div className="ms_Main main-about flex justify-center items-center">
       {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
-      <div className="text-center overflow-hidden relative md:w-8/12 h-full backdrop-blur md:backdrop-blur-none md:h-min flex flex-col justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none md:my-4">
+      <div className="text-center overflow-hidden relative md:w-8/12 h-full backdrop-blur md:backdrop-blur-none md:h-min flex flex-col justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none md:my-4 pt-10 md:pt-0">
         <div className="hidden md:block">
           <div className="auth-design dsn-1"></div>
           <div className="auth-design dsn-2"></div>
@@ -100,7 +100,7 @@ const RegisterPage = () => {
           className="w-full h-full text-gray-600 py-10 sm:bg-app-100/5 sm:dark:bg-app-600/10 backdrop-blur flex justify-center flex-wrap dark:text-dark-app-100 overflow-hidden"
           onSubmit={submitRegister}
         >
-          <div className="hidden md:flex gap-4 items-center border-2 border-transparent bg-app-h/95 text-white dark:bg-app-900/80 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center sm:border-t-app-700">
+          <div className="hidden md:flex gap-4 items-center border-2 border-transparent bg-app-h-/95 text-white dark:bg-app-900/80 px-6 py-10 mb-10 text-left font-medium sm:w-full sm:text-center sm:border-t-app-700">
             <div>
               <InfoIcon className="w-14 h-14" />
             </div>

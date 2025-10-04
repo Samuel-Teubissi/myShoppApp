@@ -1,38 +1,46 @@
-// src/api/axios.js
+// api.js
 import axios from 'axios'
-import { jwtDecode } from 'jwt-decode'
 
+// Récupérer le token JWT depuis localStorage (ou sessionStorage)
+const getToken = () => localStorage.getItem('accessToken')
 const API_BASE_URL = import.meta.env.VITE_API_URL
+
 const api = axios.create({
-  baseURL: API_BASE_URL,
-  withCredentials: true, // Nécessaire pour envoyer les cookies (refresh_token)
+  baseURL: API_BASE_URL, // ton backend
+  withCredentials: true, // pour envoyer cookies/credentials si nécessaire
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
 })
 
-api.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem('accessToken')
-
-  if (token) {
-    const decoded = jwtDecode(token)
-    const isExpired = decoded.exp * 1000 < Date.now()
-    if (isExpired) {
-      try {
-        const res = await axios.get('/auth/refresh-token', {
-          withCredentials: true,
-        })
-        const newToken = res.data.accessToken
-        localStorage.setItem('accessToken', newToken)
-        config.headers.Authorization = `Bearer ${newToken}`
-      } catch (error) {
-        localStorage.removeItem('accessToken')
-        window.location.href = '/login'
-        return Promise.reject(error)
-      }
-    } else {
-      config.headers.Authorization = `Bearer ${token}`
+// Intercepteur pour attacher le token JWT à chaque requête
+api.interceptors.request.use(
+  (config) => {
+    const token = getToken()
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
     }
-  }
+    return config
+  },
+  (error) => Promise.reject(error),
+)
 
-  return config
-})
+// Intercepteur pour gérer les erreurs globalement (401, 403, etc.)
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response) {
+      if (error.response.status === 401) {
+        console.error('⚠️ Non autorisé - Token invalide ou expiré')
+        // Exemple : rediriger vers login
+        // window.location.href = "/login";
+      }
+      if (error.response.status === 403) {
+        console.error('⚠️ Accès refusé - Permissions insuffisantes')
+      }
+    }
+    return Promise.reject(error)
+  },
+)
 
 export default api

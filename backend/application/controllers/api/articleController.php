@@ -182,7 +182,24 @@ class articleController extends REST_Controller
     {
         if ($this->userToken?->data_trader) {
             $article = $this->traderModel->getArticle($id, $this->userToken?->data_trader);
-            echo json_encode($article ?: ['error' => 'Article non trouvé']);
+            // echo json_encode($article ?: ['error' => 'Article non trouvé']);
+            if ($article) {
+                $this->response($article, REST_Controller::HTTP_OK);
+                // $this->response(array(
+                //     'status' => "success",
+                //     "articleData" => $article
+                // ), REST_Controller::HTTP_OK);
+            }else {
+                $this->response(array(
+                    'status' => "error",
+                    "message" => "Article non trouvé"
+                ), REST_Controller::HTTP_NOT_FOUND);
+            }
+        }else {
+            $this->response(array(
+                'status' => "error",
+                "message" => "Pas d'utilisateur"
+            ), REST_Controller::HTTP_NOT_FOUND);
         }
     }
 
@@ -197,16 +214,16 @@ class articleController extends REST_Controller
             unset($addData['categories'][0]);
             $categ_list = implode(',', array_keys($addData['categories']));
 
-            $trader = $this->userToken?->data_trader;
+            $trader = $this->userToken->data_trader;
             // $trader = $this->input->post('user_id');
 
-            if (!isset($trader) && empty($this->traderModel->API_VerifyTrader($trader))) {
-                echo json_encode([
-                    "status" => "error",
-                    "message" => "Le tradeur n'est pas connecté"
-                ]);
-                return;
-            }
+            // if (!isset($trader) && empty($this->traderModel->API_VerifyTrader($trader))) {
+            //     echo json_encode([
+            //         "status" => "error",
+            //         "message" => "Le tradeur n'est pas connecté"
+            //     ]);
+            //     return;
+            // }
             // Préparer les données à mettre à jour (seulement les champs valides et non vides)
             $article = $this->input->post('article', TRUE);
             $price   = $this->input->post('price', TRUE);
@@ -250,14 +267,6 @@ class articleController extends REST_Controller
                     $fieldRule = true;
                 }
             }
-            if (!$fieldRule) {
-                $this->response(array(
-                    'status' => "error",
-                    "message" => "Aucune donnée à mettre à jour",
-                    "error" => $this->input->post()
-                ), REST_Controller::HTTP_OK);
-                return;
-            }
             if ($this->form_validation->run()) {
                 // Faire la mise à jour uniquement si $data n’est pas vide
                 if (!empty($data)) {
@@ -267,7 +276,8 @@ class articleController extends REST_Controller
                         'status' => 'success',
                         "message" => 'Produit mis à jour !'
                     ), REST_Controller::HTTP_OK);
-                } else {
+                }
+                 else {
                     $this->response(array(
                         'status' => "error",
                         "message" => "Aucune donnée à mettre à jour now. "
