@@ -5,6 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
+    "prebuild": "pnpm install --no-frozen-lockfile",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
