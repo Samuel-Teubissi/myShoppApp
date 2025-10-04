@@ -36,6 +36,21 @@ const Footer = () => {
   const { userSession, Become_Trader } = useAuth()
   const { openModal, closeModal } = useModal()
   const { handleAdd, handleLogout, handleCart, handleNotifs } = useLinks()
+  const optionTrader = userSession?.data_trader ? (
+    <li>
+      <button onClick={handleAdd}>
+        <SquarePlusIcon className="w-5 h-5" />
+        Ajouter un article
+      </button>
+    </li>
+  ) : (
+    <li>
+      <button onClick={() => Become_Trader()}>
+        <FontAwesomeIcon icon={faHandHoldingHand} className="mr-2 w-5 h-5" />
+        Devenir Trader
+      </button>
+    </li>
+  )
 
   return (
     <>
@@ -113,24 +128,7 @@ const Footer = () => {
                         Consulter votre panier
                       </button>
                     </li>
-                    {userSession?.data_trader ? (
-                      <li>
-                        <button onClick={handleAdd}>
-                          <SquarePlusIcon className="w-5 h-5" />
-                          Ajouter un article
-                        </button>
-                      </li>
-                    ) : (
-                      <li>
-                        <button onClick={() => Become_Trader()}>
-                          <FontAwesomeIcon
-                            icon={faHandHoldingHand}
-                            className="mr-2 w-5 h-5"
-                          />
-                          Devenir Trader
-                        </button>
-                      </li>
-                    )}
+                    {userSession?.role != 'admin' && optionTrader}
                     <li>
                       <button onClick={handleNotifs}>
                         <Bell className="w-5 h-5" />

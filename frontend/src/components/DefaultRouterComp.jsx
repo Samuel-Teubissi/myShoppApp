@@ -215,8 +215,8 @@ export default function DefaultRouterComp() {
               <li className="btn-trans nav-trans relative">
                 <button onClick={handleCart} title="Consulter le panier">
                   {/* <FontAwesomeIcon icon={faCartPlus} color="rgba(190, 24, 93)" /> */}
-                  <span>Panier</span>
                   <ShoppingCartIcon className="w-6 h-6" />
+                  <span>Panier</span>
                 </button>
                 {newsItems > 0 && (
                   <span className="--icon-notif">{newsItems}</span>
@@ -231,7 +231,7 @@ export default function DefaultRouterComp() {
                   >
                     <button onClick={handleAdd} title="Ajouter un article">
                       <span>Ajouter un article</span>
-                      <SquarePlusIcon />
+                      <SquarePlusIcon className=" w-6 h-6" />
                       {/* <FontAwesomeIcon icon={isHovered || isModalOpen ? faSquarePlus : faRegularSquarePlus} color="rgba(190, 24, 93)" /> */}
                     </button>
                   </li>
@@ -242,7 +242,7 @@ export default function DefaultRouterComp() {
                   <li className="btn-trans nav-trans relative">
                     <button onClick={handleNotifs} title="Notifications">
                       <span>Notifications</span>
-                      <Bell />
+                      <Bell className=" w-6 h-6" />
                     </button>
                     {unreadNotifs > 0 && (
                       <span className="--icon-notif">{unreadNotifs}</span>
@@ -252,9 +252,9 @@ export default function DefaultRouterComp() {
               )}
               <li>
                 <button onClick={() => setOpenHeader(true)}>
-                  <span>Menu</span>
                   {/* <User className="hidden md:block" /> */}
-                  <MenuIcon className="hidden md:block" />
+                  <MenuIcon className="hidden md:block w-6 h-6" />
+                  <span>Menu</span>
                 </button>
               </li>
             </ul>
@@ -281,7 +281,7 @@ export default function DefaultRouterComp() {
             }`}
             ref={SidebarRef}
           >
-            <div className="absolute top-9 right-4 w-8 h-8">
+            {/* <div className="absolute top-9 right-4 w-8 h-8">
               <motion.div
                 key={openHeader} // <-- Important : force le “re-render” à chaque ouverture
                 // className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
@@ -294,13 +294,13 @@ export default function DefaultRouterComp() {
                   top: '50%',
                 }}
                 title="Fermer"
-              >
-                <XIcon
-                  className=" rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
-                  onClick={() => setOpenHeader(false)}
-                />
-              </motion.div>
-            </div>
+              > */}
+            <XIcon
+              className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
+              onClick={() => setOpenHeader(false)}
+            />
+            {/* </motion.div>
+            </div> */}
             <div className="w-fit ml-4" onClick={handleCloseSidebar}>
               <LogoApp />
             </div>
