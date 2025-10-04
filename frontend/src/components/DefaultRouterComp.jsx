@@ -281,7 +281,7 @@ export default function DefaultRouterComp() {
             }`}
             ref={SidebarRef}
           >
-            {/* <div className="absolute top-9 right-4 w-8 h-8">
+            <div className="absolute top-9 right-4 w-8 h-8">
               <motion.div
                 key={openHeader} // <-- Important : force le “re-render” à chaque ouverture
                 // className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
@@ -294,13 +294,13 @@ export default function DefaultRouterComp() {
                   top: '50%',
                 }}
                 title="Fermer"
-              > */}
-            <XIcon
-              className="absolute top-9 right-4 w-8 h-8 rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
-              onClick={() => setOpenHeader(false)}
-            />
-            {/* </motion.div>
-            </div> */}
+              >
+                <XIcon
+                  className=" rounded-full hover:bg-app transition duration-300 text-gray-500 hover:text-white"
+                  onClick={() => setOpenHeader(false)}
+                />
+              </motion.div>
+            </div>
             <div className="w-fit ml-4" onClick={handleCloseSidebar}>
               <LogoApp />
             </div>

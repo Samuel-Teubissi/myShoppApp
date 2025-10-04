@@ -3,6 +3,7 @@
 		"@lottiefiles/react-lottie-player": "^3.6.0",
 		"framer-motion": "^12.23.22",
 		"lottie-react": "^2.4.1",
-		"lottie-web": "^5.13.0"
+		"lottie-web": "^5.13.0",
+		"motion-utils": "^12.23.6"
 	}
 }
