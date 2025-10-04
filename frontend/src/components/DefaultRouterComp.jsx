@@ -230,8 +230,8 @@ export default function DefaultRouterComp() {
                     onMouseLeave={handleMouseLeave}
                   >
                     <button onClick={handleAdd} title="Ajouter un article">
-                      <span>Ajouter un article</span>
                       <SquarePlusIcon className=" w-6 h-6" />
+                      <span>Ajouter un article</span>
                       {/* <FontAwesomeIcon icon={isHovered || isModalOpen ? faSquarePlus : faRegularSquarePlus} color="rgba(190, 24, 93)" /> */}
                     </button>
                   </li>
@@ -241,8 +241,8 @@ export default function DefaultRouterComp() {
                 <>
                   <li className="btn-trans nav-trans relative">
                     <button onClick={handleNotifs} title="Notifications">
-                      <span>Notifications</span>
                       <Bell className=" w-6 h-6" />
+                      <span>Notifications</span>
                     </button>
                     {unreadNotifs > 0 && (
                       <span className="--icon-notif">{unreadNotifs}</span>
