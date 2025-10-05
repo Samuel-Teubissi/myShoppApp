@@ -196,14 +196,14 @@ const ArticleComp = ({ art, articleRef, controller }) => {
                 <FontAwesomeIcon
                   icon={faPencil}
                   size=""
-                  className="w-10 h-10 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-app hover:text-white"
+                  className="w-8 h-8 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-app hover:text-white"
                 />
               </button>
               <button onClick={handleDelete} title="Supprimer l'article">
                 <FontAwesomeIcon
                   icon={faTrash}
                   size=""
-                  className="w-10 h-10 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-red-500 hover:text-white"
+                  className="w-8 h-8 box-border bg-app-900 p-2 shadow rounded-full flex items-center transition duration-300 ease-out transform hover:scale-105 text-white hover:bg-red-500 hover:text-white"
                 />
               </button>
             </>

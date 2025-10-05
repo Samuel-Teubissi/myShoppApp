@@ -171,7 +171,8 @@
         @apply bg-
     } */
 
-  h1 {
+  h1,
+  .H1 {
     @apply text-4xl md:text-6xl font-bold whitespace-normal break-words;
   }
 
@@ -243,7 +244,7 @@
 
   .ms_Main {
     /* @apply pt-5 box-content min-h-7; */
-    @apply pt-16 mt-[2px];
+    @apply pt-16 mt-[2px] overflow-x-hidden;
   }
 
   .about-detail .title {

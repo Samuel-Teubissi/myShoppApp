@@ -22,7 +22,7 @@ export const searchArticles = async ({
   params.append('page', page)
   params.append('controller', controllerLink)
 
-  const response = await axios.get(`/articles/search?${params.toString()}`)
+  const response = await api.get(`/articles/search?${params.toString()}`)
   // console.log(params.toString(), response.data);
   return response.data
 

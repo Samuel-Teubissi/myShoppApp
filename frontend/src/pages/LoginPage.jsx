@@ -130,7 +130,7 @@ const LoginPage = () => {
             </div>
             <div className="w-full mt-2">
               Vous n'avez pas encore de compte ?<br />
-              <Link to="/register" className="text-app hover:underline">
+              <Link to="/register" className="text-app-600 hover:underline">
                 Inscrivez-vous !
               </Link>
             </div>

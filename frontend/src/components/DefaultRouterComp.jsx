@@ -96,6 +96,7 @@ export default function DefaultRouterComp() {
   const resetShowSearchBar = useShowSearchBar((s) => s.resetShowBar)
   const showSearchBar = useShowSearchBar((s) => s.showSearchBar)
   const [visibleSearchBar, setVisibleSearchBar] = useState(false)
+  const canSearch = userSession.data_trader && visibleSearchBar
 
   // const navigation = useNavigation();
 
@@ -198,7 +199,7 @@ export default function DefaultRouterComp() {
               <LogoApp />
             </div>
             <ul className="nav-link pointer-events-auto">
-              {visibleSearchBar && (
+              {canSearch && (
                 <li
                   className={`btn-trans nav-search relative ${
                     showSearchBar ? 'active' : ''

@@ -14,8 +14,9 @@
 
   header nav,
   footer {
-    background: color-mix(in srgb, var(--color_bg-nav2) 20%, #ffffffe8 80%);
+    background: color-mix(in srgb, var(--color_bg-nav2) 20%, #ffffff9d 80%);
     box-shadow: 0;
+    backdrop-filter: blur(100px);
   }
 
   .modal-Sidebar {

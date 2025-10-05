@@ -41,11 +41,15 @@ const UserPage = () => {
       {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
       <div className="">
         <div className="pt-20 text-white pb-1 w-full px-3 banner_trader text-center">
-          <h1 className="mb-2">Bienvenue {userSession?.user_name}&nbsp;!</h1>
-          <div className="text-xl xl:text-3xl font-semibold">
+          <span className="H1 font-normal">
+            Bienvenue{' '}
+            <span className="H1 font-black">{userSession?.user_name}</span>
+            &nbsp;!
+          </span>
+          {/* <div className="text-xl xl:text-3xl font-semibold">
             Votre numéro est le +237 {userSession?.user_number}
-          </div>
-          <div className="m-4 p-1 xl:px-5 py-4">
+          </div> */}
+          <div className="p-1 xl:px-5 py-2">
             {isLogging ? (
               <LoaderComp />
             ) : canAddArticles ? (
@@ -63,12 +67,12 @@ const UserPage = () => {
                 </div>
               </>
             ) : (
-              <div className="bg-app-h/50 pt-10 p-5 xl:pt-4 xl:pr-6 w-full xl:w-[60%] rounded-xl mx-auto flex flex-col xl:flex-row justify-center items-center gap-3 xl:gap-6">
+              <div className="bg-app-h-/50 pt-10 p-5 xl:pt-4 xl:pr-6 w-full xl:w-[60%] rounded-xl mx-auto flex flex-col xl:flex-row justify-center items-center gap-3 xl:gap-6">
                 {/* <button onClick={BecomeTrader} className="">Devenir Trader ?</button> */}
                 <div className="text-center xl:text-right tracking-wider">
                   <h3 className="mb-3">
                     Commencez cette{' '}
-                    <span className="border-b-2 border-dashed border-app-700 text-xl text-app capitalize">
+                    <span className="border-b-2 border-dashed border-app-700 text-xl text-[#e682ef] capitalize">
                       nouvelle aventure
                     </span>{' '}
                     avec nous !
