@@ -7,7 +7,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="ms_Main"></div>
+      {/* <div className="ms_Main"></div> */}
       <div className="pt-8 md:pt-10 mx-2">
         <div className="max-w-7xl w-full md:w-4/5 sm:w-11/12 mx-auto px-3 bg-white mb-4 pt-4 dark:text-white/90 dark:bg-app-600/5">
           <div className="mt-4 py-6">

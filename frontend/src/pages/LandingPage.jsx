@@ -18,7 +18,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="ms_Main"></div>
-      <div className="h-fit bg-app-h banner_home text-white relative grid grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-0">
+      <div className="h-fit min-h-svh box-border bg-app-h banner_home text-white relative grid grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-0">
         <div className="animT pl-0 sm:pl-14 font-bold flex justify-center sm:justify-start md:justify-center text-center md:text-left items-center md:items-start flex-col gap-y-2">
           {/* <div className="pt-20 hidden sm:block md:hidden"></div> */}
           <div className="w-[90%] lg:w-full">

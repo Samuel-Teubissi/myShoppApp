@@ -33,7 +33,7 @@ const ConnectedRouteAuth = ({ children }) => {
   //     }
   // }, [isAuthenticated]);
 
-  return <div className="ms_Main">{children}</div>
+  return <>{children}</>
 }
 
 export default ConnectedRouteAuth

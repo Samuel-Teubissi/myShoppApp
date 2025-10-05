@@ -253,7 +253,7 @@ export default function DefaultRouterComp() {
               <li>
                 <button onClick={() => setOpenHeader(true)}>
                   {/* <User className="hidden md:block" /> */}
-                  <MenuIcon className="hidden md:block w-6 h-6" />
+                  <MenuIcon className="w-6 h-6" />
                   <span>Menu</span>
                 </button>
               </li>
