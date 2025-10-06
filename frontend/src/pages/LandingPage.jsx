@@ -7,6 +7,7 @@ import Lottie from 'lottie-react'
 import animationData from '../assets/img/shopping-cart.json'
 // import animatedLogo from '../assets/img/MyShop Logo Anim 2.json'
 import animatedLogo from '../assets/img/MyShop Logo Anim 1.json'
+// import animatedLogo from '../assets/img/MyShop Icon.json'
 import { motion } from 'framer-motion'
 
 const LandingPage = () => {
@@ -21,7 +22,7 @@ const LandingPage = () => {
   return (
     <>
       {/* <div className="ms_Main"></div> */}
-      <div className="h-fit min-h-dvh bg-app-900 banner_home text-white relative grid grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-0">
+      <div className="h-fit min-h-dvh bg-[#424055] banner_home text-white relative grid grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-0">
         <div className="animT pl-0 sm:pl-14 font-bold flex justify-center sm:justify-start md:justify-center text-center md:text-left items-center md:items-start flex-col gap-y-2">
           {/* <div className="pt-20 hidden sm:block md:hidden"></div> */}
           <div className="w-[90%] lg:w-full pt-20 md:pt-0">
@@ -58,7 +59,7 @@ const LandingPage = () => {
             </button>
           </p>
         </div>
-        <div className="flex items-start sm:items-center justify-center overflow-hidden">
+        <div className="flex items-start md:items-center justify-center">
           {/* <Player
             autoplay
             loop
@@ -74,9 +75,15 @@ const LandingPage = () => {
           <Lottie
             animationData={animatedLogo}
             loop={true}
-            className="w-fit transform scale-100 md:scale-[200%]"
+            className="w-fit transform scale-[140%] sm:scale-[170%] md:scale-[200%]"
             // xl:h-[100%]
           />
+          {/* <Lottie
+            animationData={animatedLogo}
+            loop={true}
+            className="w-fit transform scale-[400%]"
+            // xl:h-[100%]
+          /> */}
         </div>
       </div>
       {/* <Lottie

@@ -674,18 +674,38 @@ span.red {
   transform: translateY(30px);
   animation: moveUp2 0.3s linear forwards;
 }
-
+@font-face {
+  font-family: DM Sans;
+  src: url('./DM-Sans-Black.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 .banner_home {
   /* background: linear-gradient(rgba(0, 0, 0, 0.5) 5%, rgba(39, 18, 35, 0.9)); */
-  background: linear-gradient(
+  /* background: linear-gradient(
     -45deg,
     rgba(245, 129, 255, 0.5) 0%,
     rgba(0, 0, 0, 0.5) 50%
-  );
+  ); */
   /* hsla(295, 100%, 84%, 1) */
   /* url('../img/default_banner_home.jpg') center center fixed no-repeat; */
+  font-size: 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 2.5;
+  letter-spacing: -0.24px;
   background-size: cover;
   height: calc(100vh - 65px);
+  background: linear-gradient(
+    -45deg,
+    rgba(245, 129, 255, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 55%
+  );
+  /* background: linear-gradient(-45deg, #424055 20%, #3e3791 90%),
+    radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.8), black 80%); */
+}
+.dark .banner_home {
+  background: linear-gradient(-45deg, #717080 0%, rgba(0, 0, 0, 0.5) 50%),
+    radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.8), transparent 80%);
 }
 
 @media screen and (max-width: 768px) {
