@@ -26,7 +26,7 @@ const LandingPage = () => {
         <div className="animT pl-0 sm:pl-14 font-bold flex justify-center sm:justify-start md:justify-center text-center md:text-left items-center md:items-start flex-col gap-y-2">
           {/* <div className="pt-20 hidden sm:block md:hidden"></div> */}
           <div className="w-[90%] lg:w-full pt-20 md:pt-0">
-            <span
+            <div
               className="H1 tracking-tighter font-bold heroTitle"
               // initial={{ y: 1000 }}
               // animate={{ y: 0 }}
@@ -36,25 +36,25 @@ const LandingPage = () => {
               <span className="H1 font-black bg-gradient-to-br from-[#e682ef] to-[#8b4699] bg-clip-text text-transparent">
                 My&nbsp;Shop
               </span>
-            </span>
-            <h3 className="mt-3">
+            </div>
+            <div className="mt-6 H3">
               Votre site e-commerce pour la vente d'articles sans intermédiaires
-            </h3>
+            </div>
           </div>
-          <p className="font-normal text-base/tight md:text-lg mt-6 w-[90%] lg:w-full">
+          <p className="font-normal text-xl mt-6 w-[90%] lg:w-full">
             Un article dans la liste ci-dessous vous interresse vous n'avez qu'à
             joindre le numéro en dessous et discuter des détails de la
             transaction avec le marchand.{' '}
-            <span className="min-w-fit inline-block text-[#e682ef] font-bold">
+            <span className="min-w-fit inline-block text-xl text-[#e682ef] font-bold">
               Rien de plus simple !
             </span>
           </p>
           <p className="flex justify-center lg:justify-normal">
             <button
               onClick={openHome}
-              className="landing-btn mt-6 bg-app-900 py-4 px-6 rounded-[4px] flex items-center gap-2 hover:gap-3 hover:bg-app transition duration-300 font-normal text-sm md:text-base"
+              className="landing-btn mt-9 bg-app-900 py-4 px-6 rounded-[4px] flex items-center gap-2 hover:gap-3 hover:bg-app transition duration-300 text-base font-medium"
             >
-              Voir nos produits{' '}
+              Voir Nos Produits{' '}
               <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />
             </button>
           </p>

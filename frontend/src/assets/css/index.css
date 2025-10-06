@@ -66,6 +66,10 @@ body {
 
 .heroTitle {
   font-family: 'Montserrat';
+  line-height: 104%;
+}
+.landing-btn {
+  font-family: 'Manrope';
 }
 
 .dark {

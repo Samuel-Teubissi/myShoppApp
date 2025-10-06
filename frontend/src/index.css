@@ -171,9 +171,14 @@
         @apply bg-
     } */
 
-  h1,
-  .H1 {
+  h1 {
     @apply text-4xl md:text-6xl font-bold whitespace-normal break-words;
+  }
+  .H1 {
+    @apply text-6xl md:text-[6rem] font-bold whitespace-normal break-words;
+  }
+  .H3 {
+    @apply text-xl md:text-2xl font-semibold whitespace-normal break-words;
   }
 
   h2 {
