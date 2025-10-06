@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { Player } from '@lottiefiles/react-lottie-player'
 import Lottie from 'lottie-react'
 import animationData from '../assets/img/shopping-cart.json'
+// import animatedLogo from '../assets/img/MyShop Logo Anim 2.json'
+import animatedLogo from '../assets/img/MyShop Logo Anim 1.json'
 import { motion } from 'framer-motion'
 
 const LandingPage = () => {
@@ -56,17 +58,23 @@ const LandingPage = () => {
             </button>
           </p>
         </div>
-        <div className="flex items-start sm:items-center justify-center">
+        <div className="flex items-start sm:items-center justify-center overflow-hidden">
           {/* <Player
             autoplay
             loop
             src={animationData}
             style={{ height: '120px', width: '120px' }}
           /> */}
-          <Lottie
+          {/* <Lottie
             animationData={animationData}
             loop={true}
             className="w-[65%] sm:h-[100%] md:w-auto"
+            // xl:h-[100%]
+          /> */}
+          <Lottie
+            animationData={animatedLogo}
+            loop={true}
+            className="w-fit transform scale-100 md:scale-[200%]"
             // xl:h-[100%]
           />
         </div>
