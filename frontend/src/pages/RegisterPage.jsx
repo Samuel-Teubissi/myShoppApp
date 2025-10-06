@@ -83,13 +83,13 @@ const RegisterPage = () => {
       {/* <div className="ms_Main"></div> */}
       <div className="main-about flex justify-center items-center">
         {/* <ToastContainer position="bottom-right" autoClose={3000} /> */}
-        <div className="text-center overflow-hidden relative md:w-8/12 h-full backdrop-blur md:backdrop-blur-none md:h-min flex flex-col justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none md:my-4 pt-10 md:pt-0">
+        <div className="text-center overflow-hidden relative md:w-8/12 h-full backdrop-blur md:backdrop-blur-none md:h-min flex flex-col justify-center items-center rounded-xl md:border dark:border-none md:border-app-200 sm:shadow-md shadow-none md:my-4">
           <div className="hidden md:block">
             <div className="auth-design dsn-1"></div>
             <div className="auth-design dsn-2"></div>
             <div className="auth-design dsn-3 w-36 h-36 opacity-65"></div>
           </div>
-          <div className="md:hidden block mt-8">
+          <div className="md:hidden block">
             <h2 className="font-semibold dark:text-white/90 tracking-tighter">
               MyShop App Inscription
             </h2>

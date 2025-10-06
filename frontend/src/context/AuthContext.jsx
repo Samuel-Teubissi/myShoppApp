@@ -171,7 +171,7 @@ export const AuthProvider = ({ children }) => {
     //         if (bcrypt.compareSync(dataForm.password, userPass)) {
     //             // setUserSession(User)
     //             localStorage.setItem('userConnected', 'yes')
-    setIsAuthenticated(true)
+    // setIsAuthenticated(true)
     //             return { success: true }
     //         } else {
     //             setLoginErrors({ password: "Mot de passe incorect !" })

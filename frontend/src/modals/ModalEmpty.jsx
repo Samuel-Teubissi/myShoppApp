@@ -4,20 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ModalEmpty = ({ modal, onClose }) => {
   return (
     <>
-      <div className="md:flex justify-center items-center px-7 py-20 border bg-gray-50 dark:bg-app-600/5 border-gray-300 dark:border-app-600/10 rounded-xl gap-4 capitalize">
+      <div className="flex justify-center items-center px-7 py-20 border bg-gray-50 dark:bg-app-600/5 border-gray-300 dark:border-app-600/10 rounded-xl gap-4 capitalize">
         <div className="">
           {modal === 'cart' && (
             <FontAwesomeIcon
               icon={faCartShopping}
               size=""
-              className="w-20 h-20 opacity-30 text-gray-600"
+              className="w-10 h-10 opacity-30 dark:text-gray-300 text-gray-900"
             />
           )}
           {modal === 'notif' && (
             <FontAwesomeIcon
               icon={faBell}
               size=""
-              className="w-20 h-20 opacity-30 text-gray-600"
+              className="w-10 h-10 opacity-30 dark:text-gray-300 text-gray-900"
             />
           )}
         </div>

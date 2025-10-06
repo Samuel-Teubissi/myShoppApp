@@ -231,7 +231,7 @@ const SearchBar = ({
               valueProp={searchValues.search_categ}
               onChange={handleInputChange}
             /> */}
-                  <div className="relative w-full md:w-1/3 mx-auto">
+                  <div className="relative w-full md:w-2/3 mx-auto">
                     {/* 3/4 md:w-40 */}
                     <Select_categories
                       classData="hover:bg-gray-100 bg-gray-100 dark:bg-app-600/70 p-3 rounded-xl border border-app-300/20 dark:border-gray-300 w-full dark:text-white/90 dark:hover:bg-app-600/80 appearance-none"
