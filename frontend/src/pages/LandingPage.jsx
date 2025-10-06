@@ -22,7 +22,7 @@ const LandingPage = () => {
   return (
     <>
       {/* <div className="ms_Main"></div> */}
-      <div className="h-fit min-h-dvh bg-[#424055] banner_home text-white relative grid grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-0">
+      <div className="h-fit min-h-dvh bg-[#424055] banner_home text-white relative grid grid-cols-1 lg:grid-cols-2 gap-0">
         <div className="animT pl-0 sm:pl-14 font-bold flex justify-center sm:justify-start md:justify-center text-center md:text-left items-center md:items-start flex-col gap-y-2">
           {/* <div className="pt-20 hidden sm:block md:hidden"></div> */}
           <div className="w-[90%] lg:w-full pt-20 md:pt-0">
@@ -75,7 +75,7 @@ const LandingPage = () => {
           <Lottie
             animationData={animatedLogo}
             loop={true}
-            className="w-fit transform scale-[140%] sm:scale-[170%] md:scale-[200%]"
+            className="w-fit transform scale-[120%] sm:scale-[150%] md:scale-[200%]"
             // xl:h-[100%]
           />
           {/* <Lottie
