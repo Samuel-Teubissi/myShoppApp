@@ -1,7 +1,7 @@
 import SoundLink from "../assets/sound/App_Notif.wav"
 import axios from "axios";
 import { forwardRef, useEffect, useState } from "react";
-import { api } from "../hooks/api";
+import api from "../hooks/api";
 import bcrypt from 'bcryptjs';
 import { APP_Categories as articlesCategories } from '../App.json'
 import { LockIcon, PhoneIcon, UserIcon } from "lucide-react";
@@ -131,7 +131,7 @@ export const Select_categories = ({ onChange, error, name = '', id = '', classDa
     //     setCategories(articlesCategories)
     // }, []);
     useEffect(() => {
-        api.get(`/articles/categories`)
+        axios.get(`/articles/categories`)
             .then(response => {
                 setCategories(response.data.data)
             })

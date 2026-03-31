@@ -66,6 +66,7 @@ $route['default_controller'] = 'welcome';
 
 
 $route['api'] = 'api/api/index';
+$route['api/test'] = 'api/api/test';
 /**
  * TOJOURS AJOUTER ""api/"" AU DEBUT D'UNE ROUTE API REST
  * Routage d'affichage d'articles' ""articles_Controller""
@@ -94,6 +95,7 @@ $route['api/auth/login'] = 'api/globalController/API_Login';
 $route['api/auth/register'] = 'api/globalController/API_Register';
 $route['api/auth/logout'] = 'api/globalController/API_logout';
 $route['api/auth/logged'] = 'api/globalController/API_logged';
+$route['api/auth/refresh-token'] = 'api/globalController/refreshToken';
 /**
  * Routage de gestion des utilisateurs
  */

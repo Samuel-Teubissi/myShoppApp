@@ -1,292 +1,340 @@
-import { createContext, useContext, useState, useEffect, useMemo } from "react";
-import { API_href } from "../App.json";
+import { createContext, useContext, useState, useEffect, useMemo } from 'react'
+import { API_href } from '../App.json'
 // import { toast, ToastContainer } from "react-toastify";
-import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
-import { encodePassword, SoundNotif, waitSync } from "../components/AppComp";
-import { api } from "../hooks/api";
-import { Toaster, toast } from "sonner";
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { encodePassword, SoundNotif, waitSync } from '../components/AppComp'
+import { Toaster, toast } from 'sonner'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 // import * as Yup from 'yup';
-import { delSessionCookie, getSessionCookie, saveSessionCookie } from "./useCookie";
-import { useSessionStore } from "../hooks/useSession";
-import bcrypt from 'bcryptjs';
+import {
+  delSessionCookie,
+  getSessionCookie,
+  saveSessionCookie,
+} from './useCookie'
+import { useSessionStore } from '../hooks/useSession'
+import bcrypt from 'bcryptjs'
 import { jwtDecode } from 'jwt-decode'
 
 // Création du contexte d'authentification
-const AuthContext = createContext();
-axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+const AuthContext = createContext()
+axios.defaults.baseURL = import.meta.env.VITE_API_URL
 // axios.defaults.baseURL = API_href;
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLogging, setIsLogging] = useState(true)
-    const [isLoggingLoad, setIsLoggingLoad] = useState(false)
-    const [isRegisterLoad, setIsRegisterLoad] = useState(false)
-    const [loginErrors, setLoginErrors] = useState({})
-    const [registerErrors, setRegisterErrors] = useState({})
-    const [userSession, setUserSession] = useState({})
-    const [redirect, setRedirect] = useState('')
-    // const createSessionStore = useSessionStore((s) => s.createSession)
-    // const userSessionStore = useSessionStore((s) => s.sessionUser)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLogging, setIsLogging] = useState(true)
+  const [isLoggingLoad, setIsLoggingLoad] = useState(false)
+  const [isRegisterLoad, setIsRegisterLoad] = useState(false)
+  const [loginErrors, setLoginErrors] = useState({})
+  const [registerErrors, setRegisterErrors] = useState({})
+  const [userSession, setUserSession] = useState({})
+  const [redirect, setRedirect] = useState('')
+  // const createSessionStore = useSessionStore((s) => s.createSession)
+  // const userSessionStore = useSessionStore((s) => s.sessionUser)
 
-    const checkAuth = async () => {
-        try {
-            const checkSess = await axios.get('/auth/logged')
-            if (checkSess.data.status === 'success') {
-                setUserSession(checkSess.data.dataUser)
-                console.log('user-sess checkAuth', checkSess.data.dataUser);
-                setIsAuthenticated(true)
-            } else {
-                setUserSession(null)
-                setIsAuthenticated(false)
-            }
-        } catch (err) {
-            console.log('Authentification Error :' + err)
-            setUserSession(null)
-            setIsAuthenticated(false)
-        } finally {
-            setIsLogging(false)
-        }
-        // return;
-
-        // const userCookie = getSessionCookie(localStorage.getItem('userID'))
-        // const userConnected = getSessionCookie(localStorage.getItem('userConnected'))
-        // console.log("userCookie", userCookie);
-        // if (userCookie && userConnected === 'yes') {
-        //     setUserSession(userCookie)
-        //     setIsAuthenticated(true)
-        // } else {
-        //     setUserSession(null)
-        //     setIsAuthenticated(false)
-        // }
+  const checkAuth = async () => {
+    try {
+      const checkSess = await axios.get('/auth/logged')
+      if (checkSess.data.status === 'success') {
+        setUserSession(checkSess.data.dataUser)
+        console.log('user-sess checkAuth', checkSess.data.dataUser)
+        // setIsAuthenticated(true)
+      } else {
+        setUserSession(null)
+        // setIsAuthenticated(false)
+      }
+    } catch (err) {
+      console.log('Authentification Error :' + err)
+      setUserSession(null)
+      // setIsAuthenticated(false)
+    } finally {
+      setIsLogging(false)
     }
+    // return;
 
-    useEffect(() => {
-        const token = localStorage.getItem('accessToken');
-
-        // if (!token) return null;
-        try {
-            const sessionUser = jwtDecode(token); // { id, email, data_trader, ... }
-            setUserSession(sessionUser)
-            setIsAuthenticated(true)
-        } catch {
-            setIsAuthenticated(false)
-            setUserSession(null)
-        } finally {
-            setIsLogging(false)
-        }
-    }, []);
-
-    // const loadToken = () => {
-    //     const decoded = jwtDecode(localStorage.getItem('accessToken') || '');
-    //     setUserSession(decoded);
+    // const userCookie = getSessionCookie(localStorage.getItem('userID'))
+    // const userConnected = getSessionCookie(localStorage.getItem('userConnected'))
+    // console.log("userCookie", userCookie);
+    // if (userCookie && userConnected === 'yes') {
+    //     setUserSession(userCookie)
+    //     setIsAuthenticated(true)
+    // } else {
+    //     setUserSession(null)
+    //     setIsAuthenticated(false)
     // }
-    const generateToken = (token) => {
-        localStorage.setItem('accessToken', token);
-        const decoded = jwtDecode(token);
-        setUserSession(decoded);
-        setIsLogging(false)
-    };
+  }
+  const decodeToken = (token) => {
+    try {
+      const decodedToken = jwtDecode(token)
+      return decodedToken
+    } catch (error) {
+      console.warn('Token invalide ou expiré', error)
+      return null
+    }
+  }
 
-    const logout = () => {
-        // try {
-        localStorage.removeItem('accessToken');
-        toast("Déconnexion", { autoClose: 1000 });
-        setIsAuthenticated(false);
-        setUserSession({});
-        // } catch (error) {
-        //     console.error("Erreur lors de la déconnexion :", error);
-        //     toast.error('Erreur lors de la déconnexion')
-        // }
-    };
+  useEffect(() => {
+    const storedToken = localStorage.getItem('accessToken')
+    if (storedToken) {
+      const decodedToken = decodeToken(storedToken)
+      if (decodedToken) {
+        setUserSession(decodedToken)
+        setIsAuthenticated(true)
+      }
+    } else setIsAuthenticated(false)
+    setIsLogging(false)
 
-    const login = async (dataForm) => {
-        SoundNotif()
-        setIsLoggingLoad(true)
-        try {
-            const res = await axios.post('/auth/login', dataForm)
-            if (res.data.status === 'success') {
-                // SoundNotif()
-                toast.success(res.data.message)
-                // setUserSession(res.data.user_session)
-                // localStorage.setItem('accessToken', res.data.user_token);
-                generateToken(res.data.user_token)
-                setLoginErrors({})
-                setIsAuthenticated(true)
-                return { success: true }
-                // setTimeout(() => {
-                // }, 1000);
-            } else {
-                // SoundNotif()
-                setLoginErrors(res.data.errors)
-                toast.error('Remplissez correctement tous les champs')//, { description: 'Erreur de remplissage', duration: 3000 }
-                // return { success: false }
-            }
-        } catch (error) {
-            console.log('Erreur de connexion', error);
-            toast.error('Erreur de connexion')
-            // return { success: false }
-        } finally {
-            setTimeout(() => {
-                setIsLoggingLoad(false)
-            }, 1000);
-        }
-        // return;
+    // if (!token) { setIsLogging(false); return }
+    // try {
+    //   const sessionUser = jwtDecode(token)
+    //   if (sessionUser.exp * 1000 > Date.now()) {
+    //     console.log('Token valide')
+    //     setUserSession(sessionUser)
+    //   } else {
+    //     localStorage.removeItem('accessToken')
+    //     logout()
+    //   }
+    //   // setIsAuthenticated(true)
+    // } catch {
+    //   // setIsAuthenticated(false)
+    //   console.warn('Token invalide ou expiré')
+    //   setUserSession(null)
+    //   localStorage.removeItem('accessToken')
+    // } finally {
+    //   setIsLogging(false)
+    // }
+  }, [])
 
-        // let User = getSessionCookie(dataForm.number)
+  // const loadToken = () => {
+  //     const decoded = jwtDecode(localStorage.getItem('accessToken') || '');
+  //     setUserSession(decoded);
+  // }
+  const generateToken = (token) => {
+    localStorage.setItem('accessToken', token)
+    const decoded = jwtDecode(token)
+    setUserSession(decoded)
+    setIsLogging(false)
+  }
+
+  const logout = () => {
+    // try {
+    localStorage.removeItem('accessToken')
+    toast('Déconnexion', { autoClose: 1000 })
+    setIsAuthenticated(false)
+    setUserSession({})
+    // } catch (error) {
+    //     console.error("Erreur lors de la déconnexion :", error);
+    //     toast.error('Erreur lors de la déconnexion')
+    // }
+  }
+
+  const login = async (dataForm) => {
+    SoundNotif()
+    setIsLoggingLoad(true)
+    try {
+      const res = await axios.post('/auth/login', dataForm)
+      if (res.data.status === 'success') {
+        // SoundNotif()
+        toast.success(res.data.message)
+        // setUserSession(res.data.user_session)
+        // localStorage.setItem('accessToken', res.data.user_token);
+        setLoginErrors({})
+        setIsAuthenticated(true)
+        generateToken(res.data.user_token)
+        return { success: true, role: res.data.role }
         // setTimeout(() => {
-        //     if (User.length !== 0) {
-        //         // let loginPassword = encodePassword(dataForm.password)
-        //         const userPass = localStorage.getItem('userPassword')
-        //         if (bcrypt.compareSync(dataForm.password, userPass)) {
-        //             // setUserSession(User)
-        //             localStorage.setItem('userConnected', 'yes')
-        //             setIsAuthenticated(true)
-        //             return { success: true }
-        //         } else {
-        //             setLoginErrors({ password: "Mot de passe incorect !" })
-        //         }
-        //     } else {
-        //         setLoginErrors({ number: "Ce numéro n'a pas de compte !" })
-        //     }
         // }, 1000);
+      } else {
+        // SoundNotif()
+        setLoginErrors(res.data.errors)
+        toast.error('Remplissez correctement tous les champs') //, { description: 'Erreur de remplissage', duration: 3000 }
+        // return { success: false }
+      }
+    } catch (error) {
+      console.log('Erreur de connexion', error)
+      toast.error('Erreur de connexion')
+      // return { success: false }
+    } finally {
+      setTimeout(() => {
+        setIsLoggingLoad(false)
+      }, 1000)
     }
+    // return;
 
-    const Register = async (RegisterData) => {
-        setIsRegisterLoad(true)
-        SoundNotif()
-        try {
-            const response = await axios.post(`/auth/register`, RegisterData)
-            if (response.data.status === 'success') {
-                // SoundNotif()
-                toast.success(response.data.message)
-                // setUserSession(res.data.user_session)
-                // localStorage.setItem('accessToken', res.data.user_token);
-                generateToken(res.data.user_token)
-                await createNotification('admin', 'addUser')
-                // localStorage.setItem("user", JSON.stringify(response.data.user));
-                setIsAuthenticated(true)
-                return { success: true }
-                // setTimeout(() => {
-                //     // navigate('/user')
-                // }, 1000);
-            } else {
-                // SoundNotif()
-                setRegisterErrors(response.data.errors)
-                toast.error('Remplissez correctement tous les champs')
-            }
-        } catch (error) {
-            console.log("Erreur de création d'utilisateur : ", error);
-            toast.error("Erreur de création d'utilisateur")
-        } finally {
-            setTimeout(() => {
-                setIsRegisterLoad(false)
-            }, 1000);
-        }
-        // return;
-
-        // let ckeckUser = getSessionCookie(RegisterData.number)
-        // if (!ckeckUser) {
-        //     let userSession = {
-        //         data_trader: null,
-        //         user_id: RegisterData.number,
-        //         user_name: RegisterData.username,
-        //         user_number: RegisterData.number,
-        //         role: 'user'
-        //     }
-        //     localStorage.setItem('userID', RegisterData.number)
-        //     localStorage.setItem('userConnected', 'yes')
-        //     localStorage.setItem('userPassword', encodePassword(RegisterData.password))
-        //     // setUserSession(userSession)
-        //     saveSessionCookie(RegisterData, null, true)
-        //     toast.success("Inscription réussie")
-        //     setTimeout(() => {
-        //         setIsAuthenticated(true)
-        //         return { success: true }
-        //     }, 1000);
-        // } else {
-        //     setLoginErrors({ number: "Ce numéro a déjà un compte !" })
-        // }
-    }
-
-    // const logout = async () => {
-    //     try {
-    //         // `${API_href}/logout`
-    //         const dellSess = await api.get('/auth/logout');
-    //         if (dellSess?.data?.status) {
-    //             toast(dellSess.data.message, { autoClose: 1000 });
-    //             setIsAuthenticated(false);
-    //             setUserSession(null)
+    // let User = getSessionCookie(dataForm.number)
+    // setTimeout(() => {
+    //     if (User.length !== 0) {
+    //         // let loginPassword = encodePassword(dataForm.password)
+    //         const userPass = localStorage.getItem('userPassword')
+    //         if (bcrypt.compareSync(dataForm.password, userPass)) {
+    //             // setUserSession(User)
+    //             localStorage.setItem('userConnected', 'yes')
+    // setIsAuthenticated(true)
+    //             return { success: true }
+    //         } else {
+    //             setLoginErrors({ password: "Mot de passe incorect !" })
     //         }
-    //     } catch (error) {
-    //         console.error("Erreur lors de la déconnexion :", error);
-    //         toast.error('Erreur lors de la déconnexion')
+    //     } else {
+    //         setLoginErrors({ number: "Ce numéro n'a pas de compte !" })
     //     }
-    //     // return;
+    // }, 1000);
+  }
 
-    //     // let userID = localStorage.getItem('userID')
-    //     // const userSess = getSessionCookie(userID)
-    //     // if (userSess.length !== 0) {
-    //     //     const dataUser = { data_trader: userSess.data_trader, username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
-    //     //     delSessionCookie()
-    //     //     localStorage.setItem('userConnected', 'no')
-    //     //     // saveSessionCookie(userSess, userSess.user_number, null)
-    //     //     toast.success('Déconnexion')
-    //     //     checkAuth()
-    //     // }
-    //     // console.log("userSess", userSess);
-    // }
-
-    const Become_Trader = async () => {
-        const BTrader = await axios.get('/article/become_trader')
-        if (BTrader?.data?.status) {
-            toast.success(BTrader?.data?.message)
-            // localStorage.setItem('accessToken', res.data.token);
-            generateToken(res.data.token)
-        } else {
-            toast.error(BTrader?.data?.errors)
-        }
-        // try {
-        //     const BTrader = await api.get('/article/become_trader')
-        //     if (BTrader?.data?.status) {
-        //         toast.success(BTrader?.data?.message)
-        //         // localStorage.setItem('accessToken', res.data.token);
-        //         generateToken(res.data.token)
-        //     } else {
-        //         toast.error(BTrader?.data?.errors)
-        //     }
-        // } catch (error) {
-        //     console.error("Erreur lors du procéssus de création de trader :", error);
-        //     toast.error('Erreur lors du procéssus de création de trader')
-        // }
-        // checkAuth()
-        // return;
-
-        // // console.log('userSess', getSessionCookie(localStorage.getItem('userID')), localStorage.getItem('userID'));
-        // const userSess = getSessionCookie(localStorage.getItem('userID'))
-
-        // if (userSess.length !== 0) {
-        //     const dataUser = { username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
-        //     saveSessionCookie(dataUser, dataUser.number, true)
-        //     toast.success('Vous êtes désormais un Trader !!!')
-        //     checkAuth()
-        // }
+  const Register = async (RegisterData) => {
+    setIsRegisterLoad(true)
+    SoundNotif()
+    try {
+      const response = await axios.post(`/auth/register`, RegisterData)
+      if (response.data.status === 'success') {
+        // SoundNotif()
+        toast.success(response.data.message)
+        // setUserSession(res.data.user_session)
+        // localStorage.setItem('accessToken', res.data.user_token);
+        generateToken(response.data.user_token)
+        // await createNotification('admin', 'addUser')
+        // localStorage.setItem("user", JSON.stringify(response.data.user));
+        setIsAuthenticated(true)
+        return { success: true }
+        // setTimeout(() => {
+        //     // navigate('/user')
+        // }, 1000);
+      } else {
+        // SoundNotif()
+        setRegisterErrors(response.data.errors)
+        toast.error('Remplissez correctement tous les champs')
+      }
+    } catch (error) {
+      console.log("Erreur de création d'utilisateur : ", error)
+      toast.error("Erreur de création d'utilisateur")
+    } finally {
+      setTimeout(() => {
+        setIsRegisterLoad(false)
+      }, 1000)
     }
+    // return;
 
-    return (
-        <AuthContext.Provider value={{
-            isAuthenticated, login, logout, loginErrors, isLoggingLoad, isLogging, userSession, Become_Trader, Register, isRegisterLoad, registerErrors, setLoginErrors, setRegisterErrors
-        }}>
-            {/* <ToastContainer position="bottom-right" autoClose={2000} /> */}
-            <Toaster position="bottom-right" />
-            {children}
-        </AuthContext.Provider>
-    )
+    // let ckeckUser = getSessionCookie(RegisterData.number)
+    // if (!ckeckUser) {
+    //     let userSession = {
+    //         data_trader: null,
+    //         user_id: RegisterData.number,
+    //         user_name: RegisterData.username,
+    //         user_number: RegisterData.number,
+    //         role: 'user'
+    //     }
+    //     localStorage.setItem('userID', RegisterData.number)
+    //     localStorage.setItem('userConnected', 'yes')
+    //     localStorage.setItem('userPassword', encodePassword(RegisterData.password))
+    //     // setUserSession(userSession)
+    //     saveSessionCookie(RegisterData, null, true)
+    //     toast.success("Inscription réussie")
+    //     setTimeout(() => {
+    //         setIsAuthenticated(true)
+    //         return { success: true }
+    //     }, 1000);
+    // } else {
+    //     setLoginErrors({ number: "Ce numéro a déjà un compte !" })
+    // }
+  }
+
+  // const logout = async () => {
+  //     try {
+  //         // `${API_href}/logout`
+  //         const dellSess = await api.get('/auth/logout');
+  //         if (dellSess?.data?.status) {
+  //             toast(dellSess.data.message, { autoClose: 1000 });
+  //             setIsAuthenticated(false);
+  //             setUserSession(null)
+  //         }
+  //     } catch (error) {
+  //         console.error("Erreur lors de la déconnexion :", error);
+  //         toast.error('Erreur lors de la déconnexion')
+  //     }
+  //     // return;
+
+  //     // let userID = localStorage.getItem('userID')
+  //     // const userSess = getSessionCookie(userID)
+  //     // if (userSess.length !== 0) {
+  //     //     const dataUser = { data_trader: userSess.data_trader, username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
+  //     //     delSessionCookie()
+  //     //     localStorage.setItem('userConnected', 'no')
+  //     //     // saveSessionCookie(userSess, userSess.user_number, null)
+  //     //     toast.success('Déconnexion')
+  //     //     checkAuth()
+  //     // }
+  //     // console.log("userSess", userSess);
+  // }
+
+  const Become_Trader = async () => {
+    const token = localStorage.getItem('accessToken')
+    const BTrader = await axios.get('/article/become_trader', {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    if (BTrader?.data?.status) {
+      toast.success(BTrader.data.message)
+      // localStorage.setItem('accessToken', res.data.token);
+      generateToken(BTrader.data.token)
+    } else {
+      toast.error(BTrader.data.errors)
+    }
+    // try {
+    //     const BTrader = await api.get('/article/become_trader')
+    //     if (BTrader?.data?.status) {
+    //         toast.success(BTrader?.data?.message)
+    //         // localStorage.setItem('accessToken', res.data.token);
+    //         generateToken(res.data.token)
+    //     } else {
+    //         toast.error(BTrader?.data?.errors)
+    //     }
+    // } catch (error) {
+    //     console.error("Erreur lors du procéssus de création de trader :", error);
+    //     toast.error('Erreur lors du procéssus de création de trader')
+    // }
+    // checkAuth()
+    // return;
+
+    // // console.log('userSess', getSessionCookie(localStorage.getItem('userID')), localStorage.getItem('userID'));
+    // const userSess = getSessionCookie(localStorage.getItem('userID'))
+
+    // if (userSess.length !== 0) {
+    //     const dataUser = { username: userSess.user_name, number: userSess.user_number, password: userSess.user_password }
+    //     saveSessionCookie(dataUser, dataUser.number, true)
+    //     toast.success('Vous êtes désormais un Trader !!!')
+    //     checkAuth()
+    // }
+  }
+
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        login,
+        logout,
+        loginErrors,
+        isLoggingLoad,
+        isLogging,
+        userSession,
+        Become_Trader,
+        Register,
+        isRegisterLoad,
+        registerErrors,
+        setLoginErrors,
+        setRegisterErrors,
+      }}
+    >
+      {/* <ToastContainer position="bottom-right" autoClose={2000} /> */}
+      <Toaster position="bottom-right" />
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 // Hook personnalisé pour accéder au contexte
 export function useAuth() {
-    return useContext(AuthContext);
+  return useContext(AuthContext)
 }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { api } from "./api";
+import api from "./api";
 import { useAuth } from "../context/AuthContext";
 
 export const useNotifications = (userId) => {

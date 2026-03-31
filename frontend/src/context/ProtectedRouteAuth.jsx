@@ -3,6 +3,7 @@ import { useAuth } from "./AuthContext"
 import LoaderComp from "../components/LoaderComp"
 import { useEffect } from "react"
 import { mergeCartsAndSave } from "./useCookie"
+import { jwtDecode } from "jwt-decode";
 
 /*
 const ProtectedRouteAuth = ({ redirect, children }) => {
@@ -28,6 +29,15 @@ const ProtectedRouteAuth = ({ children, allowedRoles }) => {
     const search = location.state?.search || '';
 
     if (isLogging) return <LoaderComp />
+
+    const token = localStorage.getItem('accessToken');
+
+    if (!token) return <Navigate to="/login" />;
+    const decoded = jwtDecode(token);
+    if (!allowedRoles.includes(decoded.role)) return <Navigate to="/unauthorized" />;
+
+    return children
+
     if (!isAuthenticated) {
         // Pas connecté → vers login
         // state={{ from: location }}

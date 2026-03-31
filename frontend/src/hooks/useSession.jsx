@@ -1,6 +1,5 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
-import { api } from "./api"
 import { randomIP, SoundNotif } from "../components/AppComp"
 import { getSessionCookie } from "../context/useCookie"
 

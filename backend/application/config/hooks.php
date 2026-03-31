@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -13,9 +13,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $hook['post_controller_constructor'][] = array(
+    // $hook['pre_system'][] = array(
     'class'    => 'Cors',
     'function' => 'handle',
     'filename' => 'Cors.php',
     'filepath' => 'hooks'
 );
-
+// $hook['post_controller_constructor'][] = array(
+//     'class'    => 'AuthMiddleware',
+//     'function' => 'checkAuth',
+//     'filename' => 'AuthMiddleware.php',
+//     'filepath' => 'hooks'
+// );

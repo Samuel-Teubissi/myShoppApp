@@ -2,6 +2,15 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 require APPPATH . 'libraries/REST_Controller.php';
+/**
+ * @property CI_DB_query_builder db
+ * @property CI_Input input
+ * @property CI_Session session
+ * @property CI_Email email
+ * @property globalModel $globalModel
+ * @property traderModel $traderModel
+ * @property CI_Form_validation $form_validation
+ */
 
 class globalController extends REST_Controller
 {
@@ -15,6 +24,7 @@ class globalController extends REST_Controller
         $this->load->model(array("api/traderModel"));
         $this->load->model(array("api/globalModel"));
         $this->load->library('session');
+        $this->load->helper('jwt');
     }
 
     public function API_Login_post()
@@ -27,49 +37,55 @@ class globalController extends REST_Controller
         if ($this->form_validation->run()) {
             $number = $this->input->post('number', true);
             $pswd = $this->input->post('password', true);
-            if ($number == '000000000' and $pswd === 'admin') {
+            if ($number === '000' and $pswd === 'admin') {
                 // Création de l'id Trader pr récup les data dans l'espace admin
                 $userData = [
-                    'id_trader' => null,
+                    'data_trader' => null,
                     'user_id' => 'admin',
                     'user_name' => 'admin',
                     'user_number' => 'admin',
                     'role' => 'admin'
                 ];
-                $this->session->set_userdata($userData);
+                // $this->session->set_userdata($userData);
+                $accessToken = generateAccessToken($userData);
+                $refreshToken = generateRefreshToken($userData);
 
+                // Stocker le refreshToken côté client (ici via cookie)
+                setcookie('refreshToken', $refreshToken, time() + (1 * 24 * 60 * 60), "/", "", false, true);
                 $this->response(array(
                     'status' => "success",
                     "message" => "Administrateur connecté",
-                    "user_token" => $this->session->userdata()
+                    'role' => 'admin',
+                    "user_token" => $accessToken
                 ), REST_Controller::HTTP_OK);
             } else {
                 $reqUser = $this->globalModel->API_checkUser($number);
                 if (!empty($reqUser)) {
-                    $req = $reqUser[0];
+                    // $req = $reqUser[0];
                     $pswd = hash('sha256', $pswd);
-                    if ($req['password'] == $pswd) {
+                    // if ($req['password'] == $pswd) {
+                    if ($reqUser->password === $pswd) {
 
                         // Vérification de l'existence d'un Trader
-                        $dataTrader = $this->traderModel->API_dataTrader($req['number']);
-                        $idTrader = null;
-                        if (!empty($dataTrader)) {
-                            $idTrader = $dataTrader[0]['id_trader'];
-                        }
-                        // return var_dump($req['number'], $dataTrader, $idTrader);
+                        $dataTrader = $this->traderModel->API_checkTrader($reqUser->number);
                         $userData = [
-                            'data_trader' => $idTrader,
-                            'user_id' => $req['id_user'],
-                            'user_name' => $req['name'],
-                            'user_number' => $req['number'],
+                            'data_trader' => $dataTrader?->id_trader,
+                            'user_id' => $reqUser->id_user,
+                            'user_name' => $reqUser->name,
+                            'user_number' => $reqUser->number,
                             'role' => 'user'
                         ];
-                        // Création de l'id Trader pr récup les data dans l'espace admin
-                        $this->session->set_userdata($userData);
+                        // $this->session->set_userdata($userData);
+                        $accessToken = generateAccessToken($userData);
+                        $refreshToken = generateRefreshToken($userData);
+
+                        // Stocker le refreshToken côté client (ici via cookie)
+                        setcookie('refreshToken', $refreshToken, time() + (1 * 24 * 60 * 60), "/", "", false, true);
                         $this->response(array(
                             'status' => "success",
-                            "message" => "Connexion Réussie",
-                            "user_token" => $this->session->userdata()
+                            "message" => "Utilisateur connecté",
+                            'role' => 'user',
+                            "user_token" => $accessToken
                         ), REST_Controller::HTTP_OK);
                     } else {
                         $this->response(array(
@@ -93,6 +109,40 @@ class globalController extends REST_Controller
                 "errors" => $this->form_validation->error_array()
             ), REST_Controller::HTTP_OK);
         }
+    }
+    public function refreshToken_get()
+    {
+        // $token = $_COOKIE['refreshToken'] ?? null;
+        $refreshToken = $this->input->cookie('refresh_token', TRUE);
+
+        if (!$refreshToken) {
+            http_response_code(401);
+            echo json_encode(['error' => 'Refresh token manquant']);
+            // return $this->output
+            // ->set_status_header(401)
+            // ->set_output(json_encode(['error' => 'Refresh token manquant']));
+            // return;
+        }
+        $payload = verifyToken($refreshToken, 'refresh');
+        if (!$payload || !isset($payload->user_id)) {
+            // return $this->output->set_status_header(403)->set_output(json_encode(['error' => 'Refresh token invalide']));
+            return $this->response(array('error' => 'Refresh token invalide'), REST_Controller::HTTP_FORBIDDEN);
+        }
+        $dataUser = $this->globalModel->API_dataUser($payload->user_id);
+        if (!$dataUser) {
+            return $this->response(array('error' => 'Utilisateur non trouvé'), REST_Controller::HTTP_NOT_FOUND);
+        }
+        $dataTrader = $this->traderModel->API_dataTrader($dataUser->number);
+        $dataToken = [
+            'data_trader' => $dataTrader?->id_trader,
+            'user_id' => $dataUser->id_user,
+            'user_name' => $dataUser->name,
+            'user_number' => $dataUser->number,
+            'role' => 'user'
+        ];
+        $newAccessToken = generateAccessToken($dataToken);
+        $this->response(['accessToken' => $newAccessToken], REST_Controller::HTTP_OK);
+        // echo json_encode(['accessToken' => $newAccessToken]);
     }
     //Fonction Register        
     public function API_Register_post()
@@ -124,11 +174,15 @@ class globalController extends REST_Controller
                     'role' => 'user'
                 ];
                 // Création de l'id Trader pr récup les data dans l'espace admin
-                $this->session->set_userdata($userData);
+                // $this->session->set_userdata($userData);
+                $accessToken = generateAccessToken($userData);
+                $refreshToken = generateRefreshToken($userData);
+                setcookie('refreshToken', $refreshToken, time() + (1 * 24 * 60 * 60), "/", "", false, true);
                 $this->response(array(
                     'status' => "success",
                     "message" => "Inscription réussie",
-                    "user_token" => $this->session->userdata()
+                    'role' => 'user',
+                    "user_token" => $accessToken
                 ), REST_Controller::HTTP_OK);
             } else {
                 $this->response(array(

@@ -9,10 +9,18 @@ class globalModel extends CI_Model
         $this->load->database();
     }
 
+    public function API_dataUser($idUser)
+    {
+        // $checkUser = $this->db->query("SELECT * FROM user WHERE number = ?", array($number));
+        $checkUser = $this->db->get_where('user', ['id_user' => $idUser]);
+        return $checkUser->row();
+    }
+
     public function API_checkUser($number)
     {
-        $checkUser = $this->db->query("SELECT * FROM user WHERE number = ?", array($number));
-        return $checkUser->result_array();
+        // $checkUser = $this->db->query("SELECT * FROM user WHERE number = ?", array($number));
+        $checkUser = $this->db->get_where('user', ['number' => $number]);
+        return $checkUser->row();
     }
 
     /**
